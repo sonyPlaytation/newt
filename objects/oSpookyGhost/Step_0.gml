@@ -3,7 +3,9 @@
 
 turnRadius+=0.25;
 
-if instance_exists(oNewt){homingtarget = oNewt}else homingtarget = noone
+if instance_exists(oNewt)
+{
+	homingtarget = oNewt
 
 	var targetdir = point_direction(x,y,homingtarget.x,homingtarget.y-homingtarget.sprite_height/2)
 	dir += sin(degtorad(targetdir-dir))*turnRadius;
@@ -14,5 +16,5 @@ if instance_exists(oNewt){homingtarget = oNewt}else homingtarget = noone
 
 	x += xspd;
 	y += yspd;
-
+}else homingtarget = noone
 
