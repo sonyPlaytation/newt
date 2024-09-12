@@ -1,0 +1,10 @@
+
+
+0 = unarmed
+1 = wand
+2 = 1911
+3 = MP5
+4 = SPAS12
+5 = tf2 shotgun
+6 = no time to explain gun
+7 = P90
