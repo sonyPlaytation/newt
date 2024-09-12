@@ -137,34 +137,7 @@ if instance_exists(oNewt)
 if hitSprite!=noone
 {
 
-	draw_alpha -= 0.07;
-	draw_set_alpha(draw_alpha);	
-	
-	// hitscan glow 
-	gpu_set_blendmode(bm_add);
-	draw_sprite_ext(
-	hitSprite,
-	1,
-	x,
-	y,
-	visDist,
-	round_Ext(2*(draw_alpha/2),0.25)*5,
-	dir,
-	col,
-	0.15);
-	
-	draw_sprite_ext(
-	hitSprite,
-	0,
-	global.gunX,
-	global.gunY,
-	round_Ext(draw_alpha*flashScale*1.5,0.25),
-	round_Ext(draw_alpha*flashScale*1.5,0.25),
-	dir,
-	col,
-	draw_alpha*0.15);
-	
-	gpu_set_blendmode(bm_normal);
+	draw_alpha -= 0.09;
 	
 	//--------------------------------------------------------------//
 		// hitscan line real
@@ -179,17 +152,18 @@ if hitSprite!=noone
 	col,
 	1);
 	
+	
+	
 	//muzzle flash (frame zero)
-	draw_sprite_ext(
-	hitSprite,
-	0,
-	global.gunX,
-	global.gunY,
-	round_Ext(draw_alpha*flashScale,0.25),
-	round_Ext(draw_alpha*flashScale,0.25),
-	dir,
-	col,
-	1);
+	if (shotNumber == oMultiWeapon.bulletnumber)
+	{
+		draw_sprite_ext(hitSprite,0,x,y,flashScale,
+		flashScale,
+		dir,
+		col,
+		draw_alpha);
+		hitStop(13);
+		shotNumber++};
 	
 	draw_set_alpha(1);
 }

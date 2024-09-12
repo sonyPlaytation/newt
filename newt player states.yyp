@@ -627,6 +627,7 @@
     {"id":{"name":"input_keyboard_check_released","path":"scripts/input_keyboard_check_released/input_keyboard_check_released.yy",},},
     {"id":{"name":"sHeadbox","path":"sprites/sHeadbox/sHeadbox.yy",},},
     {"id":{"name":"__input_class_trigger_effect_weapon","path":"scripts/__input_class_trigger_effect_weapon/__input_class_trigger_effect_weapon.yy",},},
+    {"id":{"name":"oShotFLCL","path":"objects/oShotFLCL/oShotFLCL.yy",},},
     {"id":{"name":"string_length_scribble","path":"scripts/string_length_scribble/string_length_scribble.yy",},},
     {"id":{"name":"oMuzzleFlash","path":"objects/oMuzzleFlash/oMuzzleFlash.yy",},},
     {"id":{"name":"snMarksCoin1","path":"sounds/snMarksCoin1/snMarksCoin1.yy",},},

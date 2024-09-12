@@ -299,6 +299,8 @@ if oNewt.hasControl
 							}else crit = false;
 							global.hasCrit = false;
 							
+							if other.headshots{headshot = true};
+							
 							shotNumber = other.shotNumber;
 							hitSprite = other.hitSprite;
 							dir = other.image_angle- _spread/2 + _spreadDiv * j + random_range(-other.accuracy,other.accuracy);

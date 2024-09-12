@@ -4,7 +4,7 @@ function playerDie(){
 	with (oExclam) instance_destroy();
 	with (oHealthBar) instance_destroy();
 	with (oAmmoCount) instance_destroy();
-	with (oMultiWeapon) {weaponStats(0)};
+
 
 	with(instance_create_layer(x,y, layer, oGunDead))
 		{

@@ -1,33 +1,33 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-cur_x = prev_x +lengthdir_x(3,image_angle);
-cur_y = prev_y +lengthdir_y(3,image_angle);
+cur_x = prev_x +lengthdir_x(5,image_angle);
+cur_y = prev_y +lengthdir_y(5,image_angle);
 
-
+hitTargs = ds_list_create()
 
 if instance_exists(oNewt)
 {
 	if check = true
 	{
+		
 		repeat	(300)
 		{
-			
+			visDist += sprite_get_width(hitSprite)/10;
 			//check for head hitbox
 			var target= collision_line(prev_x, prev_y, cur_x, cur_y, oHeadHitbox, true, true);
-			if (target!= noone) and (target.inactive == false) 
+			if (target!= noone) and (target.inactive == false) and (ds_list_find_index(hitTargs,target) == -1)
 			{
-				check = false;
+				ds_list_add(hitTargs,target);
+				//check = false;
 				if can_damage 
 				{	
 					dist = point_distance(xstart,ystart,target.x,target.y);
-					
-					
 					with (target.owner)
 					{
 						//damage calculation
-						if (other.crit or oMultiWeapon.headshots) {finalDMG = other.baseDMG * 3}
-						else finalDMG = standardFalloff(other.dist,other.baseDMG/60);
+						if (other.crit or other.headshot) {finalDMG = other.baseDMG * 3}
+						else finalDMG = sniperFalloff(other.dist,other.baseDMG);
 			
 						//subtract health
 						hp -= finalDMG;
@@ -35,23 +35,23 @@ if instance_exists(oNewt)
 						//damage numbers
 						if (!noDMG)
 						{
-							//repeat(irandom_range(7,20)) {(instance_create_layer(target.x,target.y, layer, oBlood))}
+							repeat(irandom_range(7,20)/oMultiWeapon.bulletnumber) {(instance_create_layer(target.x,target.y, layer, oBlood))}
 							myDamage.damage += finalDMG;
 							myDamage.alpha = 1;
 							myDamage.dmgTextScale = 0.75
 						}
 		
 						//if rolled a crit
-						if (other.crit or oMultiWeapon.headshots)
+						if (other.crit or other.headshot)
 						{
-							diedFrom = "laserheadshot";
+							diedFrom = "headshot";
 							if (!noDMG){myDamage.dmgTextScale = 1;}
-				
 							with instance_create_layer(target.x,target.y - target.sprite_height,"Player",oCritHeader)
 							{
 								owner = target.id	
 							}
-						} else {global.critTotalDMG += finalDMG; diedFrom = "laser";}
+							
+						} else {global.critTotalDMG += finalDMG; diedFrom = "standard";}
 			
 						flash = 3;
 						hitfrom = other.direction;
@@ -64,22 +64,19 @@ if instance_exists(oNewt)
 			
 			//check for body hitbox
 			var target= collision_line(prev_x, prev_y, cur_x, cur_y, pEntity, true, true);
-			
-			if (target!= noone) and (target.inactive == false) 
+			if (target!= noone) and (target.inactive == false) and (ds_list_find_index(hitTargs,target) == -1)
 			{
-
-				check = false;
+				ds_list_add(hitTargs,target);
+				//check = false;
 				if can_damage 
 				{	
 					dist = point_distance(xstart,ystart,target.x,target.y);
-					
-					
 					with (target)
 					{
-						diedFrom = "laser";
+						diedFrom = "standard";
 						//damage calculation
 						if (other.crit == true) {finalDMG = other.baseDMG * 3}
-						else finalDMG = standardFalloff(other.dist,other.baseDMG);
+						else finalDMG = sniperFalloff(other.dist,other.baseDMG);
 			
 						//subtract health
 						hp -= finalDMG;
@@ -87,7 +84,7 @@ if instance_exists(oNewt)
 						//damage numbers
 						if (!noDMG)
 						{
-							//repeat(irandom_range(7,20)) {(instance_create_layer(target.x,target.y, layer, oBlood))}
+							repeat(irandom_range(7,20)/oMultiWeapon.bulletnumber) {(instance_create_layer(target.x,target.y, layer, oBlood))}
 							myDamage.damage += finalDMG;
 							myDamage.alpha = 1;
 							myDamage.dmgTextScale = 0.75
@@ -107,6 +104,7 @@ if instance_exists(oNewt)
 						flash = 3;
 						hitfrom = other.direction;
 						if (hitsound != 0)	oSFX.scientistscream = true;
+						coinHit = true;
 						
 					}
 				}
@@ -117,7 +115,7 @@ if instance_exists(oNewt)
 			var target= collision_line(prev_x, prev_y, cur_x, cur_y, oCollide, true, true);
 			if target!= noone {
 				
-				dist = point_distance(xstart,ystart,target.x,target.y); 
+				//dist = point_distance(xstart,ystart,target.x,target.y); 
 				//fix this. 
 				//currently because im stretching out 
 				//my collision tiles it measures based on distance relative to the top left 
@@ -126,23 +124,74 @@ if instance_exists(oNewt)
 				can_damage = false;
 				check = false;
 			}
-			//if (check == false) break;
+			if (check == false) break;
 			prev_x = cur_x;
 			prev_y = cur_y;
-			cur_x = prev_x + lengthdir_x(3,image_angle);
-			cur_y = prev_y + lengthdir_y(3,image_angle);
+			cur_x = prev_x + lengthdir_x(5,image_angle);
+			cur_y = prev_y + lengthdir_y(5,image_angle);
 			global.hasCrit = false;
 		}
 	}
 }
 
-if hitSprite
+
+if hitSprite!=noone
 {
-	var _visDist = dist-(oMultiWeapon.length/2);
-	var _visLength = sprite_get_width(hitSprite);
-	draw_alpha -= 0.3;
-	draw_set_alpha(draw_alpha);
-	draw_sprite_ext(hitSprite,0,x,y,_visDist/_visLength,1,dir,col,1);
+
+	draw_alpha -= 0.07;
+	draw_set_alpha(draw_alpha);	
+	
+	// hitscan glow 
+	gpu_set_blendmode(bm_add);
+	draw_sprite_ext(
+	hitSprite,
+	1,
+	x,
+	y,
+	visDist,
+	round_Ext(2*(draw_alpha/2),0.25)*5,
+	dir,
+	col,
+	0.15);
+	
+	draw_sprite_ext(
+	hitSprite,
+	0,
+	x,
+	y,
+	round_Ext(draw_alpha*flashScale*1.5,0.25),
+	round_Ext(draw_alpha*flashScale*1.5,0.25),
+	dir,
+	col,
+	draw_alpha*0.15);
+	
+	gpu_set_blendmode(bm_normal);
+	
+	//--------------------------------------------------------------//
+		// hitscan line real
+	draw_sprite_ext(
+	hitSprite,
+	1,
+	x,
+	y,
+	visDist,
+	round_Ext(2*(draw_alpha/2),0.25),
+	dir,
+	col,
+	1);
+	
+	//muzzle flash (frame zero)
+	draw_sprite_ext(
+	hitSprite,
+	0,
+	x,
+	y,
+	round_Ext(draw_alpha*flashScale,0.25),
+	round_Ext(draw_alpha*flashScale,0.25),
+	dir,
+	col,
+	1);
+	
 	draw_set_alpha(1);
 }
 else
@@ -154,7 +203,10 @@ else
 	draw_set_alpha(1);	
 }
 
-	
+
 if draw_alpha <= 0 instance_destroy();
 	
-	
+	//railgun 25.80 300/30
+	//markaman 77.77 66.66/10
+	//target is 
+	//516

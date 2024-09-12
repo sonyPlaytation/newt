@@ -30,7 +30,7 @@ if instance_exists(oNewt)
 		
 			if !inactive
 			{	
-				diedFrom = "fire";
+				diedFrom = "standard";
 				
 				//damage calculation
 				if (other.crit or oMultiWeapon.headshots) {finalDMG = other.baseDMG * 3}
@@ -56,7 +56,8 @@ if instance_exists(oNewt)
 					
 					with instance_create_layer(target.x,target.y - target.sprite_height/2,"Player",oExplosion)
 					{
-						radius = 125;
+						baseDMG = 10;
+						radius = 100;
 					}
 				
 					with instance_create_layer(target.x,target.y - target.sprite_height,"Player",oCritHeader)
@@ -89,7 +90,7 @@ if instance_exists(oNewt)
 		
 			if !inactive
 			{
-				diedFrom = "fire";
+				diedFrom = "standard";
 				//damage calculation
 				if (other.crit == true) {finalDMG =other.baseDMG + floor(15*oHealthBar.hpMissing) * 3}
 				else finalDMG = standardFalloff(other.dist,other.baseDMG)+ floor(15*oHealthBar.hpMissing);
@@ -113,7 +114,8 @@ if instance_exists(oNewt)
 				
 					with instance_create_layer(target.x,target.y - target.sprite_height/2,"Player",oExplosion)
 					{
-						radius = 125;
+						baseDMG = 10;
+						radius = 100;
 					}
 				
 					with instance_create_layer(target.x,target.y - target.sprite_height,"Player",oCritHeader)

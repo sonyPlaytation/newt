@@ -4,8 +4,6 @@
 cur_x = prev_x +lengthdir_x(5,image_angle);
 cur_y = prev_y +lengthdir_y(5,image_angle);
 
-if hitSprite = sHitFLCL{flashScale = 500}else flashScale = 2;
-
 if instance_exists(oNewt)
 {
 	if check = true

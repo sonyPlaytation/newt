@@ -629,7 +629,7 @@ stateCrouch = function()
 	drawYscale = lerp(drawYscale,1,0.1);
 	
 	if abs(vsp) != 0 {setOnGround(false)}
-	if abs(hsp) > 24 {hsp = clamp(hsp,-22,22);}
+	//if abs(hsp) > 24 {hsp = clamp(hsp,-22,22);}
 	if abs(hsp) > grindSpeed{grind = true;}else grind = false;
 	
 	if onGround and (hsp != 0) //if sliding

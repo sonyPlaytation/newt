@@ -527,6 +527,7 @@
     {"name":"__input_ensure_unique_verb_name","order":12,"path":"scripts/__input_ensure_unique_verb_name/__input_ensure_unique_verb_name.yy",},
     {"name":"input_keyboard_check_released","order":2,"path":"scripts/input_keyboard_check_released/input_keyboard_check_released.yy",},
     {"name":"__input_class_trigger_effect_weapon","order":15,"path":"scripts/__input_class_trigger_effect_weapon/__input_class_trigger_effect_weapon.yy",},
+    {"name":"oShotFLCL","order":9,"path":"objects/oShotFLCL/oShotFLCL.yy",},
     {"name":"string_length_scribble","order":4,"path":"scripts/string_length_scribble/string_length_scribble.yy",},
     {"name":"oMuzzleFlash","order":7,"path":"objects/oMuzzleFlash/oMuzzleFlash.yy",},
     {"name":"oCasing","order":4,"path":"objects/oCasing/oCasing.yy",},
