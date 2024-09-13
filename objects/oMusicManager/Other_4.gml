@@ -4,7 +4,10 @@
 //item shop theme
 if room == rTest1
 {
-	set_song_ingame(mAddiction,15);
+	var shopTheme = choose(
+	mAddiction,
+	mShop2);
+	set_song_ingame(shopTheme,15);
 }
 
 if room == rTest3

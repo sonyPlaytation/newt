@@ -6,9 +6,11 @@ if screenPause() {exit;};
 var homingtarget = instance_nearest(mouse_x,mouse_y,pEnemy);
 if global.soda[1] == true and instance_exists(pEnemy)
 {
-	
-	var targetdir = point_direction(x,y,homingtarget.x,homingtarget.y-homingtarget.sprite_height/2)
-	dir += sin(degtorad(targetdir-dir))*5;
+	if !collision_line(x,y,homingtarget.x,homingtarget.y,oCollide,0,0)
+	{
+		var targetdir = point_direction(x,y,homingtarget.x,homingtarget.y-homingtarget.sprite_height/2)
+		dir += sin(degtorad(targetdir-dir))*5;
+	}
 		
 	image_angle = dir
 	xspd = lengthdir_x(spd, dir);

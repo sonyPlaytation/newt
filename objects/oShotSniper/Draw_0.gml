@@ -4,6 +4,7 @@
 cur_x = prev_x +lengthdir_x(5,image_angle);
 cur_y = prev_y +lengthdir_y(5,image_angle);
 
+hitTargs = ds_list_create();
 
 if instance_exists(oNewt)
 {
@@ -17,7 +18,8 @@ if instance_exists(oNewt)
 			var target= collision_line(prev_x, prev_y, cur_x, cur_y, oHeadHitbox, true, true);
 			if (target!= noone) and (target.inactive == false) 
 			{
-				check = false;
+				ds_list_add(hitTargs,target.id);
+				//check = false;
 				if can_damage 
 				{	
 					dist = point_distance(xstart,ystart,target.x,target.y);
@@ -66,7 +68,7 @@ if instance_exists(oNewt)
 						
 					}
 				}
-				can_damage = false;
+				//can_damage = false;
 			}
 			
 			//check for body hitbox

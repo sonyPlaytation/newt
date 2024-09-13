@@ -19,5 +19,5 @@
   "sampleRate": 44100,
   "soundFile": "snShotTF2SG.wav",
   "type": 1,
-  "volume": 0.69,
+  "volume": 1.0,
 }

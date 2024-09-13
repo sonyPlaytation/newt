@@ -360,7 +360,7 @@ coinCount = 4;
 	ds_map_add(weapons[11],"recoilpush",50);
 	ds_map_add(weapons[11],"shakeamnt",30);
 	ds_map_add(weapons[11],"shaketime",10);
-	ds_map_add(weapons[11],"damage",100);
+	ds_map_add(weapons[11],"damage",50);
 	ds_map_add(weapons[11],"cancrit",false);
 	ds_map_add(weapons[11],"flash",-1);
 	ds_map_add(weapons[11],"projectile",oShotRailgun);
@@ -372,7 +372,7 @@ coinCount = 4;
 	ds_map_add(weapons[11],"cooldown",60);
 	ds_map_add(weapons[11],"bulletspeed",0);
 	ds_map_add(weapons[11],"automatic",false);
-	ds_map_add(weapons[11],"headshots",1);
+	ds_map_add(weapons[11],"headshots",0);
 	ds_map_add(weapons[11],"hitSprite",sShotRailgun);
 
 	// 12 - FLCL Guitar
@@ -668,7 +668,7 @@ coinCount = 4;
 	ds_map_add(weapons[21],"recoilpush",0);
 	ds_map_add(weapons[21],"shakeamnt",2);
 	ds_map_add(weapons[21],"shaketime",2);
-	ds_map_add(weapons[21],"damage",25)
+	ds_map_add(weapons[21],"damage",15)
 	ds_map_add(weapons[21],"cancrit",false);
 	ds_map_add(weapons[21],"flash",-1);
 	ds_map_add(weapons[21],"projectile",oShotLaser);

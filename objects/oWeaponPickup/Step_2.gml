@@ -41,6 +41,7 @@ if (instance_exists(oNewt)) and active
 	
 	if input_check_pressed("interact")
 	{
+		oMultiWeapon.showLaser = false;
 		oNewt.squishNewt(1.15,0.85);
 		//if no gun in hand
 		if oMultiWeapon.heldweapons[type] == 0
@@ -48,7 +49,6 @@ if (instance_exists(oNewt)) and active
 			oGame.combotimer += 80;
 			with (oMultiWeapon)
 			{
-				showLaser = false;
 				weaponStats(other.weapon);
 				i = type; 
 				if (pickupsound != -1){oSFX.newweapon = true};
@@ -79,7 +79,6 @@ if (instance_exists(oNewt)) and active
 			
 			with (oMultiWeapon)
 			{
-				showLaser = false;
 				weaponStats(other.weapon);
 				i = type; 
 				if (pickupsound != -1){oSFX.newweapon = true};

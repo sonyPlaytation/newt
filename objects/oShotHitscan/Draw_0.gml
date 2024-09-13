@@ -181,7 +181,7 @@ if hitSprite!=noone
 	col,
 	1);
 	
-	if hitSprite != sHitFLCL
+	if oMultiWeapon.bulletnumber == 1
 	{
 		//muzzle flash (frame zero)
 		draw_sprite_ext(

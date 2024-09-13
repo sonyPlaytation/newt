@@ -89,6 +89,7 @@ stateTele = function()
 		x = newX;
 		y = newY;
 		teleUsed = true;
+		draw_line(oldX,oldY,newX,newY);
 		ds_priority_destroy(_target);
 		shootTimer = 30;
 		state = stateIdle;
@@ -115,6 +116,7 @@ stateTele = function()
 		
 			x = newX;
 			y = newY;
+			draw_line(oldX,oldY,newX,newY);
 			teleUsed = true;
 			shootTimer = 30;
 			state = stateIdle;

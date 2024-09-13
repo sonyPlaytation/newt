@@ -16,7 +16,7 @@ shotNumber = 0;
 visDist = 0;
 headshot = false;
 
-flashScale = 0;
+flashScale = 2;
 
 baseDMG = oMultiWeapon.damage
 dist = 0;
