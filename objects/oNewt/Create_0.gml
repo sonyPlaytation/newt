@@ -591,7 +591,7 @@ stateFree = function()
 	//smooshed face sprite
 	if ((onWall !=0) and onGround)
 	{
-		if (place_meeting(x+facingRight,y-2,oCollide))
+		if (place_meeting(x+facingRight,y-25,oCollide))
 		sprite_index = sNewtSquish;
 	}
 	
