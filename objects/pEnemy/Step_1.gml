@@ -75,7 +75,7 @@ if (hp <= 0)
 			repeat(multiplier){instance_create_depth(x,y,depth,oSpookyGhost)};
 			
 			//spawn gore
-			repeat(25)
+			repeat(12)
 			{
 				with instance_create_depth(x,random_range(y,y-sprite_height/4),depth-90,oGore)
 				{
@@ -85,7 +85,7 @@ if (hp <= 0)
 			}
 			
 				//spawn gore
-			repeat(100)
+			repeat(50)
 			{
 				with instance_create_depth(x,y-sprite_height/2,depth-90,oBlood)
 				{
@@ -144,7 +144,7 @@ if (hp <= 0)
 			}
 			
 			//spawn gore
-			repeat(28)
+			repeat(5)
 			{
 				with instance_create_depth(x,random_range(y,y-sprite_height/4),depth-90,oGore)
 				{
@@ -154,7 +154,7 @@ if (hp <= 0)
 			}
 			
 				//spawn gore
-			repeat(65)
+			repeat(15)
 			{
 				with instance_create_depth(x,y-sprite_height/2,depth-90,oBlood)
 				{

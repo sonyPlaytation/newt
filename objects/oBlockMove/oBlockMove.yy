@@ -30,5 +30,8 @@
     "path": "sprites/sBlockMove/sBlockMove.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "levelDesign",
+  ],
   "visible": false,
 }

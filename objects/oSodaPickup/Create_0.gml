@@ -3,7 +3,7 @@
 
 
 sprite_index = sPartEmptyCan;
-
+if randomWand {soda = irandom(4)};
 
 imageGO = 0;
 

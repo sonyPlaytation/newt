@@ -1,8 +1,7 @@
 /// @description spawn GUI if none
 
 
-//double jump if have double jump soda
-if global.soda[0] == true {jumpMax=2}else{jumpMax=1};
+
 
 if sodaToss = true 
 {

@@ -41,8 +41,8 @@ if(hasWeapon)
 	with (mygun)
 	{
 		owner = other.id;
-		countdownRate = 30;
-		setspeed = 25;
+		countdownRate = 45;
+		setspeed = 18;
 		viewRange = owner.viewRange;
 	}
 }

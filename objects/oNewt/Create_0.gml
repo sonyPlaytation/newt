@@ -90,17 +90,17 @@ hspWalk[1] = 7;
 hspWalk[2] = 1;
 hspWJump = 7;
 
-vspJump[0] = -7;
-vspJump[1] = -5;
+vspJump = -7;
 
 vspMax = 20;
 vspWJump = -8;
 vspMaxWall = 4
 
+jumpMax = 1 + oGame.extraJumps;
+
 jumpCount = 0;
 jumpHoldTimer = 0;
-jumpHoldFrames[0] = 16;
-jumpHoldFrames[1] = 14;
+jumpHoldFrames = 16;
 
 grv[0] = 0.475;		//normal gravitygravity
 grv[1] = 0.1;	//slide gravity for jumping off ramps
@@ -157,6 +157,8 @@ stateFree = function()
 		drawXscale = 0.75;
 		drawYscale = 1.5;
 	}
+	
+
 	
 	rot = -hsp*1.5;
 	
@@ -224,6 +226,17 @@ stateFree = function()
 
 	//ground jumping
 
+	if jumpCount > 1
+	{
+		jumpHoldFrames = 16;
+		vspJump = -5;	
+	}
+	else
+	{
+		jumpHoldFrames = 12;
+		vspJump = -7;	
+	}
+
 	//reset double jump
 	if onGround
 	{
@@ -245,7 +258,7 @@ stateFree = function()
 		jumpCount++;
 		
 		////set the jump hold timer
-		jumpHoldTimer = jumpHoldFrames[jumpCount-1];
+		jumpHoldTimer = jumpHoldFrames;
 		setOnGround(false);
 		
 		audio_play_sound(snSquish8,500,false);
@@ -264,7 +277,7 @@ stateFree = function()
 	if jumpHoldTimer > 0
 	{
 		
-		vsp = vspJump[jumpCount-1];
+		vsp = vspJump;
 		vspFrac = 0;
 		jumpHoldTimer--;	
 	}
@@ -722,7 +735,7 @@ stateCrouch = function()
 		jumpCount++;
 		
 		////set the jump hold timer
-		jumpHoldTimer = jumpHoldFrames[jumpCount-1];
+		jumpHoldTimer = jumpHoldFrames;
 		//tell outselkf we are no longer on the ground
 		setOnGround(false);
 		
@@ -742,7 +755,7 @@ stateCrouch = function()
 	//jump based on hold button
 	if jumpHoldTimer > 0
 	{
-		vsp = vspJump[jumpCount-1];
+		vsp = vspJump;
 		vspFrac = 0;
 		jumpHoldTimer--;	
 	}

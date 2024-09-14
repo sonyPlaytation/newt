@@ -3,7 +3,7 @@
 
 var i = irandom(array_length(reward)-1);
 
-floorBelow = instance_nearest(x,y,oCollide);
+floorBelow = instance_nearest(x,y+48,oCollide);
 
 if !owner.roomEnemies and !owner.rewardGranted
 {

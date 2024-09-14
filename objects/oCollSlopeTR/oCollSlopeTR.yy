@@ -33,5 +33,8 @@
     "path": "sprites/sSlopeTR/sSlopeTR.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "levelDesign",
+  ],
   "visible": true,
 }

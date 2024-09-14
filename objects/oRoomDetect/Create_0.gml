@@ -10,3 +10,4 @@ myMiddle = noone;
 
 rewardGranted = false;
 
+roomEnemies = place_meeting(x,y,pEnemy);

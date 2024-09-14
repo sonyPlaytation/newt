@@ -35,5 +35,8 @@
     "path": "sprites/sCollSemiSolid/sCollSemiSolid.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "levelDesign",
+  ],
   "visible": true,
 }

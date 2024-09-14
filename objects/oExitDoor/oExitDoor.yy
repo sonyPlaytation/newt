@@ -36,5 +36,8 @@
     "path": "sprites/sDoorExit/sDoorExit.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "levelDesign",
+  ],
   "visible": true,
 }

@@ -34,5 +34,8 @@
     "path": "sprites/sBlockerBlock/sBlockerBlock.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "levelDesign",
+  ],
   "visible": true,
 }

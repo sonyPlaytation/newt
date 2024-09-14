@@ -52,9 +52,9 @@ if inactive = false
 }
 
 //vertical collision
-if (place_meeting(x,y+vsp,oCollide))
+if (place_meeting(x,y+vsp,oCollide)) or (place_meeting(x,y+vsp,oCollSemi))
 {
-	while (!place_meeting(x,y+sign(vsp),oCollide))
+	while (!place_meeting(x,y+sign(vsp),oCollide)) and (place_meeting(x,y+vsp,oCollSemi))
 	{
 		y += sign(vsp)
 	}

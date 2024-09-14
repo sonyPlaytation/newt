@@ -35,5 +35,8 @@
     "path": "sprites/sSign/sSign.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "levelDesign",
+  ],
   "visible": true,
 }

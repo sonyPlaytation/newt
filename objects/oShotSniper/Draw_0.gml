@@ -19,7 +19,8 @@ if instance_exists(oNewt)
 			if (target!= noone) and (target.inactive == false) 
 			{
 				ds_list_add(hitTargs,target.id);
-				//check = false;
+				
+				if  oShotSniperLaser.image_alpha == 0 {check = false};
 				if can_damage 
 				{	
 					dist = point_distance(xstart,ystart,target.x,target.y);
@@ -68,7 +69,7 @@ if instance_exists(oNewt)
 						
 					}
 				}
-				//can_damage = false;
+				if  oShotSniperLaser.image_alpha == 0 {can_damage = false};
 			}
 			
 			//check for body hitbox
@@ -82,20 +83,10 @@ if instance_exists(oNewt)
 					dist = point_distance(xstart,ystart,target.x,target.y);
 					with (target)
 					{
-						if oShotSniperLaser.image_alpha !=0 
-						{
-							diedFrom = "headshot";
-							finalDMG = sniperFalloff(other.dist,50)
-							with instance_create_layer(target.x,target.y - target.sprite_height,"Player",oCritHeader)
-							{
-								owner = target.id	
-							}
-						} 
-						else
-						{
-							diedFrom = "standard";
-							finalDMG =  ceil(clamp(other.baseDMG * (other.baseDMG / (other.dist/12)),other.baseDMG * 1 ,other.baseDMG * 2.5))
-						}
+						
+						diedFrom = "standard";
+						finalDMG =  standardFalloff(other.dist,other.baseDMG);
+						
 						hp -= finalDMG
 			
 						//damage numbers
@@ -132,11 +123,10 @@ if instance_exists(oNewt)
 			var target= collision_line(prev_x, prev_y, cur_x, cur_y, oCollide, true, true);
 			if target!= noone {
 				
-				//dist = point_distance(xstart,ystart,target.x,target.y); 
-				//fix this. 
-				//currently because im stretching out 
-				//my collision tiles it measures based on distance relative to the top left 
-				//corner which distorts the visual element of the shot
+				if ds_list_size(hitTargs) > 3
+				{
+					oSFX.collat = true;
+				}
 				
 				can_damage = false;
 				check = false;

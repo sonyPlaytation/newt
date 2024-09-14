@@ -36,5 +36,8 @@
     "path": "sprites/sCollide/sCollide.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "levelDesign",
+  ],
   "visible": true,
 }

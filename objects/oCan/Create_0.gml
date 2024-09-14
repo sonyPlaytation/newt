@@ -6,34 +6,9 @@ image_index = soda;
 
 alpha = 0;
 
-desc[0] = "Double Jump";
+desc[0] = "Extra Jump\n(stacks)";
 desc[1] = "Homing Shots";
 desc[2] = "Blood Heals";
-desc[3] = "+2 Max HP";
+desc[3] = "+2 Max HP\n(stacks)";
+desc[4] = "Randokm Max\nAmmo Increase\n(stacks)";
 
-function sodaGet(soda)
-{
-	switch (soda)
-	{
-		case 0: //double jumps
-			global.soda[0] = true;
-		break;
-		
-		case 1: //homing
-			global.soda[1] = true;
-		break;
-		
-		case 2: //blood
-			global.soda[2] = true;
-		break;
-		
-		case 3: //two health ups
-			global.soda[3] = true;
-			playerHealthUp(true);
-			playerHealthUp(true);
-		break;
-		
-
-	}
-	
-}

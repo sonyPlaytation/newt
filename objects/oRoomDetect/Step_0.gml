@@ -1,14 +1,15 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-
-if !rewardGranted and !instance_exists(myMiddle)
+if !midOverride
 {
-	myMiddle = instance_create_depth(x,y,depth,oRoomMiddle)
-	with (myMiddle)
+	if !rewardGranted and !instance_exists(myMiddle)
 	{
-		owner = other.id;
-		
+		myMiddle = instance_create_depth(x,y,depth,oRoomMiddle)
+		with (myMiddle)
+		{
+			owner = other.id;
+		}
 	}
 }
 

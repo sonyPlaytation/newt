@@ -33,8 +33,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "sEWalkerWalk",
-    "path": "sprites/sEWalkerWalk/sEWalkerWalk.yy",
+    "name": "sEWalker",
+    "path": "sprites/sEWalker/sEWalker.yy",
   },
   "spriteMaskId": {
     "name": "sEWalker",

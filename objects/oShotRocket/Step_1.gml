@@ -47,6 +47,7 @@ if (place_meeting(x,y,pEntity)) or (place_meeting(x,y,oCollide)) or (place_meeti
 	
 	with instance_create_depth(x,y,-500,oExplosion)
 	{
+		friendly = 0;
 		crit = other.crit;
 		baseDMG = other.baseDMG;	
 	}	

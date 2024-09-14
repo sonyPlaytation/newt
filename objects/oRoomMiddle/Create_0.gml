@@ -7,3 +7,4 @@ reward[2] = oHealthGet;
 
 dustAng = 0;
 
+owner = instance_place(x,y,oRoomDetect);

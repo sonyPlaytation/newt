@@ -33,5 +33,5 @@
     "path": "sprites/sHeadbox/sHeadbox.yy",
   },
   "spriteMaskId": null,
-  "visible": false,
+  "visible": true,
 }

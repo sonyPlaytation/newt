@@ -40,5 +40,8 @@
     "path": "sprites/sCollDestructo/sCollDestructo.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "levelDesign",
+  ],
   "visible": true,
 }

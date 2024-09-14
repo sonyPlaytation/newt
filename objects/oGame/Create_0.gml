@@ -12,6 +12,8 @@ else
 	cursor_sprite = sCrosshair1;
 }
 
+
+
 global.hitsound = snNThitSound;
 
 global.kills = 0;
@@ -48,6 +50,8 @@ firstComboEnded = false;
 
 //sodas
 global.soda[0] = false; //double jump
+extraJumps = 0;
+
 global.soda[1] = false; //homing 
 global.soda[2] = false; //blood chalice
 global.soda[3] = false; //two health ups

@@ -37,6 +37,7 @@ ricoshot = false;
 k7death = false;
 k7hurt = false;
 soulget = false;
+collat = false;
 
 //looping sfx
 laserSoundLoop = false;

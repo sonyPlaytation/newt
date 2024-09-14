@@ -3,7 +3,7 @@
 
 layer_set_visible("GUI", 0);
 
-menuOptions = 4
+menuOptions = 5
 gap = 750/menuOptions;
 
 sodaX = 125;

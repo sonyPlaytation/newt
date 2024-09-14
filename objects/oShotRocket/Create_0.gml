@@ -14,8 +14,3 @@ yspd = 0;
 baseDMG = oMultiWeapon.damage
 
 rocketLaunchGood = false;
-if global.soda[1] == true
-{
-	
-	
-}

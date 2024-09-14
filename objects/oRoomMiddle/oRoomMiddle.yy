@@ -9,8 +9,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "System Mechanics",
-    "path": "folders/Objects/System Mechanics.yy",
+    "name": "Interactables",
+    "path": "folders/Objects/Level Design/Interactables.yy",
   },
   "parentObjectId": null,
   "persistent": false,
@@ -33,5 +33,8 @@
     "path": "sprites/sRoomMiddle/sRoomMiddle.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "levelDesign",
+  ],
   "visible": false,
 }

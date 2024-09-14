@@ -13,3 +13,5 @@ crit = false;
 pushDistH = 0;
 pushDistV = 0;
 pushAng = 0;
+
+dist = 0;

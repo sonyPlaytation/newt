@@ -11,8 +11,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "System Mechanics",
-    "path": "folders/Objects/System Mechanics.yy",
+    "name": "Interactables",
+    "path": "folders/Objects/Level Design/Interactables.yy",
   },
   "parentObjectId": null,
   "persistent": false,
@@ -28,12 +28,17 @@
   "physicsShape": 1,
   "physicsShapePoints": [],
   "physicsStartAwake": true,
-  "properties": [],
+  "properties": [
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"midOverride","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"0","varType":3,},
+  ],
   "solid": false,
   "spriteId": {
     "name": "sRoomDetect",
     "path": "sprites/sRoomDetect/sRoomDetect.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "levelDesign",
+  ],
   "visible": true,
 }

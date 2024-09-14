@@ -30,5 +30,8 @@
     "path": "sprites/sKillPlane/sKillPlane.yy",
   },
   "spriteMaskId": null,
+  "tags": [
+    "levelDesign",
+  ],
   "visible": true,
 }

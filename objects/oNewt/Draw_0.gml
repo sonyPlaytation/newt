@@ -32,7 +32,7 @@ if oAmmoCount.lowAmmo
 	draw_text_transformed(oNewt.x,oNewt.y-45,oAmmoCount.ammoString,scale,scale,0);
 }
 
-//draw_text_transformed(oNewt.x,oNewt.y-45,string(visdist),scale,scale,0);
+//draw_text_transformed(oNewt.x,oNewt.y-45,string(oGame.extraJumps),scale,scale,0);
 //draw_text_transformed(oNewt.x,oNewt.y-70,string(hsp),scale,scale,0);
 
 if (flash > 0)

@@ -13,6 +13,14 @@ if soundgetammo == true
 	soundgetammo = false;
 }
 
+//get ammo
+if collat == true
+{
+	var _sound = audio_play_sound(snCollateral,800,false);
+	audio_sound_gain(_sound,_sfxVol,0);
+	collat = false;
+}
+
 //get soul
 if soulget == true
 {
