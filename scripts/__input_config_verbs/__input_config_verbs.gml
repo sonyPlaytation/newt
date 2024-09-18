@@ -23,6 +23,7 @@ function __input_config_verbs()
 			jump:		input_binding_key(vk_space),
 			interact:	input_binding_key("E"),
             special:	input_binding_key("Q"),
+			dash:		[input_binding_key(vk_shift),input_binding_mouse_button(mb_side2)],
             
 			//menus
             accept:	   [input_binding_key(vk_space),input_binding_key("E")],
@@ -68,7 +69,8 @@ function __input_config_verbs()
 			nextweap:	input_binding_gamepad_button(gp_face3),
 			prevweap:	input_binding_gamepad_button(gp_face4),
             shoot:		input_binding_gamepad_button(gp_shoulderr),
-			altfire:	[input_binding_gamepad_button(gp_shoulderrb),input_binding_gamepad_button(gp_shoulderlb)],
+			altfire:	input_binding_gamepad_button(gp_shoulderrb),
+			dash:		input_binding_gamepad_button(gp_shoulderlb),
             
             pause:		input_binding_gamepad_button(gp_start)
         }

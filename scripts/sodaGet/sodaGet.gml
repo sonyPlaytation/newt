@@ -28,5 +28,9 @@ function sodaGet(soda)
 			var AmmoUp = irandom(5);
 			oMultiWeapon.ammoMax[AmmoUp]= floor(oMultiWeapon.ammoMax[AmmoUp]*1.5);
 		break;
+		
+		case 5: //two health ups
+			global.soda[5] = true;
+		break;
 	}
 }

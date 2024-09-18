@@ -3,6 +3,7 @@ if (!other.inactive)
 {
 	if (vsp > 0)
 	{
+		dashCount = min(dashCount+1, 2);
 		iFrames = 10;
 		if (keyboard_check(vk_space)) {vsp = -9} else {vsp = -6};	
 		with(instance_place(x,y,pEntity))

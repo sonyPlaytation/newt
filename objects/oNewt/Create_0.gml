@@ -85,9 +85,8 @@ hspAcc[2] = 0.01;
 hspFricGround = 0.50;
 hspFricAir = 0.01;
 moveType = 0;
-hspWalk[0] = 5;
-hspWalk[1] = 7;
-hspWalk[2] = 1;
+hspWalk= 7;
+
 hspWJump = 7;
 
 headerAlpha = 1;
@@ -107,6 +106,7 @@ jumpHoldFrames = 16;
 
 grv[0] = 0.475;		//normal gravitygravity
 grv[1] = 0.1;	//slide gravity for jumping off ramps
+grv[2] = 0;
 grvWall = 0.5;	//wall friction
 
 jumpBuffer = 0;	//can you jump now 
@@ -142,6 +142,12 @@ bloodMax = 300;
 inRoom = false
 sodaGot = 0;
 
+dashTimer = 7;
+dashReset = dashTimer;
+dashMaxSpd = 17;
+dashCooldown = 90;
+dashCount = 2;
+
 //ui bits
 gArr[0] = oInv;
 gArr[1] = oHealthBar;
@@ -162,7 +168,7 @@ stateFree = function()
 		drawYscale = 1.5;
 	}
 	
-
+	if (dashCount < 2) and onGround {dashCount = 2};
 	
 	rot = -hsp*1.5;
 	
@@ -173,10 +179,10 @@ stateFree = function()
 	//init if backwards or not 
 	var _backwards = false
 	
-	//sprint toggle
-	if input_check("runtoggle") {global.autoRun = !global.autoRun};
-	//sprint
-	if (global.autoRun){moveType = 1; image_speed = 10} else {moveType = 0; image_speed = 1};
+	////sprint toggle
+	//if input_check("runtoggle") {global.autoRun = !global.autoRun};
+	////sprint
+	//if (global.autoRun){moveType = 1; image_speed = 10} else {moveType = 0; image_speed = 1};
 
 	//calculate horizontal movement
 	wallJumpDelay = max(wallJumpDelay-1,0);
@@ -192,7 +198,19 @@ stateFree = function()
 			if (!onGround) hspFricFinal = hspFricAir;
 			hsp = approach(hsp,0,hspFricFinal);
 		}
-		hsp = clamp(hsp,-hspWalk[moveType],hspWalk[moveType]);
+		
+		
+		if abs(hsp > hspWalk)
+		{
+			hsp = lerp(hsp,hspWalk,0.5);
+		}
+		else 
+		if abs(hsp < -hspWalk)
+		{
+			hsp = lerp(hsp,-hspWalk,0.5);
+		}
+		
+		hsp = clamp(hsp, -24, 24);
 	}
 
 	//wall jump stuff
@@ -625,6 +643,13 @@ stateFree = function()
 		state = stateCrouch;
 		squishNewt(1.15,0.85);
 	}
+	
+	if (global.soda[5] = true) and input_check_pressed("dash") and (dashCount > 0) and (onWall == 0) 
+	{
+		state = stateDash;
+		squishNewt(1.15,0.85);
+	}
+	
 }
 
 stateCrouch = function()
@@ -636,7 +661,6 @@ stateCrouch = function()
 		{
 			squishNewt(0.90,1.10);
 			setOnGround(false);
-
 		}
 		state = stateFree;
 	}
@@ -875,6 +899,417 @@ stateCrouch = function()
 
 	//calc current status
 	if (onGround) jumpBuffer = 10;
+	
+	if (global.soda[5] = true) and input_check_pressed("dash") and (dashCount > 0) and !onGround
+	{
+		state = stateDash;
+		squishNewt(1.15,0.85);
+	}
+	
+}
+
+stateDash = function()
+{
+	
+	if dashTimer > 0
+	{
+		iFrames = 2;
+		hsp = clamp(hsp*20,-20,20);
+		
+		//up dash
+		if input_check("up") and !input_check("down")
+		{
+			setOnGround(false);
+			//if not pressing left or right cancel all horizontal movement
+			if !(input_check("left") or input_check("right")) 
+			{hsp = 0}
+			
+			
+			//apply dash speed vertically
+			vsp = clamp(vsp-8,-10,10);
+		}
+		
+		//down dash
+		if input_check("down") and !(input_check("jump") or input_check("up"))
+		{
+			//if not pressing left or right cancel all horizontal movement
+			if !(input_check("left") or input_check("right")) {hsp = 0};
+			
+			//apply dash speed vertically
+			vsp	= clamp(vsp+16,-10,10);
+		}
+		
+		//left dash
+		if input_check("left")
+		{
+			//if not pressing left or right cancel all horizontal movement
+			if !(input_check("down") or input_check("jump") or input_check("up")) {vsp = 0};
+			
+			//apply dash speed vertically
+			hsp = clamp(hsp-23,-dashMaxSpd,dashMaxSpd);
+		}
+		
+		//left dash
+		if input_check("right")
+		{
+			//if not pressing left or right cancel all horizontal movement
+			if !(input_check("down") or input_check("jump") or input_check("up")) {vsp = 0};
+			
+			//apply dash speed vertically
+			hsp = clamp(hsp+23,-dashMaxSpd,dashMaxSpd);
+		}
+		
+		if !(input_check("left") or input_check("right") or input_check("down") or input_check("jump") or input_check("up"))
+		{
+			vsp = 0;
+			hsp = clamp(facingRight*100,-dashMaxSpd,dashMaxSpd);
+		}
+		
+	}
+	else
+	{
+		dashCount--;
+		
+		
+		
+		state = stateFree;
+		dashTimer = dashReset;
+	}
+	dashTimer--;
+	
+	//while standing resets
+	with oCamera {curBuff = buff[0]};
+	image_angle = 0;	
+	
+	//init if backwards or not 
+	var _backwards = false
+	
+	////sprint toggle
+	//if input_check("runtoggle") {global.autoRun = !global.autoRun};
+	////sprint
+	//if (global.autoRun){moveType = 1; image_speed = 10} else {moveType = 0; image_speed = 1};
+
+	//calculate horizontal movement
+	wallJumpDelay = max(wallJumpDelay-1,0);
+	if (wallJumpDelay ==0)
+	{
+		gamepad_set_axis_deadzone(4,0.25);
+		var dir = (input_value("right")-input_value("left"));
+		hsp += dir * hspAcc[moveType];
+	
+		if (dir == 0)
+		{
+			var hspFricFinal = hspFricGround;
+			if (!onGround) hspFricFinal = hspFricAir;
+			hsp = approach(hsp,0,hspFricFinal);
+		}
+		
+		
+		//if abs(hsp > hspWalk)
+		//{
+		//	hsp = lerp(hsp,hspWalk,0.5);
+		//}
+		//else 
+		//if abs(hsp < -hspWalk)
+		//{
+		//	hsp = lerp(hsp,-hspWalk,0.5);
+		//}
+		
+		//hsp = clamp(hsp, -24, 24);
+	}
+
+	//wall jump stuff
+	if (onWall != 0) && (!onGround) && input_check_pressed("jump")
+	{
+		wallJumpDelay = wallJumpDelayMax;
+		hsp = -onWall * hspWJump;
+		vsp = vspWJump;
+		oSFX.newtjump = true;
+		hspFrac = 0;
+		vspFrac = 0;
+	
+		repeat(6)
+			{
+				with (instance_create_layer(x,bbox_top, "Player", oSlime))
+				{
+					hsp =  random_range(oNewt.hsp/2, oNewt.hsp);
+					vsp = random_range(-1,-5);
+					image_speed = slimeDecay;
+				}		
+			}
+	}
+
+	//calculate vertical movement
+	var grvFinal = grv[2];
+	var vspMaxFinal = vspMax;
+	if (onWall != 0) && (vsp > 0)
+	{
+		oSFX.wallslidesound = true;
+
+		grvFinal = grvWall;
+		vspMaxFinal = vspMaxWall;	
+	}
+	vsp += grvFinal;
+
+	//ground jumping
+
+	if jumpCount > 1
+	{
+		jumpHoldFrames = 16;
+		vspJump = -5;	
+	}
+	else
+	{
+		jumpHoldFrames = 12;
+		vspJump = -7;	
+	}
+
+	//reset double jump
+	if onGround
+	{
+	jumpCount = 0;	
+	jumpHoldTimer = 0;
+	}
+	else
+	{
+	 if jumpCount == 0 {jumpCount = 1};	
+	}
+
+	jumpBuffer--;
+	if(jumpKeyBuffered) and (jumpCount < jumpMax)
+	{
+		jumpBuffer = 0;
+		jumpKeyBuffered = false;
+		jumpKeyBufferTimer = 0;
+		
+		jumpCount++;
+		
+		////set the jump hold timer
+		jumpHoldTimer = jumpHoldFrames;
+		setOnGround(false);
+		
+		audio_play_sound(snSquish8,500,false);
+		audio_sound_pitch(snSquish8,random_range(0.8,1.2));
+		
+		repeat(10)
+		{
+			with (instance_create_layer(x,bbox_bottom, "Player", oSlime))
+			{
+				jump = true;
+				image_speed = slimeDecay;
+			}	
+		}
+	}
+	//jump based on hold button
+	if jumpHoldTimer > 0
+	{
+		
+		vsp = vspJump;
+		vspFrac = 0;
+		jumpHoldTimer--;	
+	}
+	
+		if !input_check("jump")
+	{
+		jumpHoldTimer = 0;	
+	}
+	
+	vsp = clamp(vsp,-vspMax,vspMax);
+	//}
+
+	//dump fractions and get final integer speeds
+	hsp += hspFrac;
+	vsp += vspFrac;
+	hspFrac = frac(hsp);
+	vspFrac = frac(vsp);
+	hsp -= hspFrac;
+	vsp -= vspFrac;
+
+	//horizontal collision
+		var subpixel = .5;
+
+	if (place_meeting(x+hsp,y,oCollide))
+	{
+		var onepixel = sign(hsp);
+	
+		//first check if theres slope or not
+		if !place_meeting( x + hsp, y - abs(hsp)-1.5, oCollide)
+		{
+			while (place_meeting(x+hsp,y,oCollide))	{y -= subpixel}
+		}
+		else
+		{
+			//ceiling slopes
+			if !place_meeting(x + hsp, y + abs(hsp)+1, oCollide) 
+			{
+				while place_meeting(x+hsp, y, oCollide) {y+= subpixel};
+			}
+			//normal x collide
+			else
+			{
+				var pixelcheck = subpixel*sign(hsp);
+				while (!place_meeting(x+pixelcheck,y,oCollide)) x += pixelcheck;
+		
+				hsp = 0;
+				hspFrac = 0;	
+			}	
+		}
+	}
+
+	//go down slopes
+	downSlopeSemi = noone;
+	if (vsp >= 0) and !place_meeting(x + hsp, y+1, oCollide) and place_meeting(x+hsp, y+abs(hsp)+1, oCollide)
+	{
+		//check if semisolid in the way
+		downSlopeSemi = checkCollSemi(x+hsp, y+abs(hsp)+1);
+		//precisely move down slope if there isnt a semisolid in the way
+		if instance_exists(downSlopeSemi)
+		{
+			while !place_meeting(x +hsp, y+ subpixel, oCollide){y+= subpixel};
+		}
+	}
+
+	//horizontal move
+	x += hsp;
+
+//----------old vertical collision------------------------//
+	//vertical collision
+	if (place_meeting(x,y+vsp,oCollide))
+	{
+		var onepixel = sign(vsp);
+		var pixelcheck = subpixel*sign(vsp);
+	
+		while (!place_meeting(x,y+pixelcheck,oCollide)) y += pixelcheck;
+	
+		//bonk code
+		if (vsp < 0){jumpHoldTimer = 0; oSFX.mariobump = true};
+	
+		vsp = 0;
+		vspFrac = 0;
+	}
+	
+//------new vertical colission---------------------------//
+	
+	//floor y collide
+	
+	//check for solid and semisolid platforms under me
+	var _clampYspd = max(0,vsp);
+	var _list = ds_list_create(); //create list of platforms
+	var _array = array_create(0);
+	array_push(_array, oCollide, oCollSemi);
+	
+	//do the check, add objects to list
+	var _listSize = instance_place_list(x, y +1 +_clampYspd +vspMax, _array, _list, false);
+	
+	var _ycheck = y+1 + _clampYspd;
+	if instance_exists(myPlat){_ycheck += max(0, myPlat.yspd)};
+	var _semiSolid = checkCollSemi(x, _ycheck);
+	
+	//loop through instances, only return one applicable to player
+	for(var i = 0; i< _listSize; i++ )
+	{
+		//get instance of oCollide or oCollSemi from List
+		var _listInst = _list[| i ];
+		
+		//avoid magnetism
+		if  (_listInst.yspd <= vsp or instance_exists(myPlat))
+		and (_listInst.yspd > 0 or place_meeting(x,y+1+_clampYspd,_listInst))
+		{
+			//return a solid wall or any semisolid walls that are below the player
+			if _listInst.object_index == oCollide
+			or object_is_ancestor( _listInst.object_index, oCollide )
+			or floor(bbox_bottom) <= ceil(_listInst.bbox_top - _listInst.yspd)
+			{
+				//return "highest" wall object
+				if !instance_exists(myPlat)
+				or _listInst.bbox_top + _listInst.yspd <= myPlat.bbox_top + myPlat.yspd
+				or _listInst.bbox_top + _listInst.yspd <= bbox_bottom
+				{
+					myPlat = _listInst;
+				}
+			}
+		}
+	}
+	//loop over, destroy list to prevent memory leak
+	ds_list_destroy(_list);
+	
+	//downslope semisolid for making sure we dont miss semisolids while going down slopes
+	if instance_exists(downSlopeSemi){myPlat = downSlopeSemi};
+	
+	//one last check to make sure floor platform is below us
+	if instance_exists(myPlat) and !place_meeting(x, y+vspMax, myPlat)
+	{
+		myPlat = noone;	
+	}
+	
+	//land on ground if there is one
+	if instance_exists(myPlat)
+	{
+		//check precisely wall collision
+		var _subPixel = .5;
+		while !place_meeting(x,y+_subPixel,myPlat) and !place_meeting(x,y,oCollide){y+= _subPixel};
+		//make sure we dont end up below the top of a semisolid
+		if myPlat.object_index == oCollSemi or object_is_ancestor(myPlat.object_index, oCollSemi)
+		{
+			while place_meeting(x,y, myPlat){y-= _subPixel}	
+		}
+		y = floor(y);
+		
+		//collide with the ground
+		vsp = 0;
+		vspFrac = 0;
+		setOnGround(true);
+	}else setOnGround(false);
+	
+	//vertical move
+	y += vsp;
+	
+//final movcing platforms coll and movement
+	//X - moveplatXspd
+	//get moveplatXspd
+	movePlatXspd = 0;
+	if instance_exists(myPlat) {movePlatXspd = myPlat.xspd;};
+
+	if (place_meeting(x+movePlatXspd,y,oCollide))
+	{
+		var _subPixel = .5;
+		var _pixelCheck = _subPixel * sign(movePlatXspd);
+		while !place_meeting(x + _pixelCheck, y, oCollide)
+		{
+			x+= _pixelCheck	
+		}
+		movePlatXspd = 0;
+	}
+	x += movePlatXspd;
+
+	//Y - snapping	
+	if instance_exists(myPlat) and myPlat.yspd != 0
+	{
+		//snap to top of floor (onfloor the y)
+		if !place_meeting(x,myPlat.bbox_top, oCollide)
+		and myPlat.bbox_top >= bbox_bottom-vspMax
+		{
+				y = myPlat.bbox_top;
+		}
+		
+		//going up into a solid wall while on a semisolid platform
+		if myPlat.yspd < 0 and place_meeting(x,y+myPlat.yspd,oCollide)
+		{
+				//get pushed down
+			if myPlat.object_index == oCollSemi or object_is_ancestor(myPlat.object_index, oCollSemi)
+			{
+				//get puished down
+				var _subpixel = 0.25;
+				while place_meeting(x,y+myPlat.yspd, oCollide){y+=_subpixel};
+				
+				//if we got pushed into a solid wall while going down, push back out
+				while place_meeting(x,y,oCollide){y-=_subPixel};
+				y=round(y);
+			}
+			//cancel myPlat
+			setOnGround(false);
+		}
+	}
 	
 }
 
