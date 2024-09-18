@@ -7,9 +7,4 @@ sodas++;
 levelCurrent++;
 souls -= levelNext;
 levelNext = round(levelNext*1.20);
-
 }
-
-if (pistAmmo > 150) {pistAmmo = 150};
-
-

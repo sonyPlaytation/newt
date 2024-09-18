@@ -156,8 +156,8 @@ if hitSprite!=noone
 		draw_sprite_ext(
 		hitSprite,
 		0,
-		global.gunX,
-		global.gunY,
+		x,
+		y,
 		round_Ext(draw_alpha*flashScale*1.5,0.25),
 		round_Ext(draw_alpha*flashScale*1.5,0.25),
 		dir,
@@ -187,8 +187,8 @@ if hitSprite!=noone
 		draw_sprite_ext(
 		hitSprite,
 		0,
-		global.gunX,
-		global.gunY,
+		x,
+		y,
 		round_Ext(draw_alpha*flashScale,0.25),
 		round_Ext(draw_alpha*flashScale,0.25),
 		dir,

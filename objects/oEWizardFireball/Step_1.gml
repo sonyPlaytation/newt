@@ -97,7 +97,7 @@ if friendly
 		}
 	}
 }
-if (place_meeting(x,y,oCollide)) && (image_index != 0) instance_destroy();
+if (place_meeting(x,y,oCollide)) or (place_meeting(x,y,oShotFireball)) instance_destroy();
 
 
 

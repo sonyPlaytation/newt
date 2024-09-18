@@ -43,17 +43,18 @@ spd = min(20, spd + 2);
 
 if (place_meeting(x,y,pEntity)) or (place_meeting(x,y,oCollide)) or (place_meeting(x,y,oHeadHitbox))
 {
+	instance_destroy();
 	oSFX.rocketloop = false;
 	
 	with instance_create_depth(x,y,-500,oExplosion)
 	{
+		diedFrom = other.diedFrom;
 		friendly = 0;
-		crit = other.crit;
 		baseDMG = other.baseDMG;	
+		crit = other.crit;
 	}	
-	
-	instance_destroy();
 }
+
 
 image_xscale = 2;
 image_yscale = 2;

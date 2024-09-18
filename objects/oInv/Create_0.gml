@@ -5,17 +5,8 @@
 hpMax = 3;
 hp = 3;
 
-//ammo
-pistAmmo = 255;
-grenAmmo = 0;
-grenAmmoString = string(grenAmmo);
-
-primary = noone;
-secondary = noone;
-current = primary;
-
 souls = 0;
-sodas = 5;
+sodas = 2;
 levelCurrent = 1;
 levelNext = 100;
 

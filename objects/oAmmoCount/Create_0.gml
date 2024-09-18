@@ -35,3 +35,7 @@ rot2 = 0;
 
 uiX2 = 0;
 uiY2 = 0;
+
+strSodaCans = "";
+str[0] = 0;
+sodaPush = -1;

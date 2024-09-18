@@ -18,6 +18,8 @@ size = 1;
 
 imgRot = 2;
 
+charred = false;
+
 expGive();
 
 if (oHealthBar.hpMissing != 0)

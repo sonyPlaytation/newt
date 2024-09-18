@@ -1,7 +1,7 @@
 
 
 
-depth = oNewt.depth-10
+
 
 mouseX = display_mouse_get_x();
 mouseY = display_mouse_get_y();
@@ -150,7 +150,7 @@ coinCount = 4;
 	ds_map_add(weapons[4],"recoilpush",1);
 	ds_map_add(weapons[4],"shakeamnt",15);
 	ds_map_add(weapons[4],"shaketime",15);
-	ds_map_add(weapons[4],"damage",13);
+	ds_map_add(weapons[4],"damage",16);
 	ds_map_add(weapons[4],"cancrit",true);
 	ds_map_add(weapons[4],"flash",-1);
 	ds_map_add(weapons[4],"projectile",oShotHitscan);
@@ -208,7 +208,7 @@ coinCount = 4;
 	ds_map_add(weapons[6],"recoilpush",50);
 	ds_map_add(weapons[6],"shakeamnt",15);
 	ds_map_add(weapons[6],"shaketime",4);
-	ds_map_add(weapons[6],"damage",1);
+	ds_map_add(weapons[6],"damage",5);
 	ds_map_add(weapons[6],"cancrit",false);
 	ds_map_add(weapons[6],"flash",-1);
 	ds_map_add(weapons[6],"projectile",oShotLaser);
@@ -238,7 +238,7 @@ coinCount = 4;
 	ds_map_add(weapons[7],"recoilpush",0.5);
 	ds_map_add(weapons[7],"shakeamnt",5);
 	ds_map_add(weapons[7],"shaketime",4);
-	ds_map_add(weapons[7],"damage",12);
+	ds_map_add(weapons[7],"damage",14);
 	ds_map_add(weapons[7],"cancrit",true);
 	ds_map_add(weapons[7],"flash",-1);
 	ds_map_add(weapons[7],"projectile",oShotHitscan);
@@ -445,7 +445,7 @@ coinCount = 4;
 	// 14 - Chainsaw
 	weapons[14] = ds_map_create();
 	ds_map_add(weapons[14],"type",2);
-	ds_map_add(weapons[14],"name","The Ripper");
+	ds_map_add(weapons[14],"name","The Great\nCommunicator");
 	ds_map_add(weapons[14],"sprite",sWandChainsaw);
 	ds_map_add(weapons[14],"shootsfx",3);
 	ds_map_add(weapons[14],"pickupsound",snChainsawPickup);
@@ -506,19 +506,19 @@ coinCount = 4;
 	// 16 - flamethrower
 	weapons[16] = ds_map_create();
 	ds_map_add(weapons[16],"type",0);
-	ds_map_add(weapons[16],"name","Flamethrower");
+	ds_map_add(weapons[16],"name","Tome of\nPyromancy");
 	ds_map_add(weapons[16],"sprite",sWandFlamethrower);
 	ds_map_add(weapons[16],"shootsfx",-1);
-	ds_map_add(weapons[16],"pickupsound",snHL1Pickup);
+	ds_map_add(weapons[16],"pickupsound",sncockTome);
 	ds_map_add(weapons[16],"ammotype",4);
 	ds_map_add(weapons[16],"ammouse",1);
-	ds_map_add(weapons[16],"altfire",-1);
+	ds_map_add(weapons[16],"altfire","fireball");
 	ds_map_add(weapons[16],"recoil",0);
 	ds_map_add(weapons[16],"accuracy",0);
 	ds_map_add(weapons[16],"recoilpush",0);
 	ds_map_add(weapons[16],"shakeamnt",1);
 	ds_map_add(weapons[16],"shaketime",2);
-	ds_map_add(weapons[16],"damage",3);
+	ds_map_add(weapons[16],"damage",15);
 	ds_map_add(weapons[16],"cancrit",true);
 	ds_map_add(weapons[16],"projectile",oFlame);
 	ds_map_add(weapons[16],"bulletnumber",2);
@@ -698,7 +698,7 @@ coinCount = 4;
 	ds_map_add(weapons[22],"recoilpush",0);
 	ds_map_add(weapons[22],"shakeamnt",6);
 	ds_map_add(weapons[22],"shaketime",1);
-	ds_map_add(weapons[22],"damage",2);
+	ds_map_add(weapons[22],"damage",6);
 	ds_map_add(weapons[22],"cancrit",true);
 	ds_map_add(weapons[22],"flash",-1);
 	ds_map_add(weapons[22],"projectile",oShotHitscan);
@@ -736,7 +736,7 @@ coinCount = 4;
 	ds_map_add(weapons[23],"casing",3);
 	ds_map_add(weapons[23],"startup",0);
 	ds_map_add(weapons[23],"length",25);
-	ds_map_add(weapons[23],"cooldown",7);
+	ds_map_add(weapons[23],"cooldown",12);
 	ds_map_add(weapons[23],"bulletspeed",45);
 	ds_map_add(weapons[23],"automatic",false);
 	ds_map_add(weapons[23],"headshots",0);

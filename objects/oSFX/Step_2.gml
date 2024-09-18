@@ -391,7 +391,7 @@ if potterybreak == true
 	//wall slide
 	if wallslidesound == true and !audio_is_playing(wallslidesoundinst)
 	{
-		wallslidesoundinst = audio_play_sound(snWallSlide, 800, true);
+		wallslidesoundinst = audio_play_sound(snWallSlide, 1000, true);
 	}
 
 	//turn sound off
@@ -405,7 +405,7 @@ if potterybreak == true
 	//Grind slide
 	if grindslide == true and !audio_is_playing(grindslideinst)
 	{
-		grindslideinst = audio_play_sound(snGrind, 800, true);
+		grindslideinst = audio_play_sound(snGrind, 1000, true);
 	}
 
 	//turn sound off
@@ -433,21 +433,7 @@ if potterybreak == true
 
 	chainsawLoop = false;
 	
-		//chainsaw sound
-	if chainsawIdle == true and !audio_is_playing(chainsawIdleInst)
-	{
-		chainsawIdleInst = audio_play_sound(snChainsawIdle, 800, true);
-	}
 
-	//turn sound off
-	if chainsawIdle == false and audio_is_playing(chainsawIdleInst)
-	{
-		audio_stop_sound(chainsawIdleInst);
-		audio_play_sound(snChainsawEnd, 600, false);
-	}
-
-	chainsawIdle = false;
-	
 	
 	
 	//rocket trail
@@ -479,3 +465,20 @@ if potterybreak == true
 
 	planefall = false;
 	
+				//flamethrower sound
+	if flamethrowerloop == true and !audio_is_playing(flamethrowerloopInst)
+	{
+		
+		audio_sound_loop_start(snFlamethrower,0.64);
+		audio_sound_loop_end(snFlamethrower,1.92);
+		flamethrowerloopInst = audio_play_sound(snFlamethrower, 800, true);
+	}
+
+	//turn sound off
+	if flamethrowerloop == false and audio_is_playing(flamethrowerloopInst)
+	{
+		audio_stop_sound(flamethrowerloopInst);
+		//audio_play_sound(snChainsawEnd, 600, false);
+	}
+
+	flamethrowerloop = false;

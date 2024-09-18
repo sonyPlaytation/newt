@@ -5,7 +5,7 @@
 // set direction
 // make it go?
 //
-screenShake(35,35);
+
 
 //hitStop(0);
 var hitTargs = ds_list_create();
@@ -14,7 +14,7 @@ if instance_exists (oNewt) {dist = point_distance(oNewt.x,oNewt.y-22,x,y)}else d
 
 
 
-if (friendly = 1 ) or (friendly = 0) //and !collision_line(x, y, other.x, other.y-22, oCollide, 1, 0) and point_in_circle(other.x,other.y,x,y, radius) 
+if (friendly = 1 ) or (friendly = 0) and (image_index <0.5)//and !collision_line(x, y, other.x, other.y-22, oCollide, 1, 0) and point_in_circle(other.x,other.y,x,y, radius) 
 {
 	if (place_meeting(x,y,pEntity)) and enemyNum >0
 	{
@@ -26,7 +26,7 @@ if (friendly = 1 ) or (friendly = 0) //and !collision_line(x, y, other.x, other.
 			{
 				if !inactive
 				{
-					diedFrom = "overkill";
+					diedFrom = other.diedFrom;
 					//damage calculation
 					if (other.crit == true) {finalDMG = other.baseDMG * 3}
 					else finalDMG = standardFalloff(other.dist,other.baseDMG);
@@ -60,8 +60,8 @@ if (friendly = 1 ) or (friendly = 0) //and !collision_line(x, y, other.x, other.
 					if (hitsound != 0)	oSFX.scientistscream = true;
 				}
 			}
-			
 		}
 	} 
+
 }
 ds_list_destroy(hitTargs);

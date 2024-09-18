@@ -55,6 +55,13 @@ extraJumps = 0;
 global.soda[1] = false; //homing 
 global.soda[2] = false; //blood chalice
 global.soda[3] = false; //two health ups
+global.soda[4] = false; //ammo max up random
+
+desc[0] = "Extra Jump\n(stacks)";
+desc[1] = "Homing Shots";
+desc[2] = "Blood Heals";
+desc[3] = "+2 Max HP\n(stacks)";
+desc[4] = "Randokm Max\nAmmo Increase\n(stacks)";
 
 global.sodasLeft = ds_list_create();
 

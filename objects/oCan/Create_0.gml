@@ -6,9 +6,5 @@ image_index = soda;
 
 alpha = 0;
 
-desc[0] = "Extra Jump\n(stacks)";
-desc[1] = "Homing Shots";
-desc[2] = "Blood Heals";
-desc[3] = "+2 Max HP\n(stacks)";
-desc[4] = "Randokm Max\nAmmo Increase\n(stacks)";
+
 

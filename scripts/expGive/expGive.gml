@@ -7,6 +7,6 @@ function expGive(){
 
 if size == noone {size = 1};
 
-oInv.souls += size*multiplier;
+oInv.souls += size*choose(1,2,3,4);
 
 }

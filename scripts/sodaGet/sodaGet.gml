@@ -1,6 +1,7 @@
 
 function sodaGet(soda)
 {
+	oAmmoCount.sodaPush = soda;
 	switch (soda)
 	{
 		case 0: //double jumps

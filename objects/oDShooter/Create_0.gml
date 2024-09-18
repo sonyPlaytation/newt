@@ -1,6 +1,6 @@
 
-
-alarm[0] = 60; //destroy body after x frames
+vanishFrames = 60;
+alarm[0] = vanishFrames; //destroy body after x frames
 
 
 flash = 3;
@@ -16,6 +16,7 @@ size = global.getSizeKilled;
 multiplier = choose(1,1,1,1,2);
 
 expGive();
+charred = false;
 
 
 if (oHealthBar.hpMissing != 0)

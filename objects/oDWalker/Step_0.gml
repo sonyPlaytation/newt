@@ -2,7 +2,7 @@ if (done == 0)
 {
 	vsp = vsp + grv;
 
-
+	
 	//horizontal collision
 	if (place_meeting(x+hsp,y,oCollide))
 	{
@@ -30,4 +30,12 @@ if (done == 0)
 		vsp = 0;
 	}
 	y += vsp;
+}
+
+if charred
+{
+	var _x = random_range(bbox_left-10,bbox_right+10);
+	var _y = random_range(bbox_bottom+10,bbox_top-10);
+	instance_create_depth(_x,_y,depth-10,oFlameParticle);
+	
 }

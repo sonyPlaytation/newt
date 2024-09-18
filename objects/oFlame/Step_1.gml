@@ -17,6 +17,8 @@ if screenPause() {exit;};
 //	}
 //}
 
+if input_check("shoot"){oSFX.flamethrowerloop = true} else oSFX.flamethrowerloop = false;
+
 image_xscale *= 1.10;
 image_yscale = image_xscale;;
 

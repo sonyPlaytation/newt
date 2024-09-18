@@ -16,7 +16,7 @@ if (hp <= 0)
 			size = global.getSizeKilled;
 			multiplier = choose(1,1,1,1,2);
 			expGive();
-			repeat(multiplier){instance_create_depth(x,y,depth,oSpookyGhost)};
+			
 			
 			
 			//spawn Killer7 particles
@@ -52,6 +52,102 @@ if (hp <= 0)
 			
 			if hasWeapon
 			{
+				with (mygun) instance_destroy();
+			}
+			
+			if (instance_exists(oNewt))
+			{
+				global.kills++;
+				global.killsthisroom++;
+				oGame.killtextscale = 1.5;
+				oGame.killscombo++;
+				oGame.combotimer = oGame.comboreset;
+			}
+	
+		break;
+		
+		case "fire":
+			with (instance_create_layer(x,y-2,layer,corpse))
+			{
+				charred = true;
+				alarm[0] = 999;
+				direction = other.hitfrom;
+				hsp = lengthdir_x(3,direction);
+				vsp = lengthdir_y(3,direction)-4;
+				if (sign(hsp) != 0) image_xscale = sign(hsp) * other.size;
+				image_yscale = other.size;
+			}
+			
+			if hasWeapon
+			{
+				with (mygun) instance_destroy();
+			}
+			
+			if (instance_exists(oNewt))
+			{
+				global.kills++;
+				global.killsthisroom++;
+				oGame.killtextscale = 1.5;
+				oGame.killscombo++;
+				oGame.combotimer = oGame.comboreset;
+			}
+	
+		break;
+		
+		case "fireOverkill":
+			with (instance_create_layer(x,y-2,layer,corpse))
+			{
+				charred = true;
+				alarm[0] = 999;
+				direction = other.hitfrom;
+				hsp = lengthdir_x(3,direction);
+				vsp = lengthdir_y(3,direction)-4;
+				if (sign(hsp) != 0) image_xscale = sign(hsp) * other.size;
+				image_yscale = other.size;
+			}
+			
+			expGive();
+			
+			//spawn gore
+			repeat(12)
+			{
+				with instance_create_depth(x,random_range(y,y-sprite_height/4),depth-90,oGore)
+				{
+					image_xscale = global.getSizeKilled;
+					image_yscale = global.getSizeKilled;
+				}
+			}
+			
+				//spawn gore
+			repeat(50)
+			{
+				with instance_create_depth(x,y-sprite_height/2,depth-90,oBlood)
+				{
+					image_xscale = global.getSizeKilled;
+					image_yscale = global.getSizeKilled;
+				}
+
+			}
+			
+			if hasHead
+			repeat(2)
+			{
+				with instance_create_depth(x,random_range(y,y-sprite_height/4),depth-90,oGore)
+				{
+					sprite_index = sGoreEye;	
+					image_xscale = global.getSizeKilled;
+					image_yscale = global.getSizeKilled;
+				}
+			}
+			
+			if hasWeapon
+			{
+				var chance = choose(1,2,3,4);
+				if chance = 3
+				{
+					with instance_create_layer(x,y-(sprite_height/2),layer,oPistAmmoPickup)	{vsp = -5};
+				}
+				
 				with (mygun) instance_destroy();
 			}
 			
@@ -126,7 +222,9 @@ if (hp <= 0)
 				oGame.combotimer = oGame.comboreset;
 			}
 			
-			case "headshot":
+		break;
+		
+		case "headshot":
 
 			//give exp without corpse
 			size = global.getSizeKilled;

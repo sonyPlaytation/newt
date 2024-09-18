@@ -54,11 +54,12 @@ if instance_exists(oNewt)
 					diedFrom = "headshot";
 					myDamage.dmgTextScale = 1;
 					
-					with instance_create_layer(target.x,target.y - target.sprite_height/2,"Player",oExplosion)
+					with instance_create_depth(x,y,-500,oExplosion)
 					{
-						baseDMG = 10;
-						radius = 100;
-					}
+						diedFrom = "overkill";
+						friendly = 0;
+						baseDMG = 15;	
+					}	
 				
 					with instance_create_layer(target.x,target.y - target.sprite_height,"Player",oCritHeader)
 					{

@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-layer_set_visible("GUI", 0);
+//layer_set_visible("GUI", 0);
 
 menuOptions = 5
 gap = 750/menuOptions;
@@ -94,12 +94,13 @@ stateIntro = function()
 	
 	if introTimer <= 0{state = statePick};
 	introTimer--;
+	if (oInv.sodas < 1){state = stateOutro}
 }
 
 statePick = function()
 {
 	newt_x += (newtTargetX - newt_x) / menu_speed;
-	if (sodaPicked != -1){state = stateOutro}
+	if (oInv.sodas < 1){state = stateOutro}
 }
 
 stateOutro = function()

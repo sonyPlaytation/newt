@@ -9,7 +9,7 @@ if global.soda[1] == true and instance_exists(pEnemy)
 	if !collision_line(x,y,homingtarget.x,homingtarget.y,oCollide,0,0)
 	{
 		var targetdir = point_direction(x,y,homingtarget.x,homingtarget.y-homingtarget.sprite_height/2)
-		dir += sin(degtorad(targetdir-dir))*5;
+		dir += sin(degtorad(targetdir-dir))*8;
 	}
 		
 	image_angle = dir

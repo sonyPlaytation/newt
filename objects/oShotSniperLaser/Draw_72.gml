@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-if instance_exists(oMultiWeapon)
+if instance_exists(oNewt)
 {
 	var gun = oMultiWeapon
 	switch(oMultiWeapon.sprite)
@@ -36,7 +36,7 @@ if instance_exists(oMultiWeapon)
 				//laser ON
 				gun.ammouse = 2;
 				gun.accuracy = 0;
-				gun.cooldown = 12;
+				gun.cooldown = 16;
 				gun.image_index = 1;
 				gun.headshots = true;
 				gun.cancrit = false;
@@ -46,7 +46,7 @@ if instance_exists(oMultiWeapon)
 				//laser OFF
 				gun.ammouse = 1;
 				gun.accuracy = 6;
-				gun.cooldown = 7;
+				gun.cooldown = 9;
 				gun.image_index = 0;
 				gun.headshots = false;
 				gun.cancrit = true; 

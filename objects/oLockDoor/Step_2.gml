@@ -17,16 +17,16 @@ if instance_exists(oNewt)
 			}
 		}
 	
-		////debug room reload
-		//if input_check_pressed("special")
-		//{
-		//	with (oNewt)
-		//	{
-		//		if (hasControl)
-		//		{
-		//			slideTransition(TRANS_MODE.GOTO,room);
-		//		}
-		//	}
-		//}
+		//debug room reload
+		if input_check_pressed("special")
+		{
+			with (oNewt)
+			{
+				if (hasControl)
+				{
+					slideTransition(TRANS_MODE.GOTO,room);
+				}
+			}
+		}
 	}
 }

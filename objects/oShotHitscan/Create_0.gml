@@ -9,9 +9,6 @@
 draw_alpha = 1;
 check = true;
 
-x = oNewt.x;
-y = global.newtCenter;
-
 prev_x = x;
 prev_y = y;
 can_damage = true;

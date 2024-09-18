@@ -18,3 +18,8 @@ or room == rCombatTest
 {
 	set_song_ingame(floorBGM[global.lvlFloor],15);
 }
+
+if room == rDemoEndScreen
+{
+	set_song_ingame(snCOPYRIGHTINFRINGEMENT);
+}

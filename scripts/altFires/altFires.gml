@@ -76,7 +76,22 @@ if  oNewt.hasControl and altfire != -1 and input_check_pressed("altfire") and (d
 				};
 			break;
 			
-
+			//alt fire grenade
+			case "fireball":
+			
+				if ammo[4] >= 8
+				{
+					ammo[4] -= 8;
+					delayRight = 60;
+					with (instance_create_layer(x+lengthdir_x(oMultiWeapon.length,image_angle),(y+lengthdir_y(oMultiWeapon.length,image_angle)),"Shots",oShotFireball))
+					{
+						audio_play_sound(snFireballCast,999,false)
+					
+						dir = other.image_angle;
+						image_angle = dir;
+					}
+				}
+			break;
 			
 			
 	}

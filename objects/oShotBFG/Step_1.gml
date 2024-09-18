@@ -83,7 +83,7 @@ if (instance_exists(oNewt))
 			{
 				with (instance_create_layer(oNewt.x,oNewt.y-22,"Shots",oShotBFGTracer))
 				{
-					direction = oMultiWeapon.image_angle- _spread/2 + _spreadDiv * j + random_range(-other.accuracy,other.accuracy);
+					direction = other.tracerAngle - _spread/2 + _spreadDiv * j + random_range(-other.accuracy,other.accuracy);
 					damage = other.damage;
 					image_angle = direction;
 				}

@@ -60,3 +60,7 @@ chainsawLoopInst = noone;
 
 chainsawIdle = false;
 chainsawIdleInst = noone;
+
+flamethrowerloop = false;
+flamethrowerloopInst = noone;
+

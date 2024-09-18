@@ -55,7 +55,7 @@ if check = true
 		}
 	}
 	}
-	draw_alpha -= 0.3;
+	draw_alpha -= 0.01;
 	draw_set_alpha(draw_alpha);
 	draw_set_color(c_lime);
 	draw_line(x,y,cur_x,cur_y);

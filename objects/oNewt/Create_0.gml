@@ -90,6 +90,9 @@ hspWalk[1] = 7;
 hspWalk[2] = 1;
 hspWJump = 7;
 
+headerAlpha = 1;
+sodaDesc = "";
+
 vspJump = -7;
 
 vspMax = 20;
@@ -137,6 +140,7 @@ bloodMeter = 0;
 bloodMax = 300;
 
 inRoom = false
+sodaGot = 0;
 
 //ui bits
 gArr[0] = oInv;

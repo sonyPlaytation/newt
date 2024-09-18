@@ -1,6 +1,7 @@
 
 
-alarm[0] = 60; //destroy body after x frames
+vanishFrames = 60;
+alarm[0] = vanishFrames; //destroy body after x frames
 
 flash = 3;
 inactive = false;
@@ -25,3 +26,5 @@ if (oHealthBar.hpMissing != 0)
 		
 		}
 }
+
+charred = false;

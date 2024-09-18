@@ -1,7 +1,8 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-
+if instance_exists(oNewt)
+{
 	draw_sprite_ext(
 	currSpr,
 	image_index,
@@ -13,7 +14,7 @@
 	image_blend,
 	image_alpha
 	);
-
+}
 
 
 

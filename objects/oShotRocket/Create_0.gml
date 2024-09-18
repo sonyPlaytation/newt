@@ -11,6 +11,8 @@ spd = 0;
 xspd = 0;
 yspd = 0;
 
+diedFrom = "overkill"
+
 baseDMG = oMultiWeapon.damage
 
 rocketLaunchGood = false;

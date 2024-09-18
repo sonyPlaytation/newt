@@ -16,12 +16,12 @@ if place_meeting(x,y,oNewt)
 		{
 			if (hasControl)
 			{
-				oExitDoor.image_index = 1;
+				other.image_index = 1;
 				hasControl = false;	
 				
 				//if global.roomscleared == 3{oExitDoor.target = rTest1; global.roomscleared = 0}
 				
-				slideTransition(TRANS_MODE.GOTO,oExitDoor.target)
+				slideTransition(TRANS_MODE.GOTO,other.target)
 								
 				oSFX.enterleveldoor = true;
 			}
