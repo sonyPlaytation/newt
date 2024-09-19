@@ -62,6 +62,5 @@ if (friendly = 1 ) or (friendly = 0) and (image_index <0.5)//and !collision_line
 			}
 		}
 	} 
-
 }
 ds_list_destroy(hitTargs);

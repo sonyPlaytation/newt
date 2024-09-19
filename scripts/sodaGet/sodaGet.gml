@@ -5,7 +5,7 @@ function sodaGet(soda)
 	switch (soda)
 	{
 		case 0: //double jumps
-			global.soda[0] = true;
+			//global.soda[0] = true;
 			with(oGame){extraJumps++};
 		break;
 		
@@ -15,21 +15,23 @@ function sodaGet(soda)
 		
 		case 2: //blood
 			global.soda[2] = true;
+			playerHealthUp(false);
 		break;
 		
 		case 3: //two health ups
-			global.soda[3] = true;
+			//global.soda[3] = true;
+			playerHealthUp(true);
 			playerHealthUp(true);
 			playerHealthUp(true);
 		break;
 		
-		case 4: //two health ups
-			global.soda[4] = true;
+		case 4: //ammo max increase
+			//global.soda[4] = true;
 			var AmmoUp = irandom(5);
 			oMultiWeapon.ammoMax[AmmoUp]= floor(oMultiWeapon.ammoMax[AmmoUp]*1.5);
 		break;
 		
-		case 5: //two health ups
+		case 5: //air dashes
 			global.soda[5] = true;
 		break;
 	}

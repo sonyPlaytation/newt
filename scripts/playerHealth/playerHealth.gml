@@ -41,16 +41,24 @@ if (oInv.hpMax < 12)
 ///@args damage
 function playerHit(argument0){
 
+
+
 with (oNewt)
 	if (iFrames == 0)
 	{
 		flash = 3;
 		if (argument0 == undefined) {argument0 = 1};
 		oInv.hp = oInv.hp - argument0;
+		repeat(5*argument0)
+		{
+			with instance_create_depth(x,global.newtCenter, depth +10, oBlood)
+			{
+				fakeBlood = true;	
+			}
+		}
+		
 		iFrames = 60;
-	
 		if (oInv.hp > 0) {audio_play_sound(snNewtHurt,800,false)};
-	
 		blinkExt(image_alpha, "image_alpha", 1, iFrames);
 		
 		if array_contains(oMultiWeapon.heldweapons,15){oMultiWeapon.ammo[4]+=15}

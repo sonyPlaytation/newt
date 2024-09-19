@@ -5,10 +5,7 @@
 	
 	vsp = vsp + grv;
 	
-	with instance_create_depth(x,y,depth,oBloodSmall)
-	{
-		
-	};
+	instance_create_depth(x,y,depth,oBloodSmall)
 	
 	image_angle +=30;
 

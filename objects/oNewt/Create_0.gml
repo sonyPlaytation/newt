@@ -142,11 +142,17 @@ bloodMax = 300;
 inRoom = false
 sodaGot = 0;
 
+dashX = 0;
+dashY = 0;
+dashFacing = 0;
+
 dashTimer = 7;
 dashReset = dashTimer;
 dashMaxSpd = 17;
 dashCooldown = 90;
-dashCount = 2;
+
+dashMax = 2;
+dashCount = dashMax;
 
 //ui bits
 gArr[0] = oInv;
@@ -636,7 +642,7 @@ stateFree = function()
 	}
 	
 	//crouching
-	if input_check("down") and (onWall == 0) 
+	if input_check("down")// and (onWall == 0) 
 	{
 		midGrind = 0;
 		hsp *= 1.5
@@ -644,8 +650,22 @@ stateFree = function()
 		squishNewt(1.15,0.85);
 	}
 	
-	if (global.soda[5] = true) and input_check_pressed("dash") and (dashCount > 0) and (onWall == 0) 
+	if (global.soda[5] = true) and input_check_pressed("dash") and (dashCount > 0) //and (onWall == 0) 
 	{
+		
+		
+		dashX = (input_check("right") - input_check("left"));
+		dashY = (input_check("down") - input_check("up"));
+		
+		if dashY < 0
+		{
+			setOnGround(false);
+			y--;	
+		}
+		
+		dashFacing = facingRight;
+		
+		oSFX.wooshBasic = true;
 		state = stateDash;
 		squishNewt(1.15,0.85);
 	}
@@ -902,6 +922,18 @@ stateCrouch = function()
 	
 	if (global.soda[5] = true) and input_check_pressed("dash") and (dashCount > 0) and !onGround
 	{
+		
+		dashX = (input_check("right") - input_check("left"));
+		dashY = (input_check("down") - input_check("up"));
+		dashFacing = facingRight;
+		
+		if dashY < 0
+		{
+			setOnGround(false);
+			y--;	
+		}
+		
+		oSFX.wooshBasic = true;
 		state = stateDash;
 		squishNewt(1.15,0.85);
 	}
@@ -913,57 +945,67 @@ stateDash = function()
 	
 	if dashTimer > 0
 	{
-		iFrames = 2;
+		iFrames = 1;
 		hsp = clamp(hsp*20,-20,20);
 		
-		//up dash
-		if input_check("up") and !input_check("down")
+		if (dashX == 0) and (dashY ==0)
 		{
-			setOnGround(false);
-			//if not pressing left or right cancel all horizontal movement
-			if !(input_check("left") or input_check("right")) 
-			{hsp = 0}
-			
-			
-			//apply dash speed vertically
-			vsp = clamp(vsp-8,-10,10);
-		}
-		
-		//down dash
-		if input_check("down") and !(input_check("jump") or input_check("up"))
-		{
-			//if not pressing left or right cancel all horizontal movement
-			if !(input_check("left") or input_check("right")) {hsp = 0};
-			
-			//apply dash speed vertically
-			vsp	= clamp(vsp+16,-10,10);
-		}
-		
-		//left dash
-		if input_check("left")
-		{
-			//if not pressing left or right cancel all horizontal movement
-			if !(input_check("down") or input_check("jump") or input_check("up")) {vsp = 0};
-			
-			//apply dash speed vertically
-			hsp = clamp(hsp-23,-dashMaxSpd,dashMaxSpd);
-		}
-		
-		//left dash
-		if input_check("right")
-		{
-			//if not pressing left or right cancel all horizontal movement
-			if !(input_check("down") or input_check("jump") or input_check("up")) {vsp = 0};
-			
-			//apply dash speed vertically
-			hsp = clamp(hsp+23,-dashMaxSpd,dashMaxSpd);
-		}
-		
-		if !(input_check("left") or input_check("right") or input_check("down") or input_check("jump") or input_check("up"))
-		{
+			hsp = dashFacing*20;
 			vsp = 0;
-			hsp = clamp(facingRight*100,-dashMaxSpd,dashMaxSpd);
 		}
+		else
+		{
+			hsp = dashX*20;
+			vsp = clamp(dashY*20,-12,23);
+		}
+		////up dash
+		//if input_check("up") and !input_check("down")
+		//{
+		//	setOnGround(false);
+		//	//if not pressing left or right cancel all horizontal movement
+		//	if !(input_check("left") or input_check("right")) 
+		//	{hsp = 0}
+			
+			
+		//	//apply dash speed vertically
+		//	vsp = clamp(vsp-8,-10,10);
+		//}
+		
+		////down dash
+		//if input_check("down") and !(input_check("jump") or input_check("up"))
+		//{
+		//	//if not pressing left or right cancel all horizontal movement
+		//	if !(input_check("left") or input_check("right")) {hsp = 0};
+			
+		//	//apply dash speed vertically
+		//	vsp	= clamp(vsp+16,-10,10);
+		//}
+		
+		////left dash
+		//if input_check("left")
+		//{
+		//	//if not pressing left or right cancel all horizontal movement
+		//	if !(input_check("down") or input_check("jump") or input_check("up")) {vsp = 0};
+			
+		//	//apply dash speed vertically
+		//	hsp = clamp(hsp-23,-dashMaxSpd,dashMaxSpd);
+		//}
+		
+		////left dash
+		//if input_check("right")
+		//{
+		//	//if not pressing left or right cancel all horizontal movement
+		//	if !(input_check("down") or input_check("jump") or input_check("up")) {vsp = 0};
+			
+		//	//apply dash speed vertically
+		//	hsp = clamp(hsp+23,-dashMaxSpd,dashMaxSpd);
+		//}
+		
+		//if !(input_check("left") or input_check("right") or input_check("down") or input_check("jump") or input_check("up"))
+		//{
+		//	vsp = 0;
+		//	hsp = clamp(facingRight*100,-dashMaxSpd,dashMaxSpd);
+		//}
 		
 	}
 	else
@@ -989,55 +1031,8 @@ stateDash = function()
 	////sprint
 	//if (global.autoRun){moveType = 1; image_speed = 10} else {moveType = 0; image_speed = 1};
 
-	//calculate horizontal movement
-	wallJumpDelay = max(wallJumpDelay-1,0);
-	if (wallJumpDelay ==0)
-	{
-		gamepad_set_axis_deadzone(4,0.25);
-		var dir = (input_value("right")-input_value("left"));
-		hsp += dir * hspAcc[moveType];
 	
-		if (dir == 0)
-		{
-			var hspFricFinal = hspFricGround;
-			if (!onGround) hspFricFinal = hspFricAir;
-			hsp = approach(hsp,0,hspFricFinal);
-		}
-		
-		
-		//if abs(hsp > hspWalk)
-		//{
-		//	hsp = lerp(hsp,hspWalk,0.5);
-		//}
-		//else 
-		//if abs(hsp < -hspWalk)
-		//{
-		//	hsp = lerp(hsp,-hspWalk,0.5);
-		//}
-		
-		//hsp = clamp(hsp, -24, 24);
-	}
-
-	//wall jump stuff
-	if (onWall != 0) && (!onGround) && input_check_pressed("jump")
-	{
-		wallJumpDelay = wallJumpDelayMax;
-		hsp = -onWall * hspWJump;
-		vsp = vspWJump;
-		oSFX.newtjump = true;
-		hspFrac = 0;
-		vspFrac = 0;
 	
-		repeat(6)
-			{
-				with (instance_create_layer(x,bbox_top, "Player", oSlime))
-				{
-					hsp =  random_range(oNewt.hsp/2, oNewt.hsp);
-					vsp = random_range(-1,-5);
-					image_speed = slimeDecay;
-				}		
-			}
-	}
 
 	//calculate vertical movement
 	var grvFinal = grv[2];
@@ -1050,69 +1045,6 @@ stateDash = function()
 		vspMaxFinal = vspMaxWall;	
 	}
 	vsp += grvFinal;
-
-	//ground jumping
-
-	if jumpCount > 1
-	{
-		jumpHoldFrames = 16;
-		vspJump = -5;	
-	}
-	else
-	{
-		jumpHoldFrames = 12;
-		vspJump = -7;	
-	}
-
-	//reset double jump
-	if onGround
-	{
-	jumpCount = 0;	
-	jumpHoldTimer = 0;
-	}
-	else
-	{
-	 if jumpCount == 0 {jumpCount = 1};	
-	}
-
-	jumpBuffer--;
-	if(jumpKeyBuffered) and (jumpCount < jumpMax)
-	{
-		jumpBuffer = 0;
-		jumpKeyBuffered = false;
-		jumpKeyBufferTimer = 0;
-		
-		jumpCount++;
-		
-		////set the jump hold timer
-		jumpHoldTimer = jumpHoldFrames;
-		setOnGround(false);
-		
-		audio_play_sound(snSquish8,500,false);
-		audio_sound_pitch(snSquish8,random_range(0.8,1.2));
-		
-		repeat(10)
-		{
-			with (instance_create_layer(x,bbox_bottom, "Player", oSlime))
-			{
-				jump = true;
-				image_speed = slimeDecay;
-			}	
-		}
-	}
-	//jump based on hold button
-	if jumpHoldTimer > 0
-	{
-		
-		vsp = vspJump;
-		vspFrac = 0;
-		jumpHoldTimer--;	
-	}
-	
-		if !input_check("jump")
-	{
-		jumpHoldTimer = 0;	
-	}
 	
 	vsp = clamp(vsp,-vspMax,vspMax);
 	//}

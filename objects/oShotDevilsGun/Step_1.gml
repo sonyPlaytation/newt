@@ -54,6 +54,7 @@ if instance_exists(oNewt)
 					diedFrom = "headshot";
 					myDamage.dmgTextScale = 1;
 					
+					
 					with instance_create_depth(x,y,-500,oExplosion)
 					{
 						diedFrom = "overkill";

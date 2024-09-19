@@ -61,9 +61,9 @@ stateTele = function()
 
 	if instance_exists(myRoom)
 	{
-		for (var i = 0; i < instance_number(pEnemy); ++i;)
+		for (var i = 0; i < instance_number(pEntity); ++i;)
 		{
-			var _currGoon = instance_find(pEnemy,i);
+			var _currGoon = instance_find(pEntity,i);
 			if _currGoon = oEWizard continue;
 			var _goonRoom = _currGoon.myRoom
 			
@@ -97,7 +97,7 @@ stateTele = function()
 	}
 	else
 	{
-		targSwap = instance_furthest(x,y,pEnemy)
+		targSwap = instance_furthest(x,y,pEntity)
 		
 		image_xscale = lerp(image_xscale,0,0.05);
 		

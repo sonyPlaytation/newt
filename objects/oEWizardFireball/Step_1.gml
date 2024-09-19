@@ -36,11 +36,14 @@ if friendly
 	if parried and ((place_meeting(x,y,pEntity)) or (place_meeting(x,y,oCollide)))
 	{
 		spd = 12;
+		instance_destroy();
 		with instance_create_depth(x,y,-500,oExplosion)
 		{
-			radius = 45*other.damage
+			diedFrom = "overkill";
+			friendly = 1;
 			baseDMG = 90*other.damage;	
 		}	
+		
 	}
 	else if parried = false
 	{	
@@ -64,7 +67,7 @@ if friendly
 		
 				if !inactive
 				{
-					diedFrom = "reflect";
+					diedFrom = "overkill";
 					//damage calculation
 						
 					finalDMG = 75

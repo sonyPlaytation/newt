@@ -34,7 +34,12 @@ if oAmmoCount.lowAmmo
 	draw_text_transformed(oNewt.x,oNewt.y-45,oAmmoCount.ammoString,scale,scale,0);
 }
 
-draw_text_transformed(oNewt.x,oNewt.y-45,string(dashCount),scale,scale,0);
+if dashCount < dashMax and !place_meeting(x,y+2,oCollide)
+{
+	drawSetText(c_white,fSign,fa_center,fa_bottom);
+	draw_text_transformed(oNewt.x,oNewt.y-45,string(dashCount),scale,scale,0);
+}
+
 //draw_text_transformed(oNewt.x,oNewt.y-70,string(hsp),scale,scale,0);
 
 if (flash > 0)

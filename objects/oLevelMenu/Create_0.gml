@@ -86,11 +86,13 @@ stateIntro = function()
 	
 	while s < menuOptions
 	{
-		menu[s] = instance_create_depth(sodaX+(gap*s),sodaY,oLevelMenu.depth-15,oCan);
-		with menu[s] 
-		{
-			image_index = other.s;
-			soda = other.s;
+		if global.soda[s] = false{
+			menu[s] = instance_create_depth(sodaX+(gap*s),sodaY,oLevelMenu.depth-15,oCan);
+			with menu[s] 
+			{
+				image_index = other.s;
+				soda = other.s;
+			}
 		}
 		s++;
 	}
