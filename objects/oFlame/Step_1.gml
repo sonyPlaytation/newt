@@ -50,7 +50,7 @@ repeat(ceil(image_xscale/4))
 	
 };
 
-if (place_meeting(x,y,pEntity)) 
+if (place_meeting(x,y,pEntity)) and instance_exists(oNewt)
 {
 	dist = point_distance(oNewt.x,oNewt.y-22,x,y);
 	var target = (instance_place(x,y,pEntity));

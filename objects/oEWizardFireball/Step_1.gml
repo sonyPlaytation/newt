@@ -26,7 +26,7 @@ if !friendly and (place_meeting(x,y,oNewt))
 	{
 		playerHit(other.damage);
 	}
-	instance_destroy();
+	if (oNewt.iFrames <= 0) {instance_destroy();} //dont destroy projectile if invincible
 }
 
 if friendly 

@@ -1,8 +1,15 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-hsp = lengthdir_x(spd, dir);
-vsp = lengthdir_y(spd, dir);
+if !sizeChosen
+{
+	image_xscale = choose(size,-size);
+	image_yscale = choose(size,-size);	
+	sizeChosen = true;
+}
+
+hsp = lengthdir_x(spd*size, dir);
+vsp = lengthdir_y(spd*size, dir);
 
 x += hsp;
 y += vsp;

@@ -18,3 +18,12 @@ if broke
 	draw_text(x,y-100,"You're broke.");	
 }
 
+if !instance_exists(oLevelMenu)
+{
+	if alphaBG < 1
+	{
+		alphaBG+= 0.05;	
+		var BG = layer_background_get_id("BlueBG")
+		layer_background_alpha(BG, alphaBG);	
+	}
+}

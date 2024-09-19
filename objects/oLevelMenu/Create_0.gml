@@ -71,6 +71,9 @@ menu_cursor = 2;
 
 stateIntro = function()
 {
+	if input_check_pressed("special")
+	{ state = stateAbort};
+	
 	newt_x += (newtTargetX - newt_x) / menu_speed;
 	
 	var BG = layer_background_get_id("BlueBG")
@@ -99,12 +102,18 @@ stateIntro = function()
 
 statePick = function()
 {
+	if input_check_pressed("special")
+	{ state = stateAbort};
+	
 	newt_x += (newtTargetX - newt_x) / menu_speed;
 	if (oInv.sodas < 1){state = stateOutro}
 }
 
 stateOutro = function()
 {
+	if input_check_pressed("special")
+	{ state = stateAbort};
+	
 	newt.x = 2;
 	newt.sprite_index = sLVLPunch;
 	if instance_exists(oCan){instance_destroy(oCan)};
@@ -113,7 +122,6 @@ stateOutro = function()
 	{
 		sprite_index = sSodaPunch; 
 		screenShake(35,5); 
-
 		//alarm[0] = 80;
 	}
 
@@ -121,7 +129,7 @@ stateOutro = function()
 	if newt.image_index = 30 or newt.image_index = 31
 	{
 		done = true;
-		alphaBG+= 0.02;	
+		
 		oLevelMenu.image_alpha-= 0.05;
 		newt.image_alpha-= 0.05;
 	}
@@ -133,11 +141,37 @@ stateOutro = function()
 		oSoda.image_index = 1;	
 		oNewt.hasControl = true;
 		oSFX.sodaget = true;
-		layer_set_visible("GUI", 1);
+		
+		//layer_set_visible("GUI", 1);
 		
 		oNewt.sodaToss = true;
-		
 	}
+}
+
+stateAbort = function()
+{
+	
+	audio_play_sound(snPoof,600,false);
+	
+	repeat(15)
+	{
+		with instance_create_depth(960/3,540/2,depth,oDust)	
+		{
+			size = 6;	
+			spd = 4;
+		}
+		
+		with instance_create_depth(newt_x-(960/3), 540-(540/3), depth, oDust)	
+		{
+			size = 6;	
+			spd = 4;
+		}
+	}
+	
+	oNewt.hasControl = true;
+	if instance_exists(oCan){instance_destroy(oCan)};
+	instance_destroy(newt);
+	instance_destroy();
 }
 
 state = stateIntro;

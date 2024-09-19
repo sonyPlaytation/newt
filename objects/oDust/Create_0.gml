@@ -9,8 +9,8 @@ dir = random(360)
 hsp = random_range(-4,4);
 vsp = random_range(-1,1);
 size = 1;
-image_xscale = choose(size,-size);
-image_yscale = choose(size,-size);
+sizeChosen = false;
+
 image_angle = irandom(359);
 
 dustDecay = 0.2;

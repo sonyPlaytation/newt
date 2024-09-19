@@ -13,5 +13,5 @@
 
 //if instance_exists(oNewt){depth = oNewt.depth + 5}
 
-
+alphaBG = 1;
 broke = false;
