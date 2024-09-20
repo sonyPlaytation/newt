@@ -3,17 +3,20 @@
 
 //layer_set_visible("GUI", 0);
 
-menuOptions = 6
+menuOptions = 3
 gap = 750/menuOptions;
 
 sodaX = 125;
 sodaY = 360;
 sodaScale = 2;
 
+soda[0] = 0;
+
 s = 0;
 y = 540
 
 sodaPicked = -1;
+img[0] = 0;
 
 menuReady = false
 
@@ -62,6 +65,8 @@ menu[1] = 1;
 menu[0] = 0;
 
 menu_items = array_length(menu);
+sodaList = array_length(global.soda);
+
 
 introTimer = 60;
 
@@ -69,10 +74,33 @@ menu_top = menu_y - ((menu_itemheight*1.5) *menu_items);
 
 menu_cursor = 2;
 
+array_copy(soda,0,global.soda,0,sodaList);
+
 stateIntro = function()
 {
 	if input_check_pressed("special")
-	{ state = stateAbort};
+	{state = stateAbort};
+	
+	//SODA CHOOSING LOOP (NOT SPAWNING)
+	
+	for (var i = 0; i < sodaList; i++) 
+	{
+		//var _f = function(_element, _index)
+		//{
+		//    return (_element == false);
+		//}
+
+		if soda[i] == true 
+		{
+			array_delete(soda,i,1)	
+		}
+		else
+		{
+			img[i] = i;	
+		}		
+	}
+	
+	//SODA SPAWNING LOOP
 	
 	newt_x += (newtTargetX - newt_x) / menu_speed;
 	
@@ -84,28 +112,36 @@ stateIntro = function()
 		alphaBG-= 0.02;
 	}
 	
-	while s < menuOptions
+	if introTimer <= 0
 	{
-		if global.soda[s] = false{
-			menu[s] = instance_create_depth(sodaX+(gap*s),sodaY,oLevelMenu.depth-15,oCan);
-			with menu[s] 
-			{
-				image_index = other.s;
-				soda = other.s;
-			}
-		}
-		s++;
-	}
-	
-	if introTimer <= 0{state = statePick};
+		state = statePick;
+		img = array_shuffle(img);
+	};
 	introTimer--;
-	if (oInv.sodas < 1){state = stateOutro}
+	
+	
+	
+	//if (oInv.sodas < 1){state = stateOutro}
 }
 
 statePick = function()
 {
 	if input_check_pressed("special")
 	{ state = stateAbort};
+	show_debug_message(soda)
+	
+	
+	while s < menuOptions
+	{
+		menu[s] = instance_create_depth(sodaX+(gap*s),sodaY,oLevelMenu.depth-15,oCan);
+		with menu[s]
+		{
+			var sod = other.img[other.s];
+			image_index = sod;
+			soda = sod;
+		}
+		s++;
+	}
 	
 	newt_x += (newtTargetX - newt_x) / menu_speed;
 	if (oInv.sodas < 1){state = stateOutro}
@@ -154,6 +190,8 @@ stateAbort = function()
 {
 	
 	audio_play_sound(snPoof,600,false);
+	
+	s = 0;
 	
 	repeat(15)
 	{

@@ -657,6 +657,15 @@ stateFree = function()
 		dashX = (input_check("right") - input_check("left"));
 		dashY = (input_check("down") - input_check("up"));
 		
+		if (dashX ==0 and dashY ==0) or dashX !=0
+		{
+			squishNewt(1.75,0.85);	
+		}
+		else if dashY != 0
+		{
+			squishNewt(0.65,2);
+		}
+		
 		if dashY < 0
 		{
 			setOnGround(false);
@@ -667,9 +676,8 @@ stateFree = function()
 		
 		oSFX.wooshBasic = true;
 		state = stateDash;
-		squishNewt(1.15,0.85);
+		
 	}
-	
 }
 
 stateCrouch = function()
@@ -945,6 +953,18 @@ stateDash = function()
 	
 	if dashTimer > 0
 	{
+		sprite_index = sNewtWallFlip;
+		
+		with instance_create_depth(x,y,depth-15,oCloneTrail)
+		{
+			owner = other.id; 
+			col=c_aqua; 
+			add = true;
+			blink = true;
+			xFrames = 2;
+			xReset = xFrames;
+		};
+		
 		iFrames = 1;
 		hsp = clamp(hsp*20,-20,20);
 		

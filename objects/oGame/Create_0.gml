@@ -50,13 +50,13 @@ firstComboEnded = false;
 
 //sodas
 global.soda[0] = false; //double jump
-extraJumps = 0;
-
 global.soda[1] = false; //homing 
 global.soda[2] = false; //blood chalice
 global.soda[3] = false; //two health ups
 global.soda[4] = false; //ammo max up random
 global.soda[5] = false; //air dashes
+
+extraJumps = 0;
 
 desc[0] = "Extra Jump\n(stacks)";
 desc[1] = "Homing Shots";
