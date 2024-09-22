@@ -7,7 +7,7 @@ if screenPause() {exit;};
 var homingtarget = instance_nearest(mouse_x,mouse_y,pEnemy);
 if global.soda[1] == true and instance_exists(pEnemy)
 {
-	
+	tracerAngle = oMultiWeapon.image_angle;
 	var targetdir = point_direction(x,y,homingtarget.x,homingtarget.y-homingtarget.sprite_height/2)
 	dir += sin(degtorad(targetdir-dir))*5;
 		
@@ -86,6 +86,7 @@ if (instance_exists(oNewt))
 					direction = other.tracerAngle - _spread/2 + _spreadDiv * j + random_range(-other.accuracy,other.accuracy);
 					damage = other.damage;
 					image_angle = direction;
+					dir = direction;
 				}
 			}
 	};

@@ -26,6 +26,12 @@ stateSwat = function()
 			diedFrom = "standard";
 			baseDMG = ceil(mean(oMultiWeapon.damage + abs(oNewt.hsp/5),oMultiWeapon.damage*1.5))
 			hp -= baseDMG;
+			
+			if hp <=0
+			{
+				oNewt.dashCount++;
+			}
+			
 			if (!noDMG)
 			{
 				myDamage.damage += baseDMG;
@@ -87,6 +93,12 @@ stateParry = function()
 		{
 			baseDMG = ceil(mean(oMultiWeapon.damage + abs(oNewt.hsp/5),oMultiWeapon.damage*1.5))
 			hp -= baseDMG;
+			
+			if hp <=0
+			{
+				oNewt.dashCount++;
+			}
+			
 			if (!noDMG)
 			{
 				myDamage.damage += baseDMG;
@@ -167,6 +179,12 @@ stateDestroy = function()
 			
 			baseDMG = ceil(mean(oMultiWeapon.damage + abs(oNewt.hsp/5),oMultiWeapon.damage*1.5))
 			hp -= baseDMG;
+			
+			if hp <= 0
+			{
+				oNewt.dashCount++;
+			}
+			
 			if (!noDMG)
 			{
 				myDamage.damage += baseDMG;

@@ -19,7 +19,7 @@ expGive();
 charred = false;
 
 
-if (oHealthBar.hpMissing != 0)
+if (oInv.hpMissing != 0)
 {
 	if (irandom_range(1,100) <= dropRate)
 	{

@@ -10,7 +10,8 @@ sodaX = 125;
 sodaY = 360;
 sodaScale = 2;
 
-soda[0] = 0;
+sodaList = array_length(global.soda);
+soda[sodaList] = 0;
 
 s = 0;
 y = 540
@@ -65,7 +66,7 @@ menu[1] = 1;
 menu[0] = 0;
 
 menu_items = array_length(menu);
-sodaList = array_length(global.soda);
+
 
 
 introTimer = 60;
@@ -78,29 +79,8 @@ array_copy(soda,0,global.soda,0,sodaList);
 
 stateIntro = function()
 {
-	if input_check_pressed("special")
+	if sodaPicked == -1 and input_check_pressed("special")
 	{state = stateAbort};
-	
-	//SODA CHOOSING LOOP (NOT SPAWNING)
-	
-	for (var i = 0; i < sodaList; i++) 
-	{
-		//var _f = function(_element, _index)
-		//{
-		//    return (_element == false);
-		//}
-
-		if soda[i] == true 
-		{
-			array_delete(soda,i,1)	
-		}
-		else
-		{
-			img[i] = i;	
-		}		
-	}
-	
-	//SODA SPAWNING LOOP
 	
 	newt_x += (newtTargetX - newt_x) / menu_speed;
 	
@@ -114,24 +94,40 @@ stateIntro = function()
 	
 	if introTimer <= 0
 	{
+		state = stateRandomize;
+	};
+	introTimer--;
+
+}
+
+stateRandomize = function()
+{
+	for (var i = array_length(global.soda)-1; i > -1; i--) 
+	{
+		if soda[i] == true 
+		{
+			array_delete(soda,i,1);
+		}
+		else
+		{
+			img[i] = i;	
+		}		
+	}
+
+	if introTimer <= 0
+	{
 		state = statePick;
 		img = array_shuffle(img);
 	};
-	introTimer--;
-	
-	
-	
-	//if (oInv.sodas < 1){state = stateOutro}
 }
 
 statePick = function()
 {
-	if input_check_pressed("special")
+	sodaList = array_length(global.soda);
+	if sodaPicked == -1 and input_check_pressed("special")
 	{ state = stateAbort};
-	show_debug_message(soda)
 	
-	
-	while s < menuOptions
+	while s < min(array_length(soda)-1,menuOptions)
 	{
 		menu[s] = instance_create_depth(sodaX+(gap*s),sodaY,oLevelMenu.depth-15,oCan);
 		with menu[s]
@@ -149,7 +145,7 @@ statePick = function()
 
 stateOutro = function()
 {
-	if input_check_pressed("special")
+	if sodaPicked == -1 and input_check_pressed("special")
 	{ state = stateAbort};
 	
 	newt.x = 2;
@@ -162,7 +158,6 @@ stateOutro = function()
 		screenShake(35,5); 
 		//alarm[0] = 80;
 	}
-
 	
 	if newt.image_index = 30 or newt.image_index = 31
 	{

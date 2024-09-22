@@ -3,3 +3,4 @@
 
 cornerDist = 160;
 
+scale = 2;

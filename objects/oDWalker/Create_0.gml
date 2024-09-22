@@ -17,13 +17,11 @@ multiplier = choose(1,1,1,1,2);
 
 expGive();
 
-if (oHealthBar.hpMissing != 0)
+if (oInv.hpMissing != 0)
 {
-	if (irandom_range(1,100) <= dropRate + max(oHealthBar.hpMissing,10))
+	if (irandom_range(1,100) <= dropRate + max(oInv.hpMissing,10))
 		{
-			instance_create_layer(x,y-3,"Player",oHealthGet);
-			instance_nearest(x,y,oHealthGet).vsp = -6;
-		
+			with instance_create_layer(x,y-3,"Player",oHealthGet){vsp = -6};
 		}
 }
 

@@ -15,8 +15,16 @@ alpha = max(alpha-0.08,0)
 if position_meeting(mouse_x,mouse_y,self) and (input_check_pressed("shoot") or input_check_pressed("accept"))
 {
 	oLevelMenu.sodaPicked = soda;
+	
 	sodaGet(soda);
 	oInv.sodas--;
 	oSFX.healsound = true;
-	instance_destroy();
+	
+	if oInv.sodas > 0
+	{
+		while instance_exists(oCan)instance_destroy(oCan);
+		oLevelMenu.state = oLevelMenu.stateRandomize;
+		oLevelMenu.s = 0;
+	}
+	
 }
