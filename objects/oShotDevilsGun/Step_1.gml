@@ -94,8 +94,8 @@ if instance_exists(oNewt)
 			{
 				diedFrom = "standard";
 				//damage calculation
-				if (other.crit == true) {finalDMG =other.baseDMG + floor(15*oHealthBar.hpMissing) * 3}
-				else finalDMG = standardFalloff(other.dist,other.baseDMG)+ floor(15*oHealthBar.hpMissing);
+				if (other.crit == true) {finalDMG =other.baseDMG + floor(15*oInv.hpMissing) * 3}
+				else finalDMG = standardFalloff(other.dist,other.baseDMG)+ floor(15*oInv.hpMissing);
 			
 				//subtract health
 				hp -= finalDMG ;

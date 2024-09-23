@@ -3,7 +3,9 @@
 
 inactive = false;
 diedFrom = noone;
-corpse = oDShrugBat;
+corpse = "bat";
+cSprite = sEShrugBatDie;
+big = false;
 mygun = noone;
 
 if instance_exists(oRoomDetect)

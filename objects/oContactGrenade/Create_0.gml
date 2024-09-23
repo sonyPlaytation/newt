@@ -15,7 +15,7 @@ vsp = 0;
 
 homingtarget = instance_nearest(mouse_x,mouse_y,pEnemy);
 
-baseDMG = oMultiWeapon.damage
+baseDMG = oMultiWeapon.damage*oInv.dmgMod;
 dist = 0;
 
 image_xscale = 2;

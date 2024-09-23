@@ -26,7 +26,7 @@ if instance_exists(oNewt)
 						diedFrom = "overkill";
 						//damage calculation
 						
-						finalDMG = other.tracerDMG;
+						finalDMG = other.tracerDMG*oInv.dmgMod;
 			
 						//subtract health
 						hp -= finalDMG;

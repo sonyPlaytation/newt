@@ -37,5 +37,4 @@ if charred
 	var _x = random_range(bbox_left-10,bbox_right+10);
 	var _y = random_range(bbox_bottom+10,bbox_top-10);
 	instance_create_depth(_x,_y,depth-10,oFlameParticle);
-	
 }

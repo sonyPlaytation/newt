@@ -112,7 +112,7 @@ stateRicochet = function()
 		with (instance_create_layer(x,y,"Shots",oShotHitscan))
 		{
 			headshot = true;
-			baseDMG = ceil(other.baseDMG * 1.25);
+			baseDMG = ceil(other.baseDMG * 1.25)*oInv.dmgMod;
 			hitSprite = oMultiWeapon.hitSprite;
 			col = c_yellow;
 			crit = false;
@@ -129,7 +129,7 @@ stateRicochet = function()
 			with (instance_create_layer(x,y,"Shots",oShotHitscan))
 			{
 				headshot = true;
-				baseDMG = other.baseDMG;
+				baseDMG = other.baseDMG*oInv.dmgMod;
 				hitSprite = oMultiWeapon.hitSprite;
 				col = c_yellow;
 				crit = false;

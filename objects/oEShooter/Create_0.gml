@@ -1,8 +1,11 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+//corpse
+corpse = "shooter"
+cSprite = sEShooterDie;
+big = false;
 diedFrom = noone;
-corpse = oDShooter;
 
 if instance_exists(oRoomDetect)
 {
@@ -29,11 +32,7 @@ confused
 	
 }
 
-
-
 state = states.patrol;
-
-
 
 if(hasWeapon)
 {
@@ -54,3 +53,5 @@ if (hasHead)
 	with myHead {owner = other.id};
 }
 else myHead = noone;
+
+

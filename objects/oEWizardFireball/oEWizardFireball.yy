@@ -12,8 +12,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Shots",
-    "path": "folders/Objects/Combat Mechanics/Shots.yy",
+    "name": "Weapons",
+    "path": "folders/Objects/Entities/Weapons.yy",
   },
   "parentObjectId": {
     "name": "oEnemyShot",

@@ -82,7 +82,7 @@ vspFrac = 0;
 hspAcc[0] = 0.75;
 hspAcc[1] = 1.25;
 hspAcc[2] = 0.01;
-hspFricGround = 0.50;
+hspFricGround = 0.75;
 hspFricAir = 0.01;
 moveType = 0;
 hspWalk= 7;
@@ -185,10 +185,32 @@ stateFree = function()
 	//init if backwards or not 
 	var _backwards = false
 	
-	////sprint toggle
-	//if input_check("runtoggle") {global.autoRun = !global.autoRun};
-	////sprint
-	//if (global.autoRun){moveType = 1; image_speed = 10} else {moveType = 0; image_speed = 1};
+	if instance_exists(oCorpse) and oInv.inBelly != 1
+	{
+		var nearestCorpse = instance_nearest(x,y,oCorpse);
+		draw_arrow(x,y,nearestCorpse.x,nearestCorpse.y,20);
+		if collision_circle(x,y,24,nearestCorpse,0,0) and (nearestCorpse.alpha != 0) and input_check_pressed("interact")
+		{
+			audio_play_sound(snGULP,750,false);
+			nearestCorpse.inBelly = true;
+			oInv.inBelly = nearestCorpse.id;
+		}
+	}
+	
+	if oInv.inBelly > 0 and input_check_pressed("special")
+	{
+		oInv.full = 0;
+		
+		audio_play_sound(snBurp,500,false);
+		with oInv.inBelly
+		{
+			x = oNewt.x;
+			y = global.newtCenter;
+			inBelly = false;
+			done = 0;
+		}
+		oInv.inBelly = noone;
+	}
 
 	//calculate horizontal movement
 	wallJumpDelay = max(wallJumpDelay-1,0);
@@ -206,6 +228,7 @@ stateFree = function()
 		}
 		
 		
+		
 		if abs(hsp > hspWalk)
 		{
 			hsp = lerp(hsp,hspWalk,0.5);
@@ -216,7 +239,7 @@ stateFree = function()
 			hsp = lerp(hsp,-hspWalk,0.5);
 		}
 		
-		hsp = clamp(hsp, -24, 24);
+		hsp = clamp(hsp*oInv.spdMod, -24, 24);
 	}
 
 	//wall jump stuff

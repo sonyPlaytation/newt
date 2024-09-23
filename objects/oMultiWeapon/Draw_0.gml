@@ -4,7 +4,7 @@
 if instance_exists(oNewt)
 {
 	draw_sprite_ext(
-	currSpr,
+	sprite,
 	image_index,
 	x-lengthdir_x(current_recoil,image_angle),
 	y-lengthdir_y(current_recoil,image_angle),

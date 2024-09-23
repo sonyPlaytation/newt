@@ -18,7 +18,7 @@ headshot = false;
 
 flashScale = 500;
 
-baseDMG = oMultiWeapon.damage
+baseDMG = oMultiWeapon.damage*oInv.dmgMod;
 dist = 0;
 
 crit = false;

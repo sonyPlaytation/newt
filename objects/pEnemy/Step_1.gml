@@ -41,13 +41,11 @@ if (hp <= 0)
 		break;
 		
 		case "standard":
-			with (instance_create_layer(x,y-2,layer,corpse))
+			with (instance_create_layer(x,y-2,layer,oCorpse))
 			{
-				direction = other.hitfrom;
-				hsp = lengthdir_x(3,direction);
-				vsp = lengthdir_y(3,direction)-4;
-				if (sign(hsp) != 0) image_xscale = sign(hsp) * other.size;
-				image_yscale = other.size;
+				corpse = other.corpse;
+				sprite_index = other.cSprite;
+				big = other.big;
 			}
 			
 			if hasWeapon
@@ -67,15 +65,12 @@ if (hp <= 0)
 		break;
 		
 		case "fire":
-			with (instance_create_layer(x,y-2,layer,corpse))
+			with (instance_create_layer(x,y-2,layer,oCorpse))
 			{
+				corpse = other.corpse;
+				sprite_index = other.cSprite;
+				big = other.big;
 				charred = true;
-				alarm[0] = 999;
-				direction = other.hitfrom;
-				hsp = lengthdir_x(3,direction);
-				vsp = lengthdir_y(3,direction)-4;
-				if (sign(hsp) != 0) image_xscale = sign(hsp) * other.size;
-				image_yscale = other.size;
 			}
 			
 			if hasWeapon
@@ -95,15 +90,12 @@ if (hp <= 0)
 		break;
 		
 		case "fireOverkill":
-			with (instance_create_layer(x,y-2,layer,corpse))
+			with (instance_create_layer(x,y-2,layer,oCorpse))
 			{
+				corpse = other.corpse;
+				sprite_index = other.cSprite;
+				big = other.big;
 				charred = true;
-				alarm[0] = 999;
-				direction = other.hitfrom;
-				hsp = lengthdir_x(3,direction);
-				vsp = lengthdir_y(3,direction)-4;
-				if (sign(hsp) != 0) image_xscale = sign(hsp) * other.size;
-				image_yscale = other.size;
 			}
 			
 			expGive();
@@ -232,13 +224,11 @@ if (hp <= 0)
 			expGive();
 			repeat(multiplier){instance_create_depth(x,y,depth,oSpookyGhost)};
 			
-			with (instance_create_layer(x,y-2,layer,corpse))
+			with (instance_create_layer(x,y-2,layer,oCorpse))
 			{
-				direction = other.hitfrom;
-				hsp = lengthdir_x(3,direction);
-				vsp = lengthdir_y(3,direction)-4;
-				if (sign(hsp) != 0) image_xscale = sign(hsp) * other.size;
-				image_yscale = other.size;
+				corpse = other.corpse;
+				sprite_index = other.cSprite;
+				big = other.big;
 			}
 			
 			//spawn gore

@@ -55,6 +55,7 @@ global.soda[2] = false; //blood chalice
 global.soda[3] = false; //two health ups
 global.soda[4] = false; //ammo max up random
 global.soda[5] = false; //air dashes
+global.soda[6] = false; //damage up
 
 extraJumps = 0;
 
@@ -64,6 +65,7 @@ desc[2] = "Blood Heals";
 desc[3] = "+2 Max HP\n(stacks)";
 desc[4] = "Randokm Max\nAmmo Increase\n(stacks)";
 desc[5] = "Air Dashes";
+desc[6] = "DMG UP";
 
 global.sodasLeft = ds_list_create();
 

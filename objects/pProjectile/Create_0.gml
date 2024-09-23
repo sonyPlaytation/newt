@@ -14,6 +14,6 @@ spd = 0;
 xspd = 0;
 yspd = 0;
 
-baseDMG = oMultiWeapon.damage
+baseDMG = oMultiWeapon.damage*oInv.dmgMod;
 dist = 0;
 

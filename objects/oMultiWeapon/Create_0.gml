@@ -789,7 +789,7 @@ coinCount = 4;
 
 weaponStats(0);
 
-currSpr = sprite;
+
 current_cd = 0;
 current_delay = -1;
 current_recoil = 0;

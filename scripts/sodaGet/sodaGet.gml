@@ -1,10 +1,12 @@
 
 function sodaGet(soda)
 {
+	//oGame
 	oAmmoCount.sodaPush = soda;
 	switch (soda)
 	{
 		case 0: //double jumps
+		
 			global.soda[0] = true;
 			with(oGame){extraJumps++};
 		break;
@@ -33,6 +35,11 @@ function sodaGet(soda)
 		
 		case 5: //air dashes
 			global.soda[5] = true;
+		break;
+		
+		case 6: //damage up
+			global.soda[6] = true;
+			oInv.dmgMod += 0.15;
 		break;
 	}
 }

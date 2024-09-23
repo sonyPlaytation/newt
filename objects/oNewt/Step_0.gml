@@ -15,7 +15,7 @@ exclam = false;
 if (iFrames > 0) iFrames--;
 
 //debug take damage
-if keyboard_check_pressed(vk_backspace) {playerHit(1)};
+//if keyboard_check_pressed(vk_backspace) {playerHit(1)};
 
 //reset flash shader
 flash--;
@@ -46,13 +46,13 @@ else
 }
 
 //give ammo DEBUG
-if input_check_pressed("special")
-	{ 
-		getAmmo();
-		audio_play_sound(snHL1Pickup,999,false);
-		global.hasCrit = true;
-		global.soda[0] = true;
-	} 
+//if input_check_pressed("special")
+//	{ 
+//		getAmmo();
+//		audio_play_sound(snHL1Pickup,999,false);
+//		global.hasCrit = true;
+//		global.soda[0] = true;
+//	} 
 
 #endregion 
 
@@ -99,6 +99,8 @@ if place_meeting(x,bbox_top-1,oCollide)
 		if (!place_meeting(x, y+i, oCollide)){y+=i;break;}
 	}
 }
+
+
 
 state();
 

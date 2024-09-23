@@ -17,7 +17,7 @@ visDist = 0;
 hitSprite = noone;
 flashScale = 2;
 
-baseDMG = oMultiWeapon.damage
+baseDMG = oMultiWeapon.damage*oInv.dmgMod;
 dist = 0;
 
 crit = false;

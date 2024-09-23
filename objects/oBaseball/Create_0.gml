@@ -17,7 +17,7 @@ dltTimer = 10 * 60;
 
 parried = false;
 
-baseDMG = 45;
+baseDMG = 45*oInv.dmgMod;
 
 image_angle = irandom(359);
 

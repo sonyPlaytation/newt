@@ -2,8 +2,11 @@
 // You can write your code in this editor
 
 diedFrom = noone;
-corpse = oDWalker;
+corpse = "generic";
+cSprite = sEWalkerDie;
+big = false;
 
+global.getSizeKilled = 1;
 if instance_exists(oRoomDetect)
 {
 	myRoom = instance_nearest(self.x,self.y,oRoomDetect);

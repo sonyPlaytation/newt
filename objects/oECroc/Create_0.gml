@@ -2,7 +2,9 @@
 // You can write your code in this editor
 
 diedFrom = noone;
-corpse = oDWalker;
+corpse = "generic";
+cSprite = sEWalkerDie
+big = true;
 
 if instance_exists(oRoomDetect)
 {

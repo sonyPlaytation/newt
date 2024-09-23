@@ -24,7 +24,7 @@ if instance_exists(oNewt)
 			weaponStats(heldweapons[0]); 
 			oSFX.weaponswitchsound = true;
 			if pickupsound != -1 {oSFX.newweapon = true};
-			currSpr = sprite;
+			sprite_index = sprite;
 		}
 	}
 
@@ -36,7 +36,7 @@ if instance_exists(oNewt)
 			weaponStats(heldweapons[1]); 
 			oSFX.weaponswitchsound = true;
 			if pickupsound != -1 {oSFX.newweapon = true};
-			currSpr = sprite;
+			sprite_index = sprite;
 		}
 	}
 
@@ -48,7 +48,7 @@ if instance_exists(oNewt)
 			weaponStats(heldweapons[2]); 
 			oSFX.weaponswitchsound = true;
 			if pickupsound != -1 {oSFX.newweapon = true};
-			currSpr = sprite;
+			sprite_index = sprite;
 		}
 	}
 
@@ -129,7 +129,7 @@ if instance_exists(oNewt)
 				weaponStats(array_get(heldweapons, i+1)); 
 				i+=1;
 				if pickupsound != -1 {oSFX.newweapon = true};
-				currSpr = sprite;
+				sprite_index = sprite;
 			}
 			else
 			{
@@ -137,7 +137,7 @@ if instance_exists(oNewt)
 				weaponStats(array_get(heldweapons, 0)); 
 				i=0;
 				if pickupsound != -1 {oSFX.newweapon = true};
-				currSpr = sprite;	
+				sprite_index = sprite;
 			
 			}
 		}
@@ -152,7 +152,7 @@ if instance_exists(oNewt)
 				weaponStats(array_get(heldweapons, i-1)); 
 				i-=1;
 				if pickupsound != -1 {oSFX.newweapon = true};
-				currSpr = sprite;
+				sprite_index = sprite;
 			}
 			else
 			{
@@ -160,8 +160,7 @@ if instance_exists(oNewt)
 				weaponStats(array_get(heldweapons, 2)); 
 				i=2;
 				if pickupsound != -1 {oSFX.newweapon = true};
-				currSpr = sprite;
-		
+				sprite_index = sprite;
 			}
 		}
 
@@ -174,7 +173,7 @@ if instance_exists(oNewt)
 			case 0: //primary
 				#region
 			
-				currSpr = sprite;
+				
 			
 				if (mouseLeft)
 				{
@@ -416,7 +415,6 @@ if instance_exists(oNewt)
 							}
 						}
 					}
-					if current_cd ==0 {image_speed = 1; currSpr = sprite;} else {image_speed = 1; currSpr = animM1;}
 					current_recoil = recoil;
 					if (ammo[ammotype] < ammouse) and mouseLeft {audio_play_sound(snNoAmmo,300,false)};
 				}

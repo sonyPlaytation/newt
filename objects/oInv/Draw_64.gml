@@ -16,4 +16,16 @@ if hp <= _twoThird
 }
 else draw_sprite_ext(sHealthHigh,max(0,oInv.hp),cornerDist,cornerDist,scale,scale,0,c_white,1);
 
-draw_sprite_ext(sInvStomach,full,cornerDist,cornerDist,scale,scale,0,c_white,1);
+draw_sprite_ext(sInvStomach,full,cornerDist,cornerDist,scale+(sinewave/10),scale+(sinewave/10),0,c_white,1);
+
+if (full != 0) 
+{
+	
+	draw_sprite_ext(sInvStomach,full,cornerDist,cornerDist,scale+(sinewave/10),scale+(sinewave/10),0,c_white,1);
+	draw_sprite_ext(inBelly.sprite_index,full,cornerDist,cornerDist+(inBelly.sprite_height/2),sprBellyScale+(sinewave/10),sprBellyScale+(sinewave/10),0,c_white,1);
+}
+else
+{
+	draw_sprite_ext(sInvStomach,full,cornerDist,cornerDist,scale,scale,0,c_white,1);
+	
+}
