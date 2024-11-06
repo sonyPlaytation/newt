@@ -46,7 +46,7 @@ if (place_meeting(x,y,pEntity)) or (place_meeting(x,y,oCollide)) or (place_meeti
 	instance_destroy();
 	oSFX.rocketloop = false;
 	
-	with instance_create_depth(x,y,-500,oExplosion)
+	with instance_create_layer(x,y,"Shots",oExplosion)
 	{
 		diedFrom = other.diedFrom;
 		friendly = 0;

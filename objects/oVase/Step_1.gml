@@ -29,14 +29,7 @@ if (place_meeting(x,y+vsp,oCollide))
 		}
 	}
 }
-
 y += vsp;
-
-
-
-
-
-
 
 if (vsp != 0) and (place_meeting(x,y,oNewt))
 {
@@ -65,7 +58,7 @@ if (hp<=0)
 		repeat(multiplier)
 		{
 			expGive();
-			instance_create_layer(x,y,layer,oSpookyGhost)
+			instance_create_layer(x,y,"Shots",oSpookyGhost)
 		};
 	}
 	

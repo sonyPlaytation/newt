@@ -2,8 +2,8 @@
 // You can write your code in this editor
 
 inactive = false;
-
-corpse = oDShooter
+corpse = "generic"
+cSprite = sEShooterDie;
 diedFrom = noone;
 
 myDamage = instance_create_layer(x,y,"GUI",oDmgNum);
@@ -45,8 +45,8 @@ if(hasWeapon)
 	with (mygun)
 	{
 		owner = other.id;
-		countdownRate = 30;
-		setspeed = 15;
+		countdownRate = 45;
+		setspeed = 9;
 		viewRange = owner.viewRange;
 	}
 }

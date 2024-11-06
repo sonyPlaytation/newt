@@ -10,37 +10,37 @@ with (oMultiWeapon)
 		oAmmoCount.reserveString = ammoMax[ammotype]
 	};
 
-if oMultiWeapon.ammouse > 0
-	{
-		if oMultiWeapon.ammouse > real(ammoString){ammoCol = #eb445a}; //if not enough for a shot
-		if oMultiWeapon.ammo[oMultiWeapon.ammotype] == 0{spriteCol = c_dkgray}else{spriteCol = c_white}; // if ammo out, grey out ammo icon
+if oMultiWeapon.ammouse >= 0
+{
+	if oMultiWeapon.ammouse > real(ammoString){ammoCol = #eb445a}; //if not enough for a shot
+	if oMultiWeapon.ammo[oMultiWeapon.ammotype] == 0{spriteCol = c_dkgray}else{spriteCol = c_white}; // if ammo out, grey out ammo icon
 		
-		//ammo icon
-		draw_sprite_ext(iAmmoTypes,oMultiWeapon.ammotype,40,995,3,3,0,spriteCol,1);
+	//ammo icon
+	draw_sprite_ext(iAmmoTypes,oMultiWeapon.ammotype,40,995,3,3,0,spriteCol,1);
 		
-		//ammo counter
-			draw_set_font(fCanont);
-			draw_set_halign(fa_right)
-			draw_set_valign(fa_top)
+	//ammo counter
+		draw_set_font(fCanont);
+		draw_set_halign(fa_right)
+		draw_set_valign(fa_top)
 	
-			draw_set_color(c_black);
-			draw_text(155,975,ammoString);
+		draw_set_color(c_black);
+		draw_text(155,975,ammoString);
 	
-			draw_set_color(ammoCol);
-			draw_text(150,975,ammoString);
+		draw_set_color(ammoCol);
+		draw_text(150,975,ammoString);
 		
-		//ammo reserve counter
-			draw_set_font(fCanont);
-			draw_set_halign(fa_left)
+	//ammo reserve counter
+		draw_set_font(fCanont);
+		draw_set_halign(fa_left)
 	
-			draw_set_color(c_black);
-			draw_text(160,975,"/" + string(reserveString));
+		draw_set_color(c_black);
+		draw_text(160,975,"/" + string(reserveString));
 	
-			draw_set_color(c_grey);
-			draw_text(155,975,"/" + string(reserveString));
+		draw_set_color(c_grey);
+		draw_text(155,975,"/" + string(reserveString));
 		
 		
-	}
+}
 
 //no alpha if weapon slot empty
 if weap[0] != 0 {a0 = 1}else a0 = 0;
@@ -71,27 +71,25 @@ if oMultiWeapon.i=2{col2 = c_yellow; rot2 = min(rot2+4, 25)}else{col2 = c_white;
 if (real(ammoString) >= real(reserveString)/4) or oMultiWeapon.ammouse < 1 {ammoCol = c_white; lowAmmo = false;}else{ammoCol = #eb445a; lowAmmo = true;};
 	
 //ammo reserve chart
-	for(var i = 0; i< array_length(oMultiWeapon.ammo); i++ )
-	{
-		draw_sprite_ext(iAmmoTypes,i,35 + (i*50),1050,2,2,0,c_white,oMultiWeapon.ammo[i]/oMultiWeapon.ammoMax[i])
-		drawSetText(c_white,fKaren,fa_center,fa_top)
+for(var i = 0; i< array_length(oMultiWeapon.ammo); i++ )
+{
+	draw_sprite_ext(iAmmoTypes,i,35 + (i*50),1050,2,2,0,c_white,oMultiWeapon.ammo[i]/oMultiWeapon.ammoMax[i])
+	drawSetText(c_white,fKaren,fa_center,fa_top)
 			
-		var strAmmoCap = string(clamp(oMultiWeapon.ammo[i],0,oMultiWeapon.ammoMax[i]));
+	var strAmmoCap = string(clamp(oMultiWeapon.ammo[i],0,oMultiWeapon.ammoMax[i]));
 			
-		uiX2 = 35 + (i*50);
-		uiY2 = 1050;
+	uiX2 = 35 + (i*50);
+	uiY2 = 1050;
 			
-		draw_set_color(c_black);
-		draw_text_transformed(uiX2+2,uiY2,strAmmoCap,scale2,scale2,0);
-		draw_text_transformed(uiX2,uiY2+2,strAmmoCap,scale2,scale2,0);
-		draw_text_transformed(uiX2-2,uiY2,strAmmoCap,scale2,scale2,0);
-		draw_text_transformed(uiX2,uiY2-2,strAmmoCap,scale2,scale2,0);
+	draw_set_color(c_black);
+	draw_text_transformed(uiX2+2,uiY2,strAmmoCap,scale2,scale2,0);
+	draw_text_transformed(uiX2,uiY2+2,strAmmoCap,scale2,scale2,0);
+	draw_text_transformed(uiX2-2,uiY2,strAmmoCap,scale2,scale2,0);
+	draw_text_transformed(uiX2,uiY2-2,strAmmoCap,scale2,scale2,0);
 			
-		draw_set_color(c_white)
-		draw_text_transformed(uiX2,uiY2,strAmmoCap,scale2,scale2,0);
-			
-	}
-	
+	draw_set_color(c_white)
+	draw_text_transformed(uiX2,uiY2,strAmmoCap,scale2,scale2,0);
+}
 	
 	//soda tracker ui
 if sodaPush != -1

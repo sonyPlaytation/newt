@@ -8,7 +8,7 @@ sprite_index = sWeapList;
 if randomWand {image_index = irandom_range(1,image_number)} else image_index = weapon;
 
 		//myInfo.weapon = weapon;
-		if randomWand {weapon = irandom_range(1, 23);
+		if randomWand {weapon = irandom_range(1, image_number-1);
 		}
 switchReset = 5;
 switchTimer = switchReset;

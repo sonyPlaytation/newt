@@ -50,6 +50,7 @@ if (instance_exists(oNewt)) and active
 			with (oMultiWeapon)
 			{
 				weaponStats(other.weapon);
+				sprite_index = sprite;
 				i = type; 
 				if (pickupsound != -1){oSFX.newweapon = true};
 			
@@ -80,6 +81,7 @@ if (instance_exists(oNewt)) and active
 			with (oMultiWeapon)
 			{
 				weaponStats(other.weapon);
+				sprite_index = sprite;
 				i = type; 
 				if (pickupsound != -1){oSFX.newweapon = true};
 			

@@ -26,8 +26,7 @@ if (room != rMenu) and (instance_exists(oNewt)) and (killscombo > 0)
 
 if instance_exists(oNewt) and (oNewt.hasControl == true) and !instance_exists(oSoda)
 {
-combotimer--;
-
+	combotimer--;
 }
 
 if (combotimer <= 0)
@@ -36,3 +35,7 @@ if (combotimer <= 0)
 	
 	if global.kills >=1 {firstCombo = false};
 }
+
+drawSetText(c_white,fDoom,fa_center,fa_top);
+draw_text_ext_transformed_color(RESOLUTION_W/2,15,sysMsg,10,RESOLUTION_W,msgScale,msgScale,0,c_white,c_white,c_white,c_white,systemAlpha*1.15);
+systemAlpha -= 0.01;

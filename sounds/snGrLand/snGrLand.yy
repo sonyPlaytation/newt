@@ -12,8 +12,8 @@
   "conversionMode": 0,
   "duration": 0.66517,
   "parent": {
-    "name": "Player",
-    "path": "folders/Sounds/Player.yy",
+    "name": "Cool",
+    "path": "folders/Sounds/Player/Cool.yy",
   },
   "preload": false,
   "sampleRate": 44100,

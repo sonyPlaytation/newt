@@ -10,7 +10,32 @@ if instance_exists(myRoom)
 }
 
 
+if instance_exists(owner)
+{
+depth = owner.depth+10;
+image_xscale = owner.image_xscale;
+x = owner.x - sprite_width/6;
+y = owner.y +sprite_height - 6;
+}
 
+if !instance_exists(owner) 
+{
+	instance_destroy(mygun);
+	if !instance_exists(owner) 
+	{
+		with instance_create_depth(x,y,depth,oEShooter)
+		{
+			hp = other.hp;
+		
+			myDamage = instance_create_layer(x,y,"GUI",oDmgNum);
+			with (myDamage)
+			{
+				owner = other.id		
+			}
+		}
+		instance_destroy();
+	}
+}
 
 if instance_exists(oNewt) and !inactive
 {
@@ -50,10 +75,6 @@ if instance_exists(oNewt) and !inactive
 				walksp = 0;
 		
 				if collision_line(x, selfCenter, oNewt.x, newtCenter, oCollide, 1, 0) {cantShoot = false}else{cantShoot = true};
-			
-				
-				
-				
 				
 				markerTime--;
 	
@@ -69,19 +90,9 @@ if instance_exists(oNewt) and !inactive
 					grounded = true;
 				}
 				
-				
-				
 				y += vsp;
-			
-				
-				
-	
 				if (oNewt.x < x){image_xscale = -1} else image_xscale = 1;
-	
-				
-			
-				
-				
+
 				if !cantShoot
 				{
 					

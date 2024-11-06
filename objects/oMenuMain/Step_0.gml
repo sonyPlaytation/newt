@@ -54,7 +54,8 @@ if (menu_x < -200) && (menu_committed != -1)
 {
 	switch (menu_committed)
 	{
-		case 3: global.lvlFloor = 0; slideTransition(TRANS_MODE.GOTO, rTutorialNew1); break;
+		case 4: global.lvlFloor = 444; slideTransition(TRANS_MODE.GOTO, rInit); break;
+		case 3: global.lvlFloor = 0; slideTransition(TRANS_MODE.GOTO, rInit); break;
 		case 2: slideTransition(TRANS_MODE.NEXT); global.lvlFloor = 1; break;
 		case 1: 
 		{

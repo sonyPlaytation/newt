@@ -13,6 +13,37 @@ if  oNewt.hasControl and altfire != -1 and input_check_pressed("altfire") and (d
 				}
 			break;
 			
+			//alt fire for wrench
+			case "sentry":
+				if !instance_exists(oSentryToolbox) and !instance_exists(oSentry) 
+				{
+					if ammo[0] >= 100
+					{
+						with instance_create_depth(x,y,depth-10,oSentryToolbox)
+						{
+							hsp = lengthdir_x(8,oMultiWeapon.image_angle)
+							vsp = lengthdir_y(8,oMultiWeapon.image_angle)
+							image_xscale = oNewt.facingRight;
+							
+							x = oNewt.x;
+							y = oNewt.y-36;
+						}
+						ammo[0]-=100;
+					}
+				}
+				else
+				{
+					with (instance_create_layer(x,y,"Shots",oShotMelee))
+					{								
+						image_xscale = oMultiWeapon.length+point_distance(x,y,oNewt.x,global.newtCenter);
+						direction = oMultiWeapon.image_angle;
+						speed = 0;
+						image_angle = direction;
+						click = 1;
+					}
+				}
+			break;
+			
 			//alt fire baseball
 			case "markscoin":
 				if oMultiWeapon.coinCount != 0
@@ -51,12 +82,13 @@ if  oNewt.hasControl and altfire != -1 and input_check_pressed("altfire") and (d
 				
 				delayRight = 50;
 				current_cd = 35;
+				image_index = 0;
 				image_speed = 1;
-				currSpr = animM2;
+				sprite_index = animM2;
 				
 				with (instance_create_layer(x,y,"Shots",oShotMelee))
 				{
-					image_xscale = 60;
+					image_xscale = 30;
 					direction = other.image_angle
 					image_angle = direction;
 				}

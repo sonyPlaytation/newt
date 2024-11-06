@@ -4,7 +4,7 @@
   "name": "sEWalker",
   "bbox_bottom": 41,
   "bbox_left": 13,
-  "bbox_right": 34,
+  "bbox_right": 33,
   "bbox_top": 18,
   "bboxMode": 2,
   "collisionKind": 1,
@@ -20,7 +20,8 @@
   "height": 46,
   "HTile": false,
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"7990dd74-9f8e-434d-9c7b-106c28f2f882","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"e194c1d6-7e16-4003-a114-dd46914ac8de","blendMode":0,"displayName":"Layer 1","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"7990dd74-9f8e-434d-9c7b-106c28f2f882","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":false,},
   ],
   "nineSlice": null,
   "origin": 9,

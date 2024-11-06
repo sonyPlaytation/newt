@@ -56,6 +56,21 @@ if k7death == true
 	k7death = false;
 }
 
+//mouth popping random pitches
+if mouthpop == true
+{
+	audio_sound_pitch(snPop1,random_range(0.8,1.2));
+	audio_sound_pitch(snPop2,random_range(0.8,1.2));
+	audio_sound_pitch(snPop3,random_range(0.8,1.2));
+	audio_sound_pitch(snPop4,random_range(0.8,1.2));
+	audio_sound_pitch(snPop5,random_range(0.8,1.2));
+	
+	var _sound = audio_play_sound(choose(snPop1,snPop2,snPop3,snPop4,snPop5),800,false);
+	audio_sound_gain(_sound,_sfxVol,0);
+	
+	mouthpop = false;
+}
+
 
 //killer 7 pain rand
 if k7hurt == true

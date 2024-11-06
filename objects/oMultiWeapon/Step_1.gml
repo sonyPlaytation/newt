@@ -1,5 +1,5 @@
 
-
+if screenPause() {exit;};
 
 input_axis_threshold_set(gp_axisrh,0.08,0.95);
 input_axis_threshold_set(gp_axisrv,0.08,0.95);
@@ -172,16 +172,16 @@ if instance_exists(oNewt)
 	
 			case 0: //primary
 				#region
-			
 				
-			
 				if (mouseLeft)
 				{
 					if (current_cd == 0)
 					{
 						current_cd = cooldown;
-						current_delay = startup;
+						current_delay = startup;	
+						image_index = 0;
 					}
+					image_speed = 1;
 				}
 
 				var _spread = spread;
@@ -238,7 +238,7 @@ if instance_exists(oNewt)
 		
 						if casing != -1
 						{
-							with (instance_create_layer(x,y,"Shots",oCasing))
+							with (instance_create_layer(x,y,"Player",oCasing))
 							{
 								image_index = other.casing;
 								hsp = lengthdir_x(3, other.image_angle-180 + random_range(-10, 10));
@@ -355,8 +355,12 @@ if instance_exists(oNewt)
 					if (current_cd == 0)
 					{
 						current_cd = cooldown;
-						current_delay = startup;
-					}
+						current_delay = startup;	
+						
+						image_index = 0;
+						sprite_index = animM1;
+						image_speed = 1;
+					}	
 				}
 
 				var _spread = spread;
@@ -371,7 +375,7 @@ if instance_exists(oNewt)
 						{
 							soundNicer();
 						}
-						ammo[ammotype] -= ammouse;
+						if ammouse >= 0 {ammo[ammotype] -= ammouse};
 		
 						for (var j = 0; j < bulletnumber; j++)
 						{
@@ -387,15 +391,13 @@ if instance_exists(oNewt)
 								}else crit = false;
 								global.hasCrit = false;
 									
+								click = 0;
 								image_xscale = other.length+point_distance(x,y,oNewt.x,global.newtCenter);
 								direction = other.image_angle- _spread/2 + _spreadDiv * j + random_range(-other.accuracy,other.accuracy);
 								speed = other.bulletspeed;
 								image_angle = direction;
-
 							}
 
-						
-							
 							with(oNewt)
 							{
 								hsp -= lengthdir_x(other.recoilpush,other.image_angle);
@@ -403,10 +405,10 @@ if instance_exists(oNewt)
 							}
 						}
 							
-						if casing == oSmoke{instance_create_layer(x,y,"Shots",oSmoke)}					
+						if casing == oSmoke{instance_create_layer(x,y,"Player",oSmoke)}					
 						else if casing != -1
 						{
-							with (instance_create_layer(x,y,"Shots",oCasing))
+							with (instance_create_layer(x,y,"Player",oCasing))
 							{
 								image_index = other.casing;
 								hsp = lengthdir_x(3, other.image_angle-180 + random_range(-10, 10));

@@ -10,7 +10,7 @@ yspd = lengthdir_y(spd, dir);
 x += xspd;
 y += yspd;
 
-with instance_create_depth(x,y,depth,oDevilsGunParticle){owner = other.id; image_angle = owner.image_angle;}
+with instance_create_layer(x,y,"Shots",oDevilsGunParticle){owner = other.id; image_angle = owner.image_angle;}
 
 if crit {draw_set_color(c_red)};
 
@@ -55,7 +55,7 @@ if instance_exists(oNewt)
 					myDamage.dmgTextScale = 1;
 					
 					
-					with instance_create_depth(x,y,-500,oExplosion)
+					with instance_create_layer(x,y,"Shots",oExplosion)
 					{
 						diedFrom = "overkill";
 						friendly = 0;
@@ -114,7 +114,7 @@ if instance_exists(oNewt)
 				{
 					if !noDMG {myDamage.dmgTextScale = 1};
 				
-					with instance_create_layer(target.x,target.y - target.sprite_height/2,"Player",oExplosion)
+					with instance_create_layer(target.x,target.y - target.sprite_height/2,"Shots",oExplosion)
 					{
 						baseDMG = 10;
 						radius = 100;

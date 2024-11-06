@@ -84,6 +84,7 @@ if instance_exists(oNewt)
 	
 	if (place_meeting(x,y,pEntity)) 
 	{
+		hitStop(2);
 		var target = (instance_place(x,y,pEntity));
 		with target
 		{

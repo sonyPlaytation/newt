@@ -8,7 +8,7 @@ function sodaGet(soda)
 		case 0: //double jumps
 		
 			global.soda[0] = true;
-			with(oGame){extraJumps++};
+			oInv.extraJumps++;
 		break;
 		
 		case 1: //homing

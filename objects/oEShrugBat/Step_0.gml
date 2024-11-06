@@ -12,6 +12,10 @@ if collision_circle(x,y,25,oEShooter,1,1)
 	
 	with instance_create_depth(goon.x,goon.y-44,depth,oEShrugCarrier)
 	{
+		diedFrom = noone;
+		corpse = "bat";
+		cSprite = sEShrugBatDie;
+		inactive = false;
 		goonHP = other.goonHP;
 	}
 	instance_destroy();

@@ -1,6 +1,11 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+rot = 0;
+col = c_white;
+alpha = 1;
+sprite = sExplosion;
+
 friendly = 1;
 
 baseDMG = 65;
@@ -15,6 +20,7 @@ pushDistV = 0;
 pushAng = 0;
 
 dist = 0;
+image_index = 0;
 
 diedFrom = "overkill";
 

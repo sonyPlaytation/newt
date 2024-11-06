@@ -1,20 +1,11 @@
 
 
-// shit i need
-// location of newt, percentage of newts distance across radius, have a maximum force that you divide that by
-// set direction
-// make it go?
-//
-
-
 //hitStop(0);
 var hitTargs = ds_list_create();
-var enemyNum = collision_ellipse_list(x-100,y-100,x+100,y+100,pEntity,0,0,hitTargs,0);
+var enemyNum = collision_ellipse_list(x-100,y-100,x+100,y+100,pEntity,0,0,hitTargs,1);
 if instance_exists (oNewt) {dist = point_distance(oNewt.x,oNewt.y-22,x,y)}else dist = 50;
 
-
-
-if (friendly = 1 ) or (friendly = 0) and (image_index <0.5)//and !collision_line(x, y, other.x, other.y-22, oCollide, 1, 0) and point_in_circle(other.x,other.y,x,y, radius) 
+if (friendly = 1 ) or (friendly = 0) and (image_index <0.5)
 {
 	if (place_meeting(x,y,pEntity)) and enemyNum >0
 	{

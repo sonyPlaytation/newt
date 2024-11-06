@@ -5,46 +5,27 @@ if hp <= -(maxHP/2){diedFrom = "overkill"}
 
 if (hp <= 0)
 {
-	global.getSizeKilled = self.size;
+	global.getSizeKilled = size;
+	global.corpseSprite = cSprite;
 	
 	switch(diedFrom)
 	{
 		case "killer7":
-		
-			hitStop(45);
-			//give exp without corpse
-			size = global.getSizeKilled;
-			multiplier = choose(1,1,1,1,2);
-			expGive();
 			
-			
-			
-			//spawn Killer7 particles
-			repeat(abs(sprite_width*sprite_height)/4)
-			{
-				instance_create_depth(x+random_range(-sprite_width/4,sprite_width/4),random_range(y,y-sprite_height),depth-90,oK7DeathPart);
-			}
-			
-			//increase combo
-			if (instance_exists(oNewt))
-			{
-				global.kills++;
-				global.killsthisroom++;
-				oGame.killtextscale = 1.5;
-				oGame.killscombo++;
-				oGame.combotimer = oGame.comboreset;
-			}
-			
-			//custom death noise
-			oSFX.k7death = true;
+			with (instance_create_layer(x,y-2,layer,oCorpse))
+			{	
+				corpse = "killer7";
+				sprite_index = other.sprite_index;
+				image_index = other.image_index;
+				big = other.big;
+			}	
 			
 		break;
 		
 		case "standard":
 			with (instance_create_layer(x,y-2,layer,oCorpse))
-			{
-				corpse = other.corpse;
-				sprite_index = other.cSprite;
+			{	
+				corpse = other.corpse
 				big = other.big;
 			}
 			
@@ -66,9 +47,8 @@ if (hp <= 0)
 		
 		case "fire":
 			with (instance_create_layer(x,y-2,layer,oCorpse))
-			{
-				corpse = other.corpse;
-				sprite_index = other.cSprite;
+			{	
+				corpse = other.corpse
 				big = other.big;
 				charred = true;
 			}
@@ -91,9 +71,8 @@ if (hp <= 0)
 		
 		case "fireOverkill":
 			with (instance_create_layer(x,y-2,layer,oCorpse))
-			{
-				corpse = other.corpse;
-				sprite_index = other.cSprite;
+			{	
+				corpse = other.corpse
 				big = other.big;
 				charred = true;
 			}
@@ -226,8 +205,7 @@ if (hp <= 0)
 			
 			with (instance_create_layer(x,y-2,layer,oCorpse))
 			{
-				corpse = other.corpse;
-				sprite_index = other.cSprite;
+				corpse = other.corpse
 				big = other.big;
 			}
 			

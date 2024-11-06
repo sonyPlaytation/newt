@@ -1,11 +1,12 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-diedFrom = noone;
-
-corpse = oDShrugBat;
 inactive = false;
-
+diedFrom = noone;
+corpse = "bat";
+cSprite = sEShrugBatDie;
+big = false;
+mygun = noone;
 
 myDamage = instance_create_layer(x,y,"GUI",oDmgNum);
 with (myDamage)

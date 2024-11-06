@@ -22,7 +22,7 @@ if instance_exists(owner)
 	var _lineone = string_join("[iDivider]",_damage,_firerate);
 	
 	//Line Two
-	var _ammouse = "[iAmmoTypes,"+string(ammotype)+"]"+string(ammouse);
+	var _ammouse = "[iAmmoTypes,"+string(ammotype)+"]"+string(max(0,ammouse));
 	var _accCalc = (10-accuracy);
 	var _accuracy = "[iAccuracy]"+string(_accCalc);
 	

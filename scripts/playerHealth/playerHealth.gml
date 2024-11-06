@@ -39,31 +39,40 @@ if (oInv.hpMax < 12)
 }
 
 ///@args damage
+///@args ally
 function playerHit(argument0){
 
+if argument1 == undefined{argument1 = oNewt};
 
-
-with (oNewt)
-	if (iFrames == 0)
+with (argument1)
+	if (iFrames <= 0) and instance_exists(oNewt)
 	{
 		flash = 3;
 		if (argument0 == undefined) {argument0 = 1};
-		oInv.hp = oInv.hp - argument0;
-		repeat(5*argument0)
+		
+		if argument1.id == oNewt.id
 		{
-			with instance_create_depth(x,global.newtCenter, depth +10, oBlood)
+			oInv.hp = oInv.hp - argument0;
+			repeat(5*argument0)
 			{
-				fakeBlood = true;	
+				with instance_create_depth(x,global.newtCenter, depth +10, oBlood)
+				{
+					fakeBlood = true;	
+				}
 			}
+		
+			iFrames = 60;
+			if (oInv.hp > 0) {audio_play_sound(snNewtHurt,800,false)};
+			blinkExt(image_alpha, "image_alpha", 1, iFrames);
+		
+			if array_contains(oMultiWeapon.heldweapons,15){oMultiWeapon.ammo[4]+=15}
 		}
-		
-		iFrames = 60;
-		if (oInv.hp > 0) {audio_play_sound(snNewtHurt,800,false)};
-		blinkExt(image_alpha, "image_alpha", 1, iFrames);
-		
-		if array_contains(oMultiWeapon.heldweapons,15){oMultiWeapon.ammo[4]+=15}
-
+		else
+		{
+			hp = hp - argument0;
+			iFrames = iFramesReset;
+			blinkExt(image_alpha, "image_alpha", 1, iFrames);
+		}
 	}
-
-
 }
+

@@ -1,8 +1,4 @@
 
-
-
-
-
 mouseX = display_mouse_get_x();
 mouseY = display_mouse_get_y();
 
@@ -44,7 +40,7 @@ coinCount = 4;
 	ds_map_add(weapons[0],"animM1",sWandNull);
 	ds_map_add(weapons[0],"animM2",-1);
 	ds_map_add(weapons[0],"hitSound",snBatHit);
-	ds_map_add(weapons[0],"meleeState",3);
+	ds_map_add(weapons[0],"meleeState",0);
 	ds_map_add(weapons[0],"headshots",0);
 
 	// 1 - starter
@@ -387,7 +383,7 @@ coinCount = 4;
 	ds_map_add(weapons[12],"altfire","guitarparry");
 	ds_map_add(weapons[12],"recoil",30);
 	ds_map_add(weapons[12],"accuracy",2);
-	ds_map_add(weapons[12],"recoilpush",5);
+	ds_map_add(weapons[12],"recoilpush",1);
 	ds_map_add(weapons[12],"shakeamnt",60);
 	ds_map_add(weapons[12],"shaketime",20);
 	ds_map_add(weapons[12],"damage",9);
@@ -417,7 +413,7 @@ coinCount = 4;
 	ds_map_add(weapons[13],"shootsfx",snWoosh1);
 	ds_map_add(weapons[13],"pickupsound",snBatEquip);
 	ds_map_add(weapons[13],"ammotype",0);
-	ds_map_add(weapons[13],"ammouse",0);
+	ds_map_add(weapons[13],"ammouse",-1);
 	ds_map_add(weapons[13],"altfire","baseball");
 	ds_map_add(weapons[13],"recoil",0);
 	ds_map_add(weapons[13],"accuracy",0);
@@ -740,6 +736,72 @@ coinCount = 4;
 	ds_map_add(weapons[23],"bulletspeed",45);
 	ds_map_add(weapons[23],"automatic",false);
 	ds_map_add(weapons[23],"headshots",0);
+	
+		// 24 - Crowbar
+	weapons[24] = ds_map_create();
+	ds_map_add(weapons[24],"type",2);
+	ds_map_add(weapons[24],"name","Crowbar");
+	ds_map_add(weapons[24],"sprite",sWandCrowbar);
+	ds_map_add(weapons[24],"shootsfx",snWrenchSwing);
+	ds_map_add(weapons[24],"pickupsound",snHL1Pickup);
+	ds_map_add(weapons[24],"ammotype",0);
+	ds_map_add(weapons[24],"ammouse",-1);
+	ds_map_add(weapons[24],"altfire",-1);
+	ds_map_add(weapons[24],"recoil",0);
+	ds_map_add(weapons[24],"accuracy",0);
+	ds_map_add(weapons[24],"recoilpush",-1.5);
+	ds_map_add(weapons[24],"shakeamnt",6);
+	ds_map_add(weapons[24],"shaketime",2);
+	ds_map_add(weapons[24],"damage",35);
+	ds_map_add(weapons[24],"cancrit",false);
+	ds_map_add(weapons[24],"flash",-1);
+	ds_map_add(weapons[24],"projectile",oShotMelee);
+	ds_map_add(weapons[24],"bulletnumber",1);
+	ds_map_add(weapons[24],"spread",-1);
+	ds_map_add(weapons[24],"casing",-1);
+	ds_map_add(weapons[24],"startup",0);
+	ds_map_add(weapons[24],"length",62); //distance from origin to muzzle
+	ds_map_add(weapons[24],"cooldown",13); //tears
+	ds_map_add(weapons[24],"bulletspeed",0); //shot speed
+	ds_map_add(weapons[24],"automatic",true);
+	ds_map_add(weapons[24],"animM1",sCrowbarSwing);
+	ds_map_add(weapons[24],"animM2",sWandCrowbar);
+	ds_map_add(weapons[24],"hitSound",snCrowbarHit);
+	ds_map_add(weapons[24],"meleeState",3);
+	ds_map_add(weapons[24],"headshots",0);
+	
+		// 25 - Wrench
+	weapons[25] = ds_map_create();
+	ds_map_add(weapons[25],"type",2);
+	ds_map_add(weapons[25],"name","Wrench");
+	ds_map_add(weapons[25],"sprite",sWandWrenchIdle);
+	ds_map_add(weapons[25],"shootsfx",snWrenchSwing);
+	ds_map_add(weapons[25],"pickupsound",snBatEquip);
+	ds_map_add(weapons[25],"ammotype",0);
+	ds_map_add(weapons[25],"ammouse",0);
+	ds_map_add(weapons[25],"altfire","sentry");
+	ds_map_add(weapons[25],"recoil",0);
+	ds_map_add(weapons[25],"accuracy",0);
+	ds_map_add(weapons[25],"recoilpush",-5);
+	ds_map_add(weapons[25],"shakeamnt",6);
+	ds_map_add(weapons[25],"shaketime",2);
+	ds_map_add(weapons[25],"damage",65);
+	ds_map_add(weapons[25],"cancrit",true);
+	ds_map_add(weapons[25],"flash",-1);
+	ds_map_add(weapons[25],"projectile",oShotMelee);
+	ds_map_add(weapons[25],"bulletnumber",1);
+	ds_map_add(weapons[25],"spread",-1);
+	ds_map_add(weapons[25],"casing",-1);
+	ds_map_add(weapons[25],"startup",5);
+	ds_map_add(weapons[25],"length",32); //distance from origin to muzzle
+	ds_map_add(weapons[25],"cooldown",20); //tears
+	ds_map_add(weapons[25],"bulletspeed",0); //shot speed
+	ds_map_add(weapons[25],"automatic",true);
+	ds_map_add(weapons[25],"animM1",sWandWrenchSwing);
+	ds_map_add(weapons[25],"animM2",sWandWrenchIdle);
+	ds_map_add(weapons[25],"hitSound",snWrenchHit);
+	ds_map_add(weapons[25],"meleeState",4);
+	ds_map_add(weapons[25],"headshots",0);
 	
 	#endregion
 

@@ -5,6 +5,7 @@ diedFrom = noone;
 corpse = "generic";
 cSprite = sEWalkerDie;
 big = false;
+friendly = -1;
 
 global.getSizeKilled = 1;
 if instance_exists(oRoomDetect)

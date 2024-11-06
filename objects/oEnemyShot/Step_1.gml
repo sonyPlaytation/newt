@@ -11,14 +11,14 @@ yspd = lengthdir_y(spd, dir);
 x += xspd;
 y += yspd;
 
-
-if !friendly and (place_meeting(x,y,oNewt))
+if !friendly and (place_meeting(x,y,pAlly))
 {
-	with(instance_place(x,y,oNewt))
+	var _hitGuy = instance_place(x,y,pAlly)
+	with(instance_place(x,y,_hitGuy))
 	{
-		playerHit(other.damage);
+		playerHit(other.damage,_hitGuy);
 	}
-	if (oNewt.iFrames <= 0) {instance_destroy();} //dont destroy projectile if invincible
+	instance_destroy();
 }
 
 if friendly 
@@ -26,12 +26,9 @@ if friendly
 	image_xscale = 3;
 	if parried and ((place_meeting(x,y,pEntity)) or (place_meeting(x,y,oCollide)))
 	{
+		image_xscale = 5;
+		with (instance_create_layer(x,y,"Shots",oExplosion)) {friendly = 0;baseDMG = 90*other.damage;sprite = sExplosionPink};
 		instance_destroy();
-		with instance_create_depth(x,y,-500,oExplosion)
-		{
-			friendly = 1;
-			baseDMG = 90*other.damage;	
-		}	
 	}
 	else if parried = false
 	{	
@@ -80,13 +77,34 @@ if friendly
 		}
 		if (place_meeting(x+xspd,y+yspd,oCollide))
 		{
-			global.hasCrit = false;
 			instance_destroy();
 			outline_end();
 		}
 	}
 }
-if (place_meeting(x,y,oCollide)) && (image_index != 0) instance_destroy();
 
+if (place_meeting(x,y,oCollide)) && (image_index != 0) 
+{
+	repeat(irandom_range(2,5))
+	{
+		with instance_create_depth(x,y,depth,oDust)
+		{
+			size = random_range(0.25,0.65);
+		}
+	}
+	instance_destroy()
+};
 
+if (place_meeting(x,y,oVase)) && (image_index != 0) 
+{
+	with instance_place(x,y,oVase){hp -= 5};
+	repeat(irandom_range(2,5))
+	{
+		with instance_create_depth(x,y,depth,oDust)
+		{
+			size = random_range(0.25,0.65);
+		}
+	}
+	instance_destroy()
+};
 

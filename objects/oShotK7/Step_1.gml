@@ -63,16 +63,17 @@ if instance_exists(oNewt)
 					{
 						myDamage.damage += finalDMG;
 						myDamage.alpha = 1;
-						myDamage.dmgTextScale = 0.75
+						
+						//normal crit stuff
+						myDamage.dmgTextScale = 1;
+						with instance_create_layer(target.x,target.y - target.sprite_height,"Player",oCritHeader)
+						{
+							image_index = 1; //minicrit header;
+							owner = target.id	
+						}
 					}
 		
-					//normal crit stuff
-					myDamage.dmgTextScale = 1;
-					with instance_create_layer(target.x,target.y - target.sprite_height,"Player",oCritHeader)
-					{
-						image_index = 1; //minicrit header;
-						owner = target.id	
-					}
+					
 				
 				}
 				else
@@ -153,7 +154,7 @@ if instance_exists(oNewt)
 				if (other.crit == true)
 				{
 					diedFrom = "killer7";
-					myDamage.dmgTextScale = 1;
+					if !noDMG {myDamage.dmgTextScale = 1};
 				
 					with instance_create_layer(target.x,target.y - target.sprite_height,"Player",oCritHeader)
 					{

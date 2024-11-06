@@ -25,8 +25,8 @@
   "nineSlice": null,
   "origin": 9,
   "parent": {
-    "name": "Shots",
-    "path": "folders/Sprites/Weapons/Shots.yy",
+    "name": "Altfire",
+    "path": "folders/Sprites/Weapons/Shots/Player/Altfire.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

@@ -2,10 +2,12 @@
 // You can write your code in this editor
 
 //corpse
-corpse = "shooter"
+corpse = "generic"
 cSprite = sEShooterDie;
 big = false;
 diedFrom = noone;
+friendly = -1;
+target = noone;
 
 if instance_exists(oRoomDetect)
 {
@@ -25,15 +27,6 @@ att = 60;
 markerTime = 30;
 image_xscale = 1;
 
-enum states {
-patrol,
-alert,
-confused
-	
-}
-
-state = states.patrol;
-
 if(hasWeapon)
 {
 	mygun = instance_create_depth(x,y,depth-100,oWandEnemy);
@@ -41,7 +34,7 @@ if(hasWeapon)
 	{
 		owner = other.id;
 		countdownRate = 45;
-		setspeed = 18;
+		setspeed = 9;
 		viewRange = owner.viewRange;
 	}
 }
@@ -54,4 +47,100 @@ if (hasHead)
 }
 else myHead = noone;
 
+statePatrol = function()
+{
+	lineOfSight(false,viewRange);
+		
+	if instance_exists(target)
+	{
+		vsp = -3; 
+		state = stateAlert;
+		att = 60;
+		oSFX.whatwasthatnoise = true;
+		markerTime = 30;
+	}
+	
+	//dont walk off ledges
+	if (grounded) && (stayonledges) && (!place_meeting(x+hsp, y+1, oCollide))
+	{
+		hsp = -hsp;	
+		patrolTime = patrolReset;
+		image_xscale = -image_xscale;
+	}
+	vsp = vsp + grv;
+				
+	sprite_index = sEShooterWalk;
+	image_speed = 1;
+	
+	//vertical collision
+		
+	if (place_meeting(x,y+vsp,oCollide))
+	{
+		while (!place_meeting(x,y+sign(vsp),oCollide))
+		{
+			y += sign(vsp);
+		}
+		vsp = 0;
+		grounded = true;
+	}
+	y += vsp;
+	
+	//horizontal collision
+	if (place_meeting(x+hsp,y,oCollide))
+	{
+		while (!place_meeting(x+sign(hsp),y,oCollide))
+		{
+			x = x + sign(hsp)
+		}
+		hsp = -hsp;
+		patrolTime = patrolReset;
+		image_xscale = -image_xscale;
+	}
+	x = x + hsp;
+	
+	patrolTime--;
+	if (patrolTime == 0)
+	{
+		patrolTime = patrolReset;
+		hsp = -hsp;
+		image_xscale = -image_xscale;
+	}
+}
 
+stateAlert = function()
+{
+	walksp = 0;
+		
+	lineOfSight(false,viewRange);
+	if !instance_exists(target) 
+	{
+		att--;
+	}
+	else if (target.x < x){image_xscale = -1} else image_xscale = 1;
+	
+	if (att <= 0)
+	{	
+		mygun.countdown = irandom_range(30,60);
+		hsp = image_xscale; 
+		patrolTime = patrolReset;  
+		state = statePatrol;
+	}
+	
+	vsp = vsp + grv;
+	if (markerTime > 0){image_speed = 0; sprite_index = sEShooterWTF}else{image_speed = 1; sprite_index = sEShooter};
+	markerTime--;
+	
+	if (place_meeting(x,y+vsp,oCollide))
+	{
+		while (!place_meeting(x,y+sign(vsp),oCollide))
+		{
+			y += sign(vsp);
+		}
+		vsp = 0;
+		grounded = true;
+	}				
+	y += vsp;
+	
+}
+
+state = statePatrol

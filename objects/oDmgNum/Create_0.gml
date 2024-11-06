@@ -9,4 +9,4 @@ alpha = 0;
 dmgTextScale = 0.5;
 
 
-if (oMultiWeapon.cooldown > 4) {hitStop(1);}
+//if (oMultiWeapon.cooldown > 4) {hitStop(1);}

@@ -14,7 +14,10 @@
     "name": "Entities",
     "path": "folders/Objects/Entities.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "pEvery",
+    "path": "objects/pEvery/pEvery.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,

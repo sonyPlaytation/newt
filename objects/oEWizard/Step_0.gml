@@ -47,6 +47,29 @@ if instance_exists(oNewt) and !inactive
 {
 	selfCenter = y-(sprite_height/2);
 	if collision_line(x, selfCenter, oNewt.x, global.newtCenter, oCollide, 1, 1) {canShoot = false}else{canShoot = true};	
+	if place_meeting(x,y+1,oCollide){groundTime++}else{groundTime = 0};
+	
+	if groundTime >=30 
+	{
+		sprite_index = sEWizard
+	}
+	else if groundTime > 0
+	{
+		image_index = 1
+	}
+	else
+	{sprite_index = sEWizardAir};
+	
+	if (place_meeting(x,y+vsp,oCollide))
+	{
+		while (!place_meeting(x,y+sign(vsp),oCollide))
+		{
+			y += sign(vsp)
+		}
+		vsp = 0;
+	}
+
+y += vsp;
 	state();
 }
 

@@ -3,6 +3,7 @@
 
 //misc
 sinewave = 0;
+extraJumps = 0;
 
 //health
 hpMax = 3;

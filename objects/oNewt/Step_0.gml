@@ -100,7 +100,7 @@ if place_meeting(x,bbox_top-1,oCollide)
 	}
 }
 
-
+if godmode = true{iFrames = 10; flash = 1;}
 
 state();
 

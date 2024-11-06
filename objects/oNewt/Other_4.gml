@@ -3,10 +3,10 @@
 
 
 for (var i = 0; i < array_length(gArr); i++)
-	{
-		if !instance_exists(gArr[i]) {instance_create_layer(x,y,"GUI",gArr[i])};
+{
+	if !instance_exists(gArr[i]) {instance_create_layer(x,y,"GUI",gArr[i])};
 		
-	}
+}
 
 //overwrite old save
 if (file_exists(SAVEFILE)) file_delete(SAVEFILE);

@@ -1,7 +1,8 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-
+friendly = 1;
+target = noone;
 
 myDamage = instance_create_layer(x,y,"GUI",oDmgNum);
 with (myDamage)
@@ -104,38 +105,44 @@ stateFly = function()
 
 stateRicochet = function()
 {	
-	hitStop(1);
+	hitStop(3);
 	instance_destroy();
 	if instance_exists(oMarksCoin)
 	{
-		var _target = instance_nearest(x,y,oMarksCoin)
-		with (instance_create_layer(x,y,"Shots",oShotHitscan))
+		lineOfSight(false,-1,oMarksCoin);
+		if instance_exists(target)
 		{
-			headshot = true;
-			baseDMG = ceil(other.baseDMG * 1.25)*oInv.dmgMod;
-			hitSprite = oMultiWeapon.hitSprite;
-			col = c_yellow;
-			crit = false;
-			dir = point_direction(x,y,_target.x,_target.y)
-			spd = 0;
-			image_angle = dir;
+			with (instance_create_layer(x,y,"Shots",oShotHitscan))
+			{
+				headshot = true;
+				baseDMG = ceil(other.baseDMG * 1.25)*oInv.dmgMod;
+				hitSprite = oMultiWeapon.hitSprite;
+				col = c_yellow;
+				crit = false;
+				dir = point_direction(x,y,other.target.x,other.target.y)
+				spd = 0;
+				image_angle = dir;
+			}
 		}
 	}
 	else
 	{
-		if instance_exists(pEntity)
+		if instance_exists(pEnemy)
 		{
-			var _target = instance_nearest(x,y,pEntity)
-			with (instance_create_layer(x,y,"Shots",oShotHitscan))
+			lineOfSight(false);
+			if instance_exists(target)
 			{
-				headshot = true;
-				baseDMG = other.baseDMG*oInv.dmgMod;
-				hitSprite = oMultiWeapon.hitSprite;
-				col = c_yellow;
-				crit = false;
-				dir = point_direction(x,y,_target.x,_target.bbox_top)
-				spd = 0;
-				image_angle = dir;
+				with (instance_create_layer(x,y,"Shots",oShotHitscan))
+				{
+					headshot = true;
+					baseDMG = other.baseDMG*oInv.dmgMod;
+					hitSprite = oMultiWeapon.hitSprite;
+					col = c_yellow;
+					crit = false;
+					dir = point_direction(x,y,other.target.x,other.target.bbox_top)
+					spd = 0;
+					image_angle = dir;
+				}
 			}
 		}
 	}

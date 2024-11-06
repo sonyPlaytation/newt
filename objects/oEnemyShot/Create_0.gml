@@ -3,9 +3,9 @@
 
 
 outline_init();
-width = 4;
+width = 10;
 slim = 1;
-color = c_red
+color = #680E7E;
 
 dir = 0; 
 spd = 0;

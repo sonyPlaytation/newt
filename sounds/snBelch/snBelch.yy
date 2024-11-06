@@ -12,8 +12,8 @@
   "conversionMode": 0,
   "duration": 0.75,
   "parent": {
-    "name": "Player",
-    "path": "folders/Sounds/Player.yy",
+    "name": "Gross",
+    "path": "folders/Sounds/Player/Gross.yy",
   },
   "preload": false,
   "sampleRate": 44100,

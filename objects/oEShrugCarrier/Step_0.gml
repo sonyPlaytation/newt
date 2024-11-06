@@ -4,7 +4,21 @@
 //screen pause
 if screenPause() {exit;};
 
-
+if !instance_exists(myShooter) 
+{
+	with instance_create_depth(x,y,depth,oEShrugBat)
+	{
+		hp = other.hp;
+		maxHP = other.maxHP;
+		
+		myDamage = instance_create_layer(x,y,"GUI",oDmgNum);
+		with (myDamage)
+		{
+			owner = other.id		
+		}
+	}
+	instance_destroy();
+}
 
 if instance_exists(myRoom)
 {

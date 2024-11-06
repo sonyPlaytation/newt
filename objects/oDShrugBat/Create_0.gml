@@ -22,6 +22,16 @@ charred = false;
 
 expGive();
 
+if (instance_exists(oNewt))
+{
+	global.kills++;
+	global.killsthisroom++;
+	oGame.killtextscale = 1.5;
+	oGame.killscombo++;
+	oGame.combotimer = oGame.comboreset;
+}
+
+
 if (oInv.hpMissing != 0)
 {
 	if (irandom_range(1,100) <= dropRate + max(oInv.hpMissing,10))

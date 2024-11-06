@@ -58,6 +58,9 @@ if (place_meeting(x,y,pEntity)) or (place_meeting(x,y,oCollide)) or (place_meeti
 	instance_destroy();
 }
 
+if place_meeting(x,y,oCorpse)
+{with instance_place(x,y,oCorpse) charred = true};
+
 image_xscale = 2;
 image_yscale = 2;
 

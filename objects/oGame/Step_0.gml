@@ -21,24 +21,11 @@ if critProc = 0
 	global.critTotalDMG = 0;
 	critProc = critProcReset;
 }
+critProc--;		
 
-critProc--;
-
-//if global.hasCrit and (global.heldweapon.cancrit == 1)
-//		{
-//			oSFX.critshot = true;
-//			if (other.automatic == true) {crit = true; critTime = 60}
-//			else crit = true; critTime = 0;
-//		}else
-//		{
-//			crit = false;	
-//			critTime = 0;
-//		}
-		
 if global.critTimer != 0
 {
 	global.critTimer--;
 	oMultiWeapon.crit = true;
 }
-
 

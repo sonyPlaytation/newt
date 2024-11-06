@@ -34,3 +34,5 @@ fadeOutInstTime = array_create(0); //speed of fadeout
 floorBGM[0] = mTutorial;
 floorBGM[1] = mStage1;
 floorBGM[2] = mPhysical;
+
+floorBGM[444] = mTutorial;

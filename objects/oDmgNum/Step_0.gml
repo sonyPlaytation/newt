@@ -9,15 +9,15 @@ if alpha == 1
 
 alpha-= 0.01;
 
-if maxHP == 0 {maxHP = owner.maxHP};
 if instance_exists(owner)
 {
-x = owner.x;
-y = owner.y-sprite_height*1.5;
+	if maxHP == 0 {maxHP = owner.maxHP};
+	x = owner.x;
+	y = owner.y-sprite_height*1.5;
 }
 else
 {
-damage = min(damage,maxHP);
-x = x;
-y = y -0.3;	
+	damage = min(damage,maxHP);
+	x = x;
+	y = y -0.3;	
 }

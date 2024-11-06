@@ -84,8 +84,8 @@
   "nineSlice": null,
   "origin": 9,
   "parent": {
-    "name": "Weapons",
-    "path": "folders/Sprites/Weapons/Weapons.yy",
+    "name": "Melee",
+    "path": "folders/Sprites/Weapons/Weapons/Melee.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

@@ -6,4 +6,4 @@ if (oInv.hp <= 0)
 	playerDie();	
 }
 
-jumpMax = 1 + oGame.extraJumps;
+jumpMax = 1 + oInv.extraJumps;

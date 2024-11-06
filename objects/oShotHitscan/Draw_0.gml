@@ -8,7 +8,7 @@ if instance_exists(oNewt)
 {
 	if check = true
 	{
-		
+
 		repeat	(300)
 		{
 			visDist += sprite_get_width(hitSprite)/10;

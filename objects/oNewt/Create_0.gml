@@ -52,20 +52,29 @@ function squishNewt(xscale,yscale)
 	drawYscale = yscale;
 }
 
-
 global.newtCenter = y-((bbox_bottom-bbox_top)/2);
 
 controlsSetup();
 
 if !layer_exists("Weapon") layer_create(-1000, "Weapon");
+if !layer_exists("Shots") layer_create(-1001, "Shots");
 if !layer_exists("GUI") layer_create(-9999, "GUI");
 if !layer_exists("Player") layer_create(-999, "Player");
 
+mouthOpen = false;
+mouthTimer = 0;
+sprWalk = sNewtWalk;
+sprJump = sNewtAir;
+sprIdle = sNewtIdle;
 
 visdist = 0;
 depth = -999;
 
 indfrac = 0;
+godmode = false;
+
+nearestCorpse = noone;
+myCorpse = noone;
 
 sodaToss = false
 flash = 0;
@@ -98,7 +107,7 @@ vspMax = 20;
 vspWJump = -8;
 vspMaxWall = 4
 
-jumpMax = 1 + oGame.extraJumps;
+jumpMax = 1 + oInv.extraJumps;
 
 jumpCount = 0;
 jumpHoldTimer = 0;
@@ -130,7 +139,8 @@ hasControl = true; //can you move
 
 facingRight = 1;
 
-iFrames = 60;
+iFramesReset = 60;
+iFrames = iFramesReset;
 
 slime = 0;
 nearestWeapon = noone
@@ -162,7 +172,7 @@ gArr[3] = oExpBar;
 gArr[4] = oMultiWeapon;
 gArr[5] = oExclam;
 gArr[6] = oShotSniperLaser;
-gArr[7] = oMusicManager;
+//gArr[7] = oMusicManager;
 
 //player States
 stateFree = function()
@@ -176,6 +186,21 @@ stateFree = function()
 	
 	if (dashCount < 2) and onGround {dashCount = 2};
 	
+	if input_check_pressed("interact") or input_check_pressed("special")
+	{
+		//if !collision_circle(x,global.newtCenter,48,oCorpse,0,0) or !collision_circle(x,global.newtCenter,48,oWeaponPickup,0,0)
+		//{
+		//	oSFX.mouthpop = true;
+		//}
+		
+		squishNewt(1.05,0.95);	
+	}
+	
+	if input_check("interact") or input_check("special")
+	{
+		mouthOpen = true;	
+	}else mouthOpen = false;	
+	
 	rot = -hsp*1.5;
 	
 	//while standing resets
@@ -184,33 +209,6 @@ stateFree = function()
 	
 	//init if backwards or not 
 	var _backwards = false
-	
-	if instance_exists(oCorpse) and oInv.inBelly != 1
-	{
-		var nearestCorpse = instance_nearest(x,y,oCorpse);
-		draw_arrow(x,y,nearestCorpse.x,nearestCorpse.y,20);
-		if collision_circle(x,y,24,nearestCorpse,0,0) and (nearestCorpse.alpha != 0) and input_check_pressed("interact")
-		{
-			audio_play_sound(snGULP,750,false);
-			nearestCorpse.inBelly = true;
-			oInv.inBelly = nearestCorpse.id;
-		}
-	}
-	
-	if oInv.inBelly > 0 and input_check_pressed("special")
-	{
-		oInv.full = 0;
-		
-		audio_play_sound(snBurp,500,false);
-		with oInv.inBelly
-		{
-			x = oNewt.x;
-			y = global.newtCenter;
-			inBelly = false;
-			done = 0;
-		}
-		oInv.inBelly = noone;
-	}
 
 	//calculate horizontal movement
 	wallJumpDelay = max(wallJumpDelay-1,0);
@@ -540,7 +538,7 @@ stateFree = function()
 	if (onGround) jumpBuffer = 10;
 	
 	//walk sound
-	if (sprite_index = sNewtWalk) and (image_index == 1 or image_index == 4)
+	if (sprite_index = sprWalk) and (image_index == 1 or image_index == 4)
 	{
 		oSFX.walksplat = true;
 		repeat(2)
@@ -617,14 +615,14 @@ stateFree = function()
 		else
 		{
 			slime = 0;
-			sprite_index = sNewtAir;
+			sprite_index = sprJump;
 			image_speed = 0;
 			image_index = (vsp > 0);			
 		}
 	}
 	else
 	{
-		if (sprite_index == sNewtAir) 
+		if (sprite_index == sprJump) 
 		{
 			drawYscale = 0.75;
 			drawXscale = 1.25;
@@ -642,10 +640,10 @@ stateFree = function()
 	
 		if (hsp != 0) 
 		{
-			sprite_index = sNewtWalk;
+			sprite_index = sprWalk;
 		}else 
 		{
-			sprite_index = sNewtIdle;
+			sprite_index = sprIdle;
 			image_index += indfrac;
 			indfrac = frac(image_index);
 			image_index -= indfrac;	
@@ -659,7 +657,7 @@ stateFree = function()
 		sprite_index = sNewtSquish;
 	}
 	
-	if sprite_index == sNewtIdle and image_index = 21
+	if sprite_index == sprIdle and image_index = 21
 	{
 		squishNewt(1.05,0.95);
 	}
@@ -700,6 +698,38 @@ stateFree = function()
 		oSFX.wooshBasic = true;
 		state = stateDash;
 		
+	}
+	
+	if instance_exists(oCorpse) and !oInv.full and mouthTimer < 1
+	{
+		nearestCorpse = instance_nearest(x,y,oCorpse);
+		
+		if collision_circle(x,y,48,nearestCorpse,0,0) and (nearestCorpse.alpha != 0) and !nearestCorpse.big and input_check_pressed("interact")
+		{
+			
+			squishNewt(1.25,0.75);
+			audio_play_sound(snGULP,750,false);
+			state = stateGulp;
+		}
+	}
+	
+	if oInv.inBelly > 0 and input_check_pressed("special")
+	{
+		oInv.full = 0;
+		
+		audio_play_sound(snBurp,500,false);
+		with oInv.inBelly
+		{
+			hsp = 5*oNewt.facingRight;
+			image_xscale = oNewt.facingRight*size;
+			image_yscale = image_yscale*size;
+			vsp = -4;
+			x = oNewt.x;
+			y = oNewt.y-36;
+			inBelly = false;
+			done = 0;
+		}
+		oInv.inBelly = noone;
 	}
 }
 
@@ -1286,6 +1316,19 @@ stateDash = function()
 		}
 	}
 	
+}
+
+stateGulp = function()
+{
+	mouthTimer = 10;
+	sprite_index = sNewtFlap;
+	
+	
+	if nearestCorpse.id.fresh > 0 
+	{
+		oInv.inBelly = nearestCorpse.id;
+		nearestCorpse.inBelly = true;
+	}else state = stateFree
 }
 
 state = stateFree;

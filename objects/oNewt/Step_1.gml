@@ -12,3 +12,21 @@ if sodaToss = true
 			}
 	sodaToss = false;
 }
+
+//mout open
+
+if mouthOpen
+{
+	sprWalk = sNewtWalkM;
+	sprJump = sNewtAirM;
+	sprIdle = sNewtIdleM;
+
+}
+else
+{
+	sprWalk = sNewtWalk;
+	sprJump = sNewtAir;
+	sprIdle = sNewtIdle;
+}
+
+if mouthTimer > 0 {mouthTimer--;};

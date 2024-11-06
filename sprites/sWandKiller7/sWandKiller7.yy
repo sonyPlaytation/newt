@@ -49,8 +49,8 @@
   },
   "origin": 9,
   "parent": {
-    "name": "Weapons",
-    "path": "folders/Sprites/Weapons/Weapons.yy",
+    "name": "Guns",
+    "path": "folders/Sprites/Weapons/Weapons/Guns.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

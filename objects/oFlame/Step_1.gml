@@ -20,7 +20,7 @@ if screenPause() {exit;};
 if input_check("shoot"){oSFX.flamethrowerloop = true} else oSFX.flamethrowerloop = false;
 
 image_xscale *= 1.10;
-image_yscale = image_xscale;;
+image_yscale = image_xscale;
 
 xspd = lengthdir_x(spd, dir);
 yspd = lengthdir_y(spd, dir);
@@ -38,16 +38,14 @@ repeat(ceil(image_xscale/4))
 	_x = x + random_range(-7,7); 
 	_y = y + random_range(-7,7); 
 	
-	with instance_create_depth(_x,_y,depth,oFlameParticle)
+	with instance_create_layer(_x,_y,"Shots",oFlameParticle)
 	{
 		owner = other.id;
 		dir = owner.image_angle-180;
 		
 		image_xscale = owner.image_xscale/3;
 		image_yscale = image_xscale;
-		
 	}
-	
 };
 
 if (place_meeting(x,y,pEntity)) and instance_exists(oNewt)
@@ -84,7 +82,7 @@ if (place_meeting(x,y,pEntity)) and instance_exists(oNewt)
 			//if rolled a crit
 			if (other.crit == true)
 			{
-				myDamage.dmgTextScale = 1;
+				if !noDMG {myDamage.dmgTextScale = 1};
 				
 				with instance_create_layer(target.x,target.y - target.sprite_height,"Player",oCritHeader)
 				{
@@ -96,7 +94,6 @@ if (place_meeting(x,y,pEntity)) and instance_exists(oNewt)
 			hitfrom = other.direction;			
 		}
 	}
-	
 	outline_end();
 }
 
@@ -107,4 +104,5 @@ if (place_meeting(x,y,oCollide)) && (image_index != 0)
 	outline_end();
 }
 
-
+if place_meeting(x,y,oCorpse)
+{with instance_place(x,y,oCorpse) charred = true};

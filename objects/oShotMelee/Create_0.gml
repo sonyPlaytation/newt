@@ -1,8 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-
-
 alarm[0] = 10;
 
 hit = false;
@@ -13,10 +11,50 @@ sprH = 60;
 image_xscale = sprW/2;
 image_yscale = sprH/2;
 
-_hs = max (0, oMultiWeapon.cooldown-2)
+_hs = max (0, oMultiWeapon.cooldown/4)
+click = 0;
 
 stateSwat = function()
 {
+	//projectile Swat
+	if (place_meeting(x,y,oEnemyShot))
+	{	
+		var _target = (instance_place(x,y,oEnemyShot));
+		if _target.friendly != 1
+		{
+			with _target
+			{
+				spd *= 2;
+				if !friendly {oSFX.baseballcrack = true;}
+				friendly = true;
+				parried = false;
+				image_angle = other.image_angle;
+				dir = point_direction(x,y,mouse_x,mouse_y);
+			}
+			hitStop(_hs);
+			instance_destroy();
+		}
+	}
+	
+		//hitting a baseball
+	if (place_meeting(x,y,oBaseball))
+	{		
+		
+		with(instance_place(x,y,oBaseball))
+		{
+			if state == stateToss
+			{
+				oSFX.baseballcrack = true;
+				state = stateFly;
+				grv = 0;
+				vsp = lengthdir_y (10,other.image_angle);
+				dir = other.image_angle;
+			}
+		}
+		hitStop(_hs);
+		instance_destroy();
+	}
+	
 	//hitting an enemy
 	if (place_meeting(x,y,pEntity))
 	{
@@ -46,49 +84,74 @@ stateSwat = function()
 		instance_destroy();
 	}
 	
-	//projectile Swat
-	if (place_meeting(x,y,oEnemyShot))
-	{	
-		with(instance_place(x,y,oEnemyShot))
-		{
-			x = other.x;
-			y = other.y;
-			if !friendly {oSFX.baseballcrack = true;}
-			friendly = true;
-			parried = false;
-			image_angle = other.image_angle;
-			dir = image_angle;
-		}
-		hitStop(_hs);
-		instance_destroy();
-	}
-	
-	//hitting a baseball
-	if (place_meeting(x,y,oBaseball))
-	{		
-		
-		with(instance_place(x,y,oBaseball))
-		{
-			if state == stateToss
-			{
-				oSFX.baseballcrack = true;
-				state = stateFly;
-				grv = 0;
-				vsp = lengthdir_y (10,other.image_angle);
-				dir = other.image_angle;
-			}
-		}
-		hitStop(_hs);
-		instance_destroy();
-	}
 }
 
 stateParry = function()
 {
+	//ultrakill parry
+	if (place_meeting(x,y,oEnemyShot))
+	{	
+		oSFX.parry = true;
+		with(instance_place(x,y,oEnemyShot))
+		{
+			x = other.x;
+			y = other.y;
+		
+			friendly = true;
+			parried = true;
+			image_angle = other.image_angle;
+			dir = image_angle;
+			spd = 23;
+		}
+		hitStop(15);
+	}
+	
+
+	
+	//shrug bat corpse reflect
+	if (place_meeting(x,y,oCorpse))
+	{	
+		var _corpse = instance_place(x,y,oCorpse);
+		if _corpse.corpse == "bat"
+		{	
+			oSFX.parry = true;
+			global.corpseSprite = sEShrugBatDie;
+			with instance_create_depth(x, y-20, _corpse.depth,oCorpse)
+			{
+				inactive = false;
+				diedFrom = noone;
+				corpse = "batparry";
+				cSprite = sEShrugBatDie;
+				big = false;
+			}
+			instance_destroy(_corpse);	
+		}
+	}
+	
+	// shrug bat swoop
+	if place_meeting(x,y,oEShrugBat)
+	{
+		var _target = instance_place(x,y,oEShrugBat)
+		if (_target.state == _target.stateSwoop)
+		{	
+			oSFX.parry = true;
+			global.corpseSprite = sEShrugBatDie;
+			with instance_create_depth(x, y-20, _target.depth,oCorpse)
+			{
+				inactive = false;
+				diedFrom = noone;
+				corpse = "batparry";
+				cSprite = sEShrugBatDie;
+				big = false;
+			}
+			instance_destroy(_target);	
+		}
+	}
+	
 	//hitting an enemy
 	if (place_meeting(x,y,pEntity))
 	{
-		var target = other.id;
+		var _target = other.id;
 		with(instance_place(x,y,pEntity))
 		{
 			baseDMG = ceil(mean(oMultiWeapon.damage + abs(oNewt.hsp/5),oMultiWeapon.damage*1.5))
@@ -112,59 +175,50 @@ stateParry = function()
 		hitStop(2);
 		instance_destroy();
 	}
-	
-	//ultrakill parry
-	if (place_meeting(x,y,oEnemyShot))
-	{	
-		hitStop(15);
-		oSFX.parry = true;
-	
-		with(instance_place(x,y,oEnemyShot))
-		{
-			x = other.x;
-			y = other.y;
-		
-			friendly = true;
-			parried = true;
-			image_angle = other.image_angle;
-			dir = image_angle;
-			spd *= 2;
-		}
-	}
-	
-	//shrug bat corpse reflect
-	if (place_meeting(x,y,oDShrugBat))
-	{	
-		instance_create_depth(0,0,0,oHstop);
-	
-		oSFX.parry = true;
-	
-		with(instance_place(x,y,oDShrugBat))
-		{
-			grv = 0;
-			dir = other.image_angle;
-			vsp = -6;
-			hsp = lengthdir_x(8 * abs(oNewt.hsp), other.image_angle);
-			imgRot = irandom_range(-3, 3);
-		}
-		instance_destroy();
-	}
-	
-	// shrug bat swoop
-	if place_meeting(x,y,oEShrugBat)
-	{
-		var target = other.id;
-		if (target.state = batStates.swoop)
-		{	
-			instance_create_depth(other.x, other.y, other.depth,oDShrugBat);
-			instance_destroy(other);	
-		}
-	}
-	
 }
 
 stateSlice = function()
 {
+	
+		//hitting an enemy
+	if (place_meeting(x,y,pEntity))
+	{
+		with(instance_place(x,y,pEntity))
+		{
+			diedFrom = "overkill";
+			
+			var target = other.id;
+			
+			baseDMG = ceil(mean(oMultiWeapon.damage + abs(oNewt.hsp/5),oMultiWeapon.damage*1.5))
+			finalDMG = baseDMG*oInv.dmgMod;
+			hp -= finalDMG
+			
+			if hp <=0
+			{
+				oNewt.dashCount++;
+			}
+			
+			if (!noDMG)
+			{
+				myDamage.damage += finalDMG;
+				myDamage.alpha = 1;
+				myDamage.dmgTextScale = 0.75
+			}
+			flash = 3;	
+			hitfrom = other.direction;
+		}
+		hitStop(other._hs);
+		instance_destroy();
+	}
+	
+	//destroy bullet
+	if place_meeting(x,y,oEnemyShot)
+	{
+		var _ammo = irandom(5);
+		with(instance_place(x,y,oEnemyShot)){instance_destroy()};
+		oMultiWeapon.ammo[_ammo]++;
+	};
+	
 }
 
 stateDestroy = function()
@@ -207,11 +261,111 @@ stateDestroy = function()
 	};
 }
 
+stateWrench = function()
+{
+	if click = 0 //left click
+	{
+		//sentry heal
+		if place_meeting(x,y,oSentryHead)
+		{
+			var _sentry = instance_place(x,y,oSentryHead)
+			if oMultiWeapon.ammo[0] >= 10 and ((_sentry.hp < _sentry.maxHP) or (_sentry.ammo < _sentry.maxAmmo))
+			{
+				audio_play_sound(choose(snWrenchBuild1,snWrenchBuild2),600,false);
+				if (_sentry.hp < _sentry.maxHP) and oMultiWeapon.ammo[0] >= 10
+				{
+					with _sentry
+					{
+						hp = min(maxHP, hp+2);
+					}
+					oMultiWeapon.ammo[0] -= 10;
+				}
+				
+				if (_sentry.ammo < _sentry.maxAmmo) and oMultiWeapon.ammo[0] >= 10
+				{
+					with _sentry
+					{
+						ammo = min(maxAmmo, ammo+5);
+					}
+					oMultiWeapon.ammo[0] -= 10;	
+				}
+			}
+			else
+			{
+				audio_play_sound(snWrenchFail,450,false);
+			}
+			instance_destroy();
+		}
+		
+		//hitting an enemy
+		if (place_meeting(x,y,pEntity))
+		{
+			with(instance_place(x,y,pEntity))
+			{
+				diedFrom = "standard";
+			
+				var target = other.id;
+			
+				baseDMG = ceil(mean(oMultiWeapon.damage + abs(oNewt.hsp/5),oMultiWeapon.damage*1.5))
+				finalDMG = baseDMG*oInv.dmgMod;
+				hp -= finalDMG
+			
+				if hp <=0
+				{
+					oNewt.dashCount++;
+				}
+			
+				if (!noDMG)
+				{
+					myDamage.damage += finalDMG;
+					myDamage.alpha = 1;
+					myDamage.dmgTextScale = 0.75
+				}
+				flash = 3;	
+				hitfrom = other.direction;
+			}
+			hitStop(other._hs);
+			instance_destroy();
+		}
+		
+		//destroy bullet
+		if place_meeting(x,y,oEnemyShot)
+		{
+			with(instance_place(x,y,oEnemyShot)){instance_destroy()};
+			oMultiWeapon.ammo[0] += 5;
+		};	
+	}
+	else if click = 1 //right click
+	{
+		if place_meeting(x,y,oSentryHead)
+		{
+			var _sentry = instance_place(x,y,oSentryHead)
+			oMultiWeapon.ammo[0] += 100;
+			with instance_place(x,y,_sentry)
+			{
+				instance_destroy();
+			}
+			instance_destroy();
+		}
+	}
+}
+
+swatTrail = function()
+{
+	with instance_create_depth(x,y,depth,oSwingTrail)
+	{
+		owner = other.id;
+
+	}
+}
+
+swatTrail();
 
 stt[0] = stateSwat;
 stt[1] = stateParry;
 stt[2] = stateSlice;
 stt[3] = stateDestroy;
+stt[4] = stateWrench;
 
 state = stt[oMultiWeapon.meleeState];
 

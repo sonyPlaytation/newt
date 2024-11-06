@@ -2,6 +2,14 @@
 // Inherit the parent event
 event_inherited();
 
+diedFrom = noone;
+corpse = "wizard";
+cSprite = sEWizardDie;
+big = false;
+
+
+groundTime = 30;
+
 selfCenter = 0;
 
 shootReset = 270;
@@ -12,6 +20,9 @@ teleTimer = teleReset
 
 target[0] = noone;
 targSwap = noone;
+
+vsp = 0;
+grv = 0.3;
 
 oldX = x;
 oldY = y;
@@ -35,7 +46,7 @@ stateEngage = function()
 	
 	if shootTimer = 0
 	{
-		myShot = instance_create(x,selfCenter,oEWizardFireball);
+		myShot = instance_create_layer(x,selfCenter,"Shots",oEWizardFireball);
 		with myShot
 		{
 			owner = other.id;
@@ -89,11 +100,10 @@ stateTele = function()
 		x = newX;
 		y = newY;
 		teleUsed = true;
-		draw_line(oldX,oldY,newX,newY);
 		ds_priority_destroy(_target);
 		shootTimer = 30;
+		vsp -= 3;
 		state = stateIdle;
-		
 	}
 	else
 	{
@@ -119,6 +129,7 @@ stateTele = function()
 			draw_line(oldX,oldY,newX,newY);
 			teleUsed = true;
 			shootTimer = 30;
+			vsp -= 3;
 			state = stateIdle;
 		}
 	}

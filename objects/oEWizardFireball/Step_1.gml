@@ -14,19 +14,20 @@ yspd = lengthdir_y(spd, dir);
 x += xspd;
 y += yspd;
 
-with instance_create_depth(x,y,depth+10,oFireballTrail)
+with instance_create_layer(x,y,"Shots",oFireballTrail)
 {
 	owner = other.id;
 }
 
-if !friendly and (place_meeting(x,y,oNewt))
+if !friendly and (place_meeting(x,y,pAlly))
 {
-	homingtarget = oNewt;
-	with(instance_place(x,y,oNewt))
+	var _hitGuy = instance_place(x,y,pAlly);
+	homingtarget = instance_nearest(x,y,pAlly);
+	with(_hitGuy)
 	{
-		playerHit(other.damage);
+		playerHit(1,_hitGuy);
 	}
-	if (oNewt.iFrames <= 0) {instance_destroy();} //dont destroy projectile if invincible
+	if (_hitGuy.iFrames <= 0) {instance_destroy();} //dont destroy projectile if invincible
 }
 
 if friendly 
@@ -35,15 +36,9 @@ if friendly
 	image_xscale = 3;
 	if parried and ((place_meeting(x,y,pEntity)) or (place_meeting(x,y,oCollide)))
 	{
-		spd = 12;
+		image_xscale = 5;
+		with (instance_create_layer(x,y,"Shots",oExplosion)) {friendly = 0;baseDMG = 90*other.damage;sprite = sExplosionBlue};
 		instance_destroy();
-		with instance_create_depth(x,y,-500,oExplosion)
-		{
-			diedFrom = "overkill";
-			friendly = 1;
-			baseDMG = 90*other.damage;	
-		}	
-		
 	}
 	else if parried = false
 	{	

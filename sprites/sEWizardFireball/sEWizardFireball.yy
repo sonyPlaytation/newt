@@ -30,8 +30,8 @@
   "nineSlice": null,
   "origin": 9,
   "parent": {
-    "name": "Shots",
-    "path": "folders/Sprites/Weapons/Shots.yy",
+    "name": "Enemy",
+    "path": "folders/Sprites/Weapons/Shots/Enemy.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

@@ -48,8 +48,8 @@
   },
   "origin": 4,
   "parent": {
-    "name": "Shots",
-    "path": "folders/Sprites/Weapons/Shots.yy",
+    "name": "Player",
+    "path": "folders/Sprites/Weapons/Shots/Player.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {
