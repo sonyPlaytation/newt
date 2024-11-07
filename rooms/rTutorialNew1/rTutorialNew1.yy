@@ -15,7 +15,6 @@
     {"name":"inst_1AC5C337_3","path":"rooms/rTutorialNew1/rTutorialNew1.yy",},
     {"name":"inst_58F432F0_3","path":"rooms/rTutorialNew1/rTutorialNew1.yy",},
     {"name":"inst_61DBD9E1","path":"rooms/rTutorialNew1/rTutorialNew1.yy",},
-    {"name":"inst_48ADFAC4","path":"rooms/rTutorialNew1/rTutorialNew1.yy",},
   ],
   "isDnd": false,
   "layers": [
@@ -30,12 +29,12 @@
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_61DBD9E1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"oSign","path":"objects/oSign/oSign.yy",},"properties":[
             {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"oSign","path":"objects/oSign/oSign.yy",},"propertyId":{"name":"text","path":"objects/oSign/oSign.yy",},"value":"\"Welcome to the Tutorial!\\nIt's pretty short but should teach you the basics.\\nI highly recommend you read the readme included with your download\\nbecause these signs are not a convenient way to convey information.\"",},
           ],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":480.0,"y":456.0,},
-        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_48ADFAC4","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"oCollide","path":"objects/oCollide/oCollide.yy",},"properties":[],"rotation":0.0,"scaleX":36.0,"scaleY":14.0,"x":48.0,"y":48.0,},
       ],"layers":[],"properties":[],"userdefinedDepth":false,"visible":true,},
     {"resourceType":"GMRTileLayer","resourceVersion":"1.1","name":"Tiles","depth":100,"effectEnabled":true,"effectType":null,"gridX":24,"gridY":24,"hierarchyFrozen":false,"inheritLayerDepth":true,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":false,"layers":[],"properties":[],"tiles":{"SerialiseHeight":23,"SerialiseWidth":40,"TileCompressedData":[
--41,0,-38,28,-2,0,-38,28,-2,0,-38,28,-2,0,-38,28,-2,0,-38,28,-2,0,-38,28,-2,0,-38,28,-2,0,-38,28,-2,0,-38,28,-2,0,-38,28,
--2,0,-38,28,-2,0,-38,28,-2,0,-38,28,-2,0,-38,28,-2,0,-38,28,-2,0,1,28,-36,0,4,28,0,0,28,-36,0,4,28,0,0,28,-36,0,
-4,28,0,0,28,-36,0,4,28,0,0,28,-36,0,3,28,0,0,-38,28,-41,0,],"TileDataFormat":1,},"tilesetId":{"name":"tFloorOne","path":"tilesets/tFloorOne/tFloorOne.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
+-41,0,-38,28,-2,0,1,28,-36,0,4,28,0,0,28,-36,0,4,28,0,0,28,-36,0,4,28,0,0,28,-36,0,4,28,0,0,28,-36,0,4,28,
+0,0,28,-36,0,4,28,0,0,28,-36,0,4,28,0,0,28,-36,0,4,28,0,0,28,-36,0,4,28,0,0,28,-36,0,4,28,0,0,28,-36,0,
+4,28,0,0,28,-36,0,4,28,0,0,28,-36,0,4,28,0,0,28,-36,0,4,28,0,0,28,-36,0,4,28,0,0,28,-36,0,4,28,0,0,28,
+-36,0,4,28,0,0,28,-36,0,4,28,0,0,28,-36,0,3,28,0,0,-38,28,-41,0,],"TileDataFormat":1,},"tilesetId":{"name":"tFloorOne","path":"tilesets/tFloorOne/tFloorOne.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
     {"resourceType":"GMRInstanceLayer","resourceVersion":"1.0","name":"Collide","depth":200,"effectEnabled":true,"effectType":null,"gridX":24,"gridY":24,"hierarchyFrozen":false,"inheritLayerDepth":true,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":false,"instances":[
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_59EB8ECF_3","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":true,"inheritedItemId":{"name":"inst_59EB8ECF","path":"rooms/rParent/rParent.yy",},"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"oCollide","path":"objects/oCollide/oCollide.yy",},"properties":[],"rotation":0.0,"scaleX":38.0,"scaleY":1.0,"x":24.0,"y":24.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_6B7E873E_4","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":true,"inheritedItemId":{"name":"inst_6B7E873E","path":"rooms/rParent/rParent.yy",},"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"oCollide","path":"objects/oCollide/oCollide.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":20.0,"x":24.0,"y":48.0,},

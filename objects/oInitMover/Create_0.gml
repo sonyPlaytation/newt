@@ -9,11 +9,11 @@ if global.lvlFloor == 0 //Tutorial Start
 }
 else if global.lvlFloor == 444 //Whats New
 {
-	room_goto(rTutorialNew4);
+	room_goto(rTutorialNew6);
 }
 else //Main Game
 {
-	room_goto(rTest3);
+	room_goto(rTest4);
 }
 
 

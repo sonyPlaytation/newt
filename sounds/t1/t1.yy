@@ -18,6 +18,6 @@
   "preload": false,
   "sampleRate": 44100,
   "soundFile": "t1.wav",
-  "type": 0,
+  "type": 1,
   "volume": 1.0,
 }

@@ -75,13 +75,14 @@ stateTele = function()
 		for (var i = 0; i < instance_number(pEntity); ++i;)
 		{
 			var _currGoon = instance_find(pEntity,i);
-			if _currGoon = oEWizard continue;
-			var _goonRoom = _currGoon.myRoom
-			
-			if _goonRoom == myRoom
+			if (_currGoon != oEWizard)
 			{
-				var _dist = point_distance(x,y,_currGoon.x,_currGoon.y);
-				ds_priority_add(_target,_currGoon,_dist);
+				var _goonRoom = _currGoon.myRoom
+				if _goonRoom == self.myRoom
+				{
+					var _dist = point_distance(x,y,_currGoon.x,_currGoon.y);
+					ds_priority_add(_target,_currGoon,_dist);
+				}
 			}
 		}
 		targSwap = ds_priority_find_max(_target);
@@ -92,7 +93,7 @@ stateTele = function()
 		with (targSwap)
 		{
 			x = other.oldX;
-			y = other.oldY-4;
+			y = other.oldY-10;
 		}
 		repeat (20) with instance_create_depth(newX,newY-20,depth-20,oDust){size = 2; spd = 4;}
 		repeat (20) with instance_create_depth(oldX,oldY-20,depth-20,oDust){size = 2; spd = 4;}
@@ -107,9 +108,7 @@ stateTele = function()
 	}
 	else
 	{
-		targSwap = instance_furthest(x,y,pEntity)
-		
-		image_xscale = lerp(image_xscale,0,0.05);
+		targSwap = instance_furthest(x,y,pEvery)
 		
 		if image_xscale < 0.1
 		{
@@ -119,7 +118,7 @@ stateTele = function()
 			with (targSwap)
 			{
 				x = other.oldX;
-				y = other.oldY-4;
+				y = other.oldY-10;
 			}
 			repeat (20) with instance_create_depth(newX,newY-20,depth-20,oDust){size = 2; spd = 4;}
 			repeat (20) with instance_create_depth(oldX,oldY-20,depth-20,oDust){size = 2; spd = 4;}

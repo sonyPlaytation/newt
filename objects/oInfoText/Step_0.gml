@@ -12,11 +12,11 @@ if instance_exists(owner)
 	}
 	
 	//Name
-	var _name = "[c_yellow]"+name+"[c_white][fMecha]";
+	var _name = "[c_yellow]"+name;
 	
 	//Line One
 	if bulletnumber > 1 {var _bulletnumber = "x"+string(bulletnumber)}else var _bulletnumber = "";
-	var _damage = "[iDamage]"+string(damage)+_bulletnumber;
+	var _damage = "[c_white][fMecha][iDamage]"+string(damage)+_bulletnumber;
 	var _firerate = "[iFireRate]"+string(60/cooldown);
 	
 	var _lineone = string_join("[iDivider]",_damage,_firerate);
@@ -47,15 +47,16 @@ if instance_exists(owner)
 	{
 		y = owner.ystart-29;
 		depth = owner.depth-1;
-		
 	}
 	
 	letters += spd;
-	text_current = string_join("\n",_name,_lineone,_linetwo,_icons);
+	text_head = _name;
+	text_body = string_join("\n",_lineone,_linetwo,_icons);
+	var text_full = text_head + text_body;
 	scribble_anim_wave(5,1,0.05)
-	if owner.randomWand {text_current = "[scale,2][fMecha][rainbow][wave]???"}
+	if owner.randomWand{text_head = "[scale,2][fMecha][rainbow][wave]???"; text_body = "";}
 
-	h = string_height_scribble(text_current);
-	w = string_width_scribble(text_current);
+	h = string_height_scribble(text_full);
+	w = max(string_width_scribble(text_head),string_width_scribble(text_body));
 
 }else instance_destroy();

@@ -85,13 +85,6 @@ if friendly
 
 if (place_meeting(x,y,oCollide)) && (image_index != 0) 
 {
-	repeat(irandom_range(2,5))
-	{
-		with instance_create_depth(x,y,depth,oDust)
-		{
-			size = random_range(0.25,0.65);
-		}
-	}
 	instance_destroy()
 };
 
@@ -102,7 +95,7 @@ if (place_meeting(x,y,oVase)) && (image_index != 0)
 	{
 		with instance_create_depth(x,y,depth,oDust)
 		{
-			size = random_range(0.25,0.65);
+			size = random_range(1,1.25);
 		}
 	}
 	instance_destroy()

@@ -807,6 +807,7 @@
     {"id":{"name":"mStage1","path":"sounds/mStage1/mStage1.yy",},},
     {"id":{"name":"draw_trail","path":"scripts/draw_trail/draw_trail.yy",},},
     {"id":{"name":"input_mouse_check","path":"scripts/input_mouse_check/input_mouse_check.yy",},},
+    {"id":{"name":"rTutorialNew6","path":"rooms/rTutorialNew6/rTutorialNew6.yy",},},
     {"id":{"name":"snPop3","path":"sounds/snPop3/snPop3.yy",},},
     {"id":{"name":"oShotFireball","path":"objects/oShotFireball/oShotFireball.yy",},},
     {"id":{"name":"scribble_anim_shake","path":"scripts/scribble_anim_shake/scribble_anim_shake.yy",},},
@@ -1244,6 +1245,7 @@
     {"roomId":{"name":"rTutorialNew1","path":"rooms/rTutorialNew1/rTutorialNew1.yy",},},
     {"roomId":{"name":"rTest5","path":"rooms/rTest5/rTest5.yy",},},
     {"roomId":{"name":"rDemoEndScreen","path":"rooms/rDemoEndScreen/rDemoEndScreen.yy",},},
+    {"roomId":{"name":"rTutorialNew6","path":"rooms/rTutorialNew6/rTutorialNew6.yy",},},
   ],
   "templateType": null,
   "TextureGroups": [

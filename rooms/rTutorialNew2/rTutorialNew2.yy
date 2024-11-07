@@ -12,12 +12,12 @@
     {"name":"inst_6D1E3260_1","path":"rooms/rTutorialNew2/rTutorialNew2.yy",},
     {"name":"inst_39B5FFE7_1","path":"rooms/rTutorialNew2/rTutorialNew2.yy",},
     {"name":"inst_1AC5C337_1","path":"rooms/rTutorialNew2/rTutorialNew2.yy",},
-    {"name":"inst_58F432F0_1","path":"rooms/rTutorialNew2/rTutorialNew2.yy",},
     {"name":"inst_2024DA11","path":"rooms/rTutorialNew2/rTutorialNew2.yy",},
     {"name":"inst_1E55B23C","path":"rooms/rTutorialNew2/rTutorialNew2.yy",},
     {"name":"inst_34AD63B3","path":"rooms/rTutorialNew2/rTutorialNew2.yy",},
     {"name":"inst_5D11D394","path":"rooms/rTutorialNew2/rTutorialNew2.yy",},
     {"name":"inst_62B714F2","path":"rooms/rTutorialNew2/rTutorialNew2.yy",},
+    {"name":"inst_2E228C23","path":"rooms/rTutorialNew2/rTutorialNew2.yy",},
   ],
   "isDnd": false,
   "layers": [
@@ -29,12 +29,12 @@
       ],"layers":[],"properties":[],"userdefinedDepth":false,"visible":true,},
     {"resourceType":"GMRInstanceLayer","resourceVersion":"1.0","name":"Interact","depth":100,"effectEnabled":true,"effectType":null,"gridX":24,"gridY":24,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_1AC5C337_1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"oLockDoor","path":"objects/oLockDoor/oLockDoor.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":288.0,"y":648.0,},
-        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_58F432F0_1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"oExitDoor","path":"objects/oExitDoor/oExitDoor.yy",},"properties":[
-            {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"oExitDoor","path":"objects/oExitDoor/oExitDoor.yy",},"propertyId":{"name":"target","path":"objects/oExitDoor/oExitDoor.yy",},"value":"rTutorialNew3",},
-          ],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":672.0,"y":264.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_62B714F2","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"oSign","path":"objects/oSign/oSign.yy",},"properties":[
             {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"oSign","path":"objects/oSign/oSign.yy",},"propertyId":{"name":"text","path":"objects/oSign/oSign.yy",},"value":"\"Drink this awesome soda\\nto instantly learn how to double jump.\\n This first one is on the house,\\nbut the rest will cost you.\"",},
           ],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":408.0,"y":600.0,},
+        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_2E228C23","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"oExitDoor","path":"objects/oExitDoor/oExitDoor.yy",},"properties":[
+            {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"oExitDoor","path":"objects/oExitDoor/oExitDoor.yy",},"propertyId":{"name":"target","path":"objects/oExitDoor/oExitDoor.yy",},"value":"rTutorialNew3",},
+          ],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":672.0,"y":264.0,},
       ],"layers":[],"properties":[],"userdefinedDepth":false,"visible":true,},
     {"resourceType":"GMRTileLayer","resourceVersion":"1.1","name":"Tiles","depth":100,"effectEnabled":true,"effectType":null,"gridX":24,"gridY":24,"hierarchyFrozen":false,"inheritLayerDepth":true,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":false,"layers":[],"properties":[],"tiles":{"SerialiseHeight":32,"SerialiseWidth":40,"TileCompressedData":[
 -209,0,-22,28,-18,0,1,28,-20,0,1,28,-18,0,1,28,-20,0,1,28,-18,0,1,28,-20,0,1,28,-18,0,1,28,-20,0,1,28,-18,0,1,28,

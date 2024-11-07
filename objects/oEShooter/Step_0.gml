@@ -13,6 +13,7 @@ if instance_exists(myRoom)
 if instance_exists(pAlly) and !inactive
 {
 
+
 	state();	
 	
 	//switch (state)

@@ -26,7 +26,7 @@ if  oNewt.hasControl and altfire != -1 and input_check_pressed("altfire") and (d
 							image_xscale = oNewt.facingRight;
 							
 							x = oNewt.x;
-							y = oNewt.y-36;
+							y = oNewt.y-10;
 						}
 						ammo[0]-=100;
 					}
@@ -61,7 +61,6 @@ if  oNewt.hasControl and altfire != -1 and input_check_pressed("altfire") and (d
 			
 			//alt fire grenade
 			case "contactGrenade":
-			
 				if ammo[3] >= 10
 				{
 					ammo[3] -= 10;
@@ -69,7 +68,6 @@ if  oNewt.hasControl and altfire != -1 and input_check_pressed("altfire") and (d
 					with (instance_create_layer(x+lengthdir_x(oMultiWeapon.length,image_angle),(y+lengthdir_y(oMultiWeapon.length,image_angle)),"Shots",oContactGrenade))
 					{
 						audio_play_sound(snShotHLGren,999,false)
-					
 						dir = other.image_angle;
 						image_angle = dir;
 					}
@@ -88,6 +86,7 @@ if  oNewt.hasControl and altfire != -1 and input_check_pressed("altfire") and (d
 				
 				with (instance_create_layer(x,y,"Shots",oShotMelee))
 				{
+					crit = false;
 					image_xscale = 30;
 					direction = other.image_angle
 					image_angle = direction;

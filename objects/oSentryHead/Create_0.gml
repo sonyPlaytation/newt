@@ -9,7 +9,7 @@ if instance_exists(oRoomDetect)
 	myRoom = instance_nearest(self.x,self.y,oRoomDetect);
 }else {myRoom = noone;}
 
-selfCenter = y-9;
+selfCenter = y-14;
 restAng = 0;
 inSight = 0;
 

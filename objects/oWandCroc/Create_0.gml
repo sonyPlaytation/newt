@@ -12,3 +12,6 @@ damage = 0;
 spread = 15;
 accuracy = 6;
 bulletnumber = 4;
+
+friendly = -1;
+target = noone;

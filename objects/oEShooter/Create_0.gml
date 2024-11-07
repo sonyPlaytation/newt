@@ -59,18 +59,18 @@ statePatrol = function()
 		oSFX.whatwasthatnoise = true;
 		markerTime = 30;
 	}
-	
+
 	//dont walk off ledges
-	if (grounded) && (stayonledges) && (!place_meeting(x+hsp, y+1, oCollide))
+	if (!place_meeting(x+(hsp*3), y+1, oCollide))
 	{
-		hsp = -hsp;	
-		patrolTime = patrolReset;
-		image_xscale = -image_xscale;
+		patrolTime = 0;
 	}
+	
 	vsp = vsp + grv;
 				
 	sprite_index = sEShooterWalk;
 	image_speed = 1;
+	image_xscale = sign(hsp);
 	
 	//vertical collision
 		
@@ -94,17 +94,18 @@ statePatrol = function()
 		}
 		hsp = -hsp;
 		patrolTime = patrolReset;
-		image_xscale = -image_xscale;
 	}
 	x = x + hsp;
 	
 	patrolTime--;
-	if (patrolTime == 0)
+	if (patrolTime <= 0)
 	{
 		patrolTime = patrolReset;
 		hsp = -hsp;
-		image_xscale = -image_xscale;
 	}
+	
+
+	
 }
 
 stateAlert = function()

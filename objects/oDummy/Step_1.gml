@@ -3,6 +3,8 @@
 
 if !instance_exists(oMelon){melonTimer--};
 if melonTimer = 0{instance_create_layer(x,bbox_top-50,layer,oMelon);melonTimer = 300;}
+
+sprite_index = sDummyBody;
 vsp = vsp + grv;
 
 //vertical collision

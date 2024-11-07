@@ -29,6 +29,7 @@ if (place_meeting(x,y+vsp,oCollide))
 		}
 	}
 }
+else {if instance_exists(myWall){instance_destroy(myWall)}};
 y += vsp;
 
 if (vsp != 0) and (place_meeting(x,y,oNewt))

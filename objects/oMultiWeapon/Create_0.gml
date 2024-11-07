@@ -25,7 +25,7 @@ coinCount = 4;
 	ds_map_add(weapons[0],"recoilpush",-5);
 	ds_map_add(weapons[0],"shakeamnt",12);
 	ds_map_add(weapons[0],"shaketime",4);
-	ds_map_add(weapons[0],"damage",65);
+	ds_map_add(weapons[0],"damage",20);
 	ds_map_add(weapons[0],"cancrit",false);
 	ds_map_add(weapons[0],"flash",-1);
 	ds_map_add(weapons[0],"projectile",oShotMelee);
@@ -40,7 +40,7 @@ coinCount = 4;
 	ds_map_add(weapons[0],"animM1",sWandNull);
 	ds_map_add(weapons[0],"animM2",-1);
 	ds_map_add(weapons[0],"hitSound",snBatHit);
-	ds_map_add(weapons[0],"meleeState",0);
+	ds_map_add(weapons[0],"meleeState",5);
 	ds_map_add(weapons[0],"headshots",0);
 
 	// 1 - starter
@@ -793,7 +793,7 @@ coinCount = 4;
 	ds_map_add(weapons[25],"spread",-1);
 	ds_map_add(weapons[25],"casing",-1);
 	ds_map_add(weapons[25],"startup",5);
-	ds_map_add(weapons[25],"length",32); //distance from origin to muzzle
+	ds_map_add(weapons[25],"length",40); //distance from origin to muzzle
 	ds_map_add(weapons[25],"cooldown",20); //tears
 	ds_map_add(weapons[25],"bulletspeed",0); //shot speed
 	ds_map_add(weapons[25],"automatic",true);

@@ -22,15 +22,15 @@ if instance_exists(owner)
 			{
 
 				shotTimer--;
-				var shotAngle = point_direction(x,selfCenter,target.x,target.y-(target.sprite_height/2));
-				image_angle += angle_difference(shotAngle,image_angle)*0.1;
+				var shotAngle = point_direction(x,selfCenter,target.x,random_range(target.bbox_top, target.bbox_bottom));
+				image_angle += angle_difference(shotAngle,image_angle)*0.15;
 			
 				if shotTimer < 0
 				{
 					if ammo > 0
 					{
 						audio_play_sound(snSentryShot,500,false);
-						with instance_create_depth(x+lengthdir_x(25,image_angle),selfCenter+lengthdir_y(10,image_angle),depth+10,oShotSentry)
+						with instance_create_depth(x+lengthdir_x(20,image_angle),selfCenter+lengthdir_y(20,image_angle),depth+10,oShotSentry)
 						{
 							crit = false;
 							global.hasCrit = false;

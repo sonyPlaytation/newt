@@ -1,6 +1,80 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+hitTarget = function()
+{
+	//hitting an enemy
+	if (place_meeting(x,y,pEntity))
+	{
+		var target = instance_place(x,y,pEntity)
+		with(target)
+		{
+			diedFrom = "standard";
+			
+			if other.crit
+			{
+				var _dmg = oMultiWeapon.damage*3;
+			}
+			else
+			{
+				var _dmg = ceil(mean(oMultiWeapon.damage + abs(oNewt.hsp/5),oMultiWeapon.damage*1.5))
+			}
+			var _finaldmg = _dmg*oInv.dmgMod;
+			
+			hp -= _finaldmg
+			
+			if hp <=0
+			{
+				oNewt.dashCount++;
+			}
+			
+			if (!noDMG)
+			{
+				myDamage.damage += _finaldmg;
+				myDamage.alpha = 1;
+				myDamage.dmgTextScale = 0.75
+			}
+			
+			if (other.crit) and (!noDMG)
+			{
+				myDamage.dmgTextScale = 1;
+				with instance_create_layer(target.x,target.y - target.sprite_height,"Player",oCritHeader)
+				{
+					owner = target.id	
+				}
+			} else {global.critTotalDMG += _finaldmg}
+			
+			flash = 3;			
+			hitfrom = other.direction;
+		}
+		hitStop(_hs);
+		instance_destroy();
+	}
+}
+
+swatTrail = function()
+{
+	with instance_create_depth(x,y,depth,oSwingTrail)
+	{
+		owner = other.id;
+	}
+}
+
+ammoBack = function(type,amount)
+{
+	//destroy bullet
+	if place_meeting(x,y,oEnemyShot)
+	{
+		var _shot = instance_place(x,y,oEnemyShot)
+		with(_shot)
+		{
+			with instance_create_depth(x,y,depth,oCritHeader){image_index = 2};
+			instance_destroy();
+		};
+		oMultiWeapon.ammo[type] += amount;
+	};		
+}
+
 alarm[0] = 10;
 
 hit = false;
@@ -36,7 +110,7 @@ stateSwat = function()
 		}
 	}
 	
-		//hitting a baseball
+	//hitting a baseball
 	if (place_meeting(x,y,oBaseball))
 	{		
 		
@@ -55,35 +129,7 @@ stateSwat = function()
 		instance_destroy();
 	}
 	
-	//hitting an enemy
-	if (place_meeting(x,y,pEntity))
-	{
-		var target = other.id;
-		with(instance_place(x,y,pEntity))
-		{
-			diedFrom = "standard";
-			baseDMG = ceil(mean(oMultiWeapon.damage + abs(oNewt.hsp/5),oMultiWeapon.damage*1.5))
-			hp -= baseDMG*oInv.dmgMod;
-			
-			if hp <=0
-			{
-				oNewt.dashCount++;
-			}
-			
-			if (!noDMG)
-			{
-				myDamage.damage += baseDMG;
-				myDamage.alpha = 1;
-				myDamage.dmgTextScale = 0.75
-				
-			}
-			flash = 3;			
-			hitfrom = other.direction;
-		}
-		hitStop(_hs);
-		instance_destroy();
-	}
-	
+	hitTarget();
 }
 
 stateParry = function()
@@ -106,8 +152,6 @@ stateParry = function()
 		hitStop(15);
 	}
 	
-
-	
 	//shrug bat corpse reflect
 	if (place_meeting(x,y,oCorpse))
 	{	
@@ -116,6 +160,7 @@ stateParry = function()
 		{	
 			oSFX.parry = true;
 			global.corpseSprite = sEShrugBatDie;
+			global.getSizeKilled = 1;
 			with instance_create_depth(x, y-20, _corpse.depth,oCorpse)
 			{
 				inactive = false;
@@ -136,6 +181,7 @@ stateParry = function()
 		{	
 			oSFX.parry = true;
 			global.corpseSprite = sEShrugBatDie;
+			global.getSizeKilled = 1;
 			with instance_create_depth(x, y-20, _target.depth,oCorpse)
 			{
 				inactive = false;
@@ -148,117 +194,27 @@ stateParry = function()
 		}
 	}
 	
-	//hitting an enemy
-	if (place_meeting(x,y,pEntity))
-	{
-		var _target = other.id;
-		with(instance_place(x,y,pEntity))
-		{
-			baseDMG = ceil(mean(oMultiWeapon.damage + abs(oNewt.hsp/5),oMultiWeapon.damage*1.5))
-			finalDMG = baseDMG*oInv.dmgMod;
-			hp -= finalDMG
-			
-			if hp <=0
-			{
-				oNewt.dashCount++;
-			}
-			
-			if (!noDMG)
-			{
-				myDamage.damage += finalDMG;
-				myDamage.alpha = 1;
-				myDamage.dmgTextScale = 0.75
-			}
-			flash = 3;	
-			hitfrom = other.direction;
-		}
-		hitStop(2);
-		instance_destroy();
-	}
+	hitTarget();
 }
 
 stateSlice = function()
 {
+	var _ammo = irandom(5);
+	ammoBack(_ammo,5);
 	
-		//hitting an enemy
-	if (place_meeting(x,y,pEntity))
-	{
-		with(instance_place(x,y,pEntity))
-		{
-			diedFrom = "overkill";
-			
-			var target = other.id;
-			
-			baseDMG = ceil(mean(oMultiWeapon.damage + abs(oNewt.hsp/5),oMultiWeapon.damage*1.5))
-			finalDMG = baseDMG*oInv.dmgMod;
-			hp -= finalDMG
-			
-			if hp <=0
-			{
-				oNewt.dashCount++;
-			}
-			
-			if (!noDMG)
-			{
-				myDamage.damage += finalDMG;
-				myDamage.alpha = 1;
-				myDamage.dmgTextScale = 0.75
-			}
-			flash = 3;	
-			hitfrom = other.direction;
-		}
-		hitStop(other._hs);
-		instance_destroy();
-	}
-	
-	//destroy bullet
-	if place_meeting(x,y,oEnemyShot)
-	{
-		var _ammo = irandom(5);
-		with(instance_place(x,y,oEnemyShot)){instance_destroy()};
-		oMultiWeapon.ammo[_ammo]++;
-	};
-	
+	hitTarget();
 }
 
 stateDestroy = function()
 {
-	//hitting an enemy
-	if (place_meeting(x,y,pEntity))
-	{
-		with(instance_place(x,y,pEntity))
-		{
-			diedFrom = "overkill";
-			
-			var target = other.id;
-			
-			baseDMG = ceil(mean(oMultiWeapon.damage + abs(oNewt.hsp/5),oMultiWeapon.damage*1.5))
-			finalDMG = baseDMG*oInv.dmgMod;
-			hp -= finalDMG
-			
-			if hp <=0
-			{
-				oNewt.dashCount++;
-			}
-			
-			if (!noDMG)
-			{
-				myDamage.damage += finalDMG;
-				myDamage.alpha = 1;
-				myDamage.dmgTextScale = 0.75
-			}
-			flash = 3;	
-			hitfrom = other.direction;
-		}
-		hitStop(other._hs);
-		instance_destroy();
-	}
-	
 	//destroy bullet
 	if place_meeting(x,y,oEnemyShot)
 	{
 		with(instance_place(x,y,oEnemyShot)){instance_destroy()};
 	};
+	
+	hitTarget();
+	
 }
 
 stateWrench = function()
@@ -297,43 +253,11 @@ stateWrench = function()
 			instance_destroy();
 		}
 		
-		//hitting an enemy
-		if (place_meeting(x,y,pEntity))
-		{
-			with(instance_place(x,y,pEntity))
-			{
-				diedFrom = "standard";
-			
-				var target = other.id;
-			
-				baseDMG = ceil(mean(oMultiWeapon.damage + abs(oNewt.hsp/5),oMultiWeapon.damage*1.5))
-				finalDMG = baseDMG*oInv.dmgMod;
-				hp -= finalDMG
-			
-				if hp <=0
-				{
-					oNewt.dashCount++;
-				}
-			
-				if (!noDMG)
-				{
-					myDamage.damage += finalDMG;
-					myDamage.alpha = 1;
-					myDamage.dmgTextScale = 0.75
-				}
-				flash = 3;	
-				hitfrom = other.direction;
-			}
-			hitStop(other._hs);
-			instance_destroy();
-		}
+		ammoBack(0,10);
 		
-		//destroy bullet
-		if place_meeting(x,y,oEnemyShot)
-		{
-			with(instance_place(x,y,oEnemyShot)){instance_destroy()};
-			oMultiWeapon.ammo[0] += 5;
-		};	
+		hitTarget();
+		
+		
 	}
 	else if click = 1 //right click
 	{
@@ -350,22 +274,18 @@ stateWrench = function()
 	}
 }
 
-swatTrail = function()
+stateWeak = function()
 {
-	with instance_create_depth(x,y,depth,oSwingTrail)
-	{
-		owner = other.id;
-
-	}
+	hitTarget();
 }
-
-swatTrail();
 
 stt[0] = stateSwat;
 stt[1] = stateParry;
 stt[2] = stateSlice;
 stt[3] = stateDestroy;
 stt[4] = stateWrench;
+stt[5] = stateWeak;
 
+swatTrail();
 state = stt[oMultiWeapon.meleeState];
 

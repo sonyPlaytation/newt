@@ -7,8 +7,6 @@ y = owner.y - 20;
 
 damage = owner.damage;
 
-	if instance_exists(oNewt){var newtCenter = oNewt.y-20};
-
 image_xscale = abs(owner.image_xscale);
 image_yscale = abs(owner.image_yscale);
 inSight -= 0.2;
@@ -16,13 +14,13 @@ inSight -= 0.2;
 var _spread = spread;
 var _spreadDiv = _spread / max( bulletnumber - 1, 1 );
 
-if (instance_exists(oNewt))  and !owner.inactive
+if (instance_exists(pAlly))  and !owner.inactive
 {
-	if (oNewt.x < x) image_yscale = -image_yscale;
-	
-	if (point_distance(oNewt.x,newtCenter,x,y) < viewRange) and !collision_line(x, y, oNewt.x,newtCenter, oCollide, true, true)
+	lineOfSight(0,viewRange);
+	if instance_exists(target)
 	{
-		image_angle = point_direction(x,y,oNewt.x,newtCenter);
+		var _targCenter = target.y-(target.sprite_height/2);
+		image_angle = point_direction(x,y,target.x,_targCenter);
 		inSight = 1;
 		
 		countdown--;

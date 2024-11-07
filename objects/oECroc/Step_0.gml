@@ -9,25 +9,23 @@ if instance_exists(myRoom)
 	if myRoom.roomActive {inactive = false} else inactive = true;
 }
 
-if instance_exists(oNewt) and !inactive
+if instance_exists(pAlly) and !inactive
 {
 	selfCenter = y-20;
 	
 	if mouthopen == true{runsprite = sECrocRunB;}else runsprite = sECrocRunA;
 	
 	//vertical collision
-		
-		if (place_meeting(x,y+vsp,oCollide))
+	if (place_meeting(x,y+vsp,oCollide))
+	{
+		while (!place_meeting(x,y+sign(vsp),oCollide))
 		{
-			while (!place_meeting(x,y+sign(vsp),oCollide))
-			{
-				y += sign(vsp);
-			}
-			vsp = 0;
-			grounded = true;
+			y += sign(vsp);
 		}
-
-		//y += vsp;
+		vsp = 0;
+		grounded = true;
+	}
+	//y += vsp;
 	
 	//horizontal collision
 		if (place_meeting(x+hsp,y,oCollide))
@@ -41,9 +39,8 @@ if instance_exists(oNewt) and !inactive
 		}
 	x = x + hsp;
 	
-
-	if collision_circle(x,y,viewRange,oNewt,0,0) {inView = true}else{inView = false};
-	
+	lineOfSight(false,viewRange);
+	if instance_exists(target){ if collision_circle(x,y,viewRange,target,0,0) {inView = true}else{inView = false}};
 	
 	state();
 }

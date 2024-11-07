@@ -687,6 +687,7 @@
     {"name":"snShotDevils","order":19,"path":"sounds/snShotDevils/snShotDevils.yy",},
     {"name":"mStage1","order":2,"path":"sounds/mStage1/mStage1.yy",},
     {"name":"draw_trail","order":24,"path":"scripts/draw_trail/draw_trail.yy",},
+    {"name":"rTutorialNew6","order":8,"path":"rooms/rTutorialNew6/rTutorialNew6.yy",},
     {"name":"snPop3","order":8,"path":"sounds/snPop3/snPop3.yy",},
     {"name":"oShotFireball","order":14,"path":"objects/oShotFireball/oShotFireball.yy",},
     {"name":"scribble_anim_shake","order":8,"path":"scripts/scribble_anim_shake/scribble_anim_shake.yy",},

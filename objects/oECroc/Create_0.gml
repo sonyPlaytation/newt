@@ -36,6 +36,7 @@ rot = 0;
 diedFrom = "standard";
 
 runsprite = sECrocRunA;
+idleSprite = sECroc;
 mouthopen = false;
 
 if(hasWeapon)
@@ -59,30 +60,26 @@ else myHead = noone;
 statePatrol = function()
 {
 	
-	lineOfSight();
 	if instance_exists(target)
 	{
 		hsp = 0;
-		vsp = -3; 
+		vsp = -1; 
 		state = stateAlert;
 		oSFX.whatwasthatnoise = true;
-		att = 60;
+		att = 120;
 		markerTime = 30;
 	}	
 	
 	image_speed = 1;
-	if hsp != 0 {sprite_index = runsprite};
-	if image_xscale = 1{mygun.image_angle = 0}else mygun.image_angle = 180;
+	if hsp != 0 {sprite_index = runsprite}else sprite_index = idleSprite;
+	if image_xscale == 1{mygun.image_angle = 0}else mygun.image_angle = 180;
 			
-	att = 120; 
-	markerTime = 30;
-	
 	//dont walk off ledges
 	if (grounded) && (stayonledges) && (!place_meeting(x+hsp, y+1, oCollide))
 	{
-			hsp = -hsp;	
-			patrolTime = patrolReset;
-			image_xscale = -image_xscale;
+		hsp = -hsp;	
+		patrolTime = patrolReset;
+		image_xscale = -image_xscale;
 	}
 	vsp = vsp + grv;
 				
@@ -91,7 +88,6 @@ statePatrol = function()
 	{
 		waitTime--
 		hsp = 0;
-		sprite_index = sECroc;
 		if waitTime < 0
 		{
 			waitTime = waitReset;
@@ -119,14 +115,14 @@ stateAlert = function()
 	rot = -hsp*1.5;
 	image_angle = rot;
 				
-	if (markerTime > 0){sprite_index = sECrocWTF} else {sprite_index = runsprite};
+	if hsp != 0 {sprite_index = runsprite}else sprite_index = idleSprite;
 	
-	lineOfSight();
 	if instance_exists(target)
 	{ 
-		if hsp !=0 {sprite_index = runsprite}
+		if (target.x < x){image_xscale = -1} else image_xscale = 1;
+		if (target.y < (y-24)) and grounded{vsp -= 6};
 		
-		if collision_circle(x,y,nearRange,oNewt,0,0) {inRange = true}else{inRange = false};
+		if collision_circle(x,y,nearRange,target,0,0) {inRange = true}else{inRange = false};
 		if !inRange
 		{
 			mouthopen = false;
@@ -136,11 +132,9 @@ stateAlert = function()
 			mouthopen = true;
 		}
 	}
-				
 	markerTime--;
 	
 	//vertical collision
-		
 	if (place_meeting(x,y+vsp,oCollide))
 	{
 		while (!place_meeting(x,y+sign(vsp),oCollide))
@@ -150,20 +144,17 @@ stateAlert = function()
 		vsp = 0;
 		grounded = true;
 	}
-
-	y += vsp;
-
-	if (oNewt.x < x){image_xscale = -1} else image_xscale = 1;
-	
-	if (!place_meeting(x,y+1,oCollide))
+	else
 	{
+		if !place_meeting(x,y-5,oCollide){sprite_index = sECrocJump;}
 		grounded = false;
-		sprite_index = sECrocJump;
+		
 		image_speed = 0;
-		if (sign(vsp) > 0) image_index = 1; else image_index = 0;
-	}
+		if (sign(vsp) > 0) {image_index = 1} else image_index = 0;
+	} 
+	y += vsp;
 			
-	if !cantShoot {att--;};
+	if !instance_exists(target) {att--;};
 	if (att <= 0)
 	{	
 		hsp = image_xscale; 
