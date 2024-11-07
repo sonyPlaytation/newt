@@ -15,6 +15,39 @@ if instance_exists(oNewt)
 	delayRight--;
 
 	if ammo[ammotype] > ammoMax[ammotype]{ammo[ammotype] = ammoMax[ammotype]};
+	
+	//DEBUG
+	if keyboard_check_pressed(vk_right)
+	{
+		if k+1 < array_length(weapons){k++};
+		weaponStats(k);
+		ammo[ammotype] = ammoMax[ammotype];
+		sprite_index = sprite;
+	}
+	
+	if keyboard_check_pressed(vk_left)
+	{
+		if k != 0 {k--};
+		weaponStats(k);
+		ammo[ammotype] = ammoMax[ammotype];
+		sprite_index = sprite;
+	}
+	
+	if keyboard_check_pressed(vk_down)
+	{
+		k = 0;
+		weaponStats(k);
+		ammo[ammotype] = ammoMax[ammotype];
+		sprite_index = sprite;
+	}
+	
+	if keyboard_check_pressed(vk_up)
+	{
+		k = array_length(weapons)-1;
+		weaponStats(k);
+		ammo[ammotype] = ammoMax[ammotype];
+		sprite_index = sprite;
+	}
 
 	if input_check_pressed("weapon1")
 	{

@@ -821,6 +821,7 @@ coinCount = 4;
 	//something to do with your weapon inventory
 	i = 0;
 	m = 0;
+	k = 0;
 	myInfo = noone;
 	active = false;
 

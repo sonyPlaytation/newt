@@ -21,7 +21,7 @@ if owner != oNewt
 {
 	draw_sprite(sTextBottom,0,x,y)
 	draw_set_alpha(1);
-	draw_sprite_ext(sExclam,3,x+halfw,y+(border/1.5)+string_height_scribble(text_head),1,1,0,c_white,alpha*1.5);
+	draw_sprite_ext(sExclam,3,x+halfw,y+(border/1.5),1,1,0,c_white,alpha*1.5);
 }
 else 
 {
@@ -29,6 +29,7 @@ else
 }
 //draw text
 var scribbleObject = scribble(text_body)
+
 	.blend(c_white,alpha*1.5)
 	.starting_format("fKaren",c_white)
 	.align(fa_center,fa_top)
