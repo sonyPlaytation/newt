@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-if instance_exists(oDmgNum){depth = instance_nearest(x,y,oDmgNum).depth +1}else depth = instance_nearest(x,y,pEntity).depth +1;
+if instance_exists(oDmgNum){depth = instance_nearest(x,y,oDmgNum).depth+1}
 
 if instance_exists(owner)
 {

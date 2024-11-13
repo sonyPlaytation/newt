@@ -12,6 +12,6 @@ if hp <= 0 or !instance_exists(owner)
 if keyboard_check_pressed(ord("5"))
 {
 	instance_create_depth(x,y,depth,oExplosion);
-	with instance_create_depth(x,y,depth-20,oPistAmmoPickup){vsp -= 5;}
+	with instance_create_depth(x,y,depth-20,oAmmoPickup){vsp -= 5;}
 	instance_destroy();
 }

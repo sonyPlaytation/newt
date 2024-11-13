@@ -11,6 +11,13 @@ if !inBelly
 		if image_yscale < 0.05
 		{
 			repeat(8*size) {instance_create_depth(x,y,depth-15,oDust)};
+			
+			var _dropRNG = random(99);
+			if drop != noone and _dropRNG <= dropChance
+			{
+				instance_create_depth(x,y,depth-15,choose(oAmmoPickup,oHealthPickup))
+			};
+			
 			instance_destroy();
 		}
 	}	

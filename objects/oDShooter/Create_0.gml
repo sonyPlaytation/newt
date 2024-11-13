@@ -32,7 +32,7 @@ if (oInv.hpMissing != 0)
 				weapon = 1;
 				randomWand = false;
 			}
-		} else with instance_create_layer(x,y-2,layer,oPistAmmoPickup)	{vsp = -5};
+		} else with instance_create_layer(x,y-2,layer,oAmmoPickup)	{vsp = -5};
 	}
 }
 else mydrop = noone;

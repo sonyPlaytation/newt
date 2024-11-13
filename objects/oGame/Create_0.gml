@@ -12,6 +12,10 @@ else
 	cursor_sprite = sCrosshair1;
 }
 
+#macro RESOLUTION_W 1920
+#macro RESOLUTION_H 1080
+display_set_gui_size(RESOLUTION_W,RESOLUTION_H);
+
 global.hitsound = snNThitSound;
 
 global.kills = 0;

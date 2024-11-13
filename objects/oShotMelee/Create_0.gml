@@ -96,17 +96,16 @@ stateSwat = function()
 		var _target = (instance_place(x,y,oEnemyShot));
 		if _target.friendly != 1
 		{
+			if oMultiWeapon.sprite == sWandSandman {oSFX.baseballcrack = true} else audio_play_sound(snBatParry,500,false);
 			with _target
 			{
-				spd *= 2;
-				if !friendly {oSFX.baseballcrack = true;}
+				spd *= 1.85;
 				friendly = true;
 				parried = false;
-				image_angle = other.image_angle;
+				image_angle = point_direction(x,y,mouse_x,mouse_y);
 				dir = point_direction(x,y,mouse_x,mouse_y);
 			}
 			hitStop(_hs);
-			instance_destroy();
 		}
 	}
 	
@@ -145,8 +144,8 @@ stateParry = function()
 		
 			friendly = true;
 			parried = true;
-			image_angle = other.image_angle;
-			dir = image_angle;
+			image_angle = point_direction(x,y,mouse_x,mouse_y);
+			dir = point_direction(x,y,mouse_x,mouse_y);
 			spd = 23;
 		}
 		hitStop(15);

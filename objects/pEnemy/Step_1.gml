@@ -1,4 +1,17 @@
 
+//spawnCorpse = function(corpseOverride)
+//{
+//	if (argument0 != undefined){var _corpse = corpseOverride} else var _corpse = corpse;
+	
+//	with (instance_create_layer(x,y-2,layer,oCorpse))
+//	{	
+//		corpse = other._corpse;
+//		big = other.big;
+//		drop = other.drop;
+//		dropChance = other.dropChance;
+//	}		
+//}
+
 if screenPause() {exit;};
 
 if hp <= -(maxHP/2){diedFrom = "overkill"}
@@ -14,11 +27,13 @@ if (hp <= 0)
 			
 			with (instance_create_layer(x,y-2,layer,oCorpse))
 			{	
-				corpse = "killer7";
+				corpse = _corpse;
 				sprite_index = other.sprite_index;
 				image_index = other.image_index;
 				big = other.big;
-			}	
+				drop = other.drop;
+				dropChance = other.dropChance;
+			};
 			
 		break;
 		
@@ -116,7 +131,7 @@ if (hp <= 0)
 				var chance = choose(1,2,3,4);
 				if chance = 3
 				{
-					with instance_create_layer(x,y-(sprite_height/2),layer,oPistAmmoPickup)	{vsp = -5};
+					with instance_create_layer(x,y-(sprite_height/2),layer,oAmmoPickup)	{vsp = -5};
 				}
 				
 				with (mygun) instance_destroy();
@@ -178,7 +193,7 @@ if (hp <= 0)
 				var chance = choose(1,2,3,4);
 				if chance = 3
 				{
-					with instance_create_layer(x,y-(sprite_height/2),layer,oPistAmmoPickup)	{vsp = -5};
+					with instance_create_layer(x,y-(sprite_height/2),layer,oAmmoPickup)	{vsp = -5};
 				}
 				
 				with (mygun) instance_destroy();
@@ -246,7 +261,7 @@ if (hp <= 0)
 				var chance = choose(1,2,3,4);
 				if chance = 3
 				{
-					with instance_create_layer(x,y-(sprite_height/2),layer,oPistAmmoPickup)	{vsp = -5};
+					with instance_create_layer(x,y-(sprite_height/2),layer,oAmmoPickup)	{vsp = -5};
 				}
 				
 				with (mygun) instance_destroy();

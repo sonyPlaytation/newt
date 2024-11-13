@@ -44,6 +44,23 @@ if  oNewt.hasControl and altfire != -1 and input_check_pressed("altfire") and (d
 				}
 			break;
 			
+			//alt fire for wrench
+			case "meleeSlice":
+				
+				with (instance_create_layer(x,y,"Shots",oShotMelee))
+				{								
+					image_xscale = oMultiWeapon.length+point_distance(x,y,oNewt.x,global.newtCenter);
+					direction = oMultiWeapon.image_angle;
+					speed = 0;
+					image_angle = direction;
+					state = stateSlice;
+					click = 0;
+					crit = false;
+				}
+				delayRight = 15;
+				
+			break;
+			
 			//alt fire baseball
 			case "markscoin":
 				if oMultiWeapon.coinCount != 0

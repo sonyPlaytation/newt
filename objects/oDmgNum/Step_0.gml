@@ -17,7 +17,6 @@ if instance_exists(owner)
 }
 else
 {
-	damage = min(damage,maxHP);
 	x = x;
 	y = y -0.3;	
 }

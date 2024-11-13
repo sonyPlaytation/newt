@@ -9,6 +9,9 @@ diedFrom = noone;
 friendly = -1;
 target = noone;
 
+drop = oHealthPickup;
+dropChance = 5;
+
 if instance_exists(oRoomDetect)
 {
 	myRoom = instance_nearest(self.x,self.y,oRoomDetect);

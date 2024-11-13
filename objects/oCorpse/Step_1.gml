@@ -3,7 +3,6 @@ if !instance_exists(oNewt){destroy();}
 
 if corpsePicked != true
 {
-
 	size = global.getSizeKilled;
 	if size > 1 {big = true};
 	

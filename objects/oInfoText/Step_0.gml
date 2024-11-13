@@ -54,9 +54,18 @@ if instance_exists(owner)
 	text_body = string_join("\n",_lineone,_linetwo,_icons);
 	var text_full = text_head + text_body;
 	scribble_anim_wave(5,1,0.05)
-	if owner.randomWand{text_head = "[scale,2][fMecha][rainbow][wave]???"; text_body = "";}
-
-	h = string_height_scribble(text_full);
-	w = max(string_width_scribble(text_head),string_width_scribble(text_body));
+	
+	if !owner.randomWand
+	{
+		h = string_height_scribble(text_full) - (string_height_scribble(text_head)/2);
+		w = max(string_width_scribble(text_head),string_width_scribble(text_body));
+	}
+	else
+	{
+		text_head = "[scale,2][fMecha][rainbow][wave]???"; 
+		text_body = "";
+		h = string_height_scribble(text_head);
+		w = string_width_scribble(text_head);
+	}
 
 }else instance_destroy();

@@ -23,7 +23,7 @@ decX = 0;
 decY = 0;
 decay = 1 + decX + decY;
 
-hitfrom = point_direction(x,y,oNewt.x,oNewt.y);
+if instance_exists(oNewt) {hitfrom = point_direction(x,y,oNewt.x,oNewt.y)}else hitfrom = 0;;
 
 inactive = false;
 flash = 3;
@@ -33,6 +33,9 @@ grv = 0.3;
 dropRate = 10;
 effect = "";
 myDamage = noone;
+
+drop = noone;
+dropChance = 0;
 
 timer = 0;
 corpsePicked = false;

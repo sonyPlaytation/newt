@@ -770,10 +770,10 @@ coinCount = 4;
 	ds_map_add(weapons[24],"meleeState",3);
 	ds_map_add(weapons[24],"headshots",0);
 	
-		// 25 - Wrench
+		// 25 - Builders Wrench
 	weapons[25] = ds_map_create();
 	ds_map_add(weapons[25],"type",2);
-	ds_map_add(weapons[25],"name","Wrench");
+	ds_map_add(weapons[25],"name","Builders\nWrench");
 	ds_map_add(weapons[25],"sprite",sWandWrenchIdle);
 	ds_map_add(weapons[25],"shootsfx",snWrenchSwing);
 	ds_map_add(weapons[25],"pickupsound",snBatEquip);
@@ -802,6 +802,39 @@ coinCount = 4;
 	ds_map_add(weapons[25],"hitSound",snWrenchHit);
 	ds_map_add(weapons[25],"meleeState",4);
 	ds_map_add(weapons[25],"headshots",0);
+	
+		// 25 - Pipe Wrench
+	weapons[26] = ds_map_create();
+	ds_map_add(weapons[26],"type",2);
+	ds_map_add(weapons[26],"name","Pipe Wrench");
+	ds_map_add(weapons[26],"sprite",sPipewrenchIdle);
+	ds_map_add(weapons[26],"shootsfx",snWrenchSwing);
+	ds_map_add(weapons[26],"pickupsound",snBatEquip);
+	ds_map_add(weapons[26],"ammotype",0);
+	ds_map_add(weapons[26],"ammouse",0);
+	ds_map_add(weapons[26],"altfire","meleeSlice");
+	ds_map_add(weapons[26],"recoil",0);
+	ds_map_add(weapons[26],"accuracy",0);
+	ds_map_add(weapons[26],"recoilpush",-5);
+	ds_map_add(weapons[26],"shakeamnt",6);
+	ds_map_add(weapons[26],"shaketime",2);
+	ds_map_add(weapons[26],"damage",65);
+	ds_map_add(weapons[26],"cancrit",true);
+	ds_map_add(weapons[26],"flash",-1);
+	ds_map_add(weapons[26],"projectile",oShotMelee);
+	ds_map_add(weapons[26],"bulletnumber",1);
+	ds_map_add(weapons[26],"spread",-1);
+	ds_map_add(weapons[26],"casing",-1);
+	ds_map_add(weapons[26],"startup",4);
+	ds_map_add(weapons[26],"length",40); //distance from origin to muzzle
+	ds_map_add(weapons[26],"cooldown",18); //tears
+	ds_map_add(weapons[26],"bulletspeed",0); //shot speed
+	ds_map_add(weapons[26],"automatic",true);
+	ds_map_add(weapons[26],"animM1",sPipewrenchSwing);
+	ds_map_add(weapons[26],"animM2",sPipewrenchIdle);
+	ds_map_add(weapons[26],"hitSound",snWrenchHit);
+	ds_map_add(weapons[26],"meleeState",0);
+	ds_map_add(weapons[26],"headshots",0);
 	
 	#endregion
 

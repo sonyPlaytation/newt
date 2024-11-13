@@ -19,15 +19,18 @@ with instance_create_layer(x,y,"Shots",oFireballTrail)
 	owner = other.id;
 }
 
-if !friendly and (place_meeting(x,y,pAlly))
+if instance_exists(pAlly)
 {
-	var _hitGuy = instance_place(x,y,pAlly);
-	homingtarget = instance_nearest(x,y,pAlly);
-	with(_hitGuy)
+	if !friendly and (place_meeting(x,y,pAlly))
 	{
-		playerHit(1,_hitGuy);
+		var _hitGuy = instance_place(x,y,pAlly);
+		homingtarget = instance_nearest(x,y,pAlly);
+		with(_hitGuy)
+		{
+			playerHit(1,_hitGuy);
+		}
+		if (_hitGuy.iFrames <= 0) {instance_destroy();} //dont destroy projectile if invincible
 	}
-	if (_hitGuy.iFrames <= 0) {instance_destroy();} //dont destroy projectile if invincible
 }
 
 if friendly 
