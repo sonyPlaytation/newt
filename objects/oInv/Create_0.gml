@@ -14,7 +14,7 @@ cornerDist = 160;
 
 //levels
 souls = 0;
-sodas = 2;
+sodas = 1;
 levelCurrent = 1;
 levelNext = 100;
 

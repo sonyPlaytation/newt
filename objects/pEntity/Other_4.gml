@@ -4,7 +4,7 @@
 myDamage = instance_create_layer(x,y,"GUI",oDmgNum);
 with (myDamage)
 {
-	owner = other.id		
+	owner = other.id
 }
 
 diedFrom = noone;

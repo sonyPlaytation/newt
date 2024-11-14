@@ -78,6 +78,7 @@ myCorpse = noone;
 
 sodaToss = false
 flash = 0;
+blood = 0;
 lit = 0;
 
 key_down = 0;

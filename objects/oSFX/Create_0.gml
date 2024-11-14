@@ -39,6 +39,7 @@ k7hurt = false;
 soulget = false;
 collat = false;
 mouthpop = false;
+bloodDrip = false;
 
 //looping sfx
 laserSoundLoop = false;

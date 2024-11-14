@@ -14,6 +14,15 @@ if soundgetammo == true
 }
 
 //get ammo
+if bloodDrip == true
+{
+	var _sound = audio_play_sound(t1,450,false,2);
+	audio_sound_gain(_sound,_sfxVol,0);
+	bloodDrip = false;
+}
+
+
+//get ammo
 if collat == true
 {
 	var _sound = audio_play_sound(snCollateral,800,false);

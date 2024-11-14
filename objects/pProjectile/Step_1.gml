@@ -74,7 +74,8 @@ if instance_exists(oNewt)
 				} else {global.critTotalDMG += finalDMG}
 			
 				flash = 3;
-				hitfrom = other.direction;			
+				hitfrom = other.direction;		
+				coinHit = true;
 			}
 		}
 	

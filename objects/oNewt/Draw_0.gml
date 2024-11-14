@@ -50,6 +50,14 @@ if (flash > 0)
 	shader_reset();
 }
 
+if (blood > 0)
+{
+	blood--;
+	shader_set(shRedFlash);
+	_drawNewt();
+	shader_reset();
+}
+
 drawSetText(c_black,fKaren,fa_center,fa_middle);
 draw_text_color(x,y-sprite_height-10,sodaDesc,c_black,c_black,c_black,c_black,headerAlpha);
 draw_text_color(x-1,y-sprite_height-11,sodaDesc,c_white,c_white,c_white,c_white,headerAlpha*1.15);
