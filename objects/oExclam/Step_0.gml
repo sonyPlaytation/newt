@@ -4,6 +4,7 @@
 
 if instance_exists(oNewt)
 {
+	depth = oNewt.depth-9999;
 	x = oNewt.x;
 	y = (oNewt.y+sin(get_timer()/300000) *4) - 54;
 	
