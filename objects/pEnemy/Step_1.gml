@@ -14,6 +14,8 @@
 
 if screenPause() {exit;};
 
+if !layer_exists("Enemy"){layer_create(layer_get_depth("Player")+1,"Enemy")};
+
 if hp <= -(maxHP/2){diedFrom = "overkill"}
 
 if (hp <= 0)
@@ -27,12 +29,10 @@ if (hp <= 0)
 			
 			with (instance_create_layer(x,y-2,"Shots",oCorpse))
 			{	
-				corpse = _corpse;
+				corpse = "killer7";
 				sprite_index = other.sprite_index;
 				image_index = other.image_index;
 				big = other.big;
-				drop = other.drop;
-				dropChance = other.dropChance;
 			};
 			
 		break;

@@ -52,8 +52,6 @@ if (place_meeting(x,y,pEntity)) and instance_exists(oNewt)
 {
 	dist = point_distance(oNewt.x,oNewt.y-22,x,y);
 	var target = (instance_place(x,y,pEntity));
-	
-	
 	with target
 	{
 		
@@ -94,6 +92,7 @@ if (place_meeting(x,y,pEntity)) and instance_exists(oNewt)
 			hitfrom = other.direction;			
 		}
 	}
+	instance_destroy();
 	outline_end();
 }
 
@@ -105,4 +104,4 @@ if (place_meeting(x,y,oCollide)) && (image_index != 0)
 }
 
 if place_meeting(x,y,oCorpse)
-{with instance_place(x,y,oCorpse) charred = true};
+{with instance_place(x,y,oCorpse) charred = true; instance_destroy();};

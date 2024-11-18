@@ -35,10 +35,8 @@ if charred
 
 if corpse = "killer7"
 {
-	gpu_set_blendmode(bm_add);
 	shader_set(shRedFlash);
 	drawCorpse();
 	shader_reset();
-	gpu_set_blendmode(bm_normal);
 }
 

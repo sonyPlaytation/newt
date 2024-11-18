@@ -177,7 +177,7 @@ switch (corpse)
 			//spawn Killer7 particles
 			repeat(abs(sprite_width*sprite_height)/4)
 			{
-				instance_create_depth(x+random_range(-sprite_width/4,sprite_width/4),random_range(y,y-sprite_height),depth-90,oK7DeathPart);
+				instance_create_layer(x+random_range(-sprite_width/4,sprite_width/4),random_range(y,y-sprite_height),"Shots",oK7DeathPart);
 			}
 			//custom death noise
 			oSFX.k7death = true;

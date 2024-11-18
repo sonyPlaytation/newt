@@ -33,19 +33,6 @@ if instance_exists(myRoom)
 			hsp = -hsp;
 			image_xscale = -image_xscale;
 		}
-		
-		if hasGoon
-		{
-			if (place_meeting(myGoon.x+hsp,myGoon.y,oCollide))
-			{
-				while (!place_meeting(myGoon.x+sign(hsp),myGoon.y,oCollide))
-				{
-					hsp += sign(hsp);
-				}
-				hsp = -hsp;
-				image_xscale = -image_xscale;
-			}
-		}
 		x = x + hsp;
 	
 	//vertical collision
