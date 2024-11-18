@@ -1,5 +1,6 @@
 
-if screenPause() {exit;};
+if screenPause() {exit;}
+if instance_exists(oNewt) and !oNewt.hasControl {image_speed = 0; exit;}else{image_speed = 1};
 
 input_axis_threshold_set(gp_axisrh,0.08,0.95);
 input_axis_threshold_set(gp_axisrv,0.08,0.95);

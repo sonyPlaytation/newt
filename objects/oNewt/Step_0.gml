@@ -102,7 +102,7 @@ if place_meeting(x,bbox_top-1,oCollide)
 
 if godmode = true{iFrames = 10; flash = 1;}
 
-state();
+if (hasControl) {image_speed = 1; state()} else image_speed = 0;
 
 #region move calc
 
