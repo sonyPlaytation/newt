@@ -23,6 +23,8 @@ if instance_exists(oNewt)
 		weaponStats(k);
 		ammo[ammotype] = ammoMax[ammotype];
 		sprite_index = sprite;
+		heldweapons[i] = k;
+		oAmmoCount.weap[i] = k;
 	}
 	
 	if keyboard_check_pressed(vk_left)
@@ -31,6 +33,8 @@ if instance_exists(oNewt)
 		weaponStats(k);
 		ammo[ammotype] = ammoMax[ammotype];
 		sprite_index = sprite;
+		heldweapons[i] = k;
+		oAmmoCount.weap[i] = k;
 	}
 	
 	if keyboard_check_pressed(vk_down)
@@ -39,6 +43,8 @@ if instance_exists(oNewt)
 		weaponStats(k);
 		ammo[ammotype] = ammoMax[ammotype];
 		sprite_index = sprite;
+		heldweapons[i] = k;
+		oAmmoCount.weap[i] = k;
 	}
 	
 	if keyboard_check_pressed(vk_up)
@@ -47,6 +53,8 @@ if instance_exists(oNewt)
 		weaponStats(k);
 		ammo[ammotype] = ammoMax[ammotype];
 		sprite_index = sprite;
+		heldweapons[i] = k;
+		oAmmoCount.weap[i] = k;
 	}
 
 	if input_check_pressed("weapon1")
@@ -469,13 +477,13 @@ if instance_exists(oNewt)
 		#region edge case weapon specific shit
 
 		//chainsaw
-		if (sprite == sWandChainsaw)
+		if (sprite == sChainsaw)
 		{
 			if (image_index >= 0) and mouseLeft{oSFX.chainsawLoop = true; oSFX.chainsawIdle = false}else {oSFX.chainsawLoop = false; oSFX.chainsawIdle = true} ;
 		}
 	
 		//marksman
-		if (sprite == sWandMarksman)
+		if (sprite == sMarksman)
 		{
 			drawSetText(c_white,fSign,fa_center,fa_bottom)
 			draw_text_transformed(oNewt.x,oNewt.y-45,coinCount,3,3,0);

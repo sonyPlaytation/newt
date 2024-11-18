@@ -63,7 +63,6 @@ if (instance_exists(oNewt)) and active
 				heldweapons[type] = other.weapon;
 
 				if other.newAmmo {getAmmo(ammotype)};		
-				currSpr = sprite;
 			
 				if type == 0 {oAmmoCount.weap[0] = other.weapon};
 				if type == 1 {oAmmoCount.weap[1] = other.weapon};
@@ -88,7 +87,6 @@ if (instance_exists(oNewt)) and active
 				heldweapons[type] = other.weapon;
 
 				if other.newAmmo {getAmmo(ammotype)};	
-				currSpr = sprite;
 			
 				if type == 0 {oAmmoCount.weap[0] = other.weapon};
 				if type == 1 {oAmmoCount.weap[1] = other.weapon};

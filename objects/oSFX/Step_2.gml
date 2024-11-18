@@ -231,11 +231,11 @@ if mariobump == true
 }
 
 //crocodile shotgun
-if crocshot == true
+if enemyShot != false
 {
-	var _sound = audio_play_sound(snShotTF2SG,800,false);
+	var _sound = audio_play_sound(enemyShot,800,false);
 	audio_sound_gain(_sound,_sfxVol,0);
-	crocshot = false;
+	enemyShot = false;
 }
 
 

@@ -40,5 +40,5 @@
     "path":"sprites/sGuitarParryHitbox/sGuitarParryHitbox.yy",
   },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }

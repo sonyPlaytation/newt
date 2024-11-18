@@ -116,6 +116,44 @@ if  oNewt.hasControl and altfire != -1 and input_check_pressed("altfire") and (d
 					}
 			break;
 			
+			//feedbacker
+			case "arnoldflip":	
+				if oMultiWeapon.ammo[1] > 0
+				{
+					oSFX.wooshBasic = true;
+				
+					delayRight = 50;
+					current_cd = 35;
+					image_index = 0;
+					image_speed = 1;
+					sprite_index = animM2;
+				
+					oMultiWeapon.ammo[1]--;
+					with (instance_create_layer(x,y,"Player",oCasing))
+					{
+						image_index = other.casing;
+						hsp = lengthdir_x(3, other.image_angle-180 + random_range(-10, 10));
+						vsp =  random_range(-7, -5);
+						if (sign(hsp)!=0) image_xscale = sign(hsp); 	
+					}
+				
+					audio_play_sound(snCockTF2SG,800,false);
+					with (instance_create_layer(x,y,"Shots",oShotMelee))
+					{
+						crit = false;
+						image_xscale = 30;
+						direction = other.image_angle
+						image_angle = direction;
+					}
+				
+					with(oNewt)
+						{
+							hsp -= lengthdir_x(-5,other.image_angle);
+							vsp -= lengthdir_y(-5,other.image_angle);
+						}
+				}
+			break;
+			
 			//laser sight
 			case "scope":
 				if instance_exists(oShotSniperLaser) 

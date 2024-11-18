@@ -40,6 +40,7 @@ soulget = false;
 collat = false;
 mouthpop = false;
 bloodDrip = false;
+enemyShot = false;
 
 //looping sfx
 laserSoundLoop = false;

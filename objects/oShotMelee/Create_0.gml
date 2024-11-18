@@ -96,7 +96,7 @@ stateSwat = function()
 		var _target = (instance_place(x,y,oEnemyShot));
 		if _target.friendly != 1
 		{
-			if oMultiWeapon.sprite == sWandSandman {oSFX.baseballcrack = true} else audio_play_sound(snBatParry,500,false);
+			if oMultiWeapon.sprite == sSandman {oSFX.baseballcrack = true} else audio_play_sound(snBatParry,500,false);
 			with _target
 			{
 				spd *= 1.85;

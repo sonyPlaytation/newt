@@ -35,7 +35,9 @@ if(hasWeapon)
 	mygun = instance_create_depth(x,y,depth-100,oWandEnemy);
 	with (mygun)
 	{
+		
 		owner = other.id;
+		state = stateBurst;
 		countdownRate = 45;
 		setspeed = 9;
 		viewRange = owner.viewRange;

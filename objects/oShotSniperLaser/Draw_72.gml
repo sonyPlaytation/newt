@@ -5,7 +5,7 @@ if instance_exists(oNewt)
 	var gun = oMultiWeapon
 	switch(oMultiWeapon.sprite)
 	{
-		case sWandAWP:
+		case sAWP:
 	
 			if gun.altfire == "scope" and (gun.showLaser = true)
 			{
@@ -29,7 +29,7 @@ if instance_exists(oNewt)
 			image_yscale = 1.5;
 		break;
 		
-		case sWandKiller7:
+		case sKiller7:
 	
 			if gun.altfire == "scope" and (gun.showLaser = true)
 			{

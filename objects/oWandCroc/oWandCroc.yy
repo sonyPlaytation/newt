@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sWandTF2SG",
-    "path":"sprites/sWandTF2SG/sWandTF2SG.yy",
+    "name":"sTF2SG",
+    "path":"sprites/sTF2SG/sTF2SG.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -39,16 +39,17 @@ runsprite = sECrocRunA;
 idleSprite = sECroc;
 mouthopen = false;
 
-if(hasWeapon)
-{
-	mygun = instance_create_layer(x,y,"Weapon",oWandCroc);
-	with (mygun)
-	{
-		owner = other.id;
-		viewRange = owner.viewRange;
-	}
-}
-else mygun = noone;
+//if(hasWeapon)
+//{
+//	mygun = instance_create_layer(x,y,"Weapon",oWandCroc);
+//	with (mygun)
+//	{
+//		owner = other.id;
+//		viewRange = owner.viewRange;
+//	}
+//}
+//else 
+mygun = noone;
 
 if (hasHead)
 {
@@ -72,7 +73,7 @@ statePatrol = function()
 	
 	image_speed = 1;
 	if hsp != 0 {sprite_index = runsprite}else sprite_index = idleSprite;
-	if image_xscale == 1{mygun.image_angle = 0}else mygun.image_angle = 180;
+	//if image_xscale == 1{mygun.image_angle = 0}else mygun.image_angle = 180;
 			
 	//dont walk off ledges
 	if (grounded) && (stayonledges) && (!place_meeting(x+hsp, y+1, oCollide))
