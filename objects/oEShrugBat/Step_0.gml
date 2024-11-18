@@ -7,28 +7,23 @@ if screenPause() {exit;};
 
 if collision_circle(x,y,25,oEShooter,1,1)
 {
-	var goon = instance_nearest(x,y,oEShooter);
-	goonHP = goon.hp;
+	myGoon = instance_nearest(x,y,oEShooter);
 	
-	with instance_create_depth(goon.x,goon.y-44,depth,oEShrugCarrier)
+	with myGoon
 	{
-		diedFrom = noone;
-		corpse = "bat";
-		cSprite = sEShrugBatDie;
-		inactive = false;
-		goonHP = other.goonHP;
+		owner = other.id;
+		carried = true;
 	}
-	instance_destroy();
-	
-	instance_destroy(goon);
 }
+
+if instance_exists(myGoon) {hasGoon = true} else {hasGoon = false}
 
 if instance_exists(myRoom)
 {
 	if myRoom.roomActive {inactive = false} else inactive = true;
 }
 
-//horizontal collision
+		//horizontal collision
 		if (place_meeting(x+hsp,y,oCollide))
 		{
 			while (!place_meeting(x+sign(hsp),y,oCollide))
@@ -38,7 +33,19 @@ if instance_exists(myRoom)
 			hsp = -hsp;
 			image_xscale = -image_xscale;
 		}
-
+		
+		if hasGoon
+		{
+			if (place_meeting(myGoon.x+hsp,myGoon.y,oCollide))
+			{
+				while (!place_meeting(myGoon.x+sign(hsp),myGoon.y,oCollide))
+				{
+					hsp += sign(hsp);
+				}
+				hsp = -hsp;
+				image_xscale = -image_xscale;
+			}
+		}
 		x = x + hsp;
 	
 	//vertical collision
@@ -61,15 +68,18 @@ if instance_exists(oNewt) and !inactive
 {
 	var statenext = -1;
 	
-	var distToNewt = distance_to_object(oNewt);
-	var distToGoon = distance_to_object(instance_nearest(x,y,oEShooter));
-	
-	if distToNewt > distToGoon{target = instance_nearest(x,y,oEShooter)}else {target = oNewt}
-	
-	if collision_line (x,y, target.x, target.y-22, oCollide, 1, 0)	{cantSee = true} else cantSee = false;
-	
-	if point_in_circle(x,y, target.x, target.y-22, viewRange)		{inRange = true} else inRange = false;
 
+	if !hasGoon
+	{
+		var distToNewt = distance_to_object(oNewt);
+		var distToGoon = distance_to_object(instance_nearest(x,y,oEShooter));
+	
+		if distToNewt > distToGoon{target = instance_nearest(x,y,oEShooter)}else {target = oNewt}
+	
+		if collision_line (x,y, target.x, target.y-22, oCollide, 1, 0)	{cantSee = true} else cantSee = false;
+	
+		if point_in_circle(x,y, target.x, target.y-22, viewRange)		{inRange = true} else inRange = false;
+	}
 	state();
 
 }else 

@@ -22,6 +22,7 @@ if instance_exists(oNewt)
 					dist = point_distance(xstart,ystart,target.x,target.y);
 					with (target.owner)
 					{
+						diedFrom = "standard";
 						//damage calculation
 						if (other.crit or other.headshot) {finalDMG = other.baseDMG * 3}
 						else finalDMG = standardFalloff(other.dist,other.baseDMG);

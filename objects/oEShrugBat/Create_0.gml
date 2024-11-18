@@ -28,6 +28,9 @@ swoopTime = swoopReset;
 done = false;
 target = noone;
 
+myGoon = noone;
+hasGoon = false;
+
 if (instance_exists(oNewt) and oNewt.x< x) {image_xscale = -1};
 
 if (hasHead)
@@ -49,13 +52,13 @@ stateIdle = function()
 	vsp = -1;
 	done = false;
 
-	if collision_line (x,y, x, y-45, oCollide, 1, 0) idleTimer--				
+	if collision_line (x,y, x, y-45, oCollide, 1, 0) idleTimer--
 				
 	if idleTimer < 0
 	{		
 		statenext =choose(0,1);
 					
-		if inRange and !cantSee
+		if inRange and !cantSee and !hasGoon
 		{
 			if target.x< x {image_xscale = -1}else image_xscale = 1;
 			swoopTime = swoopReset;
@@ -68,8 +71,7 @@ stateIdle = function()
 		{
 			idleTimer = idleReset;
 			image_xscale = -image_xscale;
-		}
-					
+		}	
 		else if statenext == 0
 		{
 			hsp = image_xscale;
@@ -81,7 +83,7 @@ stateIdle = function()
 
 stateWander = function()
 {
-	if inRange and !cantSee
+	if inRange and !cantSee and !hasGoon
 	{
 		swoopTime = swoopReset;
 		hsp = 0;
@@ -101,25 +103,60 @@ stateWander = function()
 
 stateSwoop = function()
 {
-	if collision_circle(x,y,20,oCollide,0,0) or place_meeting(x,y,oNewt)
-	{	
-		idleTimer = idleReset;
-		done = true;
-		swoopTime = swoopReset;
-		statenext = -1;
-		state = stateIdle;	
-	};
-			
-	sprite_index = sEShrugBatSwoop;
-	x = x + lengthdir_x(swoopSpeed,swoopAngle);
-	y = y + lengthdir_y(swoopSpeed,swoopAngle);
-			
-	if (done == true)
+	if !hasGoon
 	{
-		swoopTime = swoopReset;
-		statenext = -1;
-		state = stateIdle;		
-	}
+		if collision_circle(x,y,20,oCollide,0,0) or place_meeting(x,y,oNewt)
+		{	
+			idleTimer = idleReset;
+			done = true;
+			swoopTime = swoopReset;
+			statenext = -1;
+			state = stateIdle;	
+		};
+			
+		sprite_index = sEShrugBatSwoop;
+		x = x + lengthdir_x(swoopSpeed,swoopAngle);
+		y = y + lengthdir_y(swoopSpeed,swoopAngle);
+			
+		if (done == true)
+		{
+			swoopTime = swoopReset;
+			statenext = -1;
+			state = stateIdle;		
+		}
+	}else state = stateIdle;
 }		
+
+stateCarry = function()
+{
+//	hsp = image_xscale;
+
+////horizontal collision
+//		if (place_meeting(x+hsp,y,oCollide))
+//		{
+//			while (!place_meeting(x+sign(hsp),y,oCollide))
+//			{
+//				hsp += sign(hsp);
+//			}
+			
+//			image_xscale = -image_xscale;
+//		}
+
+//		x = x + hsp;
+	
+//	//vertical collision
+
+//		vsp = -1;
+
+		
+//		if (collision_line(x,y,x,y-44,oCollide,0,0))
+//		{
+//			vsp = 0;
+//			onCeiling = true;
+			
+//		}else onCeiling = false;
+		
+//		y = y +vsp
+}
 
 state = stateIdle;

@@ -25,7 +25,7 @@ if (hp <= 0)
 	{
 		case "killer7":
 			
-			with (instance_create_layer(x,y-2,layer,oCorpse))
+			with (instance_create_layer(x,y-2,"Shots",oCorpse))
 			{	
 				corpse = _corpse;
 				sprite_index = other.sprite_index;
@@ -38,7 +38,7 @@ if (hp <= 0)
 		break;
 		
 		case "standard":
-			with (instance_create_layer(x,y-2,layer,oCorpse))
+			with (instance_create_layer(x,y-2,"Enemy",oCorpse))
 			{	
 				corpse = other.corpse
 				big = other.big;
@@ -61,7 +61,7 @@ if (hp <= 0)
 		break;
 		
 		case "fire":
-			with (instance_create_layer(x,y-2,layer,oCorpse))
+			with (instance_create_layer(x,y-2,"Enemy",oCorpse))
 			{	
 				corpse = other.corpse
 				big = other.big;
@@ -85,7 +85,7 @@ if (hp <= 0)
 		break;
 		
 		case "fireOverkill":
-			with (instance_create_layer(x,y-2,layer,oCorpse))
+			with (instance_create_layer(x,y-2,"Enemy",oCorpse))
 			{	
 				corpse = other.corpse
 				big = other.big;

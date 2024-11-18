@@ -5,12 +5,12 @@
 corpse = "generic"
 cSprite = sEShooterDie;
 big = false;
-diedFrom = noone;
+diedFrom = "standard";
 friendly = -1;
 target = noone;
 
-drop = oHealthPickup;
-dropChance = 5;
+carried = false;
+owner = noone;
 
 if instance_exists(oRoomDetect)
 {
@@ -52,101 +52,154 @@ if (hasHead)
 }
 else myHead = noone;
 
+
 statePatrol = function()
 {
-	lineOfSight(false,viewRange);
+	if !carried
+	{
+		lineOfSight(false,viewRange);
 		
-	if instance_exists(target)
-	{
-		vsp = -3; 
-		state = stateAlert;
-		att = 60;
-		oSFX.whatwasthatnoise = true;
-		markerTime = 30;
-	}
+		if instance_exists(target)
+		{
+			vsp = -3; 
+			state = stateAlert;
+			att = 60;
+			oSFX.whatwasthatnoise = true;
+			markerTime = 30;
+		}
 
-	//dont walk off ledges
-	if (!place_meeting(x+(hsp*3), y+1, oCollide))
-	{
-		patrolTime = 0;
-	}
+		//dont walk off ledges
+		if (!place_meeting(x+(hsp*3), y+1, oCollide))
+		{
+			patrolTime = 0;
+		}
 	
-	vsp = vsp + grv;
+		vsp = vsp + grv;
 				
-	sprite_index = sEShooterWalk;
-	image_speed = 1;
-	image_xscale = sign(hsp);
+		sprite_index = sEShooterWalk;
+		image_speed = 1;
+		image_xscale = sign(hsp);
 	
-	//vertical collision
+		//vertical collision
 		
-	if (place_meeting(x,y+vsp,oCollide))
-	{
-		while (!place_meeting(x,y+sign(vsp),oCollide))
+		if (place_meeting(x,y+vsp,oCollide))
 		{
-			y += sign(vsp);
+			while (!place_meeting(x,y+sign(vsp),oCollide))
+			{
+				y += sign(vsp);
+			}
+			vsp = 0;
+			grounded = true;
 		}
-		vsp = 0;
-		grounded = true;
-	}
-	y += vsp;
+		y += vsp;
 	
-	//horizontal collision
-	if (place_meeting(x+hsp,y,oCollide))
-	{
-		while (!place_meeting(x+sign(hsp),y,oCollide))
+		//horizontal collision
+		if (place_meeting(x+hsp,y,oCollide))
 		{
-			x = x + sign(hsp)
+			while (!place_meeting(x+sign(hsp),y,oCollide))
+			{
+				x = x + sign(hsp)
+			}
+			hsp = -hsp;
+			patrolTime = patrolReset;
 		}
-		hsp = -hsp;
-		patrolTime = patrolReset;
-	}
-	x = x + hsp;
+		x = x + hsp;
 	
-	patrolTime--;
-	if (patrolTime <= 0)
+		patrolTime--;
+		if (patrolTime <= 0)
+		{
+			patrolTime = patrolReset;
+			hsp = -hsp;
+		}
+	}
+	else
 	{
-		patrolTime = patrolReset;
-		hsp = -hsp;
+		lineOfSight(false,viewRange);
+		if instance_exists(target)
+		{
+			vsp = -3; 
+			state = stateAlert;
+			att = 60;
+			oSFX.whatwasthatnoise = true;
+			markerTime = 30;
+		}
+				
+		sprite_index = sEShooterAir;
+		image_index = 0;
+		image_speed = 0;
 	}
-	
-
-	
 }
 
 stateAlert = function()
 {
-	walksp = 0;
+	if !carried
+	{
+		walksp = 0;
 		
-	lineOfSight(false,viewRange);
-	if !instance_exists(target) 
-	{
-		att--;
-	}
-	else if (target.x < x){image_xscale = -1} else image_xscale = 1;
-	
-	if (att <= 0)
-	{	
-		mygun.countdown = irandom_range(30,60);
-		hsp = image_xscale; 
-		patrolTime = patrolReset;  
-		state = statePatrol;
-	}
-	
-	vsp = vsp + grv;
-	if (markerTime > 0){image_speed = 0; sprite_index = sEShooterWTF}else{image_speed = 1; sprite_index = sEShooter};
-	markerTime--;
-	
-	if (place_meeting(x,y+vsp,oCollide))
-	{
-		while (!place_meeting(x,y+sign(vsp),oCollide))
+		lineOfSight(false,viewRange);
+		if !instance_exists(target) 
 		{
-			y += sign(vsp);
+			att--;
 		}
-		vsp = 0;
-		grounded = true;
-	}				
-	y += vsp;
+		else if (target.x < x){image_xscale = -1} else image_xscale = 1;
 	
+		if (att <= 0)
+		{	
+			mygun.countdown = irandom_range(30,60);
+			hsp = image_xscale; 
+			patrolTime = patrolReset;  
+			state = statePatrol;
+		}
+	
+		vsp = vsp + grv;
+		if (markerTime > 0){image_speed = 0; sprite_index = sEShooterWTF}else{image_speed = 1; sprite_index = sEShooter};
+		markerTime--;
+	
+		if (place_meeting(x,y+vsp,oCollide))
+		{
+			while (!place_meeting(x,y+sign(vsp),oCollide))
+			{
+				y += sign(vsp);
+			}
+			vsp = 0;
+			grounded = true;
+		}				
+		y += vsp;
+	}
+	else
+	{
+		sprite_index = sEShooterScramble;
+		image_speed = 1;
+		markerTime--;	
+			
+		walksp = 0;
+		lineOfSight(false,viewRange);
+		if !instance_exists(target) 
+		{
+			att--;
+		}
+		else if (target.x < x){image_xscale = -1} else image_xscale = 1;
+	
+		if (att <= 0)
+		{	
+			hsp = image_xscale; 
+			patrolTime = patrolReset;  
+			state = statePatrol;
+		}
+	
+		//vertical collision
+		if (place_meeting(x,y+vsp,oCollide))
+		{
+			while (!place_meeting(x,y+sign(vsp),oCollide))
+			{
+				y += sign(vsp);
+			}
+			vsp = 0;
+			grounded = true;
+		}
+		y += vsp;	
+	}
 }
 
-state = statePatrol
+
+state = statePatrol;

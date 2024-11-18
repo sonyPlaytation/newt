@@ -13,9 +13,19 @@ if instance_exists(myRoom)
 if instance_exists(pAlly) and !inactive
 {
 
-
-	state();	
+	if instance_exists(owner)
+	{
+		image_xscale = owner.image_xscale;
+		carried = true;
+		depth = owner.depth+10;
+		x = owner.x - sprite_width/6;
+		y = owner.y +sprite_height - 6;
+	}else carried = false;
 	
+	
+	
+	state();
+
 	//switch (state)
 	//{
 	//	case states.patrol:

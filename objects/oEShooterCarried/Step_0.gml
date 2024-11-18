@@ -56,12 +56,12 @@ if instance_exists(oNewt) and !inactive
 				image_index = 0;
 
 	
-			if cantShoot and (point_in_circle(x,selfCenter,oNewt.x, newtCenter,viewRange))
-			{
-				vsp = -3; 
-				state = carriedstates.alert;
-				oSFX.whatwasthatnoise = true;
-			}
+				if cantShoot and (point_in_circle(x,selfCenter,oNewt.x, newtCenter,viewRange))
+				{
+					vsp = -3; 
+					state = carriedstates.alert;
+					oSFX.whatwasthatnoise = true;
+				}
 	
 			break;
 	
