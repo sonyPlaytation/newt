@@ -6,12 +6,13 @@ if screenPause() or captured {phy_active = false}else phy_active = true;
 //hitting an enemy
 if (place_meeting(x,y,pEntity)) and phy_speed > 3 and !captured
 {
+	var _fDense = median(bbox_top-bbox_bottom,bbox_right-bbox_left);
 	var target = instance_place(x,y,pEntity)
 	with(target)
 	{
 		diedFrom = "standard";
 			
-		var _dmg = ceil(other.damage * other.phy_speed);
+		var _dmg = ceil(other.damage * (other.phy_speed/4)*(_fDense/24));
 		var _finaldmg = _dmg;
 		hp -= _finaldmg
 		

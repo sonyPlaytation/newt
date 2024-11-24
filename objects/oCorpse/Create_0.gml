@@ -44,7 +44,7 @@ big = 0;
 inBelly = false;
 
 multiplier = choose(3,3,3,4,6);
-repeat(size*multiplier){instance_create_layer(x,bbox_bottom, "Shots", oSpookyGhost)};
+repeat(size*multiplier){instance_create_depth(x,bbox_bottom, depth, oSpookyGhost)};
 expGive(size,multiplier);
 screenShake(3,15);
 

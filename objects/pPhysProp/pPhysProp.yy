@@ -10,7 +10,9 @@
   ],
   "managed":true,
   "name":"pPhysProp",
-  "overriddenProperties":[],
+  "overriddenProperties":[
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"pEntity","path":"objects/pEntity/pEntity.yy",},"propertyId":{"name":"hp","path":"objects/pEntity/pEntity.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"150",},
+  ],
   "parent":{
     "name":"Entities",
     "path":"folders/Objects/Entities.yy",
@@ -24,7 +26,7 @@
   "physicsDensity":0.5,
   "physicsFriction":0.2,
   "physicsGroup":1,
-  "physicsKinematic":true,
+  "physicsKinematic":false,
   "physicsLinearDamping":0.1,
   "physicsObject":true,
   "physicsRestitution":0.1,

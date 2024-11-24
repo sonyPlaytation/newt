@@ -7,6 +7,15 @@ hitTarget = function()
 	if (place_meeting(x,y,pEntity))
 	{
 		var target = instance_place(x,y,pEntity)
+		
+		if target == pPhysProp and instance_exists(oNewt)
+		{					
+			var _physX = lengthdir_x(40 + abs(oNewt.hsp), other.image_angle) * 10000
+			var _physY = lengthdir_y(40 + abs(oNewt.vsp), other.image_angle) * 10000
+									
+			with target{physics_apply_impulse(oNewt.x,oNewt.y,_physX,_physY)};
+		}
+		
 		with(target)
 		{
 			diedFrom = "standard";
@@ -49,12 +58,9 @@ hitTarget = function()
 			
 		}
 		
-		if target == pPhysProp
-		{
-				
-		}
 		
-		hitStop(_hs);
+		
+		//hitStop(_hs);
 		instance_destroy();
 	}
 }

@@ -34,11 +34,11 @@
   "physicsDensity":0.5,
   "physicsFriction":0.2,
   "physicsGroup":1,
-  "physicsKinematic":false,
+  "physicsKinematic":true,
   "physicsLinearDamping":0.1,
   "physicsObject":false,
   "physicsRestitution":0.1,
-  "physicsSensor":false,
+  "physicsSensor":true,
   "physicsShape":1,
   "physicsShapePoints":[
     {"x":0.0,"y":0.0,},

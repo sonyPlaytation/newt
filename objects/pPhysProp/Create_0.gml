@@ -1,6 +1,9 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+physics_world_create(0.1);
+physics_world_gravity(0, 100);
+
 event_inherited();
 
 captured = false;
@@ -10,3 +13,5 @@ slim = 1;
 color = c_white;
 
 damage = 3;
+
+physics_fixture_create()
