@@ -7,7 +7,7 @@ if screenPause() {exit;};
 var homingtarget = instance_nearest(mouse_x,mouse_y,pEnemy);
 if global.soda[1] == true and instance_exists(pEnemy)
 {
-	tracerAngle = oMultiWeapon.image_angle;
+	tracerAngle = oWeapon.image_angle;
 	var targetdir = point_direction(x,y,homingtarget.x,homingtarget.y-homingtarget.sprite_height/2)
 	dir += sin(degtorad(targetdir-dir))*5;
 		

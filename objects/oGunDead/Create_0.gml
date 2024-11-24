@@ -1,8 +1,8 @@
 
 
-with (oMultiWeapon){oGunDead.sprite_index = sprite;}
+with (oWeapon){oGunDead.sprite_index = sprite;}
 
-depth = oMultiWeapon.depth;
+depth = oWeapon.depth;
 
 hsp = 0;
 vsp = 0;

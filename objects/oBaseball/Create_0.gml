@@ -136,7 +136,7 @@ stateIdle = function()
 		
 	if collision_circle(x,y,45,oNewt,1,1)
 	{
-		oMultiWeapon.delayRight = 0;
+		oWeapon.delayRight = 0;
 		oSFX.ballgrab = true;
 		instance_destroy();
 	}

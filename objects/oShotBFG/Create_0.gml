@@ -15,7 +15,7 @@ spd = 0;
 xspd = 0;
 yspd = 0;
 
-firstDMG = (oMultiWeapon.damage * irandom_range(2,10));
+firstDMG = (oWeapon.damage * irandom_range(2,10));
 
 ballHealth = firstDMG;
 
@@ -23,6 +23,6 @@ done = false;
 
 tracerSpread = 24;
 tracerNumber = 40;
-tracerAngle = oMultiWeapon.image_angle;
+tracerAngle = oWeapon.image_angle;
 accuracy = 2
 damage = 20*oInv.dmgMod;;

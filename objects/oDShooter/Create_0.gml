@@ -23,7 +23,7 @@ if (oInv.hpMissing != 0)
 {
 	if (irandom_range(1,100) <= dropRate)
 	{
-		if !array_contains(oMultiWeapon.heldweapons, 1)
+		if !array_contains(oWeapon.heldweapons, 1)
 		{
 			mydrop = instance_create_layer(x,y-15,"Player",oWeaponPickup)
 			with mydrop

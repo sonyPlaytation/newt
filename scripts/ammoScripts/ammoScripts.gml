@@ -1,7 +1,7 @@
 function getAmmo()
 {
 	var randType = irandom(5);
-	with(oMultiWeapon)
+	with(oWeapon)
 	{
 		if (ammo[ammotype] < ammoMax[ammotype]) and (ammouse > -1)
 		{

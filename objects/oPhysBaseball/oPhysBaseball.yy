@@ -1,10 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"oPropTestBall",
+  "%Name":"oPhysBaseball",
   "eventList":[],
   "managed":true,
-  "name":"oPropTestBall",
-  "overriddenProperties":[],
+  "name":"oPhysBaseball",
+  "overriddenProperties":[
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"pEntity","path":"objects/pEntity/pEntity.yy",},"propertyId":{"name":"hp","path":"objects/pEntity/pEntity.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"999",},
+  ],
   "parent":{
     "name":"Props",
     "path":"folders/Objects/Entities/Props.yy",

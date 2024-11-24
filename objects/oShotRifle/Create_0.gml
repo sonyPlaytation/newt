@@ -18,7 +18,7 @@ headshot = false;
 
 if hitSprite = sHitFLCL{flashScale = 500}else flashScale = 2;
 
-baseDMG = oMultiWeapon.damage*oInv.dmgMod;
+baseDMG = oWeapon.damage*oInv.dmgMod;
 dist = 0;
 
 crit = false;

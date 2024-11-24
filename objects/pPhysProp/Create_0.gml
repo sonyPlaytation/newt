@@ -13,5 +13,6 @@ slim = 1;
 color = c_white;
 
 damage = 3;
+idleTimer = 0;
 
-physics_fixture_create()
+dieSound = snBelch;

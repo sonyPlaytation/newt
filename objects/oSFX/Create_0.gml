@@ -4,6 +4,8 @@
 global.masterVolume = 1;
 global.sfxVolume = 1;
 
+physDestroyed = noone;
+
 soundgetammo = false;
 healsound = false;
 weaponswitchsound = false;

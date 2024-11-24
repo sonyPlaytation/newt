@@ -13,7 +13,7 @@ draw_text_transformed(300,180,"levels"+string(oInv.sodas),2,2,0);
 //draw_text_transformed(160,160,oGame.critTimer,5,5,0);
 
 draw_text(400,50,global.inputdevice);
-draw_text(450,50,string(oMultiWeapon.image_index));
-draw_text(500,50,string(oMultiWeapon.image_speed));
+draw_text(450,50,string(oWeapon.image_index));
+draw_text(500,50,string(oWeapon.image_speed));
 //draw_text(400,65,string(oNewt.image_index));
 

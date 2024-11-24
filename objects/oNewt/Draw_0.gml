@@ -43,8 +43,8 @@ if dashCount < dashMax and !place_meeting(x,y+2,oCollide)
 	draw_text_transformed(oNewt.x,oNewt.y-45,string(dashCount),scale,scale,0);
 }
 
-if prop != noone {draw_text_transformed(oNewt.x,oNewt.y-70,string(prop.phy_mass),scale,scale,0)};
-draw_text_transformed(oNewt.x,oNewt.y-90,image_speed,scale,scale,0)
+//if prop != noone {draw_text_transformed(oNewt.x,oNewt.y-70,string(prop.phy_mass),scale,scale,0)};
+//draw_text_transformed(oNewt.x,oNewt.y-90,image_speed,scale,scale,0)
 
 if (flash > 0)
 {

@@ -4,7 +4,7 @@ if instance_exists(owner)
 {
 	if owner = oNewt
 	{
-		weaponStats(array_get(oMultiWeapon.heldweapons, oMultiWeapon.type)); 
+		weaponStats(array_get(oWeapon.heldweapons, oWeapon.type)); 
 	}
 	else
 	{

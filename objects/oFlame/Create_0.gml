@@ -12,7 +12,7 @@ spd = 0;
 xspd = 0;
 yspd = 0;
 
-baseDMG = oMultiWeapon.damage*oInv.dmgMod;
+baseDMG = oWeapon.damage*oInv.dmgMod;
 dist = 0;
 
 alarm[0] = 20;

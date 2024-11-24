@@ -13,6 +13,6 @@ yspd = 0;
 
 diedFrom = "overkill"
 
-baseDMG = oMultiWeapon.damage*oInv.dmgMod;
+baseDMG = oWeapon.damage*oInv.dmgMod;
 
 rocketLaunchGood = false;

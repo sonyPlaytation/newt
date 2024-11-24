@@ -65,7 +65,7 @@ with (argument1)
 			if (oInv.hp > 0) {audio_play_sound(snNewtHurt,800,false)};
 			blinkExt(image_alpha, "image_alpha", 1, iFrames);
 		
-			if array_contains(oMultiWeapon.heldweapons,15){oMultiWeapon.ammo[4]+=15}
+			if array_contains(oWeapon.heldweapons,15){oWeapon.ammo[4]+=15}
 		}
 		else
 		{

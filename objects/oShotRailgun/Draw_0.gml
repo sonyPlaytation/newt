@@ -28,7 +28,7 @@ if instance_exists(oNewt)
 					with (target.owner)
 					{
 						//damage calculation
-						if (other.crit or oMultiWeapon.headshots) {finalDMG = other.baseDMG * 3}
+						if (other.crit or oWeapon.headshots) {finalDMG = other.baseDMG * 3}
 						else finalDMG = sniperFalloff(other.dist,other.baseDMG);
 			
 						//subtract health
@@ -37,14 +37,14 @@ if instance_exists(oNewt)
 						//damage numbers
 						if (!noDMG)
 						{
-							repeat(irandom_range(7,20)/oMultiWeapon.bulletnumber) {(instance_create_layer(target.x,target.y, layer, oBlood))}
+							repeat(irandom_range(7,20)/oWeapon.bulletnumber) {(instance_create_layer(target.x,target.y, layer, oBlood))}
 							myDamage.damage += finalDMG;
 							myDamage.alpha = 1;
 							myDamage.dmgTextScale = 0.75
 						}
 		
 						//if rolled a crit
-						if (other.crit or oMultiWeapon.headshots)
+						if (other.crit or oWeapon.headshots)
 						{
 							diedFrom = "headshot";
 							if (!noDMG){myDamage.dmgTextScale = 1;}
@@ -86,7 +86,7 @@ if instance_exists(oNewt)
 						//damage numbers
 						if (!noDMG)
 						{
-							repeat(irandom_range(7,20)/oMultiWeapon.bulletnumber) {(instance_create_layer(target.x,target.y, layer, oBlood))}
+							repeat(irandom_range(7,20)/oWeapon.bulletnumber) {(instance_create_layer(target.x,target.y, layer, oBlood))}
 							myDamage.damage += finalDMG;
 							myDamage.alpha = 1;
 							myDamage.dmgTextScale = 0.75

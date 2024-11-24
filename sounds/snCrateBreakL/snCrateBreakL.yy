@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"snCrateBreakL",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":1.22737,
+  "name":"snCrateBreakL",
+  "parent":{
+    "name":"PhysProps",
+    "path":"folders/Sounds/Foley/PhysProps.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snCrateBreakL.wav",
+  "type":0,
+  "volume":1.0,
+}

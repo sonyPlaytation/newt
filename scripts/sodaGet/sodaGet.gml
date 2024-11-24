@@ -30,7 +30,7 @@ function sodaGet(soda)
 		case 4: //ammo max increase
 			global.soda[4] = true;
 			var AmmoUp = irandom(5);
-			oMultiWeapon.ammoMax[AmmoUp]= floor(oMultiWeapon.ammoMax[AmmoUp]*1.5);
+			oWeapon.ammoMax[AmmoUp]= floor(oWeapon.ammoMax[AmmoUp]*1.5);
 		break;
 		
 		case 5: //air dashes

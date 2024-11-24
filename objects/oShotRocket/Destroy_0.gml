@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-oMultiWeapon.showLaser = false;
+oWeapon.showLaser = false;
 
 

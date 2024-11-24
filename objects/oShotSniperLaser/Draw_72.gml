@@ -2,8 +2,8 @@
 // You can write your code in this editor
 if instance_exists(oNewt)
 {
-	var gun = oMultiWeapon
-	switch(oMultiWeapon.sprite)
+	var gun = oWeapon
+	switch(oWeapon.sprite)
 	{
 		case sAWP:
 	

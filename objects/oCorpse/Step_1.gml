@@ -81,8 +81,8 @@ if corpsePicked != true
 		case "batparry":
 			digest*=1.75;
 			var go = 15;
-			vsp = lengthdir_y(go,oMultiWeapon.image_angle);
-			hsp = lengthdir_x(go,oMultiWeapon.image_angle);
+			vsp = lengthdir_y(go,oWeapon.image_angle);
+			hsp = lengthdir_x(go,oWeapon.image_angle);
 			spd = 1;
 			flash = 3;
 			grv = 0.2;

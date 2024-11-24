@@ -1,9 +1,9 @@
 ///@args weapon
 function weaponStats(weapon){
 
-	if instance_exists(oMultiWeapon)
+	if instance_exists(oWeapon)
 	{
-		var wp_map = oMultiWeapon.weapons[weapon];
+		var wp_map = oWeapon.weapons[weapon];
 		type		= wp_map[? "type"];
 		name		= wp_map[? "name"];
 		sprite		= wp_map[? "sprite"];

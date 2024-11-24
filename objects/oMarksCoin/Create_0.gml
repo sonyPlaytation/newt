@@ -28,7 +28,7 @@ vsp = 0;
 x += hsp;
 y += vsp;
 
-oMultiWeapon.coinCount--;
+oWeapon.coinCount--;
 
 baseDMG = 0;
 coinHit = false;
@@ -116,7 +116,7 @@ stateRicochet = function()
 			{
 				headshot = true;
 				baseDMG = ceil(other.baseDMG * 1.25)*oInv.dmgMod;
-				hitSprite = oMultiWeapon.hitSprite;
+				hitSprite = oWeapon.hitSprite;
 				col = c_yellow;
 				crit = false;
 				dir = point_direction(x,y,other.target.x,other.target.y)
@@ -136,7 +136,7 @@ stateRicochet = function()
 				{
 					headshot = true;
 					baseDMG = other.baseDMG*oInv.dmgMod;
-					hitSprite = oMultiWeapon.hitSprite;
+					hitSprite = oWeapon.hitSprite;
 					col = c_yellow;
 					crit = false;
 					dir = point_direction(x,y,other.target.x,other.target.bbox_top)

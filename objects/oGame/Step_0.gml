@@ -26,6 +26,6 @@ critProc--;
 if global.critTimer != 0
 {
 	global.critTimer--;
-	oMultiWeapon.crit = true;
+	oWeapon.crit = true;
 }
 

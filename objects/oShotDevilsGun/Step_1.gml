@@ -23,7 +23,7 @@ if instance_exists(oNewt)
 		var target = (instance_place(x,y,oHeadHitbox));
 		
 		var _refund = irandom(3);
-		if _refund = 3 {with(oMultiWeapon) {ammo[ammotype]+=3}};
+		if _refund = 3 {with(oWeapon) {ammo[ammotype]+=3}};
 		
 		with target.owner
 		{
@@ -33,7 +33,7 @@ if instance_exists(oNewt)
 				diedFrom = "standard";
 				
 				//damage calculation
-				if (other.crit or oMultiWeapon.headshots) {finalDMG = other.baseDMG * 3}
+				if (other.crit or oWeapon.headshots) {finalDMG = other.baseDMG * 3}
 				else finalDMG = standardFalloff(other.dist,other.baseDMG);
 						
 				//subtract health
@@ -49,7 +49,7 @@ if instance_exists(oNewt)
 				}
 		
 				//if rolled a crit
-				if (other.crit or oMultiWeapon.headshots)
+				if (other.crit or oWeapon.headshots)
 				{
 					diedFrom = "headshot";
 					myDamage.dmgTextScale = 1;
@@ -85,7 +85,7 @@ if instance_exists(oNewt)
 		var target = (instance_place(x,y,pEntity));
 	
 		var _refund = irandom(3);
-		if _refund = 3 {with(oMultiWeapon) {ammo[ammotype]+=3}};
+		if _refund = 3 {with(oWeapon) {ammo[ammotype]+=3}};
 	
 		with target
 		{

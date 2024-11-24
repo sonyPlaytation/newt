@@ -6,7 +6,7 @@ if screenPause() {exit;};
 
 if global.soda[1] == true
 {
-	oMultiWeapon.showLaser = true;
+	oWeapon.showLaser = true;
 	var targetdir = point_direction(x,y,mouse_x,mouse_y)
 	dir += sin(degtorad(targetdir-dir))*13;
 		

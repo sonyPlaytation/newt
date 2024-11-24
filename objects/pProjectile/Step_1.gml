@@ -46,7 +46,7 @@ if instance_exists(oNewt)
 				diedFrom = "standard";
 				
 				//damage calculation
-				if (other.crit or oMultiWeapon.headshots) {finalDMG = other.baseDMG * 3}
+				if (other.crit or oWeapon.headshots) {finalDMG = other.baseDMG * 3}
 				else finalDMG = standardFalloff(other.dist,other.baseDMG);
 						
 				//subtract health
@@ -62,7 +62,7 @@ if instance_exists(oNewt)
 				}
 		
 				//if rolled a crit
-				if (other.crit or oMultiWeapon.headshots)
+				if (other.crit or oWeapon.headshots)
 				{
 					diedFrom = "headshot";
 					myDamage.dmgTextScale = 1;
@@ -85,8 +85,9 @@ if instance_exists(oNewt)
 	
 	if (place_meeting(x,y,pEntity)) 
 	{
-		hitStop(2);
 		var target = (instance_place(x,y,pEntity));
+		if !object_is_ancestor(target.object_index,pPhysProp) {hitStop(2)};
+		
 		with target
 		{
 			if !inactive

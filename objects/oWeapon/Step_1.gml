@@ -126,7 +126,7 @@ if instance_exists(oNewt)
 			}
 		}
 	
-		dist =	point_distance(100,100,oMultiWeapon.x,oMultiWeapon.y);
+		dist =	point_distance(100,100,oWeapon.x,oWeapon.y);
 	
 		var xAim = input_value("aim_right") - input_value("aim_left")
 		var yAim = input_value("aim_down") - input_value("aim_up")
@@ -140,7 +140,7 @@ if instance_exists(oNewt)
 	}
 	else
 	{
-		dist =	point_distance(mouse_x,mouse_y,oMultiWeapon.x,oMultiWeapon.y);
+		dist =	point_distance(mouse_x,mouse_y,oWeapon.x,oWeapon.y);
 		image_angle = point_direction(x,y,oCrosshairXY.x,oCrosshairXY.y);
 	
 		x = x + lengthdir_x(clamp(dist,0,dist/25),image_angle);
@@ -215,7 +215,7 @@ if instance_exists(oNewt)
 				case 0: //primary
 					#region
 				
-					if (mouseLeft)
+					if (mouseLeft)and oNewt.propBuffer <= 0
 					{
 						if (current_cd == 0)
 						{
@@ -266,7 +266,7 @@ if instance_exists(oNewt)
 									spd = other.bulletspeed;
 									image_angle = dir;
 								
-									if other.projectile == oPropTestBall
+									if other.projectile == oPhysBaseball
 									{
 										var _physX = lengthdir_x(other.bulletspeed, other.image_angle) * 10000
 										var _physY = lengthdir_y(other.bulletspeed, other.image_angle) * 10000
@@ -320,7 +320,7 @@ if instance_exists(oNewt)
 			case 1: //secondary
 				#region
 				
-				if (mouseLeft)
+				if (mouseLeft)and oNewt.propBuffer <= 0
 				{
 					if (current_cd == 0)
 					{
@@ -405,7 +405,7 @@ if instance_exists(oNewt)
 			case 2: //melee
 				#region
 
-				if (mouseLeft)
+				if (mouseLeft) and oNewt.propBuffer <= 0
 				{
 					if (current_cd == 0)
 					{
@@ -500,7 +500,7 @@ if instance_exists(oNewt)
 				{
 					oNewt.propBuffer = 15;
 					_prop.captured = false;
-					_prop.phy_rotation = 0;
+					_prop.phy_active = true;
 					oNewt.prop = noone;
 					
 					var _physX = lengthdir_x(2 + abs(oNewt.hsp), other.image_angle) * 10000
@@ -513,7 +513,7 @@ if instance_exists(oNewt)
 				{
 					oNewt.propBuffer = 15;
 					_prop.captured = false;
-					_prop.phy_rotation = 0;
+					_prop.phy_active = true;
 					oNewt.prop = noone;
 				}
 			}

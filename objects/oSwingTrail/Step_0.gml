@@ -2,7 +2,7 @@
 // You can write your code in this editor
 
 
-var dist = lerp(0,oMultiWeapon.length*2,0.5);
+var dist = lerp(0,oWeapon.length*2,0.5);
 
 if instance_exists(owner)
 {

@@ -357,7 +357,7 @@ if gethurt == true
 //new weapon
 if newweapon == true
 {
-	var _sound = audio_play_sound(oMultiWeapon.pickupsound, 600, false,1,0,random_range(0.9,1.1))
+	var _sound = audio_play_sound(oWeapon.pickupsound, 600, false,1,0,random_range(0.9,1.1))
 	audio_sound_gain(_sound,_sfxVol,0);
 	newweapon = false;
 }

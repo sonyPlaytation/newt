@@ -41,13 +41,13 @@ if (instance_exists(oNewt)) and active
 	
 	if input_check_pressed("interact")
 	{
-		oMultiWeapon.showLaser = false;
+		oWeapon.showLaser = false;
 		oNewt.squishNewt(1.15,0.85);
 		//if no gun in hand
-		if oMultiWeapon.heldweapons[type] == 0
+		if oWeapon.heldweapons[type] == 0
 		{
 			oGame.combotimer += 80;
-			with (oMultiWeapon)
+			with (oWeapon)
 			{
 				weaponStats(other.weapon);
 				sprite_index = sprite;
@@ -75,9 +75,9 @@ if (instance_exists(oNewt)) and active
 		else
 		{
 			randomWand = false;
-			var _newWeap = oMultiWeapon.heldweapons[other.type];
+			var _newWeap = oWeapon.heldweapons[other.type];
 			
-			with (oMultiWeapon)
+			with (oWeapon)
 			{
 				weaponStats(other.weapon);
 				sprite_index = sprite;

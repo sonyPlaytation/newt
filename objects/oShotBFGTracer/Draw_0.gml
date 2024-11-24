@@ -34,7 +34,7 @@ if instance_exists(oNewt)
 						//damage numbers
 						if (!noDMG)
 						{
-							repeat(irandom_range(7,20)/oMultiWeapon.bulletnumber) {(instance_create_layer(target.x,target.y, layer, oBlood))}
+							repeat(irandom_range(7,20)/oWeapon.bulletnumber) {(instance_create_layer(target.x,target.y, layer, oBlood))}
 							myDamage.damage += finalDMG;
 							myDamage.alpha = 1;
 							myDamage.dmgTextScale = 0.75
@@ -73,7 +73,7 @@ if instance_exists(oNewt)
 						//damage numbers
 						if (!noDMG)
 						{
-							repeat(irandom_range(7,20)/oMultiWeapon.bulletnumber) {(instance_create_layer(target.x,target.y, layer, oBlood))}
+							repeat(irandom_range(7,20)/oWeapon.bulletnumber) {(instance_create_layer(target.x,target.y, layer, oBlood))}
 							myDamage.damage += finalDMG;
 							myDamage.alpha = 1;
 							myDamage.dmgTextScale = 0.75

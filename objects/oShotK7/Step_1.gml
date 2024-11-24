@@ -46,7 +46,7 @@ if instance_exists(oNewt)
 			if !inactive
 			{	
 				//if scoped minicrit
-				if oMultiWeapon.showLaser == true
+				if oWeapon.showLaser == true
 				{
 					diedFrom = "killer7";
 					if hitsound != -1 {oSFX.k7hurt = true};
@@ -79,12 +79,12 @@ if instance_exists(oNewt)
 				else
 				{
 					//if normal crit or noncrit damage
-					if oMultiWeapon.showLaser == true
+					if oWeapon.showLaser == true
 					diedFrom = "standard";
 					if hitsound != -1 {oSFX.k7hurt = true};
 				
 					//damage calculation
-					if (other.crit or oMultiWeapon.headshots) {finalDMG = other.baseDMG * 3}
+					if (other.crit or oWeapon.headshots) {finalDMG = other.baseDMG * 3}
 					else finalDMG = standardFalloff(other.dist,other.baseDMG);
 						
 					//subtract health
@@ -99,7 +99,7 @@ if instance_exists(oNewt)
 					}
 		
 					//if rolled a crit
-					if (other.crit or oMultiWeapon.headshots)
+					if (other.crit or oWeapon.headshots)
 					{
 						myDamage.dmgTextScale = 1;
 						with instance_create_layer(target.x,target.y - target.sprite_height,"Player",oCritHeader)

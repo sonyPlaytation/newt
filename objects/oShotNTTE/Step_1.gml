@@ -8,11 +8,11 @@ if (place_meeting(x,y,pEntity)) and (pEntity.inactive == false)
 {
 	with(instance_place(x,y,pEntity))
 	{
-		hp -= oMultiWeapon.damage;
+		hp -= oWeapon.damage;
 		
 		if (!noDMG)
 		{
-			myDamage.damage += oMultiWeapon.damage;
+			myDamage.damage += oWeapon.damage;
 			myDamage.alpha = 1;
 			myDamage.dmgTextScale = 0.75
 		}

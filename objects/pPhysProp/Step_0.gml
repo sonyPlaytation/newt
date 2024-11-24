@@ -1,7 +1,14 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-if screenPause() or captured {phy_active = false}else phy_active = true;
+if !place_meeting(x,y,pPhysProp)
+{
+	if phy_speed < 2 and idleTimer < 120 {idleTimer++} else idleTimer = 0;
+	if idleTimer >= 120 {phy_active = false;}
+	
+	if captured {phy_active = false; idleTimer = 0} //else phy_active = true;
+}
+else if screenPause(){phy_active = false} else phy_active = true;
 
 //hitting an enemy
 if (place_meeting(x,y,pEntity)) and phy_speed > 3 and !captured
@@ -13,7 +20,7 @@ if (place_meeting(x,y,pEntity)) and phy_speed > 3 and !captured
 		diedFrom = "standard";
 			
 		var _dmg = ceil(other.damage * (other.phy_speed/4)*(_fDense/24));
-		var _finaldmg = _dmg;
+		var _finaldmg = max(_dmg,15);
 		hp -= _finaldmg
 		
 		if (!noDMG)
@@ -28,8 +35,12 @@ if (place_meeting(x,y,pEntity)) and phy_speed > 3 and !captured
 		flash = 3;			
 		hitfrom = other.direction;		
 	}
+	hp -= ceil(other.damage * (other.phy_speed/4)*(_fDense/24))/3;
 	
-	var physX = lengthdir_x(999,point_direction(target.x,target.y,x,y));
-	var physY = lengthdir_y(999,point_direction(target.x,target.y,x,y))
-	physics_apply_impulse(x,y,physX,physY);
+	if !object_is_ancestor(target.object_index,pPhysProp)
+	{
+		var physX = lengthdir_x(999,point_direction(target.x,target.y,x,y));
+		var physY = lengthdir_y(999,point_direction(target.x,target.y,x,y))
+		physics_apply_impulse(x,y,physX,physY);
+	}
 }

@@ -1,2 +1,2 @@
 
-if instance_exists(oMultiWeapon) {depth = oMultiWeapon.depth-100};
+if instance_exists(oWeapon) {depth = oWeapon.depth-100};

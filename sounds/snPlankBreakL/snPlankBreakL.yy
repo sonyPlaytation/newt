@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"snPlankBreakL",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":0.866531,
+  "name":"snPlankBreakL",
+  "parent":{
+    "name":"PhysProps",
+    "path":"folders/Sounds/Foley/PhysProps.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snPlankBreakL.wav",
+  "type":0,
+  "volume":1.0,
+}

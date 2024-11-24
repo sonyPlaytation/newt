@@ -8,59 +8,100 @@ hitTarget = function()
 	{
 		var target = instance_place(x,y,pEntity)
 		
-		if target == pPhysProp and instance_exists(oNewt)
+		if object_is_ancestor(target.object_index,pPhysProp) and instance_exists(oNewt)
 		{					
-			var _physX = lengthdir_x(40 + abs(oNewt.hsp), other.image_angle) * 10000
-			var _physY = lengthdir_y(40 + abs(oNewt.vsp), other.image_angle) * 10000
-									
-			with target{physics_apply_impulse(oNewt.x,oNewt.y,_physX,_physY)};
-		}
-		
-		with(target)
-		{
-			diedFrom = "standard";
-			
-			if other.crit
+			switch (state)
 			{
-				var _dmg = oMultiWeapon.damage*3;
-			}
-			else
-			{
-				var _dmg = ceil(mean(oMultiWeapon.damage + abs(oNewt.hsp/5),oMultiWeapon.damage*1.5))
-			}
-			var _finaldmg = _dmg*oInv.dmgMod;
-			
-			hp -= _finaldmg
-			
-			if hp <=0
-			{
-				oNewt.dashCount++;
-			}
-			
-			if (!noDMG)
-			{
-				myDamage.damage += _finaldmg;
-				myDamage.alpha = 1;
-				myDamage.dmgTextScale = 0.75
-			}
-			
-			if (other.crit) and (!noDMG)
-			{
-				myDamage.dmgTextScale = 1;
-				with instance_create_layer(target.x,target.y - target.sprite_height,"Player",oCritHeader)
+				case stateParry:
+				with (target)
 				{
-					owner = target.id	
-				}
-			} else {global.critTotalDMG += _finaldmg}
+					idleTimer = 0;
+					phy_active = true;
+					var physX = lengthdir_x(100,other.image_angle)*(1000-(target.phy_mass));
+					var physY = lengthdir_y(100,other.image_angle)*(1000-(target.phy_mass));
+				
+					physics_apply_impulse(x,y,physX,physY);
+				
+					diedFrom = "standard";
 			
-			flash = 3;			
-			hitfrom = other.direction;
+					var _dmg = oWeapon.damage/2;
+					hp -= _dmg;
 			
+					global.critTotalDMG += _dmg;
+			
+					flash = 3;			
+					hitfrom = other.direction;	
+				};
+				break;
+				
+				default:
+				with (target)
+				{
+					idleTimer = 0;
+					phy_active = true;
+					var physX = lengthdir_x(2,other.image_angle)*(1000-(target.phy_mass));
+					var physY = lengthdir_y(2,other.image_angle)*(1000-(target.phy_mass));
+				
+					physics_apply_impulse(x,y,physX,physY);
+				
+					diedFrom = "standard";
+			
+					var _dmg = oWeapon.damage/2;
+					hp -= _dmg;
+			
+					global.critTotalDMG += _dmg;
+			
+					flash = 3;			
+					hitfrom = other.direction;	
+				};
+				break;
+			}
 		}
-		
-		
-		
-		//hitStop(_hs);
+		else
+		{
+			with(target)
+			{
+				diedFrom = "standard";
+			
+				if other.crit
+				{
+					var _dmg = oWeapon.damage*3;
+				}
+				else
+				{
+					var _dmg = ceil(mean(oWeapon.damage + abs(oNewt.hsp/5),oWeapon.damage*1.5))
+				}
+				var _finaldmg = _dmg*oInv.dmgMod;
+			
+				hp -= _finaldmg
+			
+				if hp <=0
+				{
+					oNewt.dashCount++;
+				}
+			
+				if (!noDMG)
+				{
+					myDamage.damage += _finaldmg;
+					myDamage.alpha = 1;
+					myDamage.dmgTextScale = 0.75
+				}
+			
+				if (other.crit) and (!noDMG)
+				{
+					myDamage.dmgTextScale = 1;
+					with instance_create_layer(target.x,target.y - target.sprite_height,"Player",oCritHeader)
+					{
+						owner = target.id	
+					}
+				} else {global.critTotalDMG += _finaldmg}
+			
+				flash = 3;			
+				hitfrom = other.direction;
+			
+			}
+			hitStop(_hs);
+		}
 		instance_destroy();
 	}
 }
@@ -84,7 +125,7 @@ ammoBack = function(type,amount)
 			with instance_create_depth(x,y,depth,oCritHeader){image_index = 2};
 			instance_destroy();
 		};
-		oMultiWeapon.ammo[type] += amount;
+		oWeapon.ammo[type] += amount;
 	};		
 }
 
@@ -98,7 +139,7 @@ sprH = 60;
 image_xscale = sprW/2;
 image_yscale = sprH/2;
 
-_hs = max (0, oMultiWeapon.cooldown/4)
+_hs = max (0, oWeapon.cooldown/4)
 click = 0;
 
 stateSwat = function()
@@ -109,7 +150,7 @@ stateSwat = function()
 		var _target = (instance_place(x,y,oEnemyShot));
 		if _target.friendly != 1
 		{
-			if oMultiWeapon.sprite == sSandman {oSFX.baseballcrack = true} else audio_play_sound(snBatParry,500,false);
+			if oWeapon.sprite == sSandman {oSFX.baseballcrack = true} else audio_play_sound(snBatParry,500,false);
 			with _target
 			{
 				spd *= 1.85;
@@ -237,25 +278,25 @@ stateWrench = function()
 		if place_meeting(x,y,oSentryHead)
 		{
 			var _sentry = instance_place(x,y,oSentryHead)
-			if oMultiWeapon.ammo[0] >= 10 and ((_sentry.hp < _sentry.maxHP) or (_sentry.ammo < _sentry.maxAmmo))
+			if oWeapon.ammo[0] >= 10 and ((_sentry.hp < _sentry.maxHP) or (_sentry.ammo < _sentry.maxAmmo))
 			{
 				audio_play_sound(choose(snWrenchBuild1,snWrenchBuild2),600,false);
-				if (_sentry.hp < _sentry.maxHP) and oMultiWeapon.ammo[0] >= 10
+				if (_sentry.hp < _sentry.maxHP) and oWeapon.ammo[0] >= 10
 				{
 					with _sentry
 					{
 						hp = min(maxHP, hp+2);
 					}
-					oMultiWeapon.ammo[0] -= 10;
+					oWeapon.ammo[0] -= 10;
 				}
 				
-				if (_sentry.ammo < _sentry.maxAmmo) and oMultiWeapon.ammo[0] >= 10
+				if (_sentry.ammo < _sentry.maxAmmo) and oWeapon.ammo[0] >= 10
 				{
 					with _sentry
 					{
 						ammo = min(maxAmmo, ammo+5);
 					}
-					oMultiWeapon.ammo[0] -= 10;	
+					oWeapon.ammo[0] -= 10;	
 				}
 			}
 			else
@@ -276,7 +317,7 @@ stateWrench = function()
 		if place_meeting(x,y,oSentryHead)
 		{
 			var _sentry = instance_place(x,y,oSentryHead)
-			oMultiWeapon.ammo[0] += 100;
+			oWeapon.ammo[0] += 100;
 			with instance_place(x,y,_sentry)
 			{
 				instance_destroy();
@@ -299,5 +340,5 @@ stt[4] = stateWrench;
 stt[5] = stateWeak;
 
 swatTrail();
-state = stt[oMultiWeapon.meleeState];
+state = stt[oWeapon.meleeState];
 

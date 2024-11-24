@@ -887,7 +887,7 @@ coinCount = 4;
 	ds_map_add(weapons[28],"damage",0)
 	ds_map_add(weapons[28],"cancrit",false);
 	ds_map_add(weapons[28],"flash",-1);
-	ds_map_add(weapons[28],"projectile",oPropTestBall);
+	ds_map_add(weapons[28],"projectile",oPhysBaseball);
 	ds_map_add(weapons[28],"bulletnumber",1);
 	ds_map_add(weapons[28],"spread",-1);
 	ds_map_add(weapons[28],"casing",-1);

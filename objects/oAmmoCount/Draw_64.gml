@@ -1,22 +1,22 @@
 
 /// @description draw ammo count
 
-sHeight = oMultiWeapon.sprite_height;
-sWidth = oMultiWeapon.sprite_width;
+sHeight = oWeapon.sprite_height;
+sWidth = oWeapon.sprite_width;
 
-with (oMultiWeapon)
+with (oWeapon)
 	{
 		oAmmoCount.ammoString = ammo[ammotype]
 		oAmmoCount.reserveString = ammoMax[ammotype]
 	};
 
-if oMultiWeapon.ammouse >= 0
+if oWeapon.ammouse >= 0
 {
-	if oMultiWeapon.ammouse > real(ammoString){ammoCol = #eb445a}; //if not enough for a shot
-	if oMultiWeapon.ammo[oMultiWeapon.ammotype] == 0{spriteCol = c_dkgray}else{spriteCol = c_white}; // if ammo out, grey out ammo icon
+	if oWeapon.ammouse > real(ammoString){ammoCol = #eb445a}; //if not enough for a shot
+	if oWeapon.ammo[oWeapon.ammotype] == 0{spriteCol = c_dkgray}else{spriteCol = c_white}; // if ammo out, grey out ammo icon
 		
 	//ammo icon
-	draw_sprite_ext(iAmmoTypes,oMultiWeapon.ammotype,40,995,3,3,0,spriteCol,1);
+	draw_sprite_ext(iAmmoTypes,oWeapon.ammotype,40,995,3,3,0,spriteCol,1);
 		
 	//ammo counter
 		draw_set_font(fCanont);
@@ -63,20 +63,20 @@ draw_sprite_ext(mark2,2,uiX-45,uiY+gap +gap,scale,scale,0,col2,a2);
 draw_sprite_ext(sWeapList,weap[2],uiX,uiY +gap +gap,scale+(rot2/30),scale+(rot2/30),rot2,c_white,a2);
 	
 //weapon slot highlight color
-if oMultiWeapon.i=0{col0 = c_yellow; rot0 = min(rot0+4, 25)}else{col0 = c_white; rot0 = max(rot0-4, 0)};
-if oMultiWeapon.i=1{col1 = c_yellow; rot1 = min(rot1+4, 25)}else{col1 = c_white; rot1 = max(rot1-4, 0)};
-if oMultiWeapon.i=2{col2 = c_yellow; rot2 = min(rot2+4, 25)}else{col2 = c_white; rot2 = max(rot2-4, 0)};
+if oWeapon.i=0{col0 = c_yellow; rot0 = min(rot0+4, 25)}else{col0 = c_white; rot0 = max(rot0-4, 0)};
+if oWeapon.i=1{col1 = c_yellow; rot1 = min(rot1+4, 25)}else{col1 = c_white; rot1 = max(rot1-4, 0)};
+if oWeapon.i=2{col2 = c_yellow; rot2 = min(rot2+4, 25)}else{col2 = c_white; rot2 = max(rot2-4, 0)};
 	
 	
-if (real(ammoString) >= real(reserveString)/4) or oMultiWeapon.ammouse < 1 {ammoCol = c_white; lowAmmo = false;}else{ammoCol = #eb445a; lowAmmo = true;};
+if (real(ammoString) >= real(reserveString)/4) or oWeapon.ammouse < 1 {ammoCol = c_white; lowAmmo = false;}else{ammoCol = #eb445a; lowAmmo = true;};
 	
 //ammo reserve chart
-for(var i = 0; i< array_length(oMultiWeapon.ammo); i++ )
+for(var i = 0; i< array_length(oWeapon.ammo); i++ )
 {
-	draw_sprite_ext(iAmmoTypes,i,35 + (i*50),1050,2,2,0,c_white,oMultiWeapon.ammo[i]/oMultiWeapon.ammoMax[i])
+	draw_sprite_ext(iAmmoTypes,i,35 + (i*50),1050,2,2,0,c_white,oWeapon.ammo[i]/oWeapon.ammoMax[i])
 	drawSetText(c_white,fKaren,fa_center,fa_top)
 			
-	var strAmmoCap = string(clamp(oMultiWeapon.ammo[i],0,oMultiWeapon.ammoMax[i]));
+	var strAmmoCap = string(clamp(oWeapon.ammo[i],0,oWeapon.ammoMax[i]));
 			
 	uiX2 = 35 + (i*50);
 	uiY2 = 1050;

@@ -4,7 +4,7 @@
 
 if hit == true and click = 0
 {
-	var _sound = audio_play_sound(oMultiWeapon.hitSound,800,false);
+	var _sound = audio_play_sound(oWeapon.hitSound,800,false);
 	audio_sound_gain(_sound,global.sfxVolume,0);
 	hit = false;
 }
