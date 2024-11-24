@@ -1,6 +1,8 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+event_inherited();
+
 width = 4;
 slim = 1;
 color = c_white;
@@ -24,5 +26,7 @@ sound[4] = snSoda4;
 sound[3] = snSoda3;
 sound[2] = snSoda2;
 sound[1] = snSoda1;
+
+wallTouched = false;
 
 rotspeed = random_range(8,24);

@@ -96,16 +96,20 @@ if instance_exists(oNewt)
 
 	if heldweapons[type] !=0 and keyboard_check_pressed(vk_backspace)
 	{
-		oAmmoCount.weap[type] = 0;
 		with instance_create_depth(x,y,oNewt.depth+100,oWeaponPickup)
 		{
 			weapon = other.heldweapons[other.type];
 			newAmmo = false;
 			randomWand = false;
 		}
-		heldweapons[type] = 0;
+		
+		k = 0;
+		weaponStats(k);
+		ammo[ammotype] = ammoMax[ammotype];
 		sprite_index = sprite;
-		i = 2;
+		heldweapons[i] = k;
+		oAmmoCount.weap[i] = k;
+		sprite_index = sprite;
 	}
 	
 	x = oNewt.x;
@@ -153,14 +157,8 @@ if instance_exists(oNewt)
 
 	if oNewt.hasControl
 	{
-		//var mouseScrUp;
-		//mouseScrUp = mouse_wheel_up() + gamepad_button_check_pressed(4,gp_shoulderlb);
-		//	mouseScrUp = clamp(mouseScrUp, 0, 1);
-
-		//var mouseScrDown;
-		//mouseScrDown = mouse_wheel_down() + gamepad_button_check_pressed(4,gp_face4);
-		//	mouseScrDown = clamp(mouseScrDown, 0, 1);
-
+	
+	
 		//scroll up weapon select
 		if input_check_pressed("nextweap")	
 		{
@@ -205,89 +203,104 @@ if instance_exists(oNewt)
 				sprite_index = sprite;
 			}
 		}
-
+	
 		var mouseLeft;			
 		if (automatic) mouseLeft = input_check("shoot"); else mouseLeft = input_check_pressed("shoot");
 
-		switch (type)
+		if oNewt.prop == noone
 		{
+			switch (type)
+			{
 	
-			case 0: //primary
-				#region
+				case 0: //primary
+					#region
 				
-				if (mouseLeft)
-				{
-					if (current_cd == 0)
+					if (mouseLeft)
 					{
-						current_cd = cooldown;
-						current_delay = startup;	
-						image_index = 0;
+						if (current_cd == 0)
+						{
+							current_cd = cooldown;
+							current_delay = startup;	
+							image_index = 0;
+						}
+						image_speed = 1;
 					}
-					image_speed = 1;
-				}
 
-				var _spread = spread;
-				var _spreadDiv = _spread / max( bulletnumber - 1, 1 );
+					var _spread = spread;
+					var _spreadDiv = _spread / max( bulletnumber - 1, 1 );
 			
-				#region left click
-				if oNewt.hasControl && (current_delay == 0) && (projectile != -1)
-				{
+					#region left click
+					if oNewt.hasControl && (current_delay == 0) && (projectile != -1)
+					{
 	
-					if (ammo[ammotype] >= ammouse) and (bulletnumber != -1)
-					{	
-						if (shootsfx != -1)	
-						{
-							soundNicer();
-						}
+						if (ammo[ammotype] >= ammouse) and (bulletnumber != -1)
+						{	
+							if (shootsfx != -1)	
+							{
+								soundNicer();
+							}
 					
-						oNewt.lit = 3;
-						ammo[ammotype] -= ammouse;
+							oNewt.lit = 3;
+							ammo[ammotype] -= ammouse;
 		
-						for (var j = 0; j < bulletnumber; j++)
-						{
-							shotNumber++;
-							screenShake(shakeamnt,shaketime);	
-							with (instance_create_layer(x+lengthdir_x(length,image_angle),(y+lengthdir_y(length,image_angle)),"Shots",projectile))
+							for (var j = 0; j < bulletnumber; j++)
 							{
-								if (other.cancrit == 1) and global.hasCrit or global.critTimer > 0
+								shotNumber++;
+								screenShake(shakeamnt,shaketime);	
+							
+								with (instance_create_layer(x+lengthdir_x(length,image_angle),(y+lengthdir_y(length,image_angle)),"Shots",projectile))
 								{
-									oSFX.critshot = true;
-									crit = global.hasCrit;
+									if (other.cancrit == 1) and global.hasCrit or global.critTimer > 0
+									{
+										oSFX.critshot = true;
+										crit = global.hasCrit;
 							
-								}else crit = false;
-								global.hasCrit = false;
+									}else crit = false;
+									global.hasCrit = false;
 							
-								if other.headshots{headshot = true};
+									if other.headshots{headshot = true};
 							
-								shotNumber = other.shotNumber;
-								hitSprite = other.hitSprite;
-								dir = other.image_angle- _spread/2 + _spreadDiv * j + random_range(-other.accuracy,other.accuracy);
-								spd = other.bulletspeed;
-								image_angle = dir;
-								image_xscale = max(1,spd/sprite_width);
-							}
-
-							with(oNewt)
-							{
-								if (oNewt.state != stateCrouch)
-								{	
-									hsp -= lengthdir_x(other.recoilpush,other.image_angle);
-									vsp -= lengthdir_y(other.recoilpush,other.image_angle);
+									shotNumber = other.shotNumber;
+									hitSprite = other.hitSprite;
+									dir = other.image_angle- _spread/2 + _spreadDiv * j + random_range(-other.accuracy,other.accuracy);
+									spd = other.bulletspeed;
+									image_angle = dir;
+								
+									if other.projectile == oPropTestBall
+									{
+										var _physX = lengthdir_x(other.bulletspeed, other.image_angle) * 10000
+										var _physY = lengthdir_y(other.bulletspeed, other.image_angle) * 10000
+									
+										physics_apply_impulse(x,y,_physX,_physY);
+									}
+									else
+									{
+										image_xscale = max(1,spd/sprite_width);
+									}
+								
 								}
-							}						
-						}
-						shotNumber = 0;
-		
-						if casing != -1
-						{
-							with (instance_create_layer(x,y,"Player",oCasing))
-							{
-								image_index = other.casing;
-								hsp = lengthdir_x(3, other.image_angle-180 + random_range(-10, 10));
-								vsp =  random_range(-7, -5);
-								if (sign(hsp)!=0) image_xscale = sign(hsp); 	
+
+								with(oNewt)
+								{
+									if (oNewt.state != stateCrouch)
+									{	
+										hsp -= lengthdir_x(other.recoilpush,other.image_angle);
+										vsp -= lengthdir_y(other.recoilpush,other.image_angle);
+									}
+								}						
 							}
-						}
+							shotNumber = 0;
+		
+							if casing != -1
+							{
+								with (instance_create_layer(x,y,"Player",oCasing))
+								{
+									image_index = other.casing;
+									hsp = lengthdir_x(3, other.image_angle-180 + random_range(-10, 10));
+									vsp =  random_range(-7, -5);
+									if (sign(hsp)!=0) image_xscale = sign(hsp); 	
+								}
+							}
 					}
 					current_recoil = recoil;
 					if (ammo[ammotype] < ammouse) and mouseLeft {audio_play_sound(snNoAmmo,300,false)};
@@ -472,8 +485,40 @@ if instance_exists(oNewt)
 				x = x - lengthdir_x(min(current_recoil,4), _dir);
 				y = y - lengthdir_y(min(current_recoil,4), _dir);
 				#endregion
-			break;
+				break;
+			}
 		}
+		else
+		{
+			var _prop = oNewt.prop
+			with _prop
+			{
+				phy_position_x = oNewt.x + lengthdir_x(36, other.image_angle);
+				phy_position_y = global.newtCenter + lengthdir_y(36, other.image_angle);
+				
+				if input_check_pressed("shoot") and !place_meeting(_prop.x,_prop.y, oCollide)
+				{
+					oNewt.propBuffer = 15;
+					_prop.captured = false;
+					_prop.phy_rotation = 0;
+					oNewt.prop = noone;
+					
+					var _physX = lengthdir_x(2 + abs(oNewt.hsp), other.image_angle) * 10000
+					var _physY = lengthdir_y(2 + abs(oNewt.vsp), other.image_angle) * 10000
+									
+					physics_apply_impulse(x,y,_physX-phy_mass,_physY);
+				}
+				
+				if input_check_pressed("interact")
+				{
+					oNewt.propBuffer = 15;
+					_prop.captured = false;
+					_prop.phy_rotation = 0;
+					oNewt.prop = noone;
+				}
+			}
+		}
+		
 
 		#region edge case weapon specific shit
 

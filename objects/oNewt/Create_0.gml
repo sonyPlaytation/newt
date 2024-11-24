@@ -70,6 +70,9 @@ sprIdle = sNewtIdle;
 visdist = 0;
 depth = -999;
 
+prop = noone;
+propBuffer = 0;
+
 indfrac = 0;
 godmode = false;
 
@@ -137,6 +140,7 @@ rot = 0;
 
 exclam = false; //should interest marker show up
 hasControl = true; //can you move
+inspect = false;
 
 facingRight = 1;
 

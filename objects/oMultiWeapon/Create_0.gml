@@ -869,11 +869,43 @@ coinCount = 4;
 	ds_map_add(weapons[27],"hitSound",snBatHit);
 	ds_map_add(weapons[27],"meleeState",1);
 	
+	// 1 - starter
+	weapons[28] = ds_map_create();
+	ds_map_add(weapons[28],"type",0);
+	ds_map_add(weapons[28],"name", "TEST BALL GUN");
+	ds_map_add(weapons[28],"sprite",sWand);
+	ds_map_add(weapons[28],"shootsfx",snShotHLPist);
+	ds_map_add(weapons[28],"pickupsound",snHL1Pickup);
+	ds_map_add(weapons[28],"ammotype",0);
+	ds_map_add(weapons[28],"ammouse",0);
+	ds_map_add(weapons[28],"altfire",-1);
+	ds_map_add(weapons[28],"recoil",0);
+	ds_map_add(weapons[28],"accuracy",0);
+	ds_map_add(weapons[28],"recoilpush",0);
+	ds_map_add(weapons[28],"shakeamnt",0);
+	ds_map_add(weapons[28],"shaketime",0);
+	ds_map_add(weapons[28],"damage",0)
+	ds_map_add(weapons[28],"cancrit",false);
+	ds_map_add(weapons[28],"flash",-1);
+	ds_map_add(weapons[28],"projectile",oPropTestBall);
+	ds_map_add(weapons[28],"bulletnumber",1);
+	ds_map_add(weapons[28],"spread",-1);
+	ds_map_add(weapons[28],"casing",-1);
+	ds_map_add(weapons[28],"startup",0);
+	ds_map_add(weapons[28],"length",35);
+	ds_map_add(weapons[28],"cooldown",3);
+	ds_map_add(weapons[28],"bulletspeed",100);
+	ds_map_add(weapons[28],"automatic",false);
+	ds_map_add(weapons[28],"headshots",0);
+	ds_map_add(weapons[28],"hitSprite",sHitLine);
+	
 	#endregion
 
 #endregion
 
 #region
+
+	prop = noone;
 
 	//casings
 	enum CASE{

@@ -46,7 +46,14 @@ hitTarget = function()
 			
 			flash = 3;			
 			hitfrom = other.direction;
+			
 		}
+		
+		if target == pPhysProp
+		{
+				
+		}
+		
 		hitStop(_hs);
 		instance_destroy();
 	}

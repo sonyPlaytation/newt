@@ -102,7 +102,20 @@ if place_meeting(x,bbox_top-1,oCollide)
 
 if godmode = true{iFrames = 10; flash = 1;}
 
-if (hasControl) {image_speed = 1; state()} else image_speed = 0;
+if (hasControl) 
+{
+	image_speed = 1; 
+	state();
+	if propBuffer > 0 {propBuffer--};
+} 
+else
+{
+	image_speed = 0;
+	if inspect
+	{
+		sprite_index = sNewtRear;
+	}
+}
 
 #region move calc
 

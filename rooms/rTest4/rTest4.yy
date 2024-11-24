@@ -74,9 +74,10 @@
     {"name":"inst_2E30D31E","path":"rooms/rTest4/rTest4.yy",},
     {"name":"inst_33E47859","path":"rooms/rTest4/rTest4.yy",},
     {"name":"inst_2C520C8C","path":"rooms/rTest4/rTest4.yy",},
-    {"name":"inst_3BBC5ADE","path":"rooms/rTest4/rTest4.yy",},
-    {"name":"inst_3C035AAC","path":"rooms/rTest4/rTest4.yy",},
-    {"name":"inst_3E2FDD","path":"rooms/rTest4/rTest4.yy",},
+    {"name":"inst_7EB14605","path":"rooms/rTest4/rTest4.yy",},
+    {"name":"inst_7BA79BF","path":"rooms/rTest4/rTest4.yy",},
+    {"name":"inst_5EB828ED","path":"rooms/rTest4/rTest4.yy",},
+    {"name":"inst_888A931","path":"rooms/rTest4/rTest4.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -89,10 +90,6 @@
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"oWeaponPickup","path":"objects/oWeaponPickup/oWeaponPickup.yy",},"propertyId":{"name":"randomWand","path":"objects/oWeaponPickup/oWeaponPickup.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"False",},
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"oWeaponPickup","path":"objects/oWeaponPickup/oWeaponPickup.yy",},"propertyId":{"name":"weapon","path":"objects/oWeaponPickup/oWeaponPickup.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"3",},
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":336.0,"y":708.0,},
-        {"$GMRInstance":"v1","%Name":"inst_3BBC5ADE","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3BBC5ADE","objectId":{"name":"oSodaPickup","path":"objects/oSodaPickup/oSodaPickup.yy",},"properties":[
-            {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"oSodaPickup","path":"objects/oSodaPickup/oSodaPickup.yy",},"propertyId":{"name":"weapon","path":"objects/oSodaPickup/oSodaPickup.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"5",},
-            {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"oSodaPickup","path":"objects/oSodaPickup/oSodaPickup.yy",},"propertyId":{"name":"randomWand","path":"objects/oSodaPickup/oSodaPickup.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"False",},
-          ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":444.0,"y":960.0,},
       ],"layers":[],"name":"Weapon","properties":[
         {"name":"g_GlowRadius","type":0,"value":"256",},
         {"name":"g_GlowQuality","type":0,"value":"5",},
@@ -108,8 +105,10 @@
         {"$GMRInstance":"v1","%Name":"inst_2C2BB986","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_2C2BB986","objectId":{"name":"oExitDoor","path":"objects/oExitDoor/oExitDoor.yy",},"properties":[
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"oExitDoor","path":"objects/oExitDoor/oExitDoor.yy",},"propertyId":{"name":"target","path":"objects/oExitDoor/oExitDoor.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"rTest3",},
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":852.0,"y":552.0,},
-        {"$GMRInstance":"v1","%Name":"inst_3C035AAC","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3C035AAC","objectId":{"name":"oECroc","path":"objects/oECroc/oECroc.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1308.0,"y":912.0,},
-        {"$GMRInstance":"v1","%Name":"inst_3E2FDD","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3E2FDD","objectId":{"name":"oEShrugBat","path":"objects/oEShrugBat/oEShrugBat.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":348.0,"y":816.0,},
+        {"$GMRInstance":"v1","%Name":"inst_7EB14605","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_7EB14605","objectId":{"name":"oPropTest","path":"objects/oPropTest/oPropTest.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":372.0,"y":948.0,},
+        {"$GMRInstance":"v1","%Name":"inst_7BA79BF","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_7BA79BF","objectId":{"name":"oPropTest","path":"objects/oPropTest/oPropTest.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":432.0,"y":948.0,},
+        {"$GMRInstance":"v1","%Name":"inst_5EB828ED","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_5EB828ED","objectId":{"name":"oPropTest","path":"objects/oPropTest/oPropTest.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":492.0,"y":948.0,},
+        {"$GMRInstance":"v1","%Name":"inst_888A931","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_888A931","objectId":{"name":"oPropTestBall","path":"objects/oPropTestBall/oPropTestBall.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":336.0,"y":876.0,},
       ],"layers":[],"name":"Enemy","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"Interact","depth":300,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"v1","%Name":"inst_2C520C8C","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_2C520C8C","objectId":{"name":"oCollSemiMove","path":"objects/oCollSemiMove/oCollSemiMove.yy",},"properties":[

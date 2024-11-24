@@ -18,6 +18,7 @@ if place_meeting(x,y,oNewt)
 			{
 				other.image_index = 1;
 				hasControl = false;	
+				inspect = true;
 				
 				//if global.roomscleared == 3{oExitDoor.target = rTest1; global.roomscleared = 0}
 				

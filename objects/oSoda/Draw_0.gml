@@ -26,4 +26,5 @@ if !instance_exists(oLevelMenu)
 		var BG = layer_background_get_id("BlueBG")
 		layer_background_alpha(BG, alphaBG);	
 	}
+	if (instance_exists(oNewt)){oNewt.inspect = false};
 }

@@ -3,7 +3,7 @@
 
 if alpha == 1 
 {
-	if instance_exists(oMultiWeapon) {if (!oMultiWeapon.automatic == true) {hitStop(1);}}
+	//if instance_exists(oMultiWeapon) {if (!oMultiWeapon.automatic == true) {hitStop(1);}}
 	oSFX.codhit = true;
 };
 

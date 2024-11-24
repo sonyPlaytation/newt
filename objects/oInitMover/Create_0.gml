@@ -13,7 +13,7 @@ else if global.lvlFloor == 444 //Whats New
 }
 else //Main Game
 {
-	room_goto(rTest3);
+	room_goto(rPhysTest);
 }
 
 
