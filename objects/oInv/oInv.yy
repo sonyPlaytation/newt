@@ -11,8 +11,8 @@
   "name":"oInv",
   "overriddenProperties":[],
   "parent":{
-    "name":"System Mechanics",
-    "path":"folders/Objects/System Mechanics.yy",
+    "name":"newt player states",
+    "path":"newt player states.yyp",
   },
   "parentObjectId":null,
   "persistent":true,

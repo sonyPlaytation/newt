@@ -66,6 +66,7 @@ mouthTimer = 0;
 sprWalk = sNewtWalk;
 sprJump = sNewtAir;
 sprIdle = sNewtIdle;
+sprSPD = 1;
 
 visdist = 0;
 depth = -999;
@@ -543,7 +544,7 @@ stateFree = function()
 	if (onGround) jumpBuffer = 10;
 	
 	//walk sound
-	if (sprite_index = sprWalk) and (image_index == 1 or image_index == 4)
+	if (sprite_index = sprWalk) and (image_index == 1) or (image_index == 4)
 	{
 		oSFX.walksplat = true;
 		repeat(2)
@@ -560,7 +561,7 @@ stateFree = function()
 			//adjust current sprite
 			if (hsp > 0 and oCursor.x < x) _backwards = true;
 			if (hsp < 0 and oCursor.x > x) _backwards = true;
-			if _backwards && (place_meeting(x,y+1,oCollide)) {image_speed = -1} else image_speed = 1; //if walking backwards, play animation backwards
+			if _backwards && (place_meeting(x,y+1,oCollide)) {sprSPD *= sign(hsp)}//if walking backwards, play animation backwards
 			
 			if xAim !=0
 			{
@@ -581,7 +582,7 @@ stateFree = function()
 			//adjust current sprite
 			if (hsp > 0 && mouse_x < x) _backwards = true;
 			if (hsp < 0 && mouse_x > x) _backwards = true;
-			if _backwards && (place_meeting(x,y+1,oCollide)) {image_speed = -1} else image_speed = 1; //if walking backwards, play animation backwards
+			if _backwards && (place_meeting(x,y+1,oCollide)) {sprSPD = sprSPD*-1} else sprSPD = 1 //if walking backwards, play animation backwards
 			
 			if (mouse_x < x)
 			{
@@ -594,7 +595,7 @@ stateFree = function()
 				facingRight = 1;
 			}
 		}
-	} else image_speed = 1;
+	} //else sprSPD = 1;
 
 	drawXscale = lerp(drawXscale,1,0.1);
 	drawYscale = lerp(drawYscale,1,0.1);
@@ -621,7 +622,7 @@ stateFree = function()
 		{
 			slime = 0;
 			sprite_index = sprJump;
-			image_speed = 0;
+			//image_speed = 0;
 			image_index = (vsp > 0);			
 		}
 	}

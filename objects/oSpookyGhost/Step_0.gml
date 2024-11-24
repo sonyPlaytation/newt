@@ -5,6 +5,13 @@ turnRadius+=0.25;
 
 if instance_exists(oNewt)
 {
+	if place_meeting(x,y,oNewt)
+	{
+		other.flash = 3;
+		oSFX.soulget = true;
+		instance_destroy();
+	}
+	
 	homingtarget = oNewt
 
 	var targetdir = point_direction(x,y,homingtarget.x,homingtarget.y-homingtarget.sprite_height/2)

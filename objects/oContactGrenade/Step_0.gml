@@ -61,7 +61,6 @@ if place_meeting(x,y,pEntity)
 {
 	instance_create_layer(x,y,"Shots",oExplosion);
 	instance_destroy();	
-
 }
 
 image_angle -=10;

@@ -30,3 +30,4 @@ sprBellyScale = 1.25;
 dmgMod = 1.00;
 accMod = 1.00;
 spdMod = 1.00;
+spdNorm = 1.00;

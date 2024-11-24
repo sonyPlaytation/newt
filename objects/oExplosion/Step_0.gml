@@ -1,4 +1,25 @@
 
+if instance_exists(oNewt)
+{
+	if (friendly = -1 ) or (friendly = 0 ) 
+	and point_in_circle(oNewt.x,oNewt.y,x,y, radius) 
+	and !collision_line(x, y, oNewt.x, oNewt.y-22, oCollide, 1, 0) 
+	and (image_index == 0) 
+	{ playerHit(1,oNewt) };
+
+	pushDistH = min(point_distance(oNewt.x,global.newtCenter,x,y),15);
+	pushDistV = min(point_distance(oNewt.x,global.newtCenter,x,y)/6,15);
+	pushAng = point_direction(oNewt.x,global.newtCenter,x,y);
+
+	with(oNewt)
+	{
+		if !onGround and (other.image_index == 0)
+		{
+			hsp -= lengthdir_x(other.pushDistH,other.pushAng);
+			vsp -= lengthdir_y(other.pushDistV,other.pushAng);
+		}
+	}
+}
 
 //hitStop(0);
 var hitTargs = ds_list_create();
@@ -55,3 +76,4 @@ if (friendly = 1 ) or (friendly = 0) and (image_index <0.5)
 	} 
 }
 ds_list_destroy(hitTargs);
+

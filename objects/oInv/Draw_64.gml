@@ -35,7 +35,6 @@ if (full != 0) //if belly contains a dastardly creature
 	lerp(cornerDist-30,cornerDist+30,inBelly.fresh/1000),
 	cornerDist+25,
 	false);
-	
 }
 else
 {

@@ -271,6 +271,7 @@
     {"id":{"name":"oMuzzleFlash","path":"objects/oMuzzleFlash/oMuzzleFlash.yy",},},
     {"id":{"name":"oNewt","path":"objects/oNewt/oNewt.yy",},},
     {"id":{"name":"oPause","path":"objects/oPause/oPause.yy",},},
+    {"id":{"name":"oPhysEnabler","path":"objects/oPhysEnabler/oPhysEnabler.yy",},},
     {"id":{"name":"oPropTest","path":"objects/oPropTest/oPropTest.yy",},},
     {"id":{"name":"oPropTestBall","path":"objects/oPropTestBall/oPropTestBall.yy",},},
     {"id":{"name":"oRoomDetect","path":"objects/oRoomDetect/oRoomDetect.yy",},},

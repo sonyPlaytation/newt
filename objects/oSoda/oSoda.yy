@@ -15,10 +15,7 @@
     "name":"LevelUp",
     "path":"folders/Objects/System Mechanics/LevelUp.yy",
   },
-  "parentObjectId":{
-    "name":"pEntity",
-    "path":"objects/pEntity/pEntity.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

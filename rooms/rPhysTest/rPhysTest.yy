@@ -1,7 +1,7 @@
 {
   "$GMRoom":"v1",
   "%Name":"rPhysTest",
-  "creationCodeFile":"",
+  "creationCodeFile":"rooms/rPhysTest/RoomCreationCode.gml",
   "inheritCode":false,
   "inheritCreationOrder":false,
   "inheritLayers":false,
@@ -80,10 +80,12 @@
     {"name":"inst_20C3162","path":"rooms/rPhysTest/rPhysTest.yy",},
     {"name":"inst_21A6D688","path":"rooms/rPhysTest/rPhysTest.yy",},
     {"name":"inst_7F53DA70","path":"rooms/rPhysTest/rPhysTest.yy",},
+    {"name":"inst_3F113E4E","path":"rooms/rPhysTest/rPhysTest.yy",},
   ],
   "isDnd":false,
   "layers":[
     {"$GMRInstanceLayer":"","%Name":"Weapon","depth":0,"effectEnabled":true,"effectType":"_effect_glow","gridX":12,"gridY":12,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
+        {"$GMRInstance":"v1","%Name":"inst_3F113E4E","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3F113E4E","objectId":{"name":"oPhysEnabler","path":"objects/oPhysEnabler/oPhysEnabler.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":528.0,"y":144.0,},
         {"$GMRInstance":"v1","%Name":"inst_70E67448_1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_70E67448_1","objectId":{"name":"oWeaponPickup","path":"objects/oWeaponPickup/oWeaponPickup.yy",},"properties":[
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"oWeaponPickup","path":"objects/oWeaponPickup/oWeaponPickup.yy",},"propertyId":{"name":"randomWand","path":"objects/oWeaponPickup/oWeaponPickup.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"False",},
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"oWeaponPickup","path":"objects/oWeaponPickup/oWeaponPickup.yy",},"propertyId":{"name":"weapon","path":"objects/oWeaponPickup/oWeaponPickup.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"12",},
