@@ -1,6 +1,6 @@
 ///@desc shoot explosuiobn
 
 
-instance_create_layer(x,y,"Shots",oExplosion);
+explosion();
 
 instance_destroy();

@@ -746,7 +746,7 @@ coinCount = 4;
 	ds_map_add(weapons[24],"pickupsound",snHL1Pickup);
 	ds_map_add(weapons[24],"ammotype",0);
 	ds_map_add(weapons[24],"ammouse",-1);
-	ds_map_add(weapons[24],"altfire",-1);
+	ds_map_add(weapons[24],"altfire","handgrenade");
 	ds_map_add(weapons[24],"recoil",0);
 	ds_map_add(weapons[24],"accuracy",0);
 	ds_map_add(weapons[24],"recoilpush",-1.5);
