@@ -13,7 +13,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Shots",
-    "path":"folders/Objects/Combat Mechanics/Shots.yy",
+    "path":"folders/Objects/Combat/Shots.yy",
   },
   "parentObjectId":null,
   "persistent":false,

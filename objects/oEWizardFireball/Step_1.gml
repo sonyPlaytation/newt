@@ -40,7 +40,7 @@ if friendly
 	if parried and ((place_meeting(x,y,pEntity)) or (place_meeting(x,y,oCollide)))
 	{
 		image_xscale = 5;
-		with (instance_create_layer(x,y,"Shots",oExplosion)) {friendly = 0;baseDMG = 90*other.damage;sprite = sExplosionBlue};
+		explosion(200*other.damage,80,x,y,0,0,sExplosionBlue)
 		instance_destroy();
 	}
 	else if parried = false
@@ -66,24 +66,21 @@ if friendly
 				if !inactive
 				{
 					diedFrom = "overkill";
-					//damage calculation
 						
-					finalDMG = 75
-			
 					//subtract health
-					hp -= finalDMG;
+					hp -= 75;
 			
 					//damage numbers
 					if (!noDMG)
 					{
-						repeat(irandom_range(7,20)) {(instance_create_layer(target.x,target.y, "Player", oBlood))}
+						repeat(irandom_range(7,20)/oWeapon.bulletnumber) {(instance_create_layer(x,y, layer, oBlood))}
 						myDamage.damage += finalDMG;
 						myDamage.alpha = 1;
 						myDamage.dmgTextScale = 0.75
-					}		
+					}
+			
 					flash = 3;
 					hitfrom = other.direction;
-					if (hitsound != 0)	oSFX.scientistscream = true;
 				}
 			}
 			outline_end();

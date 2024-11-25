@@ -18,7 +18,7 @@
   ],
   "parent":{
     "name":"Projectiles",
-    "path":"folders/Objects/Combat Mechanics/Shots/Projectiles.yy",
+    "path":"folders/Objects/Combat/Shots/Projectiles.yy",
   },
   "parentObjectId":{
     "name":"pEntity",

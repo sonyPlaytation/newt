@@ -16,3 +16,5 @@ damage = 3;
 idleTimer = 0;
 
 dieSound = snBelch;
+
+fragile = false;

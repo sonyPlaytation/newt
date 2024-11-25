@@ -44,7 +44,7 @@ big = 0;
 inBelly = false;
 
 multiplier = choose(3,3,3,4,6);
-repeat(size*multiplier){instance_create_depth(x,bbox_bottom, depth, oSpookyGhost)};
+repeat(size*multiplier){instance_create_layer(x,bbox_bottom, "Shots", oSpookyGhost)};
 expGive(size,multiplier);
 screenShake(3,15);
 
@@ -67,7 +67,7 @@ funcDigest = function(effect)
 	{
 		
 		case "explode":
-			with instance_create_layer(oNewt.x,oNewt.y,"Shots",oExplosion){friendly = 0};
+			explosion();
 		break;
 		
 		case "ammo":

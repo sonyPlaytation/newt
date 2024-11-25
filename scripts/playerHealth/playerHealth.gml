@@ -91,7 +91,7 @@ function allyHit()
 				with(instance_place(x,y,pEntity))
 				{
 					diedFrom = "standard"
-					hp -= 25 + (vsp*3);
+					hp -= 25 + (other.vsp*3);
 		
 					if (!noDMG)
 					{

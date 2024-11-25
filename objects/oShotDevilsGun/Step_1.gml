@@ -4,14 +4,8 @@
 //screen pause
 if screenPause() {exit;};
 
-xspd = lengthdir_x(spd, dir);
-yspd = lengthdir_y(spd, dir);
-
-x += xspd;
-y += yspd;
-
+homingShot();
 with instance_create_layer(x,y,"Shots",oDevilsGunParticle){owner = other.id; image_angle = owner.image_angle;}
-
 if crit {draw_set_color(c_red)};
 
 if instance_exists(oNewt)
@@ -49,18 +43,12 @@ if instance_exists(oNewt)
 				}
 		
 				//if rolled a crit
-				if (other.crit or oWeapon.headshots)
+				if (other.crit)
 				{
-					diedFrom = "headshot";
+					diedFrom = "overkill";
 					myDamage.dmgTextScale = 1;
 					
-					
-					with instance_create_layer(x,y,"Shots",oExplosion)
-					{
-						diedFrom = "overkill";
-						friendly = 0;
-						baseDMG = 15;	
-					}	
+					explosion(100,50,x,y,false,1,sExplosionPink);
 				
 					with instance_create_layer(target.x,target.y - target.sprite_height,"Player",oCritHeader)
 					{
@@ -110,15 +98,11 @@ if instance_exists(oNewt)
 				}
 		
 				//if rolled a crit
-				if (other.crit == true)
+				if (other.crit)
 				{
 					if !noDMG {myDamage.dmgTextScale = 1};
 				
-					with instance_create_layer(target.x,target.y - target.sprite_height/2,"Shots",oExplosion)
-					{
-						baseDMG = 10;
-						radius = 100;
-					}
+					explosion(100,50,x,y,false,1,sExplosionPink);
 				
 					with instance_create_layer(target.x,target.y - target.sprite_height,"Player",oCritHeader)
 					{

@@ -1,0 +1,25 @@
+{
+  "$GMSound":"",
+  "%Name":"snTrail4",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "bitRate":128,
+  "compression":0,
+  "conversionMode":0,
+  "duration":2.25,
+  "name":"snTrail4",
+  "parent":{
+    "name":"Load and Fire",
+    "path":"folders/Sounds/Weapons/Load and Fire.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"snTrail4.wav",
+  "type":0,
+  "volume":1.0,
+}

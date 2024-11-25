@@ -8,7 +8,6 @@ if instance_exists(oNewt)
 {
 	if check = true
 	{
-		
 		repeat	(300)
 		{
 			visDist += sprite_get_width(hitSprite)/10;
@@ -24,27 +23,9 @@ if instance_exists(oNewt)
 					with (target.owner)
 					{
 						diedFrom = "overkill";
-						//damage calculation
-						
 						finalDMG = other.tracerDMG*oInv.dmgMod;
 			
-						//subtract health
-						hp -= finalDMG;
-			
-						//damage numbers
-						if (!noDMG)
-						{
-							repeat(irandom_range(7,20)/oWeapon.bulletnumber) {(instance_create_layer(target.x,target.y, layer, oBlood))}
-							myDamage.damage += finalDMG;
-							myDamage.alpha = 1;
-							myDamage.dmgTextScale = 0.75
-						}
-
-						global.critTotalDMG += finalDMG; 
-			
-						flash = 3;
-						hitfrom = other.direction;
-						if (hitsound != 0)	oSFX.scientistscream = true;
+						enemyHit(finalDMG);
 						
 					}
 				}
@@ -67,25 +48,7 @@ if instance_exists(oNewt)
 						//damage calculation
 						finalDMG = other.tracerDMG;
 			
-						//subtract health
-						hp -= finalDMG;
-			
-						//damage numbers
-						if (!noDMG)
-						{
-							repeat(irandom_range(7,20)/oWeapon.bulletnumber) {(instance_create_layer(target.x,target.y, layer, oBlood))}
-							myDamage.damage += finalDMG;
-							myDamage.alpha = 1;
-							myDamage.dmgTextScale = 0.75
-						}
-		
-						global.critTotalDMG += finalDMG;
-			
-						flash = 3;
-						hitfrom = other.direction;
-						if (hitsound != 0)	oSFX.scientistscream = true;
-						coinHit = true;
-						
+						enemyHit(finalDMG);
 					}
 				}
 				can_damage = false;

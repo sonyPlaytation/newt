@@ -25,6 +25,9 @@ if !inBelly
 }
 else
 {
+	if abs(oNewt.hsp) > 5 {decX = 2} else decX = 0;
+	if oNewt.vsp < 0 {decY = 2} else decY = 0;
+	
 	alpha = 0;
 	x = 0;
 	y = 0;
@@ -41,19 +44,16 @@ else
 	}	
 }
 
-if abs(oNewt.hsp) > 5 {decX = 2} else decX = 0;
-if oNewt.vsp < 0 {decY = 2} else decY = 0;
 decay = 1 + decX + decY;
-
 fresh -= decay;
 
 //gibs
 if hp <=0 and !inBelly
 {
 	instance_destroy();
-	if effect == "explode" {with instance_create_layer(x,y,"Shots",oExplosion){friendly = 0}}else
+	if effect == "explode" {explosion()}
 
-	repeat(12) //spawn gore
+	repeat(8) //spawn gore
 	{
 		with instance_create_depth(x,random_range(y,y-sprite_height/4),depth-90,oGore)
 		{
@@ -61,7 +61,7 @@ if hp <=0 and !inBelly
 			image_yscale = other.size;
 		}
 	}
-	repeat(50)
+	repeat(30)
 	{
 		with instance_create_depth(x,y-sprite_height/2,depth-90,oBlood)
 		{
@@ -151,7 +151,7 @@ switch (corpse)
 			if (place_meeting(x,y+vsp,oCollide)) 
 			{
 				while (!place_meeting(x,y+sign(vsp),oCollide)){y += sign(vsp)};
-				with (instance_create_layer(x,y,"Shots",oExplosion)) {friendly = 0;baseDMG = 200};
+				hp = 0;
 				instance_destroy();
 			}
 
@@ -160,7 +160,7 @@ switch (corpse)
 				if !place_meeting(x,y+vsp,oEShooter)
 				{
 					while (!place_meeting(x,y+sign(vsp),oCollide)){y += sign(vsp)};
-					with (instance_create_layer(x,y,"Shots",oExplosion)) {friendly = 0;baseDMG = 200};
+					hp = 0;
 					instance_destroy();
 				}
 			}

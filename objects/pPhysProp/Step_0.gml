@@ -10,37 +10,42 @@ if !place_meeting(x,y,pPhysProp)
 }
 else if screenPause(){phy_active = false} else phy_active = true;
 
+var _fDense = median(bbox_top-bbox_bottom,bbox_right-bbox_left);
+
 //hitting an enemy
 if (place_meeting(x,y,pEntity)) and phy_speed > 3 and !captured
 {
-	var _fDense = median(bbox_top-bbox_bottom,bbox_right-bbox_left);
 	var target = instance_place(x,y,pEntity)
-	with(target)
+	if !target.inactive
 	{
-		diedFrom = "standard";
-			
-		var _dmg = ceil(other.damage * (other.phy_speed/4)*(_fDense/24));
-		var _finaldmg = max(_dmg,15);
-		hp -= _finaldmg
-		
-		if (!noDMG)
+		with(target)
 		{
-			myDamage.damage += _finaldmg;
-			myDamage.alpha = 1;
-			myDamage.dmgTextScale = 0.75
+			diedFrom = "standard";
+			
+			var _dmg = ceil(other.damage * (other.phy_speed/4)*(_fDense/24));
+			var _finaldmg = max(_dmg,15);
+			hp -= _finaldmg
+		
+			if (!noDMG)
+			{
+				myDamage.damage += _finaldmg;
+				myDamage.alpha = 1;
+				myDamage.dmgTextScale = 0.75
+			}
+			
+			global.critTotalDMG += _finaldmg
+			
+			flash = 3;			
+			hitfrom = other.direction;
 		}
-			
-		global.critTotalDMG += _finaldmg
-			
-		flash = 3;			
-		hitfrom = other.direction;		
-	}
-	hp -= ceil(other.damage * (other.phy_speed/4)*(_fDense/24))/3;
+		hp -= ceil(other.damage * (other.phy_speed/4)*(_fDense/24))/3;
 	
-	if !object_is_ancestor(target.object_index,pPhysProp)
-	{
-		var physX = lengthdir_x(999,point_direction(target.x,target.y,x,y));
-		var physY = lengthdir_y(999,point_direction(target.x,target.y,x,y))
-		physics_apply_impulse(x,y,physX,physY);
+		if !object_is_ancestor(target.object_index,pPhysProp)
+		{
+			var physX = lengthdir_x(999,point_direction(target.x,target.y,x,y));
+			var physY = lengthdir_y(999,point_direction(target.x,target.y,x,y))
+			physics_apply_impulse(x,y,physX,physY);
+		}
 	}
 }
+

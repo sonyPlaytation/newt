@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"newt player states",
-    "path":"newt player states.yyp",
+    "name":"Entities",
+    "path":"folders/Sprites/Entities.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

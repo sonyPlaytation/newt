@@ -29,7 +29,7 @@ if (menu_control)
 		menu_committed = menu_cursor;
 		screenShake(15,35);
 		menu_control = false;
-		audio_play_sound(snHL1Explosion,999,0);	
+		audio_play_sound(snExplosion,999,0);	
 	}
 	
 	var mouse_y_gui = device_mouse_y_to_gui(0);
@@ -43,7 +43,7 @@ if (menu_control)
 			menu_committed = menu_cursor;
 			screenShake(15,35);
 			menu_control = false;
-			audio_play_sound(snHL1Explosion,999,0);	
+			audio_play_sound(snExplosion,999,0);	
 		}
 	}
 }

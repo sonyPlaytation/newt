@@ -10,7 +10,7 @@ if collision_circle(x,y,phy_speed *1.75 ,oCollide,0,0)
 	{
 		wallTouched = true;
 		var _snd = irandom_range(2,5);
-		audio_play_sound(sound[_snd], 300, false);
+		if collision_circle(phy_position_x, phy_position_y, 250,oNewt,0,0) {audio_play_sound(sound[_snd], 300, false)};
 	}
 }
 else wallTouched = false;

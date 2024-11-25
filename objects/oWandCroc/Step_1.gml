@@ -32,7 +32,7 @@ if (instance_exists(pAlly))  and !owner.inactive
 	
 			for (var j = 0; j < bulletnumber; j++)
 			{
-				with (instance_create_layer(x,y,"Shots",oEnemyShot))
+				with (instance_create_layer(x,y,"Shots",pEnemyShot))
 				{
 					damage = other.damage;
 					oSFX.crocshot = true;

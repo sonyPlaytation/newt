@@ -1005,6 +1005,38 @@ stateCrouch = function()
 		squishNewt(1.15,0.85);
 	}
 	
+	if hsp < 1 and instance_exists(oCorpse) and !oInv.full and mouthTimer < 1
+	{
+		nearestCorpse = instance_nearest(x,y,oCorpse);
+		
+		if collision_circle(x,y,48,nearestCorpse,0,0) and (nearestCorpse.alpha != 0) and !nearestCorpse.big and input_check_pressed("interact")
+		{
+			
+			squishNewt(1.25,0.75);
+			audio_play_sound(snGULP,750,false);
+			state = stateGulp;
+		}
+	}
+	
+	if oInv.inBelly > 0 and input_check_pressed("special")
+	{
+		oInv.full = 0;
+		
+		audio_play_sound(snBurp,500,false);
+		with oInv.inBelly
+		{
+			hsp = 5*oNewt.facingRight;
+			image_xscale = oNewt.facingRight*size;
+			image_yscale = image_yscale*size;
+			vsp = -4;
+			x = oNewt.x;
+			y = oNewt.y-36;
+			inBelly = false;
+			done = 0;
+		}
+		oInv.inBelly = noone;
+	}
+	
 }
 
 stateDash = function()

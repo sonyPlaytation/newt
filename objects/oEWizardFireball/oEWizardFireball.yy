@@ -15,8 +15,8 @@
     "path":"folders/Objects/Entities/Weapons.yy",
   },
   "parentObjectId":{
-    "name":"oEnemyShot",
-    "path":"objects/oEnemyShot/oEnemyShot.yy",
+    "name":"pEnemyShot",
+    "path":"objects/pEnemyShot/pEnemyShot.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

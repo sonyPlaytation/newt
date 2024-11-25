@@ -117,9 +117,9 @@ swatTrail = function()
 ammoBack = function(type,amount)
 {
 	//destroy bullet
-	if place_meeting(x,y,oEnemyShot)
+	if place_meeting(x,y,pEnemyShot)
 	{
-		var _shot = instance_place(x,y,oEnemyShot)
+		var _shot = instance_place(x,y,pEnemyShot)
 		with(_shot)
 		{
 			with instance_create_depth(x,y,depth,oCritHeader){image_index = 2};
@@ -145,9 +145,9 @@ click = 0;
 stateSwat = function()
 {
 	//projectile Swat
-	if (place_meeting(x,y,oEnemyShot))
+	if (place_meeting(x,y,pEnemyShot))
 	{	
-		var _target = (instance_place(x,y,oEnemyShot));
+		var _target = (instance_place(x,y,pEnemyShot));
 		if _target.friendly != 1
 		{
 			if oWeapon.sprite == sSandman {oSFX.baseballcrack = true} else audio_play_sound(snBatParry,500,false);
@@ -188,10 +188,10 @@ stateSwat = function()
 stateParry = function()
 {
 	//ultrakill parry
-	if (place_meeting(x,y,oEnemyShot))
+	if (place_meeting(x,y,pEnemyShot))
 	{	
 		oSFX.parry = true;
-		with(instance_place(x,y,oEnemyShot))
+		with(instance_place(x,y,pEnemyShot))
 		{
 			x = other.x;
 			y = other.y;
@@ -261,9 +261,9 @@ stateSlice = function()
 stateDestroy = function()
 {
 	//destroy bullet
-	if place_meeting(x,y,oEnemyShot)
+	if place_meeting(x,y,pEnemyShot)
 	{
-		with(instance_place(x,y,oEnemyShot)){instance_destroy()};
+		with(instance_place(x,y,pEnemyShot)){instance_destroy()};
 	};
 	
 	hitTarget();

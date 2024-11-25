@@ -13,7 +13,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Projectiles",
-    "path":"folders/Objects/Combat Mechanics/Shots/Projectiles.yy",
+    "path":"folders/Objects/Combat/Shots/Projectiles.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -23,7 +23,7 @@
   "physicsGroup":1,
   "physicsKinematic":true,
   "physicsLinearDamping":0.1,
-  "physicsObject":false,
+  "physicsObject":true,
   "physicsRestitution":0.1,
   "physicsSensor":false,
   "physicsShape":1,

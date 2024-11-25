@@ -1,8 +1,9 @@
 
+
 if instance_exists(oNewt)
 {
 	if (friendly = -1 ) or (friendly = 0 ) 
-	and point_in_circle(oNewt.x,oNewt.y,x,y, radius) 
+	and collision_circle(x,y,radius,oNewt,0,0) 
 	and !collision_line(x, y, oNewt.x, oNewt.y-22, oCollide, 1, 0) 
 	and (image_index == 0) 
 	{ playerHit(1,oNewt) };
@@ -36,7 +37,7 @@ if (friendly = 1 ) or (friendly = 0) and (image_index <0.5)
 	
 			with target
 			{
-				if !inactive
+				if !inactive and !object_is_ancestor(target.object_index,pPhysProp)
 				{
 					diedFrom = other.diedFrom;
 					//damage calculation
@@ -75,5 +76,45 @@ if (friendly = 1 ) or (friendly = 0) and (image_index <0.5)
 		}
 	} 
 }
+instance_destroy();
 ds_list_destroy(hitTargs);
+
+//phys props
+var hitProps = ds_list_create();
+var propNum = collision_ellipse_list(x-100,y-100,x+100,y+100,pPhysProp,0,0,hitProps,1);
+if instance_exists (oNewt) {dist = point_distance(oNewt.x,oNewt.y-22,x,y)}else dist = 50;
+
+if (friendly = 1 ) or (friendly = 0) and (image_index <0.5)
+{
+	if (place_meeting(x,y,pPhysProp)) and propNum > 0
+	{
+		for (var i=0; i < propNum; i++;)
+		{
+			var prop = ds_list_find_value(hitProps,i);
+			
+			with prop
+			{
+				idleTimer = 0;
+				phy_active = true;
+				
+				var physDir = point_direction(other.x,other.y,phy_position_x,phy_position_y)
+				var physX = lengthdir_x(100,physDir)*(1000-(prop.phy_mass));
+				var physY = lengthdir_y(100,physDir)*(1000-(prop.phy_mass));
+				
+				physics_apply_impulse(other.x,other.y,physX,physY);
+				
+				diedFrom = "standard";
+			
+				var _dmg = 100;
+				hp -= _dmg;
+			
+				global.critTotalDMG += _dmg;
+			
+				flash = 3;			
+				hitfrom = other.direction;	
+			}
+		}
+	} 
+}
+ds_list_destroy(hitProps);
 

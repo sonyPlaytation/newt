@@ -39,8 +39,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sBoxMed",
-    "path":"sprites/sBoxMed/sBoxMed.yy",
+    "name":"sCrateL",
+    "path":"sprites/sCrateL/sCrateL.yy",
   },
   "spriteMaskId":null,
   "visible":true,

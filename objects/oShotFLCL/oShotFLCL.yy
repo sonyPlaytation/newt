@@ -11,7 +11,7 @@
   "overriddenProperties":[],
   "parent":{
     "name":"Hitscans",
-    "path":"folders/Objects/Combat Mechanics/Shots/Hitscans.yy",
+    "path":"folders/Objects/Combat/Shots/Hitscans.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -7,6 +7,7 @@
 //item ease in
 
 
+oNewt.propBuffer = 30;
 
 state();
 

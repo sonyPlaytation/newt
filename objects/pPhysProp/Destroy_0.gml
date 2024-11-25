@@ -4,3 +4,5 @@
 if captured{oNewt.prop = noone};
 
 oSFX.physDestroyed = dieSound;
+
+repeat (7){instance_create_layer(phy_position_x,phy_position_y, "Player", oDust);}

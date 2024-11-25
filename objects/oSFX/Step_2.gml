@@ -1,5 +1,4 @@
-/// @description Insert description here
-// You can write your code in this editor
+/// @description By Boolean
 
 if instance_exists(oShotNTTE){laserSoundLoop = true} else laserSoundLoop = false;
 

@@ -39,8 +39,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sPhysBoxSmall",
-    "path":"sprites/sPhysBoxSmall/sPhysBoxSmall.yy",
+    "name":"sCrateS",
+    "path":"sprites/sCrateS/sCrateS.yy",
   },
   "spriteMaskId":null,
   "visible":true,

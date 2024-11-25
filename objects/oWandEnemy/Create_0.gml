@@ -30,7 +30,7 @@ statePistol = function()
 		recoil = 16;
 		screenShake(2,5);
 	
-		with (instance_create_layer(x,y,"Shots",oEnemyShot))
+		with (instance_create_layer(x,y,"Shots",pEnemyShot))
 		{
 			damage = other.damage;
 			oSFX.enemyShot = snShotHLPist;
@@ -55,7 +55,7 @@ stateBurst = function()
 		{
 			recoil = 16;
 			screenShake(6,12);
-			with (instance_create_layer(x,y,"Shots",oEnemyShot))
+			with (instance_create_layer(x,y,"Shots",pEnemyShot))
 			{
 				damage = other.damage;
 				spd = other.setspeed;
@@ -91,7 +91,7 @@ stateShotgun = function()
 	
 		for (var j = 0; j < bulletnumber; j++)
 		{
-			with (instance_create_layer(x,y,"Shots",oEnemyShot))
+			with (instance_create_layer(x,y,"Shots",pEnemyShot))
 			{
 				damage = other.damage;
 				oSFX.enemyShot = snShotSPAS12;

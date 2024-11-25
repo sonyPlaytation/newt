@@ -35,7 +35,8 @@ function lineOfSight(){
 				//{
 					if collision_circle(other.x,_selfCenter,_viewRange,_currGoon,0,0)
 					{
-						if !collision_line(other.x,_selfCenter,_currGoon.x,_currGoon.y-20,oCollide,0,0)
+						if  !collision_line(other.x,_selfCenter,_currGoon.x,_currGoon.y-20,oCollide,0,0)
+						and !collision_line(other.x,_selfCenter,_currGoon.x,_currGoon.y-20,pPhysProp,0,0)
 						{
 							var _dist = (point_distance(x,_selfCenter,_currGoon.x,_currGoon.y-20));
 							ds_priority_add(_target,_currGoon,_dist);
@@ -80,6 +81,7 @@ function lineOfSight(){
 				if collision_circle(x,_selfCenter,_viewRange,_currGoon,0,0)
 				{
 					if !collision_line(x,_selfCenter,_currGoon.x,_targCenter,oCollide,0,0)
+					and !collision_line(x,_selfCenter,_currGoon.x,_targCenter,pPhysProp,0,0)
 					{
 						var _dist = (point_distance(x,_selfCenter,_currGoon.x,_targCenter));
 						ds_priority_add(_target,_currGoon,_dist);

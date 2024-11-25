@@ -1,10 +1,10 @@
-/// @description Insert description here
-// You can write your code in this editor
+
 
 global.masterVolume = 1;
 global.sfxVolume = 1;
 
 physDestroyed = noone;
+explode = noone; expTime = 60;
 
 soundgetammo = false;
 healsound = false;
@@ -43,6 +43,7 @@ collat = false;
 mouthpop = false;
 bloodDrip = false;
 enemyShot = false;
+
 
 //looping sfx
 laserSoundLoop = false;

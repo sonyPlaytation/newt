@@ -1,8 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-myWall = noone;
-
+event_inherited()
 
 vsp = 0;
 grv = 0.3;
@@ -18,10 +17,3 @@ with (myDamage)
 {
 	owner = other.id		
 }
-
-if (hasHead)
-{
-	myHead = instance_create_depth(x,bbox_bottom,depth-10,oHeadHitbox)
-	with myHead {owner = other.id};
-}
-else myHead = noone;

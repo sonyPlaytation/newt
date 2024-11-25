@@ -13,8 +13,8 @@
   "name":"oInfoText",
   "overriddenProperties":[],
   "parent":{
-    "name":"Combat Mechanics",
-    "path":"folders/Objects/Combat Mechanics.yy",
+    "name":"System Mechanics",
+    "path":"folders/Objects/System Mechanics.yy",
   },
   "parentObjectId":null,
   "persistent":false,

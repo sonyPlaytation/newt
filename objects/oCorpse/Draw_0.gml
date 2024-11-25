@@ -39,4 +39,3 @@ if corpse = "killer7"
 	drawCorpse();
 	shader_reset();
 }
-

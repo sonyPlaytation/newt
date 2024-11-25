@@ -90,11 +90,25 @@ stateTele = function()
 		newX = targSwap.x;
 		newY = targSwap.y;
 		
-		with (targSwap)
+		if object_is_ancestor(targSwap.object_index,pPhysProp)
 		{
-			x = other.oldX;
-			y = other.oldY-10;
+			with (targSwap)
+			{
+				phy_active = true;
+				idleTimer = 0;
+				phy_position_x = other.oldX;
+				phy_position_y = other.oldY-30;
+			}
 		}
+		else
+		{
+			with (targSwap)
+			{
+				x = other.oldX;
+				y = other.oldY-30;
+			}
+		}
+		
 		repeat (20) with instance_create_depth(newX,newY-20,depth-20,oDust){size = 2; spd = 4;}
 		repeat (20) with instance_create_depth(oldX,oldY-20,depth-20,oDust){size = 2; spd = 4;}
 		
@@ -115,10 +129,23 @@ stateTele = function()
 			newX = targSwap.x;
 			newY = targSwap.y
 	
-			with (targSwap)
+			if object_is_ancestor(targSwap.object_index,pPhysProp)
 			{
-				x = other.oldX;
-				y = other.oldY-10;
+				with (targSwap)
+				{
+					phy_active = true;
+					idleTimer = 0;
+					phy_position_x = other.oldX;
+					phy_position_y = other.oldY-30;
+				}
+			}
+			else
+			{
+				with (targSwap)
+				{
+					x = other.oldX;
+					y = other.oldY-30;
+				}
 			}
 			repeat (20) with instance_create_depth(newX,newY-20,depth-20,oDust){size = 2; spd = 4;}
 			repeat (20) with instance_create_depth(oldX,oldY-20,depth-20,oDust){size = 2; spd = 4;}
