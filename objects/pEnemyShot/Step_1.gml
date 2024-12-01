@@ -53,9 +53,10 @@ if friendly
 				{
 					diedFrom = "standard";
 					//damage calculation
+					finalDMG = 75;
 						
 					//subtract health
-					hp -= 75;
+					hp -= finalDMG;
 			
 					//damage numbers
 					if (!noDMG)

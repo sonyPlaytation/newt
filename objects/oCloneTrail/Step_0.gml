@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-
+if instance_exists(oNewt){depth = oNewt.depth + 100;}
 
 if offset <= 0
 {
@@ -26,4 +26,4 @@ if !infoCopied
 	infoCopied = true;
 }
 
-if blink{blinkExt(alpha, "image_alpha", 0, 60);}
+if blink{blinkExt(alpha, "image_alpha", 0, 60,1);}

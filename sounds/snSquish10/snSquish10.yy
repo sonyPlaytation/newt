@@ -21,5 +21,5 @@
   "sampleRate":44100,
   "soundFile":"snSquish10.ogg",
   "type":0,
-  "volume":0.58,
+  "volume":1.0,
 }

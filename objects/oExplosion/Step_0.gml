@@ -22,6 +22,45 @@ if instance_exists(oNewt)
 	}
 }
 
+//phys props
+var hitProps = ds_list_create();
+var propNum = collision_ellipse_list(x-100,y-100,x+100,y+100,pPhysProp,0,0,hitProps,1);
+if instance_exists (oNewt) {dist = point_distance(oNewt.x,oNewt.y-22,x,y)}else dist = 50;
+
+if (friendly = 1 ) or (friendly = 0) and (image_index <0.5)
+{
+	if (place_meeting(x,y,pPhysProp)) and propNum > 0
+	{
+		for (var i=0; i < propNum; i++;)
+		{
+			var prop = ds_list_find_value(hitProps,i);
+			if !collision_line(x, y, prop.x, prop.y-22, oCollide, 0, 0)
+			with prop
+			{
+				idleTimer = 0;
+				phy_active = true;
+				
+				var physDir = point_direction(other.x,other.y,phy_position_x,phy_position_y)
+				var physX = lengthdir_x(100,physDir)*(1000-(prop.phy_mass));
+				var physY = lengthdir_y(100,physDir)*(1000-(prop.phy_mass));
+				
+				physics_apply_impulse(other.x,other.y,physX,physY);
+				
+				diedFrom = "standard";
+			
+				var _dmg = 100;
+				hp -= _dmg;
+			
+				global.critTotalDMG += _dmg;
+			
+				flash = 3;			
+				hitfrom = other.direction;	
+			}
+		}
+	} 
+}
+ds_list_destroy(hitProps);
+
 //hitStop(0);
 var hitTargs = ds_list_create();
 var enemyNum = collision_ellipse_list(x-100,y-100,x+100,y+100,pEntity,0,0,hitTargs,1);
@@ -34,7 +73,7 @@ if (friendly = 1 ) or (friendly = 0) and (image_index <0.5)
 		for (var i=0; i < enemyNum; i++;)
 		{
 			var target = ds_list_find_value(hitTargs,i);
-	
+			if !collision_line(x, y, target.x, target.y-22, oCollide, 0, 0)
 			with target
 			{
 				if !inactive and !object_is_ancestor(target.object_index,pPhysProp)
@@ -70,7 +109,6 @@ if (friendly = 1 ) or (friendly = 0) and (image_index <0.5)
 					flash = 3;
 				
 					hitfrom = other.direction;
-					if (hitsound != 0)	oSFX.scientistscream = true;
 				}
 			}
 		}
@@ -79,42 +117,5 @@ if (friendly = 1 ) or (friendly = 0) and (image_index <0.5)
 instance_destroy();
 ds_list_destroy(hitTargs);
 
-//phys props
-var hitProps = ds_list_create();
-var propNum = collision_ellipse_list(x-100,y-100,x+100,y+100,pPhysProp,0,0,hitProps,1);
-if instance_exists (oNewt) {dist = point_distance(oNewt.x,oNewt.y-22,x,y)}else dist = 50;
 
-if (friendly = 1 ) or (friendly = 0) and (image_index <0.5)
-{
-	if (place_meeting(x,y,pPhysProp)) and propNum > 0
-	{
-		for (var i=0; i < propNum; i++;)
-		{
-			var prop = ds_list_find_value(hitProps,i);
-			
-			with prop
-			{
-				idleTimer = 0;
-				phy_active = true;
-				
-				var physDir = point_direction(other.x,other.y,phy_position_x,phy_position_y)
-				var physX = lengthdir_x(100,physDir)*(1000-(prop.phy_mass));
-				var physY = lengthdir_y(100,physDir)*(1000-(prop.phy_mass));
-				
-				physics_apply_impulse(other.x,other.y,physX,physY);
-				
-				diedFrom = "standard";
-			
-				var _dmg = 100;
-				hp -= _dmg;
-			
-				global.critTotalDMG += _dmg;
-			
-				flash = 3;			
-				hitfrom = other.direction;	
-			}
-		}
-	} 
-}
-ds_list_destroy(hitProps);
 

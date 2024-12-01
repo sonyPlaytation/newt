@@ -65,6 +65,20 @@ if place_meeting(x,bbox_top-1,oCollide)
 
 if godmode = true{iFrames = 10; flash = 10;}
 
+if dashTrail > 0
+{
+	dashTrail--;
+	with instance_create_depth(x,y,depth+100,oCloneTrail)
+	{
+		owner = other.id; 
+		col=c_aqua; 
+		add = true;
+		blink = true;
+		xFrames = 2;
+		xReset = xFrames;
+	};	
+}
+
 if (hasControl) 
 {
 	state();

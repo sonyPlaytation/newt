@@ -3,6 +3,7 @@
 
 physics_world_create(0.1);
 physics_world_gravity(0, 100);
+phy_active = false;
 
 event_inherited();
 
@@ -18,3 +19,4 @@ idleTimer = 0;
 dieSound = snBelch;
 
 fragile = false;
+debris = false;

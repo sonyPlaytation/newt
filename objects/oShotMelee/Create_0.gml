@@ -1,117 +1,76 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+#region functions
 hitTarget = function()
 {
 	//hitting an enemy
 	if (place_meeting(x,y,pEntity))
 	{
-		var target = instance_place(x,y,pEntity)
-		
-		if object_is_ancestor(target.object_index,pPhysProp) and instance_exists(oNewt)
-		{					
-			switch (state)
-			{
-				case stateParry:
-				with (target)
-				{
-					idleTimer = 0;
-					phy_active = true;
-					var physX = lengthdir_x(100,other.image_angle)*(1000-(target.phy_mass));
-					var physY = lengthdir_y(100,other.image_angle)*(1000-(target.phy_mass));
-				
-					physics_apply_impulse(x,y,physX,physY);
-				
-					diedFrom = "standard";
-			
-					var _dmg = oWeapon.damage/2;
-					hp -= _dmg;
-			
-					global.critTotalDMG += _dmg;
-			
-					flash = 3;			
-					hitfrom = other.direction;	
-				};
-				break;
-				
-				default:
-				with (target)
-				{
-					idleTimer = 0;
-					phy_active = true;
-					var physX = lengthdir_x(2,other.image_angle)*(1000-(target.phy_mass));
-					var physY = lengthdir_y(2,other.image_angle)*(1000-(target.phy_mass));
-				
-					physics_apply_impulse(x,y,physX,physY);
-				
-					diedFrom = "standard";
-			
-					var _dmg = oWeapon.damage/2;
-					hp -= _dmg;
-			
-					global.critTotalDMG += _dmg;
-			
-					flash = 3;			
-					hitfrom = other.direction;	
-				};
-				break;
-			}
-		}
-		else
+		var hitTargs = ds_list_create();
+		var targNum = collision_ellipse_list(x-100,y-100,x+100,y+100,pEntity,0,0,hitTargs,1);
+					
+		if (place_meeting(x,y,pEntity)) and targNum > 0
 		{
-			with(target)
+			for (var i=0; i < targNum; i++;)
 			{
-				diedFrom = "standard";
+				var target = ds_list_find_value(hitTargs,i);
 			
-				if other.crit
+				with target
 				{
-					var _dmg = oWeapon.damage*3;
+					diedFrom = "standard";
+					enemyHit(oWeapon.damage);
+				}
+			}
+		} 
+		ds_list_destroy(hitTargs);
+	}
+	instance_destroy();
+}
+
+parry = function()
+{
+	if (place_meeting(x,y,pEntity))
+	{
+		var hitTargs = ds_list_create();
+		var targNum = collision_ellipse_list(x-100,y-100,x+100,y+100,pEntity,0,0,hitTargs,1);
+					
+		if (place_meeting(x,y,pEntity)) and targNum > 0
+		{
+			for (var i=0; i < targNum; i++;)
+			{
+				var target = ds_list_find_value(hitTargs,i);
+			
+				if object_is_ancestor(target.object_index,pPhysProp)
+				{
+					with target
+					{
+						idleTimer = 0;
+						phy_active = true;
+						var physX = lengthdir_x(100,oWeapon.image_angle)*(1000-(self.phy_mass));
+						var physY = lengthdir_y(100,oWeapon.image_angle)*(1000-(self.phy_mass));
+				
+						physics_apply_impulse(x,y,physX,physY);
+				
+						diedFrom = "standard";
+			
+						flash = 3;			
+						hitfrom = other.direction;	
+					}
 				}
 				else
 				{
-					var _dmg = ceil(mean(oWeapon.damage + abs(oNewt.hsp/5),oWeapon.damage*1.5))
-				}
-				var _finaldmg = _dmg*oInv.dmgMod;
-			
-				hp -= _finaldmg
-			
-				if hp <=0
-				{
-					oNewt.dashCount++;
-				}
-			
-				if (!noDMG)
-				{
-					myDamage.damage += _finaldmg;
-					myDamage.alpha = 1;
-					myDamage.dmgTextScale = 0.75
-				}
-			
-				if (other.crit) and (!noDMG)
-				{
-					myDamage.dmgTextScale = 1;
-					with instance_create_layer(target.x,target.y - target.sprite_height,"Player",oCritHeader)
+					with target
 					{
-						owner = target.id	
+						diedFrom = "standard";
+						enemyHit(oWeapon.damage);
 					}
-				} else {global.critTotalDMG += _finaldmg}
-			
-				flash = 3;			
-				hitfrom = other.direction;
-			
+				}
 			}
-			hitStop(_hs);
-		}
-		instance_destroy();
+		} 
+		ds_list_destroy(hitTargs);
 	}
-}
-
-swatTrail = function()
-{
-	with instance_create_depth(x,y,depth,oSwingTrail)
-	{
-		owner = other.id;
-	}
+	instance_destroy();
 }
 
 ammoBack = function(type,amount)
@@ -128,6 +87,15 @@ ammoBack = function(type,amount)
 		oWeapon.ammo[type] += amount;
 	};		
 }
+
+swatTrail = function()
+{
+	with instance_create_depth(x,y,depth,oSwingTrail)
+	{
+		owner = other.id;
+	}
+}
+#endregion
 
 alarm[0] = 10;
 
@@ -166,7 +134,6 @@ stateSwat = function()
 	//hitting a baseball
 	if (place_meeting(x,y,oBaseball))
 	{		
-		
 		with(instance_place(x,y,oBaseball))
 		{
 			if state == stateToss
@@ -181,7 +148,6 @@ stateSwat = function()
 		hitStop(_hs);
 		instance_destroy();
 	}
-	
 	hitTarget();
 }
 
@@ -246,8 +212,7 @@ stateParry = function()
 			instance_destroy(_target);	
 		}
 	}
-	
-	hitTarget();
+	parry();
 }
 
 stateSlice = function()
@@ -339,6 +304,6 @@ stt[3] = stateDestroy;
 stt[4] = stateWrench;
 stt[5] = stateWeak;
 
-swatTrail();
 state = stt[oWeapon.meleeState];
 
+swatTrail();

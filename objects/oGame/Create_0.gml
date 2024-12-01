@@ -16,8 +16,6 @@ else
 #macro RESOLUTION_H 1080
 display_set_gui_size(RESOLUTION_W,RESOLUTION_H);
 
-global.hitsound = snNThitSound;
-
 global.kills = 0;
 global.killsthisroom = 0;
 global.hasweapon = false;

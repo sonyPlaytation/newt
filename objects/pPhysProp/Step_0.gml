@@ -13,7 +13,7 @@ else if screenPause(){phy_active = false} else phy_active = true;
 var _fDense = median(bbox_top-bbox_bottom,bbox_right-bbox_left);
 
 //hitting an enemy
-if (place_meeting(x,y,pEntity)) and phy_speed > 3 and !captured
+if (place_meeting(x,y,pEntity)) and phy_speed > 5 and !captured
 {
 	var target = instance_place(x,y,pEntity)
 	if !target.inactive
@@ -25,7 +25,7 @@ if (place_meeting(x,y,pEntity)) and phy_speed > 3 and !captured
 			var _dmg = ceil(other.damage * (other.phy_speed/4)*(_fDense/24));
 			var _finaldmg = max(_dmg,15);
 			hp -= _finaldmg
-		
+			
 			if (!noDMG)
 			{
 				myDamage.damage += _finaldmg;
@@ -39,6 +39,7 @@ if (place_meeting(x,y,pEntity)) and phy_speed > 3 and !captured
 			hitfrom = other.direction;
 		}
 		hp -= ceil(other.damage * (other.phy_speed/4)*(_fDense/24))/3;
+		if fragile {hp = 0};
 	
 		if !object_is_ancestor(target.object_index,pPhysProp)
 		{

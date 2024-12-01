@@ -45,7 +45,7 @@ if(keyboard_check_pressed(vk_anykey)) and instance_exists(oNewt) // only do the 
 		repeat(256){getAmmo()};
 	}
 	
-		//IDSODA
+	//IDSODA
 	if(ds_list_find_value(code3Seq, code3Index) == keyboard_lastkey)
 	{code3Index++}
 	else
@@ -54,7 +54,10 @@ if(keyboard_check_pressed(vk_anykey)) and instance_exists(oNewt) // only do the 
 	if(ds_list_size(code3Seq) == code3Index)
 	{
 		code3Index = 0;
-		systemMsg("pocket change",1.5,1);
-		oInv.sodas = 10;
+		systemMsg("all sodas",1.5,1);
+		for (var i = 0; i < (array_length(desc)-1); i++)
+		{
+			sodaGet(i);	
+		}
 	}
 }

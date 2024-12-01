@@ -88,15 +88,6 @@ if k7hurt == true
 	k7hurt = false;
 }
 
-//COD hitmarker
-if codhit == true
-{
-	audio_sound_pitch(global.hitsound,random_range(0.8,1.2));
-	var _sound = audio_play_sound(global.hitsound,800,false);
-	audio_sound_gain(_sound,_sfxVol,0);
-	codhit = false;
-}
-
 //get soda
 if sodaget == true
 {

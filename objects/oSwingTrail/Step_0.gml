@@ -6,9 +6,9 @@ var dist = lerp(0,oWeapon.length*2,0.5);
 
 if instance_exists(owner)
 {
-	image_angle = owner.image_angle;
-	x+= lengthdir_x(dist/spd,owner.image_angle);
-	y+= lengthdir_y(dist/spd,owner.image_angle);
+	image_angle = oWeapon.image_angle;
+	x+= lengthdir_x(dist/spd,oWeapon.image_angle);
+	y+= lengthdir_y(dist/spd,oWeapon.image_angle);
 	
 }
 else

@@ -27,8 +27,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Props",
-    "path":"folders/Sprites/Entities/Props.yy",
+    "name":"Frags",
+    "path":"folders/Sprites/Props/Frags.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

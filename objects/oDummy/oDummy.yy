@@ -13,7 +13,7 @@
   ],
   "parent":{
     "name":"Props",
-    "path":"folders/Objects/Entities/Props.yy",
+    "path":"folders/Objects/Props.yy",
   },
   "parentObjectId":{
     "name":"pPhysProp",

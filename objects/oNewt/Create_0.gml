@@ -161,6 +161,7 @@ sodaGot = 0;
 dashX = 0;
 dashY = 0;
 dashFacing = 0;
+dashTrail = 0;
 
 dashTimer = 7;
 dashReset = dashTimer;
@@ -295,12 +296,12 @@ stateFree = function()
 	//reset double jump
 	if onGround
 	{
-	jumpCount = 0;	
-	jumpHoldTimer = 0;
+		jumpCount = 0;	
+		jumpHoldTimer = 0;
 	}
 	else
 	{
-	 if jumpCount == 0 {jumpCount = 1};	
+		if jumpCount == 0 {jumpCount = 1};	
 	}
 
 	jumpBuffer--;
@@ -331,19 +332,18 @@ stateFree = function()
 	//jump based on hold button
 	if jumpHoldTimer > 0
 	{
-		
 		vsp = vspJump;
 		vspFrac = 0;
 		jumpHoldTimer--;	
 	}
 	
-		if !input_check("jump")
+	if !input_check("jump")
 	{
 		jumpHoldTimer = 0;	
 	}
 	
 	vsp = clamp(vsp,-vspMax,vspMax);
-	//}
+
 
 	//dump fractions and get final integer speeds
 	hsp += hspFrac;
@@ -780,6 +780,17 @@ stateCrouch = function()
 		}
 		else
 		{
+			with instance_create_layer(x,y,"Shots",oCloneTrail)
+			{
+				owner = other.id; 
+				decay = 0.5;
+				col=c_lime; 
+				add = true;
+				blink = true;
+				xFrames = 2;
+				xReset = xFrames;
+			};	
+			
 			if midGrind != 1 
 			{
 				oSFX.grindland = true; 
@@ -1044,17 +1055,9 @@ stateDash = function()
 	
 	if dashTimer > 0
 	{
-		sprite_index = sNewtWallFlip;
+		dashTrail = 999;
 		
-		with instance_create_depth(x,y,depth-15,oCloneTrail)
-		{
-			owner = other.id; 
-			col=c_aqua; 
-			add = true;
-			blink = true;
-			xFrames = 2;
-			xReset = xFrames;
-		};
+		sprite_index = sNewtWallFlip;
 		
 		iFrames = 1;
 		hsp = clamp(hsp*20,-20,20);
@@ -1069,62 +1072,11 @@ stateDash = function()
 			hsp = dashX*20;
 			vsp = clamp(dashY*20,-12,23);
 		}
-		////up dash
-		//if input_check("up") and !input_check("down")
-		//{
-		//	setOnGround(false);
-		//	//if not pressing left or right cancel all horizontal movement
-		//	if !(input_check("left") or input_check("right")) 
-		//	{hsp = 0}
-			
-			
-		//	//apply dash speed vertically
-		//	vsp = clamp(vsp-8,-10,10);
-		//}
-		
-		////down dash
-		//if input_check("down") and !(input_check("jump") or input_check("up"))
-		//{
-		//	//if not pressing left or right cancel all horizontal movement
-		//	if !(input_check("left") or input_check("right")) {hsp = 0};
-			
-		//	//apply dash speed vertically
-		//	vsp	= clamp(vsp+16,-10,10);
-		//}
-		
-		////left dash
-		//if input_check("left")
-		//{
-		//	//if not pressing left or right cancel all horizontal movement
-		//	if !(input_check("down") or input_check("jump") or input_check("up")) {vsp = 0};
-			
-		//	//apply dash speed vertically
-		//	hsp = clamp(hsp-23,-dashMaxSpd,dashMaxSpd);
-		//}
-		
-		////left dash
-		//if input_check("right")
-		//{
-		//	//if not pressing left or right cancel all horizontal movement
-		//	if !(input_check("down") or input_check("jump") or input_check("up")) {vsp = 0};
-			
-		//	//apply dash speed vertically
-		//	hsp = clamp(hsp+23,-dashMaxSpd,dashMaxSpd);
-		//}
-		
-		//if !(input_check("left") or input_check("right") or input_check("down") or input_check("jump") or input_check("up"))
-		//{
-		//	vsp = 0;
-		//	hsp = clamp(facingRight*100,-dashMaxSpd,dashMaxSpd);
-		//}
-		
 	}
 	else
 	{
 		dashCount--;
-		
-		
-		
+		dashTrail = 30;
 		state = stateFree;
 		dashTimer = dashReset;
 	}
@@ -1136,14 +1088,6 @@ stateDash = function()
 	
 	//init if backwards or not 
 	var _backwards = false
-	
-	////sprint toggle
-	//if input_check("runtoggle") {global.autoRun = !global.autoRun};
-	////sprint
-	//if (global.autoRun){moveType = 1; image_speed = 10} else {moveType = 0; image_speed = 1};
-
-	
-	
 
 	//calculate vertical movement
 	var grvFinal = grv[2];
@@ -1361,8 +1305,7 @@ stateGulp = function()
 	mouthTimer = 10;
 	sprite_index = sNewtFlap;
 	
-	
-	if nearestCorpse.id.fresh > 0 
+	if !(nearestCorpse.id.fresh < 1) 
 	{
 		oInv.inBelly = nearestCorpse.id;
 		nearestCorpse.inBelly = true;

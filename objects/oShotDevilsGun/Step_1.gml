@@ -30,43 +30,15 @@ if instance_exists(oNewt)
 				if (other.crit or oWeapon.headshots) {finalDMG = other.baseDMG * 3}
 				else finalDMG = standardFalloff(other.dist,other.baseDMG);
 						
-				//subtract health
-				hp -= finalDMG;
-			
-				//damage numbers
-				if (!noDMG)
-				{
-					repeat(irandom_range(7,20)) {(instance_create_layer(target.x,target.y-(sprite_height/2), "Player", oBlood))}
-					myDamage.damage += finalDMG;
-					myDamage.alpha = 1;
-					myDamage.dmgTextScale = 0.75
-				}
-		
-				//if rolled a crit
-				if (other.crit)
-				{
-					diedFrom = "overkill";
-					myDamage.dmgTextScale = 1;
-					
-					explosion(100,50,x,y,false,1,sExplosionPink);
-				
-					with instance_create_layer(target.x,target.y - target.sprite_height,"Player",oCritHeader)
-					{
-						owner = target.id	
-					}
-					
-				} else {global.critTotalDMG += finalDMG}
-			
-				flash = 3;
-				hitfrom = other.direction;			
+				enemyHit(finalDMG);
 			}
 		}
-	
+		if crit explosion(65,75,x,y,false,1,sExplosionPink);
 		outline_end();
 		instance_destroy();
 	}
 
-	if (place_meeting(x,y,pEntity)) 
+	else if (place_meeting(x,y,pEntity)) 
 	{
 	
 		dist = point_distance(oNewt.x,oNewt.y-22,x,y);
@@ -79,41 +51,17 @@ if instance_exists(oNewt)
 		{
 		
 			if !inactive
-			{
+			{	
 				diedFrom = "standard";
+				
 				//damage calculation
-				if (other.crit == true) {finalDMG =other.baseDMG + floor(15*oInv.hpMissing) * 3}
-				else finalDMG = standardFalloff(other.dist,other.baseDMG)+ floor(15*oInv.hpMissing);
-			
-				//subtract health
-				hp -= finalDMG ;
-			
-				//damage numbers
-				if (!noDMG)
-				{
-					repeat(irandom_range(7,20)) {(instance_create_layer(target.x,target.y-(sprite_height/2), "Player", oBlood))}
-					myDamage.damage += finalDMG;
-					myDamage.alpha = 1;
-					myDamage.dmgTextScale = 0.75
-				}
-		
-				//if rolled a crit
-				if (other.crit)
-				{
-					if !noDMG {myDamage.dmgTextScale = 1};
-				
-					explosion(100,50,x,y,false,1,sExplosionPink);
-				
-					with instance_create_layer(target.x,target.y - target.sprite_height,"Player",oCritHeader)
-					{
-						owner = target.id	
-					}
-				} else {global.critTotalDMG += finalDMG}
-			
-				flash = 3;
-				hitfrom = other.direction;			
+				if (other.crit or oWeapon.headshots) {finalDMG = other.baseDMG * 3}
+				else finalDMG = standardFalloff(other.dist,other.baseDMG);
+						
+				enemyHit(finalDMG);
 			}
 		}
+		if crit explosion(65,75,x,y,false,1,sExplosionPink);
 		outline_end();
 		instance_destroy();
 	}

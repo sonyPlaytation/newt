@@ -152,7 +152,6 @@ switch (corpse)
 			{
 				while (!place_meeting(x,y+sign(vsp),oCollide)){y += sign(vsp)};
 				hp = 0;
-				instance_destroy();
 			}
 
 			if (place_meeting(x,y+vsp,pEntity)) 
@@ -161,7 +160,6 @@ switch (corpse)
 				{
 					while (!place_meeting(x,y+sign(vsp),oCollide)){y += sign(vsp)};
 					hp = 0;
-					instance_destroy();
 				}
 			}
 			y += vsp;

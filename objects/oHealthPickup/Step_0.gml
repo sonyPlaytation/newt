@@ -3,17 +3,17 @@
 var done = false;
 vsp += grv;
 
+
 //vertical collision
-if !done and (place_meeting(x,y+vsp,oCollide))
+if !done and (place_meeting(x,y+vsp,oCollide)) or (place_meeting(x,y+vsp,oCollSemi))
 {
-	while (!place_meeting(x,y+sign(vsp),oCollide))
+	while (!place_meeting(x,y+sign(vsp),oCollide)) and (!place_meeting(x,y+vsp,oCollSemi))
 	{
 		y += sign(vsp)
 	}
 	vsp = 0;
 	done = true;
 }
-
 y += vsp;
 
 if (place_meeting(x,y+vsp,oNewt))

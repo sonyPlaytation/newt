@@ -11,8 +11,8 @@
   "name":"oInv",
   "overriddenProperties":[],
   "parent":{
-    "name":"newt player states",
-    "path":"newt player states.yyp",
+    "name":"Objects",
+    "path":"folders/Objects.yy",
   },
   "parentObjectId":null,
   "persistent":true,

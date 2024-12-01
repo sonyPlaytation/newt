@@ -5,44 +5,17 @@
 //screen pause
 if screenPause() {exit;};
 
-var homingtarget = instance_nearest(mouse_x,mouse_y,pEnemy);
-if global.soda[1] == true and instance_exists(pEnemy)
-{
-	
-	var targetdir = point_direction(x,y,homingtarget.x,homingtarget.y-homingtarget.sprite_height/2)
-	dir += sin(degtorad(targetdir-dir))*5;
-		
-	image_angle = dir
-	xspd = lengthdir_x(spd, dir);
-	yspd = lengthdir_y(spd, dir);
-
-	x += xspd;
-	y += yspd;
-	
-	color = c_fuchsia;
-	draw_set_color(color);
-}
-else
-{
-	xspd = lengthdir_x(spd, dir);
-	yspd = lengthdir_y(spd, dir);
-
-	x += xspd;
-	y += yspd;
-}
+homingShot();
 if crit {color = c_red; draw_set_color(color);};
 
 if instance_exists(oNewt)
 {
 	dist = point_distance(xstart,ystart,x,y);
-	
 	if (place_meeting(x,y,oHeadHitbox)) 
 	{
 		var target = (instance_place(x,y,oHeadHitbox));
-	
 		with target.owner
 		{
-		
 			if !inactive
 			{	
 				//if scoped minicrit
@@ -72,14 +45,10 @@ if instance_exists(oNewt)
 							owner = target.id	
 						}
 					}
-		
-					
-				
 				}
 				else
 				{
-					//if normal crit or noncrit damage
-					if oWeapon.showLaser == true
+
 					diedFrom = "standard";
 					if hitsound != -1 {oSFX.k7hurt = true};
 				
@@ -109,7 +78,6 @@ if instance_exists(oNewt)
 						}
 					} else {global.critTotalDMG += finalDMG; diedFrom = "standard"}
 				
-				
 					flash = 5;
 					hitfrom = other.direction;				
 				}
@@ -123,14 +91,13 @@ if instance_exists(oNewt)
 		instance_destroy();
 	}
 	
-	if (place_meeting(x,y,pEntity)) 
+	else if (place_meeting(x,y,pEntity)) 
 	{
 		dist = point_distance(oNewt.x,oNewt.y-22,x,y);
 		var target = (instance_place(x,y,pEntity));
 			
 		with target
 		{
-		
 			if !inactive
 			{
 				if hitsound != -1 {oSFX.k7hurt = true};
@@ -166,7 +133,6 @@ if instance_exists(oNewt)
 				hitfrom = other.direction;			
 			}
 		}
-	
 		outline_end();
 		instance_destroy();
 	}

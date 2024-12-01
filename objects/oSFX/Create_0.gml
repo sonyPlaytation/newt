@@ -5,6 +5,7 @@ global.sfxVolume = 1;
 
 physDestroyed = noone;
 explode = noone; expTime = 60;
+hit = noone;
 
 soundgetammo = false;
 healsound = false;

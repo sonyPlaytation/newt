@@ -2,35 +2,60 @@
 ///@args [headshot]
 function enemyHit(finalDMG,headshot){
 
-	if headshot == undefined{headshot = false};
+	if (!object_is_ancestor(self.object_index,pPhysProp))
+	{
+		if headshot == undefined{headshot = false};
 
-	//subtract health
-	hp -= finalDMG;
+		finalDMG = max(0, finalDMG - (finalDMG * (armor/100)));
+
+		//subtract health
+		hp -= finalDMG;
 			
-	//damage numbers
-	if (!noDMG)
-	{
-		repeat(irandom_range(7,20)/oWeapon.bulletnumber) {(instance_create_layer(x,y, layer, oBlood))}
-		myDamage.damage += finalDMG;
-		myDamage.alpha = 1;
-		myDamage.dmgTextScale = 0.75
-	}
-		
-	//if rolled a crit
-	if other.crit or (headshot and oWeapon.headshots)
-	{
-		if (!noDMG){myDamage.dmgTextScale = 1;}
-				
-		with instance_create_layer(x,y - sprite_height,"Player",oCritHeader)
+		//damage numbers
+		if (!noDMG)
 		{
-			owner = other.id	
+			repeat(irandom_range(7,20)/oWeapon.bulletnumber) {(instance_create_layer(x,y, layer, oBlood))}
+			myDamage.damage += finalDMG;
+			myDamage.alpha = 1;
+			myDamage.dmgTextScale = 0.75
 		}
-	} else {global.critTotalDMG += finalDMG}
+		
+		//if rolled a crit
+		if other.crit or (headshot and oWeapon.headshots)
+		{
+			if (!noDMG){myDamage.dmgTextScale = 1;}
+				
+			with instance_create_layer(x,y - sprite_height,"Player",oCritHeader)
+			{
+				owner = other.id	
+			}
+		} else {global.critTotalDMG += finalDMG}
+
+		oSFX.hit = armor;
+
+		if armor > 1 {flash = 10}else flash = 3;
+		
+		hitfrom = other.direction;
+		coinHit = true;
+	}
+	else
+	{
+		idleTimer = 0;
+		phy_active = true;
+		var physX = lengthdir_x(2,other.image_angle)*(1000-(phy_mass));
+		var physY = lengthdir_y(2,other.image_angle)*(1000-(phy_mass));
+				
+		physics_apply_impulse(x,y,physX,physY);
+				
+		diedFrom = "standard";
 			
-	if (!object_is_ancestor(self.object_index,pPhysProp)) and (other.shotNumber < 1){hitStop(2)};
-	flash = 3;
-	hitfrom = other.direction;
-	coinHit = true;
+		hp -= finalDMG;
+			
+		global.critTotalDMG += finalDMG;
+			
+		flash = 3;			
+		hitfrom = other.direction;	
+	}
 }
 
 function drawHitscan(){
