@@ -6,7 +6,7 @@ function enemyHit(finalDMG,headshot){
 	{
 		if headshot == undefined{headshot = false};
 
-		finalDMG = max(0, finalDMG - (finalDMG * (armor/100)));
+		finalDMG = max(0, floor(finalDMG - (finalDMG * (armor/100))));
 
 		//subtract health
 		hp -= finalDMG;
