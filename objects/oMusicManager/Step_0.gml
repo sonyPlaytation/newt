@@ -45,54 +45,54 @@ if songAsset != targetSongAsset
 
 
 //volume control
-	//main song volume
-	if audio_is_playing(songInstance)
+//main song volume
+if audio_is_playing(songInstance)
+{
+	//fade the song in
+	if fadeInTime >0
 	{
-		//fade the song in
-		if fadeInTime >0
-		{
-			if fadeInInstVol < 1 {fadeInInstVol += 1/fadeInTime} else fadeInInstVol = 1;
-		}
-		//immediately start the song if the fade in time is 0 frames
-		else
-		{
-			fadeInInstVol = 1;
-		}
-	
-		//actually set gain
-		audio_sound_gain(songInstance, fadeInInstVol*_finalVol, 0);
-	
+		if fadeInInstVol < 1 {fadeInInstVol += 1/fadeInTime} else fadeInInstVol = 1;
 	}
+	//immediately start the song if the fade in time is 0 frames
+	else
+	{
+		fadeInInstVol = 1;
+	}
+	
+	//actually set gain
+	audio_sound_gain(songInstance, fadeInInstVol*_finalVol, 0);
+	
+}
 
-	//fading songs out
+//fading songs out
 	
-	for (var i = 0; i < array_length(fadeOutInst); i++)
+for (var i = 0; i < array_length(fadeOutInst); i++)
+{
+	//fade the volume
+	if fadeOutInstTime[i] > 0
 	{
-		//fade the volume
-		if fadeOutInstTime[i] > 0
-		{
-			if fadeOutInstVol[i] > 0 {fadeOutInstVol[i] -= 1/fadeOutInstTime[i]};
-		}
-		else //immediately cut volume to 0
-		{
-			fadeOutInstVol[i] = 0;
-		}
-		
-		//set gain
-		audio_sound_gain(fadeOutInst[i], fadeOutInstVol[i]*_finalVol,0);
-		
-		//stop song when at 0
-		if fadeOutInstVol[i] <= 0
-		{
-			if audio_is_playing(fadeOutInst[i]){audio_stop_sound(fadeOutInst[i])};	
-			//remove it from arrays
-			array_delete(fadeOutInst,i,1);
-			array_delete(fadeOutInstVol,i,1);
-			array_delete(fadeOutInstTime,i,1);
-			//set loop back to one
-			i--;
-		}
+		if fadeOutInstVol[i] > 0 {fadeOutInstVol[i] -= 1/fadeOutInstTime[i]};
 	}
+	else //immediately cut volume to 0
+	{
+		fadeOutInstVol[i] = 0;
+	}
+		
+	//set gain
+	audio_sound_gain(fadeOutInst[i], fadeOutInstVol[i]*_finalVol,0);
+		
+	//stop song when at 0
+	if fadeOutInstVol[i] <= 0
+	{
+		if audio_is_playing(fadeOutInst[i]){audio_stop_sound(fadeOutInst[i])};	
+		//remove it from arrays
+		array_delete(fadeOutInst,i,1);
+		array_delete(fadeOutInstVol,i,1);
+		array_delete(fadeOutInstTime,i,1);
+		//set loop back to one
+		i--;
+	}
+}
 	
 	
 	

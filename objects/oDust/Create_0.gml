@@ -16,3 +16,5 @@ image_angle = irandom(359);
 dustDecay = 0.2;
 
 if (instance_exists(oNewt)) depth = oNewt.depth-10;
+
+grow = 0;

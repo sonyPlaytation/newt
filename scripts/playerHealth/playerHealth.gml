@@ -61,7 +61,7 @@ with (argument1)
 				}
 			}
 		
-			iFrames = 60;
+			iFrames = 100;
 			if (oInv.hp > 0) {audio_play_sound(snNewtHurt,800,false)};
 			blinkExt(image_alpha, "image_alpha", 1, iFrames);
 		
@@ -75,6 +75,7 @@ with (argument1)
 		}
 	}
 }
+
 
 function allyHit()
 {

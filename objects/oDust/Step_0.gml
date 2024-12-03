@@ -16,4 +16,9 @@ y += vsp;
 
 spd*=0.9;
 
-
+if grow != 0 
+{
+	size *= grow
+	image_xscale = choose(size,-size);
+	image_yscale = choose(size,-size);	
+};

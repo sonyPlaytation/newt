@@ -19,9 +19,18 @@ if (instance_exists(oNewt))
 {
 	if place_meeting(x,y,oNewt)
 	{
-			roomActive = true
-			inRoom = true; 
-			oCamera.follow = instance_nearest(oNewt.x,oNewt.y,oRoomMiddle);
+		if (song != -1)
+		{
+			if  (!roomCleared) 
+			{
+				with (oMusicManager){set_song_ingame(other.song,15)}
+			}
+			else with (oMusicManager)set_song_ingame(mAddiction,15);
+		}
+		
+		roomActive = true
+		inRoom = true; 
+		oCamera.follow = instance_nearest(oNewt.x,oNewt.y,oRoomMiddle);
 	}else inRoom = false;
 
 	//check if not in active room

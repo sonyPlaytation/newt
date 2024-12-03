@@ -836,7 +836,7 @@ coinCount = 4;
 	ds_map_add(weapons[26],"meleeState",0);
 	ds_map_add(weapons[26],"headshots",0);
 	
-	// 5 - TF2 Shotgun
+	// 5 - Mare's Leg
 	weapons[27] = ds_map_create();
 	ds_map_add(weapons[27],"type",1);
 	ds_map_add(weapons[27],"name","Mare's Leg");
