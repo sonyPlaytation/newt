@@ -2,7 +2,7 @@
 
 if instance_exists(oNewt)
 {
-	if (friendly = -1 ) or (friendly = 0 ) 
+	if ((friendly = -1 ) or (friendly = 0 )) 
 	and collision_circle(x,y,radius,oNewt,0,0) 
 	and !collision_line(x, y, oNewt.x, oNewt.y-22, oCollide, 1, 0) 
 	and (image_index == 0) 

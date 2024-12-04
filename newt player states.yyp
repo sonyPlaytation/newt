@@ -1175,6 +1175,7 @@
     {"id":{"name":"sMaynerdChop","path":"sprites/sMaynerdChop/sMaynerdChop.yy",},},
     {"id":{"name":"sMaynerdDash","path":"sprites/sMaynerdDash/sMaynerdDash.yy",},},
     {"id":{"name":"sMaynerdGrab","path":"sprites/sMaynerdGrab/sMaynerdGrab.yy",},},
+    {"id":{"name":"sMaynerdSquat","path":"sprites/sMaynerdSquat/sMaynerdSquat.yy",},},
     {"id":{"name":"sMaynerdThrow","path":"sprites/sMaynerdThrow/sMaynerdThrow.yy",},},
     {"id":{"name":"sMaynerdWalk","path":"sprites/sMaynerdWalk/sMaynerdWalk.yy",},},
     {"id":{"name":"sMelonHead","path":"sprites/sMelonHead/sMelonHead.yy",},},

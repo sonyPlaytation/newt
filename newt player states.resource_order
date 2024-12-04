@@ -1024,6 +1024,7 @@
     {"name":"sMaynerdChop","order":5,"path":"sprites/sMaynerdChop/sMaynerdChop.yy",},
     {"name":"sMaynerdDash","order":2,"path":"sprites/sMaynerdDash/sMaynerdDash.yy",},
     {"name":"sMaynerdGrab","order":3,"path":"sprites/sMaynerdGrab/sMaynerdGrab.yy",},
+    {"name":"sMaynerdSquat","order":9,"path":"sprites/sMaynerdSquat/sMaynerdSquat.yy",},
     {"name":"sMaynerdThrow","order":8,"path":"sprites/sMaynerdThrow/sMaynerdThrow.yy",},
     {"name":"sMaynerdWalk","order":4,"path":"sprites/sMaynerdWalk/sMaynerdWalk.yy",},
     {"name":"sMelonHead","order":5,"path":"sprites/sMelonHead/sMelonHead.yy",},

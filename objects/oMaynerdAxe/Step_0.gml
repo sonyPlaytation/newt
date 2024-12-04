@@ -1,8 +1,8 @@
 /// @description
 
-image_angle -= (image_xscale * 5);
+image_angle -= (image_xscale * 7);
 
-if homing and instance_exists(oNewt)
+if homing and instance_exists(oNewt) and instance_exists(oBossMaynerd)
 {
 	range = point_distance(oNewt.x, oNewt.y, oBossMaynerd.x, oBossMaynerd.y);
 	hsp = range/70*image_xscale;

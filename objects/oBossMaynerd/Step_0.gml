@@ -12,6 +12,9 @@ if instance_exists(myRoom)
 if !inactive
 {
 	vsp = vsp + grv;
+	
+	if oRoomMiddle.x < x {facing = -1} else {facing = 1};
+	
 	////horizontal collision
 	//if (place_meeting(x+hsp,bbox_top,oCollide))
 	//{
