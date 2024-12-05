@@ -1301,6 +1301,8 @@
     {"roomId":{"name":"rTest5","path":"rooms/rTest5/rTest5.yy",},},
     {"roomId":{"name":"rDemoEndScreen","path":"rooms/rDemoEndScreen/rDemoEndScreen.yy",},},
     {"roomId":{"name":"rTutorialNew6","path":"rooms/rTutorialNew6/rTutorialNew6.yy",},},
+    {"roomId":{"name":"rPhysTest","path":"rooms/rPhysTest/rPhysTest.yy",},},
+    {"roomId":{"name":"rBossMaynerd","path":"rooms/rBossMaynerd/rBossMaynerd.yy",},},
   ],
   "templateType":null,
   "TextureGroups":[
