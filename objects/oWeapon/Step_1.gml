@@ -99,6 +99,7 @@ if instance_exists(oNewt)
 	current_recoil = max(0,current_recoil*0.8);
 
 	if (image_angle > 90) and (image_angle < 270) {image_yscale = -1} else image_yscale = 1;
+	
 
 	if oNewt.hasControl
 	{

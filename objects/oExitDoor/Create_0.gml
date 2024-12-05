@@ -3,4 +3,7 @@
 
 image_speed = 0;
 
-if room == rTest1 {sprite_index = sDoorHall};
+
+
+vsp = 0;		//vertical speed
+grv = 0.3;		//gravity

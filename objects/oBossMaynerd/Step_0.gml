@@ -9,7 +9,7 @@ if instance_exists(myRoom)
 	if myRoom.roomActive {inactive = false} else inactive = true;
 }
 
-if !inactive
+if !inactive and hp > 0
 {
 	vsp = vsp + grv;
 	

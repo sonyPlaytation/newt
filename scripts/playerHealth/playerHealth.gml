@@ -87,7 +87,7 @@ function allyHit()
 			if (vsp > 0)
 			{
 				dashCount = min(dashCount+1, 2);
-				iFrames = 10;
+				iFrames += 10;
 				if (input_check("jump")) {vsp = -9} else {vsp = -6};	
 				with(instance_place(x,y,pEntity))
 				{

@@ -21,5 +21,5 @@
   "sampleRate":44100,
   "soundFile":"snDeltaruneExpl.mp3",
   "type":0,
-  "volume":0.29,
+  "volume":1.0,
 }

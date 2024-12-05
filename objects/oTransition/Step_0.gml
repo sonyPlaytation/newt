@@ -36,6 +36,14 @@ if (mode != TRANS_MODE.OFF)
 				break;
 			}
 			
+			case TRANS_MODE.INIT:
+			{
+				mode = TRANS_MODE.INTRO;
+				room_goto(rInit);
+				global.InitRoom = target;
+				break;
+			}
+			
 			case TRANS_MODE.RESTART:
 			{
 				game_restart();

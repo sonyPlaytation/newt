@@ -125,7 +125,7 @@ coinCount = 4;
 	ds_map_add(weapons[3],"spread",-1);
 	ds_map_add(weapons[3],"casing",CASE.PISTOL);
 	ds_map_add(weapons[3],"startup",0);
-	ds_map_add(weapons[3],"length", 30);
+	ds_map_add(weapons[3],"length", 50);
 	ds_map_add(weapons[3],"cooldown",5);
 	ds_map_add(weapons[3],"bulletspeed",45);
 	ds_map_add(weapons[3],"automatic",true);
@@ -146,11 +146,11 @@ coinCount = 4;
 	ds_map_add(weapons[4],"recoilpush",1);
 	ds_map_add(weapons[4],"shakeamnt",15);
 	ds_map_add(weapons[4],"shaketime",15);
-	ds_map_add(weapons[4],"damage",16);
+	ds_map_add(weapons[4],"damage",15);
 	ds_map_add(weapons[4],"cancrit",true);
 	ds_map_add(weapons[4],"flash",-1);
 	ds_map_add(weapons[4],"projectile",oShotHitscan);
-	ds_map_add(weapons[4],"bulletnumber",9);
+	ds_map_add(weapons[4],"bulletnumber",7);
 	ds_map_add(weapons[4],"spread",12);
 	ds_map_add(weapons[4],"casing",CASE.SHOTGUN);
 	ds_map_add(weapons[4],"startup",0);
@@ -859,7 +859,7 @@ coinCount = 4;
 	ds_map_add(weapons[27],"spread",15);
 	ds_map_add(weapons[27],"casing",CASE.SHOTGUN);
 	ds_map_add(weapons[27],"startup",0);
-	ds_map_add(weapons[27],"length", 34);
+	ds_map_add(weapons[27],"length", 45);
 	ds_map_add(weapons[27],"cooldown",37);
 	ds_map_add(weapons[27],"bulletspeed",0);
 	ds_map_add(weapons[27],"automatic",true);
@@ -974,6 +974,7 @@ coinCount = 4;
 	ammoMax[5] = 200;	//energy
 	
 	shotNumber = 0;
+	draw_alpha = 0;
 	
 #endregion
 
@@ -1001,6 +1002,7 @@ soundNicer = function()
 
 fireWeapon = function()
 {
+	shotNumber = 0;
 	var mouseLeft;			
 	if (automatic) mouseLeft = input_check("shoot"); else mouseLeft = input_check_pressed("shoot");
 	
@@ -1024,13 +1026,15 @@ fireWeapon = function()
 		{	
 			if (shootsfx != -1){soundNicer();}
 			ammo[ammotype] -= ammouse;
-							
+			draw_alpha = 3;
+			
 			for (var j = 0; j < bulletnumber; j++)
 			{
 				shotNumber++;
 				screenShake(shakeamnt,shaketime);	
 							
-				with (instance_create_layer(x+lengthdir_x(length,image_angle),(y+lengthdir_y(length,image_angle)),"Shots",projectile))
+				var _shot = (instance_create_layer(x+lengthdir_x(length,image_angle),(y+lengthdir_y(length,image_angle)),"Shots",projectile))
+				with _shot
 				{
 					if (other.cancrit == 1) and global.hasCrit or global.critTimer > 0
 					{
@@ -1070,7 +1074,7 @@ fireWeapon = function()
 				}	
 				global.shotNumber = j;
 			}
-							
+			
 			if casing == oSmoke{instance_create_layer(x,y,"Player",oSmoke)}					
 			else if casing != -1
 			{

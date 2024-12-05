@@ -72,32 +72,15 @@ function drawHitscan(){
 		hitSprite,
 		1,
 		x,
-		y,
+		y-1.5,
 		visDist,
 		round_Ext(2*(draw_alpha/2),0.25)*5,
 		dir,
 		col,
 		0.15);
 	
-		if hitSprite != sHitFLCL
-		{
-			draw_sprite_ext(
-			hitSprite,
-			0,
-			x,
-			y,
-			round_Ext(draw_alpha*flashScale*1.5,0.25),
-			round_Ext(draw_alpha*flashScale*1.5,0.25),
-			dir,
-			col,
-			draw_alpha*0.15);
-		}
-	
-		gpu_set_blendmode(bm_normal);
-	
-		//--------------------------------------------------------------//
-	
 		// hitscan line real
+		gpu_set_blendmode(bm_normal);
 		draw_sprite_ext(
 		hitSprite,
 		1,
@@ -109,25 +92,6 @@ function drawHitscan(){
 		col,
 		1);
 	
-		if oWeapon.bulletnumber == 1
-		{
-			//muzzle flash (frame zero)
-			draw_sprite_ext(
-			hitSprite,
-			0,
-			x,
-			y,
-			round_Ext(draw_alpha*flashScale,0.25),
-			round_Ext(draw_alpha*flashScale,0.25),
-			dir,
-			col,
-			1);
-		}
-		else
-		{
-			if (shotNumber == oWeapon.bulletnumber){draw_sprite_ext(hitSprite,0,x,y,flashScale,flashScale,dir,col,draw_alpha);shotNumber++};
-		}
-	
 		draw_set_alpha(1);
 	}
 	else
@@ -138,7 +102,6 @@ function drawHitscan(){
 		draw_line(x,y,cur_x,cur_y);
 		draw_set_alpha(1);	
 	}
-
 
 	if draw_alpha <= 0 instance_destroy();	
 }
