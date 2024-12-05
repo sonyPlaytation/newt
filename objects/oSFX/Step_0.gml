@@ -37,3 +37,33 @@ if hit != noone //hitsound
 	
 	hit = noone;
 }
+
+
+//chainsaw sound
+if chainsawLoop != noone 
+{
+	if chainsawLoop == 1 and !audio_is_playing(chainsawLoopInst)
+	{
+		audio_stop_sound(chainsawIdleInst);
+		audio_sound_loop_start(snChainsawLoop,0.28);
+		audio_sound_loop_end(snChainsawLoop,1.56);
+		chainsawLoopInst = audio_play_sound(snChainsawLoop, 800, true);
+	}
+	else if chainsawLoop == 0 and !audio_is_playing(chainsawIdleInst)
+	{
+		audio_stop_sound(chainsawLoopInst);
+		audio_sound_loop_start(snChainsawIdle,0.28);
+		audio_sound_loop_end(snChainsawIdle,1.56);
+		chainsawIdleInst = audio_play_sound(snChainsawIdle, 800, true);
+	}
+}
+
+
+//turn sound off
+if chainsawLoop == noone and audio_is_playing(chainsawLoopInst)
+{
+	audio_stop_sound(chainsawLoopInst);
+	audio_play_sound(snChainsawEnd, 600, false);
+}
+
+chainsawLoop = noone;

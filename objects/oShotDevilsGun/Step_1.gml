@@ -49,7 +49,6 @@ if instance_exists(oNewt)
 	
 		with target
 		{
-		
 			if !inactive
 			{	
 				diedFrom = "standard";

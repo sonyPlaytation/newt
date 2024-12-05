@@ -430,22 +430,7 @@ if potterybreak == true
 
 	grindslide = false;
 	
-		//chainsaw sound
-	if chainsawLoop == true and !audio_is_playing(chainsawLoopInst)
-	{
-		audio_sound_loop_start(snChainsawLoop,0.28);
-		audio_sound_loop_end(snChainsawLoop,1.56);
-		chainsawLoopInst = audio_play_sound(snChainsawLoop, 800, true);
-	}
-
-	//turn sound off
-	if chainsawLoop == false and audio_is_playing(chainsawLoopInst)
-	{
-		audio_stop_sound(chainsawLoopInst);
-		audio_play_sound(snChainsawEnd, 600, false);
-	}
-
-	chainsawLoop = false;
+	
 	
 
 	

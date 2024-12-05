@@ -443,7 +443,7 @@ coinCount = 4;
 	ds_map_add(weapons[14],"type",2);
 	ds_map_add(weapons[14],"name","The Great\nCommunicator");
 	ds_map_add(weapons[14],"sprite",sChainsaw);
-	ds_map_add(weapons[14],"shootsfx",3);
+	ds_map_add(weapons[14],"shootsfx",-1);
 	ds_map_add(weapons[14],"pickupsound",snChainsawPickup);
 	ds_map_add(weapons[14],"ammotype",3);
 	ds_map_add(weapons[14],"ammouse",1);
@@ -486,7 +486,7 @@ coinCount = 4;
 	ds_map_add(weapons[15],"recoilpush",2);
 	ds_map_add(weapons[15],"shakeamnt",6);
 	ds_map_add(weapons[15],"shaketime",7);
-	ds_map_add(weapons[15],"damage",25);
+	ds_map_add(weapons[15],"damage",19);
 	ds_map_add(weapons[15],"cancrit",true);
 	ds_map_add(weapons[15],"projectile",oShotDevilsGun);
 	ds_map_add(weapons[15],"bulletnumber",1);
@@ -494,10 +494,10 @@ coinCount = 4;
 	ds_map_add(weapons[15],"casing",-1);
 	ds_map_add(weapons[15],"startup",0);
 	ds_map_add(weapons[15],"length",17);
-	ds_map_add(weapons[15],"cooldown",10);
+	ds_map_add(weapons[15],"cooldown",15);
 	ds_map_add(weapons[15],"bulletspeed",45);
 	ds_map_add(weapons[15],"automatic",false);
-	ds_map_add(weapons[15],"headshots",1);
+	ds_map_add(weapons[15],"headshots",0);
 
 	// 16 - flamethrower
 	weapons[16] = ds_map_create();
@@ -994,10 +994,13 @@ snPlaying = noone;
 
 soundNicer = function()
 {
-	var _pitch = 1;
-	if automatic{_pitch = random_range(0.9,1.1)};
-	if snPlaying != noone {audio_sound_gain(snPlaying,0.5,15)};
-	snPlaying = audio_play_sound(shootsfx, 600, false,1,0,);
+	if shootsfx != -1
+	{
+		var _pitch = 1;
+		if automatic{_pitch = random_range(0.9,1.1)};
+		if snPlaying != noone {audio_sound_gain(snPlaying,0.5,15)};
+		snPlaying = audio_play_sound(shootsfx, 600, false,1,0,);
+	}
 }
 
 fireWeapon = function()

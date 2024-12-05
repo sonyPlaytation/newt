@@ -58,11 +58,10 @@ sysMsg = "";
 global.soda[0] = false; //double jump
 global.soda[1] = false; //homing 
 global.soda[2] = false; //blood chalice
-global.soda[3] = false; //two health ups
+global.soda[3] = false; //three health ups
 global.soda[4] = false; //ammo max up random
 global.soda[5] = false; //air dashes
 global.soda[6] = false; //damage up
-
 
 
 desc[0] = "Extra Jump\n(stacks)";

@@ -62,10 +62,8 @@ rocketloopinst = noone;
 planefall = false;
 planefallinst = noone;
 
-chainsawLoop = false;
+chainsawLoop = noone;
 chainsawLoopInst = noone;
-
-chainsawIdle = false;
 chainsawIdleInst = noone;
 
 flamethrowerloop = false;
