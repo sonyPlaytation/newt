@@ -292,7 +292,6 @@
     {"name":"rInit","order":14,"path":"rooms/rInit/rInit.yy",},
     {"name":"rMenu","order":4,"path":"rooms/rMenu/rMenu.yy",},
     {"name":"rParent","order":6,"path":"rooms/rParent/rParent.yy",},
-    {"name":"rPhysTest","order":9,"path":"rooms/rPhysTest/rPhysTest.yy",},
     {"name":"rSoda2","order":8,"path":"rooms/rSoda2/rSoda2.yy",},
     {"name":"rTest2","order":1,"path":"rooms/rTest2/rTest2.yy",},
     {"name":"rTest3","order":2,"path":"rooms/rTest3/rTest3.yy",},

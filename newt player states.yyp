@@ -352,7 +352,6 @@
     {"id":{"name":"rInit","path":"rooms/rInit/rInit.yy",},},
     {"id":{"name":"rMenu","path":"rooms/rMenu/rMenu.yy",},},
     {"id":{"name":"rParent","path":"rooms/rParent/rParent.yy",},},
-    {"id":{"name":"rPhysTest","path":"rooms/rPhysTest/rPhysTest.yy",},},
     {"id":{"name":"rSoda2","path":"rooms/rSoda2/rSoda2.yy",},},
     {"id":{"name":"rTest1","path":"rooms/rTest1/rTest1.yy",},},
     {"id":{"name":"rTest2","path":"rooms/rTest2/rTest2.yy",},},
@@ -1302,7 +1301,6 @@
     {"roomId":{"name":"rTest5","path":"rooms/rTest5/rTest5.yy",},},
     {"roomId":{"name":"rDemoEndScreen","path":"rooms/rDemoEndScreen/rDemoEndScreen.yy",},},
     {"roomId":{"name":"rTutorialNew6","path":"rooms/rTutorialNew6/rTutorialNew6.yy",},},
-    {"roomId":{"name":"rPhysTest","path":"rooms/rPhysTest/rPhysTest.yy",},},
   ],
   "templateType":null,
   "TextureGroups":[

@@ -71,9 +71,7 @@ stateIdle = function()
 				state = stateThrow;
 				
 			break;
-			
-<<<<<<< HEAD
-=======
+
 			case 2: // Jump
 			
 				tellTime = 15;
@@ -84,7 +82,7 @@ stateIdle = function()
 				
 			break;
 			
->>>>>>> parent of ae49108 (finished boss death animation)
+
 			
 		}
 		
