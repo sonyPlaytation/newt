@@ -13,9 +13,6 @@ swapTime = swapTimeReset;
 tellTimeReset = 30;
 tellTime = tellTimeReset;
 
-facing = -1;
-jumpCount = 0;
-
 stt = "";
 sprite = sMaynerd;
 
@@ -23,7 +20,8 @@ global.getSizeKilled = 1;
 if instance_exists(oRoomDetect)
 {
 	myRoom = instance_nearest(self.x,self.y,oRoomDetect);
-	}else {myRoom = noone;}
+	
+}else {myRoom = noone;}
 
 if (hasHead)
 {
@@ -32,30 +30,26 @@ if (hasHead)
 }
 else myHead = noone;
 
-
-// states
-
 stateIdle = function()
 {
 	stt = "idle"
 	
 	//vertical collision
-	if (place_meeting(x,y+vsp,oCollide))
+	if (place_meeting(x,y+vsp,oCollide)) or (place_meeting(x,y+vsp,oCollSemi))
 	{
-		while (!place_meeting(x,y+sign(vsp),oCollide))
+		while (!place_meeting(x,y+sign(vsp),oCollide)) and (place_meeting(x,y+vsp,oCollSemi))
 		{
 			y += sign(vsp)
 		}
 		vsp = 0;
-		grounded = true;
 	}
 	y += vsp;
 	
 	image_speed = 1;
 	
-	if swapTime <= 0 and grounded
+	if swapTime <= 0
 	{
-		var stateNext = irandom(2);
+		var stateNext = irandom(1) 
 		
 		switch (stateNext)
 		{
@@ -71,13 +65,15 @@ stateIdle = function()
 			
 			case 1: // Dash
 			
-				tellTime = 90;
+				tellTime = 60;
 				swapTime = irandom_range(2,5) * 60;
 				image_index = 0;
 				state = stateThrow;
 				
 			break;
 			
+<<<<<<< HEAD
+=======
 			case 2: // Jump
 			
 				tellTime = 15;
@@ -88,11 +84,12 @@ stateIdle = function()
 				
 			break;
 			
+>>>>>>> parent of ae49108 (finished boss death animation)
 		}
 		
 	}
+	swapTime--;
 	
-	if grounded {swapTime--}
 	sprite = sMaynerd;
 	if instance_exists(oRoomMiddle) {if oRoomMiddle.x < x {image_xscale = -1;} else image_xscale = 1};
 }
@@ -157,95 +154,16 @@ stateDash = function()
 	
 }
 
-stateSquat = function()
+stateWalk = function()
 {
-	stt = "jump"
+	stt = "walk"
 	
-	sprite = sMaynerdSquat;
-	
-	if swapTime == tellTime {flash = 1;}
-	
-	swapTime--
-	if (swapTime <= 0) and (jumpCount > 0)
-	{
-		y -= 2;
-		vsp = -12;
-		state = stateJump;
-		swapTime = swapTimeReset;
-		tellTime = tellTimeReset *2;
-		
-	}
-	else if jumpCount == 0
-	{
-		state = stateIdle;
-		swapTime = swapTimeReset;
-		tellTime = tellTimeReset *2;
-	}
+	vsp = vsp + grv;
 }
 
 stateJump = function()
 {
-	
-	sprite = sMaynerdAir;
-	
-	//horizontal collision
-	if (place_meeting(x+hsp,bbox_top,oCollide))
-	{
-		while (!place_meeting(x+sign(hsp),y,oCollide))
-		{
-			x = x + sign(hsp)
-		}
-		hsp = -hsp;
-	}
-	x += hsp
-	
-	//vertical collision
-	if (place_meeting(x,y+vsp,oCollide)) or (place_meeting(x,y+vsp,oCollSemi))
-	{
-		while (!place_meeting(x,y+sign(vsp),oCollide)) and (place_meeting(x,y+vsp,oCollSemi))
-		{
-			y += sign(vsp)
-		}
-		
-		if instance_exists(oNewt)
-		{
-			pushDistH = min(point_distance(oNewt.x,global.newtCenter,x,y),15);
-			pushDistV = min(point_distance(oNewt.x,global.newtCenter,x,y)/6,15);
-			pushAng = point_direction(oNewt.x,global.newtCenter,x,y);
-			
-			with (oNewt)
-			{
-				onGround = false
-				y -= 30;
-
-				hsp -= lengthdir_x(other.pushDistH,other.pushAng);
-				vsp -= lengthdir_y(other.pushDistV,other.pushAng);
-			}
-		}
-		
-		repeat (20)
-		{
-			with instance_create_depth(x,y,depth+100,oDust)
-			{
-				grow = 1.15;
-				dir = choose(0,180);
-				spd = random_range(3, 7);
-			}
-		}
-		
-		screenShake(30,20);
-		oSFX.explode = snExplosion;
-		
-		if instance_exists(oNewt)
-		{
-			
-		}
-		
-		vsp = 0;
-		jumpCount--;
-		state = stateSquat;
-	}
-	y += vsp;
+	stt = "jump"
 }
 
 stateCrash = function()

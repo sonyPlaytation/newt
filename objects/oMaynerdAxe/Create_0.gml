@@ -13,6 +13,6 @@ homing = choose(true,false);
 
 if (homing) {color = c_fuchsia} else color = c_white;
 
-if instance_exists(oNewt) and instance_exists(oBossMaynerd) {range = point_distance(oNewt.x, oNewt.y, oBossMaynerd.x, oBossMaynerd.y)} else range = 500;
+if instance_exists(oNewt) {range = point_distance(oNewt.x, oNewt.y, oBossMaynerd.x, oBossMaynerd.y)};
 
 hsp = range/70*image_xscale;

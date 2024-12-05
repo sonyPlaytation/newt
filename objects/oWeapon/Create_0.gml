@@ -117,7 +117,7 @@ coinCount = 4;
 	ds_map_add(weapons[3],"recoilpush",1);
 	ds_map_add(weapons[3],"shakeamnt",5);
 	ds_map_add(weapons[3],"shaketime",4);
-	ds_map_add(weapons[3],"damage",12);
+	ds_map_add(weapons[3],"damage",20);
 	ds_map_add(weapons[3],"cancrit",true);
 	ds_map_add(weapons[3],"flash",-1);
 	ds_map_add(weapons[3],"projectile",oShotStarter);
