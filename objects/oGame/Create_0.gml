@@ -36,7 +36,6 @@ global.inputdevice = input_profile_get();
 global.newtCenter = 0;
 
 global.hitStopOn = true;
-global.flashDone = false;
 
 killtextscale = 1;
 

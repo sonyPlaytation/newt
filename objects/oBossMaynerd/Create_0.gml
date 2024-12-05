@@ -7,10 +7,6 @@ cSprite = sEWalkerDie;
 big = false;
 friendly = -1;
 
-expReset = 30;
-expTimer = 0;
-expCount = 0;
-
 swapTimeReset = 35;
 swapTime = swapTimeReset;
 
@@ -91,7 +87,9 @@ stateIdle = function()
 				jumpCount = 3;
 				
 			break;
+			
 		}
+		
 	}
 	
 	if grounded {swapTime--}
@@ -126,7 +124,11 @@ stateDash = function()
 		{
 			repeat (25) 
 			{
-				with instance_create_depth(x,y,depth+100,oDust){grow = 1.1; vsp = -2;}
+				with instance_create_depth(x,y,depth+100,oDust)
+				{
+					grow = 1.1;
+					vsp = -2;
+				}
 			}
 		};
 	
@@ -142,7 +144,7 @@ stateDash = function()
 			
 			screenShake(30,20);
 			oSFX.explode = snExplosion;
-			hsp = -hsp/7;
+			hsp = -hsp/5;
 			vsp = -7;
 			state = stateCrash;
 			tellTime = tellTimeReset;

@@ -21,7 +21,6 @@ menu[2] = "New Game";
 menu[1] = "Continue";
 menu[3] = "Tutorial";
 menu[4] = "What's New?";
-menu[5] = "Boss Fight";
 menu[0] = "Quit";
 
 menu_items = array_length(menu);

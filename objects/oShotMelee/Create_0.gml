@@ -122,7 +122,7 @@ stateSwat = function()
 			with _target
 			{
 				spd *= 1.85;
-				friendly = 1;
+				friendly = true;
 				parried = false;
 				image_angle = point_direction(x,y,mouse_x,mouse_y);
 				dir = point_direction(x,y,mouse_x,mouse_y);
@@ -162,7 +162,7 @@ stateParry = function()
 			x = other.x;
 			y = other.y;
 		
-			friendly = 1;
+			friendly = true;
 			parried = true;
 			image_angle = point_direction(x,y,mouse_x,mouse_y);
 			dir = point_direction(x,y,mouse_x,mouse_y);

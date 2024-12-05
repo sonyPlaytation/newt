@@ -4,14 +4,10 @@
 event_inherited();
 
 image_xscale = oBossMaynerd.image_xscale;
-xFlip = -image_xscale;
-
-stateChange = false;
 
 grv = 0.3
 vsp = -10;
 damage = 1;
-friendly = -1;
 
 homing = choose(true,false);
 

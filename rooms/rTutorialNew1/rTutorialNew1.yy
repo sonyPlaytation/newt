@@ -11,6 +11,7 @@
     {"name":"inst_6D1E3260_3","path":"rooms/rTutorialNew1/rTutorialNew1.yy",},
     {"name":"inst_424B59E3_2","path":"rooms/rTutorialNew1/rTutorialNew1.yy",},
     {"name":"inst_39B5FFE7_3","path":"rooms/rTutorialNew1/rTutorialNew1.yy",},
+    {"name":"inst_1AC5C337_3","path":"rooms/rTutorialNew1/rTutorialNew1.yy",},
     {"name":"inst_58F432F0_3","path":"rooms/rTutorialNew1/rTutorialNew1.yy",},
     {"name":"inst_61DBD9E1","path":"rooms/rTutorialNew1/rTutorialNew1.yy",},
   ],
@@ -20,6 +21,7 @@
         {"$GMRInstance":"v1","%Name":"inst_39B5FFE7_3","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_39B5FFE7_3","objectId":{"name":"oNewt","path":"objects/oNewt/oNewt.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":96.0,"y":504.0,},
       ],"layers":[],"name":"Player","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRInstanceLayer":"","%Name":"Interact","depth":100,"effectEnabled":true,"effectType":null,"gridX":24,"gridY":24,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
+        {"$GMRInstance":"v1","%Name":"inst_1AC5C337_3","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_1AC5C337_3","objectId":{"name":"oLockDoor","path":"objects/oLockDoor/oLockDoor.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":96.0,"y":504.0,},
         {"$GMRInstance":"v1","%Name":"inst_58F432F0_3","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_58F432F0_3","objectId":{"name":"oExitDoor","path":"objects/oExitDoor/oExitDoor.yy",},"properties":[
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"oExitDoor","path":"objects/oExitDoor/oExitDoor.yy",},"propertyId":{"name":"target","path":"objects/oExitDoor/oExitDoor.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"rTutorialNew",},
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":864.0,"y":504.0,},

@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-if !layer_exists("Shots"){layer_create(-999,"Shots")}
+if !layer_exists("Shots"){layer_create(-9999,"Shots")}
 
 var fBgTint = fx_create("_filter_tintfilter");
 fx_set_parameter(fBgTint,"g_TintCol",0.549,0.541,0.639,0.45);
