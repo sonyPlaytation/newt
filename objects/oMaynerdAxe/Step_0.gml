@@ -2,11 +2,7 @@
 
 image_angle -= (image_xscale * 5);
 
-<<<<<<< HEAD
-if homing and instance_exists(oNewt)
-=======
 if homing and instance_exists(oNewt) and instance_exists(oBossMaynerd)
->>>>>>> parent of ae49108 (finished boss death animation)
 {
 	range = point_distance(oNewt.x, oNewt.y, oBossMaynerd.x, oBossMaynerd.y);
 	hsp = range/70*image_xscale;

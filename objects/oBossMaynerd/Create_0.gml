@@ -85,7 +85,9 @@ stateIdle = function()
 			break;
 			
 >>>>>>> parent of ae49108 (finished boss death animation)
+			
 		}
+		
 		
 	}
 	swapTime--;
@@ -126,6 +128,11 @@ stateDash = function()
 					grow = 1.1;
 					vsp = -2;
 				}
+				with instance_create_depth(x,y,depth+100,oDust)
+				{
+					grow = 1.1;
+					vsp = -2;
+				}
 			}
 		};
 	
@@ -141,6 +148,7 @@ stateDash = function()
 			
 			screenShake(30,20);
 			oSFX.explode = snExplosion;
+			hsp = -hsp/5;
 			hsp = -hsp/5;
 			vsp = -7;
 			state = stateCrash;
