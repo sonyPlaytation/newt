@@ -2,8 +2,6 @@
 
 if hp <= 0
 {
-	
-	
 	if expCount < 5 {sprite = sMaynerdWhat}
 	else 
 	{
@@ -12,7 +10,6 @@ if hp <= 0
 		y = lerp(y,oRoomMiddle.y,0.025);
 	}
 	
-	friendly = 1;
 	damage = 0;
 	expTimer--;
 	
@@ -25,6 +22,7 @@ if hp <= 0
 	{
 		if oWipeWhite.height >= oWipeWhite.target
 		{
+			myDamage.damage = 9999;
 			instance_destroy();	
 		}
 	}
@@ -34,7 +32,7 @@ if hp <= 0
 		var expX = random_range (x - (sprite_width/2), x + (sprite_width/2));
 		var expY = random_range (y,y-sprite_height);
 		
-		explosion(0, 45, expX, expY,false,1);	
+		explosion(200, 45, expX, expY,false,1);	
 		expCount++;
 		
 		if expCount > 4 

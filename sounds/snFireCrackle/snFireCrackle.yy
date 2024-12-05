@@ -12,8 +12,8 @@
   "duration":41.688,
   "name":"snFireCrackle",
   "parent":{
-    "name":"newt player states",
-    "path":"newt player states.yyp",
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

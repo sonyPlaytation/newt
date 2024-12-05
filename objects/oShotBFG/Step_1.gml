@@ -43,6 +43,7 @@ if (instance_exists(oNewt))
 		{
 			with (instance_create_layer(oNewt.x,oNewt.y-22,"Shots",oShotBFGTracer))
 			{
+				crit = false;
 				direction = other.tracerAngle - _spread/2 + _spreadDiv * j + random_range(-other.accuracy,other.accuracy);
 				damage = other.damage;
 				image_angle = direction;

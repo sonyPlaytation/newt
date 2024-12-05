@@ -12,8 +12,8 @@
   "duration":147.6702,
   "name":"snCOPYRIGHTINFRINGEMENT",
   "parent":{
-    "name":"newt player states",
-    "path":"newt player states.yyp",
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

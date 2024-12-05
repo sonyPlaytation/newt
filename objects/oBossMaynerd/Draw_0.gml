@@ -15,5 +15,5 @@ else
 }
 
 
-draw_text(x,bbox_top-24,stt);
+//draw_text(x,bbox_top-24,stt);
 

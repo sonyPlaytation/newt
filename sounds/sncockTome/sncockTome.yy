@@ -12,8 +12,8 @@
   "duration":0.254467,
   "name":"sncockTome",
   "parent":{
-    "name":"newt player states",
-    "path":"newt player states.yyp",
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

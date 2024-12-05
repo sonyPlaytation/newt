@@ -20,6 +20,8 @@ tellTime = tellTimeReset;
 facing = -1;
 jumpCount = 0;
 
+horseUsed = false;
+
 stt = "";
 sprite = sMaynerd;
 
@@ -59,12 +61,12 @@ stateIdle = function()
 	
 	if swapTime <= 0 and grounded
 	{
-		var stateNext = irandom(2);
+		var stateNext = irandom(3);
 		
 		switch (stateNext)
 		{
 			case 0: // Dash
-			
+				
 				dashFloat = choose(true,false);
 				tellTime = tellTimeReset;
 				swapTime = swapTimeReset;
@@ -73,23 +75,35 @@ stateIdle = function()
 				
 			break;
 			
-			case 1: // Dash
-			
-				tellTime = 90;
-				swapTime = irandom_range(2,5) * 60;
-				image_index = 0;
-				state = stateThrow;
-				
+			case 1: // Throw
+				if prevState != stateThrow
+				{
+					tellTime = 90;
+					swapTime = irandom_range(2,5) * 60;
+					image_index = 0;
+					state = stateThrow;
+				}
 			break;
 			
 			case 2: // Jump
+				if prevState != stateJump
+				{
+					tellTime = 15;
+					swapTime = 45;
+					hsp = 3*facing;
+					state = stateSquat;
+					jumpCount = 3;
+				}
+			break;
 			
-				tellTime = 15;
-				swapTime = 45;
-				hsp = 3*facing;
-				state = stateSquat;
-				jumpCount = 3;
-				
+			case 3: // Horse
+				if !horseUsed
+				{
+					tellTime = 45;
+					swapTime = 120;
+					hsp = 3*facing;
+					state = stateHorse;
+				}
 			break;
 		}
 	}
@@ -99,13 +113,34 @@ stateIdle = function()
 	if instance_exists(oRoomMiddle) {if oRoomMiddle.x < x {image_xscale = -1;} else image_xscale = 1};
 }
 
-stateChop = function()
+stateHorse = function()
 {
-	stt = "Chop"
+	prevState = stateHorse;
+	stt = "Horse"
+	
+	tellTime--;
+	if tellTime == 0
+	{
+		with instance_create_layer(x+(facing*50),y-(sprite_height/2),"Shots",oProjectileHorse)
+		{
+			if other.facing = -1 {dir = 180}else dir = 0;
+		}
+		horseUsed = true;
+	}
+	
+	swapTime--;
+	if swapTime <= 0 
+	{
+		state = stateIdle;
+		swapTime = swapTimeReset;
+		vsp = 0;
+	};
+	
 }
 
 stateDash = function()
 {
+	prevState = stateDash
 	stt = "dash"
 	
 	sprite = sMaynerdDash;
@@ -126,7 +161,7 @@ stateDash = function()
 		{
 			repeat (25) 
 			{
-				with instance_create_depth(x,y,depth+100,oDust){grow = 1.1; vsp = -2;}
+				with instance_create_depth(x,y,depth+100,oDust){grow = 1.05; vsp = -2;}
 			}
 		};
 	
@@ -149,14 +184,49 @@ stateDash = function()
 			swapTime = 30;
 		}
 	}
-	
 	tellTime--;
-	if tellTime <=10 {flash = 3;}
+	if tellTime == 15 {flash = 3;}
+}
+
+stateCrash = function()
+{
+	prevState = stateDash;
+	sprite = sMaynerdAir;
+	hsp *= 0.9
 	
+	//horizontal collision
+	if (place_meeting(x+hsp,bbox_top,oCollide))
+	{
+		while (!place_meeting(x+sign(hsp),y,oCollide))
+		{
+			x = x + sign(hsp)
+		}
+		hsp = 0;
+	}
+	x += hsp
+
+	//vertical collision
+	if (place_meeting(x,y+vsp,oCollide)) or (place_meeting(x,y+vsp,oCollSemi))
+	{
+		while (!place_meeting(x,y+sign(vsp),oCollide)) and (place_meeting(x,y+vsp,oCollSemi))
+		{
+			y += sign(vsp)
+		}
+		vsp = 0;
+		swapTime--;
+	}
+	y += vsp;
+	
+	if swapTime <= 0
+	{
+		swapTime = swapTimeReset*2;
+		state = stateIdle
+	}
 }
 
 stateSquat = function()
 {
+	prevState = stateJump;
 	stt = "jump"
 	
 	sprite = sMaynerdSquat;
@@ -183,7 +253,7 @@ stateSquat = function()
 
 stateJump = function()
 {
-	
+	prevState = stateJump;
 	sprite = sMaynerdAir;
 	
 	//horizontal collision
@@ -225,7 +295,7 @@ stateJump = function()
 		{
 			with instance_create_depth(x,y,depth+100,oDust)
 			{
-				grow = 1.15;
+				grow = 1.05;
 				dir = choose(0,180);
 				spd = random_range(3, 7);
 			}
@@ -246,43 +316,10 @@ stateJump = function()
 	y += vsp;
 }
 
-stateCrash = function()
-{
-	sprite = sMaynerdAir;
-	hsp *= 0.9
-	
-	//horizontal collision
-	if (place_meeting(x+hsp,bbox_top,oCollide))
-	{
-		while (!place_meeting(x+sign(hsp),y,oCollide))
-		{
-			x = x + sign(hsp)
-		}
-		hsp = 0;
-	}
-	x += hsp
-
-	//vertical collision
-	if (place_meeting(x,y+vsp,oCollide)) or (place_meeting(x,y+vsp,oCollSemi))
-	{
-		while (!place_meeting(x,y+sign(vsp),oCollide)) and (place_meeting(x,y+vsp,oCollSemi))
-		{
-			y += sign(vsp)
-		}
-		vsp = 0;
-		swapTime--;
-	}
-	y += vsp;
-	
-	if swapTime <= 0
-	{
-		swapTime = swapTimeReset*2;
-		state = stateIdle
-	}
-}
 
 stateThrow = function()
 {
+	prevState = stateThrow;
 	stt = "throw"
 	
 	sprite = sMaynerdThrow;
@@ -303,3 +340,4 @@ stateThrow = function()
 }
 
 state = stateIdle;
+prevState = stateIdle;

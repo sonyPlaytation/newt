@@ -1,6 +1,6 @@
 {
   "$GMSound":"",
-  "%Name":"snFlamethrower",
+  "%Name":"snHorses",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -9,17 +9,17 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":1.928571,
-  "name":"snFlamethrower",
+  "duration":21.397076,
+  "name":"snHorses",
   "parent":{
-    "name":"Sounds",
-    "path":"folders/Sounds.yy",
+    "name":"Enemies",
+    "path":"folders/Sounds/Enemies.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"snFlamethrower.wav",
+  "soundFile":"snHorses.wav",
   "type":1,
   "volume":1.0,
 }

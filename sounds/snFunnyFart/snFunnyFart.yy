@@ -12,8 +12,8 @@
   "duration":0.812721,
   "name":"snFunnyFart",
   "parent":{
-    "name":"newt player states",
-    "path":"newt player states.yyp",
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

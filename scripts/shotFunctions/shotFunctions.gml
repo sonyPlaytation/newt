@@ -33,7 +33,7 @@ function enemyHit(finalDMG,headshot){
 
 		oSFX.hit = armor;
 
-		if armor > 1 {flash = 10}else flash = 3;
+		if armor > 1 {flash = 4}else flash = 3;
 		
 		hitfrom = other.direction;
 		coinHit = true;
