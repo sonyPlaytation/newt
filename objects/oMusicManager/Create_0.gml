@@ -3,8 +3,10 @@
 /// @param {Real}	song		The song you want to play.
 /// @param {Real}	fadeOut		The time it should take to fade out, counted in frames.
 /// @param {Real}	fadeIn		The time it should take to fade in, counted in frames.
+/// @param {String}	message		"Now Playing" Message.
+/// @param {Real}	messageFade Message fade fime, counted in frames.
 /// @returns					N/A
-function set_song_ingame(_song, _fadeOut = 0, _fadeIn = 0)
+function set_song_ingame(_song, _fadeOut = 0, _fadeIn = 0, _msg = "", _msgFade = 60)
 {
 		//_song to set any song (including noone to stop
 		//_fadeOut to fade out in frames
@@ -14,9 +16,11 @@ function set_song_ingame(_song, _fadeOut = 0, _fadeIn = 0)
 		targetSongAsset = _song;	
 		fadeOutTime = _fadeOut;
 		fadeInTime = _fadeIn;
+		playingMsg = _msg;
+		playingFade = _msgFade; 
 	}
 }
-set_song_ingame()
+
 global.masterVolume = 1;
 global.musicVolume = 6;
 
@@ -35,9 +39,21 @@ fadeOutInst = array_create(0); //the audio instances to fade out
 fadeOutInstVol = array_create(0); //the volume of each audio instance
 fadeOutInstTime = array_create(0); //speed of fadeout
 
-//floor themes
+//floor themes 
+//NOTE: PLEASE REWORK THIS SYSTEM
 floorBGM[0] = mTutorial;
 floorBGM[1] = mStage1;
 floorBGM[2] = mPhysical;
-
 floorBGM[444] = mTutorial;
+
+//Now Playing Messages
+playingMsg = "TESTEST"
+alpha = 0;
+
+fadeTarg = 0;
+playingFade = 0;
+holdTime = 360;
+fadeDone = false;
+
+msgX = RESOLUTION_W/2;
+msgY = RESOLUTION_H;

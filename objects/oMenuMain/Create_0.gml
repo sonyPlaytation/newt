@@ -1,5 +1,6 @@
 /// @description gui/vars/menu setup
 
+// SaraJS Main Menu
 #macro SAVEFILE "Save.sav"
 
 room_pack_blank_object = oBlank;
@@ -26,8 +27,16 @@ menu[5] = "Boss Fight";
 menu[0] = "Quit";
 
 menu_items = array_length(menu);
-
 menu_top = menu_y - ((menu_itemheight*1.5) *menu_items);
-
 menu_cursor = 2;
 
+
+//menu num and name  
+tag = "BOSS DEMO!!!";
+ver = "v0.03";
+
+tagX = 910;
+tagY = 144;
+
+verX = 10;
+verY = RESOLUTION_H-verX;

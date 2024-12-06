@@ -6,10 +6,8 @@
 if room == rTest1
 or room == rSoda2
 {
-	var shopTheme = choose(
-	mAddiction,
-	mShop2);
-	set_song_ingame(shopTheme,15);
+	var shopTheme = (mAddiction)
+	set_song_ingame(shopTheme,15,,"Jogier Liljedahil");
 }
 
 if room == rTest3
