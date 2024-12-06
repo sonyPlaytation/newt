@@ -20,10 +20,13 @@ tellTime = tellTimeReset;
 facing = -1;
 jumpCount = 0;
 
+maxHP = hp;
 horseUsed = false;
 
 stt = "";
 sprite = sMaynerd;
+
+instance_create_layer(x,y,layer,oBossHealth);
 
 global.getSizeKilled = 1;
 if instance_exists(oRoomDetect)
@@ -59,55 +62,54 @@ stateIdle = function()
 	
 	image_speed = 1;
 	
-	if swapTime <= 0 and grounded
+	if swapTime <= 0 and grounded and !instance_exists(oProjectileHorse)
 	{
-		var stateNext = irandom(3);
-		
-		switch (stateNext)
+		if !horseUsed and (hp < maxHP/2)
 		{
-			case 0: // Dash
+			tellTime = 45;
+			swapTime = 120;
+			hsp = 3*facing;
+			state = stateHorse;
+		}
+		else
+		{
+			var stateNext = irandom(2);
+		
+			switch (stateNext)
+			{
+				case 0: // Dash
 				
-				dashFloat = choose(true,false);
-				tellTime = tellTimeReset;
-				swapTime = swapTimeReset;
-				image_index = 0;
-				state = stateDash;
-				
-			break;
-			
-			case 1: // Throw
-				if prevState != stateThrow
-				{
-					tellTime = 90;
-					swapTime = irandom_range(2,5) * 60;
+					dashFloat = choose(true,false);
+					tellTime = tellTimeReset;
+					swapTime = swapTimeReset;
 					image_index = 0;
-					state = stateThrow;
-				}
-			break;
+					state = stateDash;
+				
+				break;
 			
-			case 2: // Jump
-				if prevState != stateJump
-				{
-					tellTime = 15;
-					swapTime = 45;
-					hsp = 3*facing;
-					state = stateSquat;
-					jumpCount = 3;
-				}
-			break;
+				case 1: // Throw
+					if prevState != stateThrow
+					{
+						tellTime = 90;
+						swapTime = irandom_range(2,5) * 60;
+						image_index = 0;
+						state = stateThrow;
+					}
+				break;
 			
-			case 3: // Horse
-				if !horseUsed
-				{
-					tellTime = 45;
-					swapTime = 120;
-					hsp = 3*facing;
-					state = stateHorse;
-				}
-			break;
+				case 2: // Jump
+					if prevState != stateJump
+					{
+						tellTime = 15;
+						swapTime = 45;
+						hsp = 3*facing;
+						state = stateSquat;
+						jumpCount = 3;
+					}
+				break;
+			}
 		}
 	}
-	
 	if grounded {swapTime--}
 	sprite = sMaynerd;
 	if instance_exists(oRoomMiddle) {if oRoomMiddle.x < x {image_xscale = -1;} else image_xscale = 1};

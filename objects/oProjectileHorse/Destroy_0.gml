@@ -3,8 +3,8 @@
 // Inherit the parent event
 event_inherited();
 
-audio_stop_sound(snHorses);
+audio_stop_sound(horseSound);
 
-explosion(1,25,x,y,false,-1);
+explosion(damage,radius,x,y,false,0);
 
 global.musicVolume = musReset;

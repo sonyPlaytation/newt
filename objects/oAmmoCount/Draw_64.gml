@@ -15,31 +15,24 @@ if oWeapon.ammouse >= 0
 	if oWeapon.ammouse > real(ammoString){ammoCol = #eb445a}; //if not enough for a shot
 	if oWeapon.ammo[oWeapon.ammotype] == 0{spriteCol = c_dkgray}else{spriteCol = c_white}; // if ammo out, grey out ammo icon
 		
+	var _ammoScale = 2;	
+	
 	//ammo icon
 	draw_sprite_ext(iAmmoTypes,oWeapon.ammotype,40,995,3,3,0,spriteCol,1);
-		
-	//ammo counter
-		draw_set_font(fCanont);
-		draw_set_halign(fa_right)
-		draw_set_valign(fa_top)
 	
-		draw_set_color(c_black);
-		draw_text(155,975,ammoString);
+	//ammo counter
+		draw_set_font(global.fIgnoreMod);
+		draw_set_halign(fa_right);
+		draw_set_valign(fa_top);
 	
 		draw_set_color(ammoCol);
-		draw_text(150,975,ammoString);
+		draw_text_transformed(150,975,ammoString,_ammoScale,_ammoScale,0);
 		
 	//ammo reserve counter
-		draw_set_font(fCanont);
 		draw_set_halign(fa_left)
-	
-		draw_set_color(c_black);
-		draw_text(160,975,"/" + string(reserveString));
-	
+
 		draw_set_color(c_grey);
-		draw_text(155,975,"/" + string(reserveString));
-		
-		
+		draw_text_transformed(155,975,"/" + string(reserveString),_ammoScale,_ammoScale,0);
 }
 
 //no alpha if weapon slot empty
@@ -74,7 +67,7 @@ if (real(ammoString) >= real(reserveString)/4) or oWeapon.ammouse < 1 {ammoCol =
 for(var i = 0; i< array_length(oWeapon.ammo); i++ )
 {
 	draw_sprite_ext(iAmmoTypes,i,35 + (i*50),1050,2,2,0,c_white,oWeapon.ammo[i]/oWeapon.ammoMax[i])
-	drawSetText(c_white,fKaren,fa_center,fa_top)
+	drawSetText(c_white,fSmart,fa_center,fa_top)
 			
 	var strAmmoCap = string(clamp(oWeapon.ammo[i],0,oWeapon.ammoMax[i]));
 			

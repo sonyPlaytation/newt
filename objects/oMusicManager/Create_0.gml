@@ -1,4 +1,9 @@
-
+/// @function					set_song_ingame()
+/// @description				Changes the song you want to play next, with fade in and out times.
+/// @param {Real}	song		The song you want to play.
+/// @param {Real}	fadeOut		The time it should take to fade out, counted in frames.
+/// @param {Real}	fadeIn		The time it should take to fade in, counted in frames.
+/// @returns					N/A
 function set_song_ingame(_song, _fadeOut = 0, _fadeIn = 0)
 {
 		//_song to set any song (including noone to stop
@@ -11,7 +16,7 @@ function set_song_ingame(_song, _fadeOut = 0, _fadeIn = 0)
 		fadeInTime = _fadeIn;
 	}
 }
-
+set_song_ingame()
 global.masterVolume = 1;
 global.musicVolume = 6;
 

@@ -48,6 +48,7 @@ if chainsawLoop != noone
 		audio_sound_loop_start(snChainsawLoop,0.28);
 		audio_sound_loop_end(snChainsawLoop,1.56);
 		chainsawLoopInst = audio_play_sound(snChainsawLoop, 800, true);
+		chainsawend = true;
 	}
 	else if chainsawLoop == 0 and !audio_is_playing(chainsawIdleInst)
 	{
@@ -58,12 +59,12 @@ if chainsawLoop != noone
 	}
 }
 
-
 //turn sound off
-if chainsawLoop == noone and audio_is_playing(chainsawLoopInst)
+if chainsawend == true and !audio_is_playing(chainsawIdleInst)
 {
-	audio_stop_sound(chainsawLoopInst);
-	audio_play_sound(snChainsawEnd, 600, false);
+	var _sound = audio_play_sound(snChainsawEnd,800,false);
+	audio_sound_gain(_sound,_sfxVol,0);
+	chainsawend = false;
 }
 
 chainsawLoop = noone;

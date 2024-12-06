@@ -257,12 +257,15 @@ if instance_exists(oNewt)
 		#region edge case weapon specific shit
 
 		//chainsaw
-		if (sprite == sChainsaw) and ammo[ammotype] > 0
+		if (sprite == sChainsaw) 
 		{
-			if input_check("shoot"){oSFX.chainsawLoop = 1;}
+			if input_check("shoot") and ammo[ammotype] > 0{oSFX.chainsawLoop = 1;}
 			else {oSFX.chainsawLoop = 0;} ;
-		}else oSFX.chainsawLoop = noone;
-	
+		}else 
+		{
+			oSFX.chainsawLoop = noone; 
+			audio_stop_sound(oSFX.chainsawIdleInst);
+		}
 		//marksman
 		if (sprite == sMarksman)
 		{

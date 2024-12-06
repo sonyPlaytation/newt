@@ -3,12 +3,15 @@
 // Inherit the parent event
 event_inherited();
 
-spd = 0.01;
-size = 1;
-friendly = -1;
+spd = 0.05;
+size = 1.5;
+friendly = 0;
 damage = 1;
+facing = 1;
+slowspd = 0.5;
+radius = 25;
 
-audio_play_sound(snHorses,900,false);
+horseSound = audio_play_sound(snHorses,900,false);
 
 musReset = global.musicVolume;
 

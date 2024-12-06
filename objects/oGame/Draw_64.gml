@@ -36,6 +36,6 @@ if (combotimer <= 0)
 	if global.kills >=1 {firstCombo = false};
 }
 
-drawSetText(c_white,fDoom,fa_center,fa_top);
+drawSetText(c_white,global.fDoom,fa_center,fa_top);
 draw_text_ext_transformed_color(RESOLUTION_W/2,15,sysMsg,10,RESOLUTION_W,msgScale,msgScale,0,c_white,c_white,c_white,c_white,systemAlpha*1.15);
 systemAlpha -= 0.01;

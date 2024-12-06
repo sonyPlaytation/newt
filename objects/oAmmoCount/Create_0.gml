@@ -39,3 +39,6 @@ uiY2 = 0;
 strSodaCans = "";
 str[0] = 0;
 sodaPush = -1;
+
+
+

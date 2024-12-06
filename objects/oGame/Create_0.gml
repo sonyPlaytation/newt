@@ -49,7 +49,9 @@ combomax = 0;
 firstCombo = true;
 firstComboEnded = false;
 
-fDoom = font_add_sprite_ext(sFontDoom, " 0123456789abcdefghijklmnopqrstuvwxyz,.:;|[]=+<>'#$%()*/^&@_{?!-",true,0);
+global.fDoom = font_add_sprite_ext(sFontDoom, " 0123456789abcdefghijklmnopqrstuvwxyz,.:;|[]=+<>'#$%()*/^&@_{?!-",true,0);
+global.fIgnoreMod = font_add_sprite_ext(sFontIgnoreMOD," ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,:;?!`'+-=*%_()[]{}~#&@^|/\<>",true,0);
+
 msgScale = 3;
 systemAlpha = 1;
 sysMsg = "";

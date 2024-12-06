@@ -6,6 +6,8 @@ col = c_white;
 alpha = 1;
 sprite = sExplosion;
 
+newtDmg = 1;
+
 friendly = 1;
 
 crit = false;

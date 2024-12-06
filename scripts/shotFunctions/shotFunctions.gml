@@ -27,7 +27,7 @@ function enemyHit(finalDMG,headshot){
 				
 			with instance_create_layer(x,y - sprite_height,"Player",oCritHeader)
 			{
-				owner = other.id	
+				owner = other.id;
 			}
 		} else {global.critTotalDMG += finalDMG}
 
@@ -167,32 +167,28 @@ function guidedShot(){
 	}
 }
 
-///@args damage
-///@args radius
-///@args x
-///@args y
-///@args [crit]
-///@args [friendly]
-///@args [sprite]
-///@args [sfx]
 
-function explosion(_dmg, _rad, _x, _y, _crit, _friendly, _spr, _sfx)
-{
-	if _dmg == undefined		{_dmg = oWeapon.damage};
-	if _rad == undefined		{_rad = 100};
-	if _x == undefined			{_x = x};
-	if _y == undefined			{_y = y};
-	if _crit == undefined		{_crit = false};
-	if _friendly == undefined	{_friendly = 0}
-	if _spr == undefined		{_spr = sExplosion};
-	if _sfx == undefined		{_sfx = snExplosion};
-	
+///@function					explosion(dmg, rad, x, y, [crit], [friendly], [sprite], [sfx], [newt dmg])
+/// @description				Spawns an explosion with multiple parameters.
+/// @arg {Real}	Damage
+/// @arg {Real}	Radius
+/// @arg {Real}	X
+/// @arg {Real}	Y
+/// @arg {Bool}	Crit
+/// @arg {Real}	Friendly
+/// @arg {Real}	Sprite
+/// @arg {Real}	SFX
+/// @arg {Real}	NewtDamage
+
+function explosion(_dmg = 100, _rad = 100, _x = x, _y = y, _crit = false, _friendly = 0, _spr = sExplosion, _sfx = snExplosion, _ndmg = 1)
+{	
 	with instance_create_layer(_x, _y,"Shots",oExplosion)
 	{
 		baseDMG = _dmg;
 		radius = _rad;
 		crit = _crit;
-		friendly = _friendly
+		friendly = _friendly;
+		newtDmg = _ndmg;
 	}
 	
 	screenShake(20 * (_rad/100),12 * (_rad/100));
