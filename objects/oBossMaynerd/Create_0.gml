@@ -19,6 +19,7 @@ tellTime = tellTimeReset;
 
 facing = -1;
 jumpCount = 0;
+phase = 0;
 
 maxHP = hp;
 horseUsed = false;
@@ -64,14 +65,7 @@ stateIdle = function()
 	
 	if swapTime <= 0 and grounded and !instance_exists(oProjectileHorse)
 	{
-		if !horseUsed and (hp < maxHP/2)
-		{
-			tellTime = 45;
-			swapTime = 120;
-			hsp = 3*facing;
-			state = stateHorse;
-		}
-		else
+		if phase == 1
 		{
 			var stateNext = irandom(2);
 		
@@ -108,6 +102,47 @@ stateIdle = function()
 					}
 				break;
 			}
+		}
+		else if phase = 2
+		{
+			
+			
+			var stateNext = irandom(2);
+		
+			switch (stateNext)
+			{
+				case 0: // Horse
+					if !horseUsed
+					{
+						tellTime = 45;
+						swapTime = 240;
+						state = stateHorse;
+					}
+				break;
+			
+				case 1: // Throw
+					if prevState != stateThrow
+					{
+						tellTime = 90;
+						swapTime = irandom_range(2,5) * 60;
+						image_index = 0;
+						state = stateThrow;
+					}
+				break;
+			
+				case 2: // Jump
+					if prevState != stateJump
+					{
+						tellTime = 15;
+						swapTime = 45;
+						hsp = 3*facing;
+						state = stateSquat;
+						jumpCount = 3;
+					}
+				break;
+			}
+			
+			
 		}
 	}
 	if grounded {swapTime--}

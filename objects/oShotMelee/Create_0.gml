@@ -16,10 +16,13 @@ hitTarget = function()
 			{
 				var target = ds_list_find_value(hitTargs,i);
 			
-				with target
+				if !target.inactive
 				{
-					diedFrom = "standard";
-					enemyHit(oWeapon.damage);
+					with target
+					{
+						diedFrom = "standard";
+						enemyHit(oWeapon.damage);
+					}
 				}
 			}
 		} 

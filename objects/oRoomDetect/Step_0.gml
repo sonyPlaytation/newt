@@ -18,16 +18,7 @@ roomEnemies = place_meeting(x,y,pEnemy);
 if (instance_exists(oNewt))
 {
 	if place_meeting(x,y,oNewt)
-	{
-		if (song != -1)
-		{
-			if  (!roomCleared) 
-			{
-				with (oMusicManager){set_song_ingame(other.song,15)}
-			}
-			else with (oMusicManager)set_song_ingame(mAddiction,15);
-		}
-		
+	{	
 		roomActive = true
 		inRoom = true; 
 		oCamera.follow = instance_nearest(oNewt.x,oNewt.y,oRoomMiddle);
@@ -39,8 +30,10 @@ if (instance_exists(oNewt))
 		inRoom = true;
 		with (oNewt)
 		{
-		x = instance_nearest(x,y,oFallbackWarp).x;
-		y = instance_nearest(x,y,oFallbackWarp).y;
+			hsp = 0;
+			vsp = 0;
+			x = instance_nearest(x,y,oFallbackWarp).x;
+			y = instance_nearest(x,y,oFallbackWarp).y;
 		}
 	}
 
@@ -55,6 +48,17 @@ if (instance_exists(oNewt))
 		roomCleared = true;
 		roomActive = false;
 	}
-	
+}
+
+if bossRoom
+{
+	if (song != -1)
+	{
+		if  (!roomCleared) and !pEnemy.inactive
+		{
+			with (oMusicManager) {set_song_ingame(other.song)};
+		}
+		else if roomCleared {with (oMusicManager) {set_song_ingame(mAddiction)}};
+	}	
 }
 

@@ -3,17 +3,21 @@
 //screen pause
 if screenPause() {exit;};
 
-
-if instance_exists(myRoom)
+if phase == 0
 {
-	if myRoom.roomActive {inactive = false} else inactive = true;
-}
+	inactive = true;	
+}else if (phase > 0) {inactive = false};
 
 if !inactive and hp > 0
 {
 	vsp = vsp + grv;
 	
 	if oRoomMiddle.x < x {facing = -1} else {facing = 1};
+	
+	if (phase == 1) and hp < (maxHP/2)
+	{
+		phase = 2;	
+	}
 	
 	state();
 }

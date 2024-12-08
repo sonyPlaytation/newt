@@ -14,7 +14,7 @@
 
 if screenPause() {exit;};
 
-if !layer_exists("Enemy"){layer_create(layer_get_depth("Player")+1,"Enemy")};
+if !layer_exists("Enemy"){layer_create(layer_get_depth("Player")+10,"Enemy")};
 
 if hp <= -(maxHP/2){diedFrom = "overkill"}
 

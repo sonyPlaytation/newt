@@ -5,7 +5,10 @@ if screenPause() {exit;};
 
 if instance_exists(myRoom)
 {
-	if myRoom.roomActive {inactive = false} else inactive = true;
+	if !myRoom.bossRoom
+	{
+		if myRoom.roomActive {inactive = false} else inactive = true;
+	}
 }
 
 

@@ -2,4 +2,4 @@
 
 width = 0;
 scale = 2;
-targW = 500;
+targW = 300;
