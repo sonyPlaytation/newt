@@ -1,7 +1,7 @@
 
 
-draw_set_font(fSign);
-draw_set_color(c_white);
+//draw_set_font(fSign);
+//draw_set_color(c_white);
 
 //var dist = point_distance(oNewt.x,oNewt.y-22,pShootable.x,pShootable.y)
 

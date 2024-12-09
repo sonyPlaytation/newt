@@ -7,4 +7,4 @@ if instance_exists(oNewt)
 
 charCnt += spd;
 
-oCamera.cutFollow = oExitDoor;
+oCamera.cutFollow = oNewt;

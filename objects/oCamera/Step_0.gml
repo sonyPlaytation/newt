@@ -5,7 +5,7 @@ switch(global.gameState)
 {
 	case 0: //normal gameplay
 	
-		camera_set_view_target(cam,follow);
+		camera_set_view_target(cam,noone);
 		currResW = lerp(currResW,RESOLUTION_W/2,0.1);
 		currResH = lerp(currResH,RESOLUTION_H/2,0.1);
 	

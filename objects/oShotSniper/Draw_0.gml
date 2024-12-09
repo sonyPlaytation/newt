@@ -37,13 +37,13 @@ if instance_exists(oNewt)
 						else
 						{
 							diedFrom = "standard";
-							finalDMG =  ceil(clamp(other.baseDMG * (other.baseDMG / (other.dist/12)),other.baseDMG * 1 ,other.baseDMG * 2.5))
+							finalDMG =  ceil(clamp(other.baseDMG * (other.baseDMG / (other.dist/12)),other.baseDMG * 1 ,other.baseDMG * 5))
 						}
 						
 						enemyHit(finalDMG,true);
 					}
 				}
-				if  oShotSniperLaser.image_alpha == 0 {can_damage = false};
+				can_damage = false;
 			}
 			
 			//check for body hitbox

@@ -38,7 +38,12 @@ if instance_exists(oRoomDetect)
 if (hasHead)
 {
 	myHead = instance_create_depth(x,bbox_top,depth-10,oHeadHitbox)
-	with myHead {owner = other.id};
+	with myHead 
+	{
+		owner = other.id;
+		width = 2;
+		height = 2;
+	};
 }
 else myHead = noone;
 
@@ -64,7 +69,7 @@ stateIdle = function()
 	
 	image_speed = 1;
 	
-	if swapTime <= 0 and grounded and !instance_exists(oProjectileHorse)
+	if swapTime <= 0 and grounded
 	{
 		if phase == 1
 		{

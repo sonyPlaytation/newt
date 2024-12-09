@@ -1,7 +1,7 @@
 
 cam = view_camera[0];
 follow = oNewt;
-cutFollow = oExitDoor;
+cutFollow = oNewt;
 
 currResW = RESOLUTION_W/2;
 currResH = RESOLUTION_H/2;

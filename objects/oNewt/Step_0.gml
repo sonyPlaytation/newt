@@ -86,7 +86,7 @@ if (hasControl)
 } 
 else
 {
-	sprSPD = 0;
+	//sprSPD = 0;
 	if inspect
 	{
 		sprite_index = sNewtRear;
