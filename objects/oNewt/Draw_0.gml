@@ -1,5 +1,5 @@
 
-if state != stateFree {rot = 0};
+if (state != stateFree) and state != stateSwim {rot = 0};
 
 
 if prop != noone {image_speed = sprSPD * clamp(oInv.spdNorm-prop.phy_mass/1000,0.65,1.00);} else image_speed = sprSPD;
@@ -45,6 +45,8 @@ if dashCount < dashMax and !place_meeting(x,y+2,oCollide)
 
 //if prop != noone {draw_text_transformed(oNewt.x,oNewt.y-70,string(prop.phy_mass),scale,scale,0)};
 //draw_text_transformed(oNewt.x,oNewt.y-90,image_speed,scale,scale,0)
+
+draw_text(x,y-50,rot);
 
 if (flash > 0)
 {

@@ -13,6 +13,7 @@
     {"name":"inst_39B5FFE7_3","path":"rooms/rTutorialNew1/rTutorialNew1.yy",},
     {"name":"inst_58F432F0_3","path":"rooms/rTutorialNew1/rTutorialNew1.yy",},
     {"name":"inst_61DBD9E1","path":"rooms/rTutorialNew1/rTutorialNew1.yy",},
+    {"name":"inst_6F83554E","path":"rooms/rTutorialNew1/rTutorialNew1.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -26,6 +27,7 @@
         {"$GMRInstance":"v1","%Name":"inst_61DBD9E1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_61DBD9E1","objectId":{"name":"oSign","path":"objects/oSign/oSign.yy",},"properties":[
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"oSign","path":"objects/oSign/oSign.yy",},"propertyId":{"name":"text","path":"objects/oSign/oSign.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"\"Welcome to the Tutorial!\\nIt's pretty short but should teach you the basics.\\nI highly recommend you read the readme included with your download\\nbecause these signs are not a convenient way to convey information.\"",},
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":480.0,"y":456.0,},
+        {"$GMRInstance":"v1","%Name":"inst_6F83554E","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_6F83554E","objectId":{"name":"oWater","path":"objects/oWater/oWater.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":18.0,"scaleY":8.0,"x":240.0,"y":312.0,},
       ],"layers":[],"name":"Interact","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRTileLayer":"","%Name":"Tiles","depth":100,"effectEnabled":true,"effectType":null,"gridX":24,"gridY":24,"hierarchyFrozen":false,"inheritLayerDepth":true,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":false,"layers":[],"name":"Tiles","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":23,"SerialiseWidth":40,"TileCompressedData":[
           -41,0,-38,28,-2,0,1,28,-36,0,4,28,0,0,28,-36,0,4,28,0,0,28,-36,0,4,28,0,0,28,-36,0,4,28,0,0,28,-36,0,

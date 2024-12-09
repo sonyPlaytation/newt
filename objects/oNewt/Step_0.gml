@@ -92,3 +92,4 @@ else
 		sprite_index = sNewtRear;
 	}
 }
+

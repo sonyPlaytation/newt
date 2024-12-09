@@ -46,10 +46,59 @@ function checkCollSemi(_x, _y)
 	return _rtrn;
 }
 
-function squishNewt(xscale,yscale)
+function squishNewt(xscale = 1.15, yscale = 0.85)
 {
 	drawXscale = xscale;	
 	drawYscale = yscale;
+}
+
+function getBackwards(animSPD = 1)
+{
+	if hasControl
+	{	
+		var xAim = input_value("aim_right") - input_value("aim_left")
+		if input_gamepad_is_any_connected() and global.inputdevice = "gamepad"
+		{
+			//adjust current sprite
+			if (hsp > 0 and oCursor.x < x) {backwards = true}
+			else if (hsp < 0 and oCursor.x > x) {backwards = true}
+			else backwards = false;
+			if backwards && (place_meeting(x,y+1,oCollide)) {sprSPD = sprSPD*-animSPD} else sprSPD = animSPD//if walking backwards, play animation backwards
+			
+			if xAim !=0
+			{
+				if xAim < 0 
+				{
+					image_xscale = -1;
+					facingRight = -1;	
+				}
+				else
+				{
+					image_xscale = 1;	// if mouse is to left, face left and vice versa
+					facingRight = 1;
+				}
+			}
+		}
+		else
+		{
+			//adjust current sprite
+			if (hsp > 0 && mouse_x < x) {backwards = true}
+			else if (hsp < 0 && mouse_x > x) {backwards = true}
+			else backwards = false;
+			if backwards && (place_meeting(x,y+1,oCollide)) {sprSPD = sprSPD*-animSPD} else sprSPD = animSPD //if walking backwards, play animation backwards
+			
+			if (mouse_x < x)
+			{
+				image_xscale = -1;
+				facingRight = -1;
+			}
+				else 
+			{
+				image_xscale = 1;	// if mouse is to left, face left and vice versa
+				facingRight = 1;
+			}
+		}
+	} //else sprSPD = 1;	
 }
 
 global.newtCenter = y-((bbox_bottom-bbox_top)/2);
@@ -77,6 +126,9 @@ propBuffer = 0;
 indfrac = 0;
 godmode = false;
 
+
+backwards = false;
+
 nearestCorpse = noone;
 myCorpse = noone;
 
@@ -84,6 +136,7 @@ sodaToss = false
 flash = 0;
 blood = 0;
 lit = 0;
+idleTime = 0;
 
 key_down = 0;
 mouseRight = false;
@@ -96,8 +149,11 @@ vspFrac = 0;
 hspAcc[0] = 0.75;
 hspAcc[1] = 1.25;
 hspAcc[2] = 0.01;
+accSwim = 0.25;
+
 hspFricGround = 0.75;
 hspFricAir = 0.01;
+hspFricWater = 0.05;
 moveType = 0;
 hspWalk= 7;
 
@@ -121,6 +177,8 @@ jumpHoldFrames = 16;
 grv[0] = 0.475;		//normal gravitygravity
 grv[1] = 0.1;	//slide gravity for jumping off ramps
 grv[2] = 0;
+grvSwim = 0.2;
+swimSPD = 1;
 grvWall = 0.5;	//wall friction
 
 jumpBuffer = 0;	//can you jump now 
@@ -194,12 +252,7 @@ stateFree = function()
 	if (dashCount < 2) and onGround {dashCount = 2};
 	
 	if input_check_pressed("interact") or input_check_pressed("special")
-	{
-		//if !collision_circle(x,global.newtCenter,48,oCorpse,0,0) or !collision_circle(x,global.newtCenter,48,oWeaponPickup,0,0)
-		//{
-		//	oSFX.mouthpop = true;
-		//}
-		
+	{		
 		squishNewt(1.05,0.95);	
 	}
 	
@@ -213,9 +266,6 @@ stateFree = function()
 	//while standing resets
 	with oCamera {curBuff = buff[0]};
 	image_angle = 0;	
-	
-	//init if backwards or not 
-	var _backwards = false
 
 	//calculate horizontal movement
 	wallJumpDelay = max(wallJumpDelay-1,0);
@@ -231,8 +281,6 @@ stateFree = function()
 			if (!onGround) hspFricFinal = hspFricAir;
 			hsp = approach(hsp,0,hspFricFinal);
 		}
-		
-		
 		
 		if abs(hsp > hspWalk)
 		{
@@ -424,13 +472,17 @@ stateFree = function()
 	var _clampYspd = max(0,vsp);
 	var _list = ds_list_create(); //create list of platforms
 	var _array = array_create(0);
-	array_push(_array, oCollide, oCollSemi);
+	array_push(_array, oCollide, oCollSemi,pPhysProp);
 	
 	//do the check, add objects to list
 	var _listSize = instance_place_list(x, y +1 +_clampYspd +vspMax, _array, _list, false);
 	
 	var _ycheck = y+1 + _clampYspd;
-	if instance_exists(myPlat){_ycheck += max(0, myPlat.yspd)};
+	if instance_exists(myPlat)
+	{
+		_ycheck += max(0, myPlat.yspd);
+		if myPlat = prop {propHandle(0,1);}
+	};
 	var _semiSolid = checkCollSemi(x, _ycheck);
 	
 	//loop through instances, only return one applicable to player
@@ -553,50 +605,7 @@ stateFree = function()
 		}
 	}
 
-	if hasControl
-	{	
-		var xAim = input_value("aim_right") - input_value("aim_left")
-		if input_gamepad_is_any_connected() and global.inputdevice = "gamepad"
-		{
-			//adjust current sprite
-			if (hsp > 0 and oCursor.x < x) _backwards = true;
-			if (hsp < 0 and oCursor.x > x) _backwards = true;
-			if _backwards && (place_meeting(x,y+1,oCollide)) {sprSPD *= sign(hsp)}//if walking backwards, play animation backwards
-			
-			if xAim !=0
-			{
-				if xAim < 0 
-				{
-					image_xscale = -1;
-					facingRight = -1;	
-				}
-				else
-				{
-					image_xscale = 1;	// if mouse is to left, face left and vice versa
-					facingRight = 1;
-				}
-			}
-		}
-		else
-		{
-			//adjust current sprite
-			if (hsp > 0 && mouse_x < x) _backwards = true;
-			if (hsp < 0 && mouse_x > x) _backwards = true;
-			if _backwards && (place_meeting(x,y+1,oCollide)) {sprSPD = sprSPD*-1} else sprSPD = 1 //if walking backwards, play animation backwards
-			
-			if (mouse_x < x)
-			{
-				image_xscale = -1;
-				facingRight = -1;
-			}
-				else 
-			{
-				image_xscale = 1;	// if mouse is to left, face left and vice versa
-				facingRight = 1;
-			}
-		}
-	} //else sprSPD = 1;
-
+	getBackwards();
 	drawXscale = lerp(drawXscale,1,0.1);
 	drawYscale = lerp(drawYscale,1,0.1);
 
@@ -1310,6 +1319,187 @@ stateGulp = function()
 		oInv.inBelly = nearestCorpse.id;
 		nearestCorpse.inBelly = true;
 	}else state = stateFree
+}
+
+stateSwim = function()
+{
+	
+	if !place_meeting(x,y,oWater)
+	{
+		state = stateFree;
+		drawXscale = 1;
+		drawYscale = 1;
+	};
+	
+	if input_check_pressed("jump"){swimSPD = 5} else {swimSPD = approach(swimSPD,1,0.15)}
+	
+	//vertical inputs
+	var vdir = input_check("down") - input_check("up");
+	vsp += vdir * accSwim * swimSPD;
+	
+	if (vdir == 0)
+	{
+		var hspFricFinal = hspFricGround;
+		if (!onGround) hspFricFinal = hspFricWater;
+		vsp = lerp(vsp,0,hspFricFinal);
+	}
+		
+	if abs(vsp > 12)
+	{
+		vsp = lerp(vsp,12,0.5);
+	}
+	else if abs(vsp < -12)
+	{
+		vsp = lerp(vsp,-12,0.5);
+	}
+	vsp = clamp(vsp*oInv.spdMod, -24, 24);
+	
+	
+	//Horizontal inputs
+	var hdir = input_check("right") - input_check("left");
+	
+	if place_meeting(x,y+1,oCollide) {hsp += hdir * 0.1} else {hsp += hdir * accSwim * swimSPD;};
+	
+	if (hdir == 0)
+	{
+		var hspFricFinal = min(hspFricGround*2,1);
+		if (!onGround) hspFricFinal = hspFricWater;
+		hsp = lerp(hsp,0,hspFricFinal);
+	}
+		
+	if place_meeting(x,y+1,oCollide)
+	{
+		var waterWalk = 2;
+		
+		if abs(hsp > waterWalk)
+		{
+			hsp = lerp(hsp,waterWalk,0.5);
+		}
+		else if abs(hsp < -waterWalk)
+		{
+			hsp = lerp(hsp,-waterWalk,0.5);
+		}
+		hsp = clamp(hsp*oInv.spdMod, -24, 24);
+	}
+	else
+	{
+		if abs(hsp > hspWalk)
+		{
+			hsp = lerp(hsp,hspWalk,0.5);
+		}
+		else if abs(hsp < -hspWalk)
+		{
+			hsp = lerp(hsp,-hspWalk,0.5);
+		}
+		hsp = clamp(hsp*oInv.spdMod, -24, 24);	
+	}
+	
+
+	
+	//gravity
+	if (hdir == 0) and (vdir == 0) {idleTime++;} else idleTime = 0;
+	if (hdir == 0) and idleTime >= 15{var grvFinal = 0.2} else {var grvFinal = 0};
+	vsp = vsp + grvFinal;
+	
+	
+	//collisions
+	var subpixel = .5;
+
+	if (place_meeting(x+hsp,y,oCollide))
+	{
+		
+		var onepixel = sign(hsp);
+	
+		//first check if theres slope or not
+		if !place_meeting( x + hsp, y - abs(hsp)-1.5, oCollide)
+		{
+			while (place_meeting(x+hsp,y,oCollide))	{y -= subpixel}
+		}
+		else
+		{
+			//ceiling slopes
+			if !place_meeting(x + hsp, y + abs(hsp)+1, oCollide) 
+			{
+				while place_meeting(x+hsp, y, oCollide) {y+= subpixel};
+			}
+			//normal x collide
+			else
+			{
+				var pixelcheck = subpixel*sign(hsp);
+				while (!place_meeting(x+pixelcheck,y,oCollide)) x += pixelcheck;
+		
+				hsp = 0;
+				hspFrac = 0;	
+			}	
+		}
+	}
+	x += hsp;
+	
+	//vertical collision
+	if (place_meeting(x,y+vsp,oCollide))
+	{
+		var onepixel = sign(vsp);
+		var pixelcheck = subpixel*sign(vsp);
+	
+		while (!place_meeting(x,y+pixelcheck,oCollide)) y += pixelcheck;
+	
+		//bonk code
+		if (vsp < 0){jumpHoldTimer = 0; oSFX.mariobump = true};
+	
+		vsp = 0;
+		vspFrac = 0;
+		onGround = true;
+	}else onGround = false;
+	y += vsp
+	
+	#region sprites
+
+		if (place_meeting(x,y+max(vsp,1),oCollide)) // if on ground
+		{
+			getBackwards(0.5);
+			
+			drawXscale = 1;
+			drawYscale = 1;
+	
+			rot = -hsp * 1.5;
+			if hsp != 0 
+			{
+				sprite_index = sprWalk;
+			}
+			else
+			sprite_index = sprIdle;
+		}
+		else 
+		{
+			drawXscale = 1;
+			if (rot > 90) and (rot < 270) {drawYscale = -1} else drawYscale = 1;
+			
+			rot = point_direction(xprevious,yprevious,x,y);
+			
+			
+			if abs(hsp) > abs(vsp) //if moving MOSTLY horizontally
+			{
+				if (sign(hsp) != hdir) and hdir != 0 // if you are pressing one way but still slowing down from the other way
+				{
+					sprite_index = sNewtSwimSkrrt;	
+				}
+				else
+				sprite_index = sNewtSwimH;
+			}
+			else if vdir != 0//if you are moving MOSTLY vertical
+			{
+				sprite_index = sNewtSwimV;
+			}
+			else if idleTime >= 15
+			{
+				rot = 0;
+				sprite_index = sNewtAir; 
+				image_index = 1;
+			}
+		}
+		
+	#endregion
+	
 }
 
 state = stateFree;

@@ -19,3 +19,6 @@ dieSound = snBelch;
 
 fragile = false;
 debris = false;
+
+xspd = phy_speed_x;
+yspd = phy_speed_y;
