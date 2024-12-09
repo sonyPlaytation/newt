@@ -1,10 +1,10 @@
 
-if (state != stateFree) and state != stateSwim {rot = 0};
-
+if (state != stateSwim) {rot = 0};
+//(state != stateFree) and 
 
 if prop != noone {image_speed = sprSPD * clamp(oInv.spdNorm-prop.phy_mass/1000,0.65,1.00);} else image_speed = sprSPD;
 
-function _drawNewt()
+function draw_newt_ext()
 {
 	var _finalX;
 	if (onWall != 0 and !onGround) {_finalX = drawXscale*onWall}else _finalX = drawXscale*facingRight;
@@ -20,8 +20,30 @@ function _drawNewt()
 	image_blend,
 	image_alpha);
 }
-_drawNewt()
 
+function draw_newt()
+{	
+	draw_sprite_ext(
+	sprite_index,
+	image_index,
+	x,
+	y,
+	image_xscale,
+	image_yscale,
+	rot,
+	image_blend,
+	image_alpha);
+}
+
+if state = stateSwim
+{
+	draw_newt();
+}
+else
+{
+	draw_newt_ext();
+
+}
 var scale = 2; 
 
 if oAmmoCount.lowAmmo
@@ -52,7 +74,7 @@ if (flash > 0)
 {
 	flash--;
 	shader_set(shWhiteFlash);
-	_drawNewt();
+	draw_newt_ext();
 	shader_reset();
 }
 
@@ -60,7 +82,7 @@ if (blood > 0)
 {
 	blood--;
 	shader_set(shRedFlash);
-	_drawNewt();
+	draw_newt_ext();
 	shader_reset();
 }
 

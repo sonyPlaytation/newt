@@ -721,7 +721,6 @@ stateFree = function()
 		
 		if collision_circle(x,y,48,nearestCorpse,0,0) and (nearestCorpse.alpha != 0) and !nearestCorpse.big and input_check_pressed("interact")
 		{
-			
 			squishNewt(1.25,0.75);
 			audio_play_sound(snGULP,750,false);
 			state = stateGulp;
@@ -1327,8 +1326,6 @@ stateSwim = function()
 	if !place_meeting(x,y,oWater)
 	{
 		state = stateFree;
-		drawXscale = 1;
-		drawYscale = 1;
 	};
 	
 	if input_check_pressed("jump"){swimSPD = 5} else {swimSPD = approach(swimSPD,1,0.15)}
@@ -1457,10 +1454,7 @@ stateSwim = function()
 		if (place_meeting(x,y+max(vsp,1),oCollide)) // if on ground
 		{
 			getBackwards(0.5);
-			
-			drawXscale = 1;
-			drawYscale = 1;
-	
+			image_yscale = 1
 			rot = -hsp * 1.5;
 			if hsp != 0 
 			{
@@ -1469,16 +1463,12 @@ stateSwim = function()
 			else
 			sprite_index = sprIdle;
 		}
-		else 
+		else if (vdir != 0) or (hdir != 0)
 		{
-			drawXscale = 1;
-			if (rot > 90) and (rot < 270) {drawYscale = -1} else drawYscale = 1;
-			
 			rot = point_direction(xprevious,yprevious,x,y);
-			
-			
 			if abs(hsp) > abs(vsp) //if moving MOSTLY horizontally
 			{
+				if (rot > 90) and (rot < 270) {image_yscale = -1} else image_yscale = 1;
 				if (sign(hsp) != hdir) and hdir != 0 // if you are pressing one way but still slowing down from the other way
 				{
 					sprite_index = sNewtSwimSkrrt;	
@@ -1490,12 +1480,15 @@ stateSwim = function()
 			{
 				sprite_index = sNewtSwimV;
 			}
-			else if idleTime >= 15
-			{
-				rot = 0;
-				sprite_index = sNewtAir; 
-				image_index = 1;
-			}
+			
+		}
+		else if idleTime >= 15
+		{
+			rot = 0;
+			image_yscale = 1;
+			getBackwards(0.5);
+			sprite_index = sNewtAir; 
+			image_index = 1;
 		}
 		
 	#endregion

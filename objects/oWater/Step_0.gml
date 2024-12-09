@@ -7,9 +7,10 @@ if place_meeting(x,y,oNewt)
 	{
 		if state != stateSwim
 		{
+			//backwards = false;
 			state = stateSwim;
-			drawXscale = backwards;
-			drawYscale = backwards;
+			//image_xscale = sign(hsp);
+			//image_yscale = 1;
 		}
 	}
 }
