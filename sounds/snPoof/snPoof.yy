@@ -12,8 +12,8 @@
   "duration":1.332208,
   "name":"snPoof",
   "parent":{
-    "name":"newt player states",
-    "path":"newt player states.yyp",
+    "name":"Sounds",
+    "path":"folders/Sounds.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

@@ -21,7 +21,8 @@ if (instance_exists(oNewt))
 	{	
 		roomActive = true
 		inRoom = true; 
-		oCamera.follow = instance_nearest(oNewt.x,oNewt.y,oRoomMiddle);
+		if global.gameState == 0 {oCamera.follow = instance_nearest(oNewt.x,oNewt.y,oRoomMiddle)}
+		else oCamera.follow = oNewt;
 	}else inRoom = false;
 
 	//check if not in active room

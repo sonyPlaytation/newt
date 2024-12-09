@@ -1,6 +1,10 @@
 
 cam = view_camera[0];
 follow = oNewt;
+cutFollow = oExitDoor;
+
+currResW = RESOLUTION_W/2;
+currResH = RESOLUTION_H/2;
 
 view_w_half = camera_get_view_width(cam)	/ 2;
 view_h_half = camera_get_view_height(cam)	/ 2;
@@ -14,3 +18,4 @@ shake_remain = 0;
 buff[0] = 11;
 buff[1] = 1;
 curBuff = buff[0];
+

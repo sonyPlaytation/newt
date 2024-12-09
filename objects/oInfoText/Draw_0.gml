@@ -6,7 +6,7 @@ if alpha == 0 {instance_destroy()};
 var halfw = w * 0.5;
 
 //draw the box
-draw_set_colour(#221428);
+draw_set_colour(boxCol);
 draw_set_alpha(alpha);
 draw_roundrect_ext(
 x-halfw-(border),

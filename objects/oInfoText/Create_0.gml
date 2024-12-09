@@ -12,6 +12,7 @@ border = 12;
 corner = 15;
 done = false;
 font = fKaren
+boxCol = #221428;
 
 alpha = 0;
 active = false;

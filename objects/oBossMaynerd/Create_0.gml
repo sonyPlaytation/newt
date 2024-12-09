@@ -27,7 +27,7 @@ horseUsed = false;
 stt = "";
 sprite = sMaynerd;
 
-instance_create_layer(x,y,layer,oBossHealth);
+
 
 global.getSizeKilled = 1;
 if instance_exists(oRoomDetect)
@@ -48,6 +48,7 @@ else myHead = noone;
 stateIdle = function()
 {
 	stt = "idle"
+	if !instance_exists(oBossHealth)instance_create_layer(x,y,layer,oBossHealth);
 	
 	//vertical collision
 	if (place_meeting(x,y+vsp,oCollide))

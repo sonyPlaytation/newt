@@ -16,6 +16,8 @@ else
 #macro RESOLUTION_H 1080
 display_set_gui_size(RESOLUTION_W,RESOLUTION_H);
 
+global.gameState = 0;
+
 global.kills = 0;
 global.killsthisroom = 0;
 global.hasweapon = false;
@@ -50,7 +52,7 @@ firstCombo = true;
 firstComboEnded = false;
 
 global.fDoom = font_add_sprite_ext(sFontDoom, " 0123456789abcdefghijklmnopqrstuvwxyz,.:;|[]=+<>'#$%()*/^&@_{?!-",true,0);
-global.fIgnoreMod = font_add_sprite_ext(sFontIgnoreMOD," ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,:;?!`'+-=*%_()[]{}~#&@^|/\<>",true,0);
+global.fIgnoreMod = font_add_sprite_ext(sFontIgnoreMOD," ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,;:?!`'+-=*%_()[]{}~#&@^|/\<>",true,0);
 
 msgScale = 3;
 systemAlpha = 1;
