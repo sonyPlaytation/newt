@@ -34,5 +34,5 @@ ver = "v0.03";
 verX = 10;
 verY = RESOLUTION_H-verX;
 
-menuBGM = mAddiction
+menuBGM = mPauseMenu
 audio_play_sound(menuBGM,900,true,global.musicVolume*global.masterVolume);

@@ -136,6 +136,7 @@ if  oNewt.hasControl and altfire != -1 and input_check_pressed("altfire") and (d
 		case "arnoldflip":	
 			if oWeapon.ammo[1] > 0
 			{
+				current_cd = 5;
 				oSFX.wooshBasic = true;
 				
 				delayRight = 50;

@@ -1,7 +1,7 @@
 /// @description
 
 text = "DEFAULT Second Line";
-name = "Newt"
+name = ""
 nameCol = c_aqua;
 nameShadowCol = c_purple;
 follow = oExitDoor;

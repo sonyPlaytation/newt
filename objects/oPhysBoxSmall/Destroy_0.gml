@@ -12,5 +12,5 @@ repeat(rand)
 	
 	instance_create_depth(randX,randY,depth,oFragBoxSmall);
 	
-	repeat (5){instance_create_layer(phy_position_x,phy_position_y, "Player", oDust);}
+	repeat (5){instance_create_layer(phy_position_x,phy_position_y, homeLayer, oDust);}
 }

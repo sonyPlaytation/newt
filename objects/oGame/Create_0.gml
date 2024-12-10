@@ -14,6 +14,7 @@ else
 
 #macro RESOLUTION_W 1920
 #macro RESOLUTION_H 1080
+#macro TILE_SIZE 24
 display_set_gui_size(RESOLUTION_W,RESOLUTION_H);
 
 global.gameState = 0;
