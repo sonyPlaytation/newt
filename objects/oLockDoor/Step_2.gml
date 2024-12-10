@@ -18,7 +18,7 @@ if instance_exists(oNewt)
 		}
 	
 		//debug room reload
-		if input_check_pressed("special")
+		if input_check_pressed("special") and global.debug
 		{
 			with (oNewt)
 			{

@@ -39,7 +39,7 @@ if (combotimer <= 0)
 	if global.kills >=1 {firstCombo = false};
 }
 
-
+depth = -999;
 drawSetText(c_white,global.fDoom,fa_center,fa_top);
 draw_text_ext_transformed_color(RESOLUTION_W/2,15,sysMsg,10,RESOLUTION_W,msgScale,msgScale,0,c_white,c_white,c_white,c_white,systemAlpha*1.15);
 systemAlpha -= 0.01;

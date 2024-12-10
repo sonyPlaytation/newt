@@ -1,5 +1,9 @@
 /// @description control menu
 
+if room != rMenu and input_check_pressed("pause")
+{
+	instance_destroy();	
+}
 
 //item ease in
 menu_x += (menu_x_target - menu_x) / menu_speed;
@@ -50,6 +54,7 @@ if (menu_control)
 
 if (menu_x < -200) && (menu_committed != -1)
 {
+	oPause.pause = false;
 	switch (menu_committed)
 	{
 		case 5: slideTransition(TRANS_MODE.INIT, rBossLobbyTest); break; //BOSS FIGHT

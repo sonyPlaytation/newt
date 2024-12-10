@@ -5,4 +5,11 @@ pause = false;
 pauseSurf = -1;
 pauseSurfBuffer = -1;
 
+songPlaying = noone;
+
+bgLayer = noone;
+bgHSPD = 0;
+bgVSPD = 0;
+
+pauseAlpha = 0;
 

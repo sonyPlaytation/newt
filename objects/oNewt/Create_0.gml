@@ -101,6 +101,20 @@ function getBackwards(animSPD = 1)
 	} //else sprSPD = 1;	
 }
 
+function inWater()
+{
+	if place_meeting(x,y,oWater)
+	{
+		rot = 0;
+		backwards = false;
+		idleTime = 0;
+		image_xscale = 1;
+		facingRight = 1;
+		sprite_index = sNewtSwimRight;
+		state = stateSwim;	
+	}	
+}
+
 global.newtCenter = y-((bbox_bottom-bbox_top)/2);
 
 controlsSetup();
@@ -675,16 +689,6 @@ stateFree = function()
 	if sprite_index == sprIdle and image_index = 21
 	{
 		squishNewt(1.05,0.95);
-	}
-	
-	if place_meeting(x,y,oWater)
-	{
-		rot = 0;
-		backwards = false;
-		idleTime = 0;
-		
-		sprite_index = sNewtSwimRight;
-		state = stateSwim;	
 	}
 	
 	//crouching
@@ -1333,9 +1337,9 @@ stateGulp = function()
 stateSwim = function()
 {
 	mask_index = sprite_index;
+	global.newtCenter = y;
 	
-	
-	if !place_meeting(x,y,oWater) //and place_meeting(x,y+vsp,oCollide) 
+	if !place_meeting(x,y,oWater)
 	{
 		alarm[1] = 1;
 		rot = 0;
@@ -1344,7 +1348,10 @@ stateSwim = function()
 		
 	};
 	
-	if input_check_pressed("jump"){swimSPD = 5} else {swimSPD = approach(swimSPD,1,0.15)}
+	
+	 
+	swimSPD = approach(swimSPD,1,0.15)
+	
 	
 	//vertical inputs
 	var vdir = input_check("down") - input_check("up");
@@ -1407,13 +1414,18 @@ stateSwim = function()
 		hsp = clamp(hsp*oInv.spdMod, -24, 24);	
 	}
 	
-
+	if (hdir != 0 or vdir != 0) and input_check_pressed("jump")
+	{
+		swimSPD = 5;
+	}
+	else if idleTime != 0  and input_check("jump") and place_meeting(x,y-10,oWater)
+	{
+		vsp = -1;
+	}
 	
 	//gravity
 	if (hdir == 0) and (vdir == 0) {idleTime++;} else idleTime = 0;
-	//if (hdir == 0) and idleTime >= 15{var grvFinal = 0.2} else {
-		var grvFinal = 0
-		//};
+	if (hdir == 0) and sprite_index == sNewtPaddle{var grvFinal = 0.2} else {var grvFinal = 0};
 	vsp = vsp + grvFinal;
 	
 	
@@ -1475,8 +1487,28 @@ stateSwim = function()
 			
 			if (rot > 90) and (rot < 280){image_yscale = -1}else image_yscale = 1;
 				
-			if abs(hsp) > abs(vsp) //HORIZONTAL
+			if idleTime >= 30
 			{
+				if vsp < 0
+				{
+					sprSPD = 1	
+				}
+				else
+				{
+					sprSPD = 0;
+					image_index = 0;
+				}
+				
+				image_yscale = 1;
+				rot = 0;
+				getBackwards(2);
+				sprite_index = sNewtPaddle;
+				
+			}
+			else if abs(hsp) > abs(vsp) //HORIZONTAL
+			{
+				image_xscale = 1;
+				facingRight = 1;
 				if (sign(hsp) != hdir) and (hdir != 0)
 				{	
 					sprite_index = sNewtSwimSkrrt	
@@ -1487,6 +1519,8 @@ stateSwim = function()
 			{
 				if vdir != 0 
 				{
+					image_xscale = 1;
+					facingRight = 1;
 					sprite_index = sNewtSwimV;
 				}
 			}	

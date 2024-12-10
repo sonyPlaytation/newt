@@ -39,8 +39,8 @@ if (mode != TRANS_MODE.OFF)
 			case TRANS_MODE.INIT:
 			{
 				mode = TRANS_MODE.INTRO;
-				room_goto(rInit);
 				global.InitRoom = target;
+				room_goto(rInit);
 				break;
 			}
 			

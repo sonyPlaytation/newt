@@ -11,6 +11,7 @@ function set_song_ingame(_song, _fadeOut = 0, _fadeIn = 0, _msg = "", _msgFade =
 		//_song to set any song (including noone to stop
 		//_fadeOut to fade out in frames
 		//_fadeIn to fade in in frames
+	global.songPlaying = _song
 	with (oMusicManager)
 	{
 		targetSongAsset = _song;	

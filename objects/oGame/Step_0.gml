@@ -1,7 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-
 if combotimer > comboreset {combotimer = comboreset};
 
 if (window_has_focus()) {
@@ -27,5 +26,11 @@ if global.critTimer != 0
 {
 	global.critTimer--;
 	oWeapon.crit = true;
+}
+
+
+if input_check_pressed("pause")
+{
+	global.pauseInput = -global.pauseInput;
 }
 

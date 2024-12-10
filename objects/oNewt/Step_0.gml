@@ -1,8 +1,8 @@
 
-global.newtCenter = y-22;
+global.newtCenter = y-sprite_get_height(sprite_index)/2;
 if (iFrames > 0) iFrames--;									//decrease iframes always
 exclam = false;												//reset exclamation marker by default
-//if keyboard_check_pressed(vk_backspace) {playerHit(1)};	//debug take damage
+if keyboard_check_pressed(vk_backspace) and global.debug {playerHit(1)};	//debug take damage
 flash--;													//reset flash shader
 
 if (hasControl){generalFunctions()}
@@ -93,3 +93,4 @@ else
 	}
 }
 
+if state != stateSwim {inWater()}; //like that funny game

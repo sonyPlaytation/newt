@@ -15,6 +15,7 @@ function propHandle(_throw = false, _drop = false){
 		{
 			oNewt.propBuffer = 15;
 			_prop.captured = false;
+			_prop.layer = homeLayer
 			_prop.phy_active = true;
 			oNewt.prop = noone;
 					
@@ -28,6 +29,7 @@ function propHandle(_throw = false, _drop = false){
 		{
 			oNewt.propBuffer = 15;
 			_prop.captured = false;
+			_prop.layer = homeLayer
 			_prop.phy_active = true;
 			oNewt.prop = noone;
 		}

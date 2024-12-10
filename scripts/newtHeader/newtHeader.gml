@@ -12,15 +12,14 @@ function newtHeader(argument0, argument1)
 	}
 }
 
-function systemMsg(argument0, argument1, argument2)
+function systemMsg( _msg = "DEFAULT TEXT DO NOT LOOK" , _alpha = 3, _SFX = false)
 {
-	if instance_exists (oNewt)
+
+	if _SFX {audio_play_sound(snSuperHeal,999,false)};
+	with oGame 
 	{
-		if argument2 {audio_play_sound(snSuperHeal,999,false)};
-		with oGame 
-		{
-			sysMsg = argument0;
-			systemAlpha = argument1;
-		}
+		sysMsg = _msg;
+		systemAlpha = _alpha;
 	}
+	
 }

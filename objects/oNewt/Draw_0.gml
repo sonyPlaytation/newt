@@ -1,4 +1,6 @@
 
+
+
 if (state != stateSwim) {rot = 0};
 //(state != stateFree) and 
 
@@ -70,10 +72,10 @@ if dashCount < dashMax and !place_meeting(x,y+2,oCollide)
 //if prop != noone {draw_text_transformed(oNewt.x,oNewt.y-70,string(prop.phy_mass),scale,scale,0)};
 //draw_text_transformed(oNewt.x,oNewt.y-90,image_speed,scale,scale,0)
 
-draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,true);
 
-draw_text(x,y-50,"yscale"+string(image_yscale));
-draw_text(x,y-65,"drawY"+string(drawYscale));
+
+//draw_text(x,y-50,"pauseInput"+string(global.pauseInput));
+//draw_text(x,y-65,"drawY"+string(drawYscale));
 
 if (flash > 0)
 {
@@ -96,6 +98,8 @@ draw_text_color(x,y-sprite_height-10,sodaDesc,c_black,c_black,c_black,c_black,he
 draw_text_color(x-1,y-sprite_height-11,sodaDesc,c_white,c_white,c_white,c_white,headerAlpha*1.15);
 headerAlpha -= 0.01;
 
+draw_set_color(c_red)
+if global.debug = true {draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,false)}; //DRAW HITBOX
 
 //if (lit > 0)
 //{
