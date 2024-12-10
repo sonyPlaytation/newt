@@ -677,6 +677,16 @@ stateFree = function()
 		squishNewt(1.05,0.95);
 	}
 	
+	if place_meeting(x,y,oWater)
+	{
+		rot = 0;
+		backwards = false;
+		idleTime = 0;
+		
+		sprite_index = sNewtSwimRight;
+		state = stateSwim;	
+	}
+	
 	//crouching
 	if input_check("down")// and (onWall == 0) 
 	{
@@ -1322,10 +1332,16 @@ stateGulp = function()
 
 stateSwim = function()
 {
+	mask_index = sprite_index;
 	
-	if !place_meeting(x,y,oWater)
+	
+	if !place_meeting(x,y,oWater) //and place_meeting(x,y+vsp,oCollide) 
 	{
+		alarm[1] = 1;
+		rot = 0;
+		drawYscale = 1;
 		state = stateFree;
+		
 	};
 	
 	if input_check_pressed("jump"){swimSPD = 5} else {swimSPD = approach(swimSPD,1,0.15)}
@@ -1395,7 +1411,9 @@ stateSwim = function()
 	
 	//gravity
 	if (hdir == 0) and (vdir == 0) {idleTime++;} else idleTime = 0;
-	if (hdir == 0) and idleTime >= 15{var grvFinal = 0.2} else {var grvFinal = 0};
+	//if (hdir == 0) and idleTime >= 15{var grvFinal = 0.2} else {
+		var grvFinal = 0
+		//};
 	vsp = vsp + grvFinal;
 	
 	
@@ -1445,51 +1463,34 @@ stateSwim = function()
 	
 		vsp = 0;
 		vspFrac = 0;
-		onGround = true;
-	}else onGround = false;
+	}
 	y += vsp
 	
 	#region sprites
 
-		if (place_meeting(x,y+max(vsp,1),oCollide)) // if on ground
+		if !place_meeting(x,y+vsp,oCollide)
 		{
-			getBackwards(0.5);
-			image_yscale = 1
-			rot = -hsp * 1.5;
-			if hsp != 0 
-			{
-				sprite_index = sprWalk;
-			}
-			else
-			sprite_index = sprIdle;
-		}
-		else if (vdir != 0) or (hdir != 0)
-		{
-			rot = point_direction(xprevious,yprevious,x,y);
-			if abs(hsp) > abs(vsp) //if moving MOSTLY horizontally
-			{
-				if (rot > 90) and (rot < 270) {image_yscale = -1} else image_yscale = 1;
-				if (sign(hsp) != hdir) and hdir != 0 // if you are pressing one way but still slowing down from the other way
-				{
-					sprite_index = sNewtSwimSkrrt;	
-				}
-				else
-				sprite_index = sNewtSwimH;
-			}
-			else if vdir != 0//if you are moving MOSTLY vertical
-			{
-				sprite_index = sNewtSwimV;
-			}
 			
-		}
-		else if idleTime >= 15
-		{
-			rot = 0;
-			image_yscale = 1;
-			getBackwards(0.5);
-			sprite_index = sNewtAir; 
-			image_index = 1;
-		}
+			rot = floor(point_direction(xprevious,yprevious,x,y));
+			
+			if (rot > 90) and (rot < 280){image_yscale = -1}else image_yscale = 1;
+				
+			if abs(hsp) > abs(vsp) //HORIZONTAL
+			{
+				if (sign(hsp) != hdir) and (hdir != 0)
+				{	
+					sprite_index = sNewtSwimSkrrt	
+				}
+				else sprite_index = sNewtSwimRight;
+			}
+			else //VERTICAL
+			{
+				if vdir != 0 
+				{
+					sprite_index = sNewtSwimV;
+				}
+			}	
+		}		
 		
 	#endregion
 	

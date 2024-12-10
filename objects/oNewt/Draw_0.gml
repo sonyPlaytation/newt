@@ -9,13 +9,16 @@ function draw_newt_ext()
 	var _finalX;
 	if (onWall != 0 and !onGround) {_finalX = drawXscale*onWall}else _finalX = drawXscale*facingRight;
 	
+	rot = clamp(rot,-12,12);
+	image_angle = 0;
+	
 	draw_sprite_ext(
 	sprite_index,
 	image_index,
 	x,
 	y,
 	_finalX,
-	drawYscale,
+	abs(drawYscale),
 	rot,
 	image_blend,
 	image_alpha);
@@ -42,7 +45,6 @@ if state = stateSwim
 else
 {
 	draw_newt_ext();
-
 }
 var scale = 2; 
 
@@ -68,7 +70,10 @@ if dashCount < dashMax and !place_meeting(x,y+2,oCollide)
 //if prop != noone {draw_text_transformed(oNewt.x,oNewt.y-70,string(prop.phy_mass),scale,scale,0)};
 //draw_text_transformed(oNewt.x,oNewt.y-90,image_speed,scale,scale,0)
 
-draw_text(x,y-50,rot);
+draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,true);
+
+draw_text(x,y-50,"yscale"+string(image_yscale));
+draw_text(x,y-65,"drawY"+string(drawYscale));
 
 if (flash > 0)
 {
