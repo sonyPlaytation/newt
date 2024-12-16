@@ -5,7 +5,7 @@ if iFrames > 0 {iFrames--};
 
 if hp <= 0 or !instance_exists(owner)
 {
-	instance_create_depth(x,y,depth,oExplosion);
+	explosion();
 	instance_destroy();
 }
 

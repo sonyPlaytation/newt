@@ -9,7 +9,7 @@ if instance_exists(oNewt) and (point_in_circle(oNewt.x,oNewt.y,x,y,64)) and !ins
 	nearby = true;
 	if input_check_pressed("up")
 	{
-		with(instance_create_layer(x,y-22,"Interact",oCutsceneText))
+		with(instance_create_layer(x,y-22,"Interact",oText))
 		{
 			text = other.text;
 			length = string_length(text);

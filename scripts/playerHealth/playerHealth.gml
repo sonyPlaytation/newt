@@ -39,7 +39,7 @@ if (oInv.hpMax < 12)
 }
 
 ///@args damage
-///@args ally
+///@args target
 function playerHit(dmg = 1, targ = oNewt){
 
 

@@ -48,9 +48,9 @@ if (menu_committed != -1) and menu_x < -200
 {
 	switch (menu_committed)
 	{
-		case 2: unpauseGame() slideTransition(TRANS_MODE.INIT, rTest3); break; //OPTIONS
+		case 2: slideTransition(TRANS_MODE.GOTO, room); break; //OPTIONS
 		
-		case 1: unpauseGame() slideTransition(TRANS_MODE.RESTART); break;	//MAIN MENU
+		case 1: slideTransition(TRANS_MODE.RESTART); break;	//MAIN MENU
 		
 		case 0: game_end(); break;		 //QUIT
 	}

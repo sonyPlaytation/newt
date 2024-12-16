@@ -57,6 +57,7 @@
     {"name":"inst_1FF73451","path":"rooms/rTest3/rTest3.yy",},
     {"name":"inst_1AC369BF","path":"rooms/rTest3/rTest3.yy",},
     {"name":"inst_73E54741","path":"rooms/rTest3/rTest3.yy",},
+    {"name":"inst_26E390F3","path":"rooms/rTest3/rTest3.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -100,11 +101,15 @@
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":276.0,"y":504.0,},
         {"$GMRInstance":"v1","%Name":"inst_4839CEAD","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_4839CEAD","objectId":{"name":"oWeaponPickup","path":"objects/oWeaponPickup/oWeaponPickup.yy",},"properties":[
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"oWeaponPickup","path":"objects/oWeaponPickup/oWeaponPickup.yy",},"propertyId":{"name":"randomWand","path":"objects/oWeaponPickup/oWeaponPickup.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"False",},
-            {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"oWeaponPickup","path":"objects/oWeaponPickup/oWeaponPickup.yy",},"propertyId":{"name":"weapon","path":"objects/oWeaponPickup/oWeaponPickup.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"26",},
+            {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"oWeaponPickup","path":"objects/oWeaponPickup/oWeaponPickup.yy",},"propertyId":{"name":"weapon","path":"objects/oWeaponPickup/oWeaponPickup.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"2",},
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":240.0,"y":888.0,},
         {"$GMRInstance":"v1","%Name":"inst_11BEDE7F","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_11BEDE7F","objectId":{"name":"oWeaponPickup","path":"objects/oWeaponPickup/oWeaponPickup.yy",},"properties":[
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"oWeaponPickup","path":"objects/oWeaponPickup/oWeaponPickup.yy",},"propertyId":{"name":"randomWand","path":"objects/oWeaponPickup/oWeaponPickup.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"True",},
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":756.0,"y":948.0,},
+        {"$GMRInstance":"v1","%Name":"inst_26E390F3","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_26E390F3","objectId":{"name":"oWeaponPickup","path":"objects/oWeaponPickup/oWeaponPickup.yy",},"properties":[
+            {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"oWeaponPickup","path":"objects/oWeaponPickup/oWeaponPickup.yy",},"propertyId":{"name":"randomWand","path":"objects/oWeaponPickup/oWeaponPickup.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"False",},
+            {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"oWeaponPickup","path":"objects/oWeaponPickup/oWeaponPickup.yy",},"propertyId":{"name":"weapon","path":"objects/oWeaponPickup/oWeaponPickup.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"26",},
+          ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":264.0,"y":888.0,},
       ],"layers":[],"name":"Interact","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRTileLayer":"","%Name":"Tiles_1","depth":500,"effectEnabled":true,"effectType":null,"gridX":12,"gridY":12,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Tiles_1","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":45,"SerialiseWidth":55,"TileCompressedData":[
           -734,24,1,12,-21,22,1,12,-17,24,1,12,-12,22,3,12,24,13,-21,0,1,11,-17,24,1,13,-12,0,3,11,24,13,-21,0,

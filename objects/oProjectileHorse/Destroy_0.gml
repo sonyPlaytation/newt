@@ -7,4 +7,4 @@ audio_stop_sound(horseSound);
 
 explosion(damage,radius,x,y,false,0);
 
-global.musicVolume = musReset;
+//global.musicVolume = musReset;

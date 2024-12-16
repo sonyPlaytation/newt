@@ -37,3 +37,4 @@ verY = RESOLUTION_H-verX;
 
 global.pauseSong = mPauseMenu;
 if !audio_is_playing(global.pauseSong) {audio_play_sound(global.pauseSong,900,true,global.musicVolume*global.masterVolume)};
+

@@ -3,20 +3,6 @@
 //screen pause
 if screenPause() {exit;};
 
-//if image_xscale > 3
-//{
-//	var _smkHi = random_range(12,20)
-//	with instance_create_depth(x,y-_smkHi,depth,oSmoke)	
-//	{
-//		owner = other.id;
-//		depth = owner.depth +250
-//		vsp = vsp - (owner.image_xscale/10)
-//		image_xscale = owner.image_xscale/8;
-//		image_yscale = image_xscale;
-//		image_speed = 0.25;
-//	}
-//}
-
 if input_check("shoot"){oSFX.flamethrowerloop = true} else oSFX.flamethrowerloop = false;
 
 image_xscale *= 1.10;

@@ -19,7 +19,6 @@
     {"name":"inst_6685565C","path":"rooms/rBossMaynerd/rBossMaynerd.yy",},
     {"name":"inst_12DD2FD","path":"rooms/rBossMaynerd/rBossMaynerd.yy",},
     {"name":"inst_26BB5975","path":"rooms/rBossMaynerd/rBossMaynerd.yy",},
-    {"name":"inst_3B11668","path":"rooms/rBossMaynerd/rBossMaynerd.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -53,7 +52,6 @@
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":37.0,"scaleY":20.0,"x":480.0,"y":276.0,},
         {"$GMRInstance":"v1","%Name":"inst_6685565C","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_6685565C","objectId":{"name":"oFallbackWarp","path":"objects/oFallbackWarp/oFallbackWarp.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":96.0,"y":480.0,},
         {"$GMRInstance":"v1","%Name":"inst_12DD2FD","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_12DD2FD","objectId":{"name":"oFallbackWarp","path":"objects/oFallbackWarp/oFallbackWarp.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":864.0,"y":480.0,},
-        {"$GMRInstance":"v1","%Name":"inst_3B11668","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3B11668","objectId":{"name":"oCutsceneText","path":"objects/oCutsceneText/oCutsceneText.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":456.0,"y":576.0,},
       ],"layers":[],"name":"Collide","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRBackgroundLayer":"","%Name":"Background","animationFPS":30.0,"animationSpeedType":0,"colour":4294967295,"depth":300,"effectEnabled":true,"effectType":"_filter_tintfilter","gridX":24,"gridY":24,"hierarchyFrozen":false,"hspeed":0.2,"htiled":true,"inheritLayerDepth":true,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Background","properties":[
         {"name":"g_TintCol","type":1,"value":"#FFA38A8C",},

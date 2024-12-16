@@ -321,6 +321,8 @@
     {"name":"rTutorialNew4","order":4,"path":"rooms/rTutorialNew4/rTutorialNew4.yy",},
     {"name":"rTutorialNew5","order":5,"path":"rooms/rTutorialNew5/rTutorialNew5.yy",},
     {"name":"rTutorialNew6","order":8,"path":"rooms/rTutorialNew6/rTutorialNew6.yy",},
+    {"name":"rTutorialNew7","order":9,"path":"rooms/rTutorialNew7/rTutorialNew7.yy",},
+    {"name":"rTutorialNew8","order":10,"path":"rooms/rTutorialNew8/rTutorialNew8.yy",},
     {"name":"__global_object_depths","order":4,"path":"scripts/__global_object_depths/__global_object_depths.yy",},
     {"name":"__input_axis_is_directional","order":9,"path":"scripts/__input_axis_is_directional/__input_axis_is_directional.yy",},
     {"name":"__input_binding_get_label","order":10,"path":"scripts/__input_binding_get_label/__input_binding_get_label.yy",},

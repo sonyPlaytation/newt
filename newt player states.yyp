@@ -382,6 +382,8 @@
     {"id":{"name":"rTutorialNew4","path":"rooms/rTutorialNew4/rTutorialNew4.yy",},},
     {"id":{"name":"rTutorialNew5","path":"rooms/rTutorialNew5/rTutorialNew5.yy",},},
     {"id":{"name":"rTutorialNew6","path":"rooms/rTutorialNew6/rTutorialNew6.yy",},},
+    {"id":{"name":"rTutorialNew7","path":"rooms/rTutorialNew7/rTutorialNew7.yy",},},
+    {"id":{"name":"rTutorialNew8","path":"rooms/rTutorialNew8/rTutorialNew8.yy",},},
     {"id":{"name":"__global_object_depths","path":"scripts/__global_object_depths/__global_object_depths.yy",},},
     {"id":{"name":"__input_axis_is_directional","path":"scripts/__input_axis_is_directional/__input_axis_is_directional.yy",},},
     {"id":{"name":"__input_binding_get_label","path":"scripts/__input_binding_get_label/__input_binding_get_label.yy",},},
@@ -1355,6 +1357,8 @@
     {"roomId":{"name":"rPhysTest","path":"rooms/rPhysTest/rPhysTest.yy",},},
     {"roomId":{"name":"rBossMaynerd","path":"rooms/rBossMaynerd/rBossMaynerd.yy",},},
     {"roomId":{"name":"rBossLobbyTest","path":"rooms/rBossLobbyTest/rBossLobbyTest.yy",},},
+    {"roomId":{"name":"rTutorialNew7","path":"rooms/rTutorialNew7/rTutorialNew7.yy",},},
+    {"roomId":{"name":"rTutorialNew8","path":"rooms/rTutorialNew8/rTutorialNew8.yy",},},
   ],
   "templateType":null,
   "TextureGroups":[

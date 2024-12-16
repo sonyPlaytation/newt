@@ -19,7 +19,7 @@ tellTime = tellTimeReset;
 
 facing = -1;
 jumpCount = 0;
-phase = 0;
+phase = 1;
 
 maxHP = hp;
 horseUsed = false;
@@ -326,6 +326,7 @@ stateJump = function()
 			
 			with (oNewt)
 			{
+				if (onGround){playerHit()}
 				onGround = false
 				y -= 30;
 

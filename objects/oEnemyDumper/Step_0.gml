@@ -2,9 +2,10 @@
 // You can write your code in this editor
 
 
-if !instance_exists(pEnemy) and !instance_exists(oCorpse)
+if !instance_exists(myObject)
 {
-	with instance_create_layer(x,y,"Player",oEWalker)
+	myObject = instance_create_layer(x,y,"Player",object)
+	with (myObject)
 	{
 		damage = 0;
 		walksp = 0;

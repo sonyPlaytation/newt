@@ -8,12 +8,12 @@ big = false;
 friendly = -1;
 
 global.getSizeKilled = 1;
+
 if instance_exists(oRoomDetect)
 {
-	myRoom = instance_nearest(self.x,self.y,oRoomDetect);
-	
-}else {myRoom = noone;}
-
+	myRoom = instance_nearest(self.x,self.y,oRoomDetect);	
+}
+else {myRoom = noone;}
 
 if(hasWeapon)
 {

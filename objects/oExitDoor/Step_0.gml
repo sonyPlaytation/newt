@@ -26,6 +26,9 @@ if place_meeting(x,y,oNewt)
 	
 	if input_check_pressed("up")
 	{
+		global.gameState = 1;
+		oCamera.cutFollow = oExitDoor;
+		
 		//global.roomscleared +=1;
 		with (oNewt)
 		{

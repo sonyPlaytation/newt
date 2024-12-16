@@ -10,7 +10,7 @@ multiplier = choose(3,3,3,3,10);
 
 inactive = false;
 
-image_xscale = oDummy.image_xscale;
+if instance_exists(oDummy){image_xscale = oDummy.image_xscale};
 
 myDamage = instance_create_layer(x,y,"GUI",oDmgNum);
 with (myDamage)

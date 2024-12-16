@@ -3,8 +3,7 @@
 
 timer = 0;
 
-
-
+myObject = instance_create_layer(x,y,"Player",object)
 
 
 
