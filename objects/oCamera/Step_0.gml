@@ -4,11 +4,8 @@ if screenPause() {exit;};
 switch(global.gameState)
 {
 	case 0: //normal gameplay
-	
-		camera_set_view_target(cam,noone);
-		currResW = lerp(currResW,RESOLUTION_W/2,0.1);
-		currResH = lerp(currResH,RESOLUTION_H/2,0.1);
-	
+
+		camera_set_view_target(cam,noone)	
 		camera_set_view_size(cam,currResW,currResH);
 		
 		view_w_half = camera_get_view_width(cam)	/ 2;
@@ -47,12 +44,8 @@ switch(global.gameState)
 	
 	case 1: //cutscene
 	
-		camera_set_view_target(cam,cutFollow);
 		if !instance_exists(cutFollow){cutFollow = oNewt};
-	
-		currResW = lerp(currResW,RESOLUTION_W/3,0.05);
-		currResH = lerp(currResH,RESOLUTION_H/3,0.05);
-	
+		camera_set_view_target(cam,cutFollow);
 		camera_set_view_size(cam,currResW,currResH);
 	
 		view_w_half = camera_get_view_width(cam)	/ 2;
@@ -90,3 +83,8 @@ switch(global.gameState)
 		
 	break;
 }
+
+currZoom = lerp(currZoom, zoom[global.gameState],zoomLerp)
+
+currResW = lerp(currResW,RESOLUTION_W/currZoom,0.1);
+currResH = lerp(currResH,RESOLUTION_H/currZoom,0.1);

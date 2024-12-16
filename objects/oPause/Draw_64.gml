@@ -12,13 +12,16 @@ if pause
 	{
 		instance_create_depth(x,y,depth-1,oMenuPause)
 	}
-	
-	var corner = 100;
-	
-	draw_sprite_ext(sLogo,0,RESOLUTION_W/2,RESOLUTION_H/3,0.5,0.5,0,c_white,pauseAlpha*1.5)
-	
 }
 else
 {
+	if audio_is_playing(global.pauseSong){audio_stop_sound(global.pauseSong)};
 	pauseAlpha = max(0, pauseAlpha - 0.05)
+	draw_set_color(#221428);
+	draw_set_alpha(pauseAlpha);
+	draw_rectangle(0,0,RESOLUTION_W,RESOLUTION_H,0)
+	draw_set_alpha(1);
 }
+
+	var corner = 100;
+	draw_sprite_ext(sLogo,0,RESOLUTION_W/2,RESOLUTION_H/3,0.5,0.5,0,c_white,pauseAlpha*1.5)

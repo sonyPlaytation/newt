@@ -8,3 +8,5 @@ with instance_create_layer(x,y,"Interact",oExitDoor)
 	vsp = -3;	
 	target = rTest1;
 }
+
+instance_destroy(oBossHealth);

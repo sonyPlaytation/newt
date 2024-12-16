@@ -18,7 +18,8 @@ menu_itemheight = font_get_size(fCanont);
 menu_committed = -1;
 menu_control = true;
 
-menu[3] = "Resume";
+menu[4] = "Resume";
+menu[3] = "Quick Reset";
 menu[2] = "Options";
 menu[1] = "Main Menu";
 menu[0] = "Quit";
@@ -34,5 +35,5 @@ ver = "v0.03";
 verX = 10;
 verY = RESOLUTION_H-verX;
 
-menuBGM = mPauseMenu
-audio_play_sound(menuBGM,900,true,global.musicVolume*global.masterVolume);
+global.pauseSong = mPauseMenu;
+if !audio_is_playing(global.pauseSong) {audio_play_sound(global.pauseSong,900,true,global.musicVolume*global.masterVolume)};

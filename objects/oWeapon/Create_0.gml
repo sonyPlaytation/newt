@@ -612,7 +612,7 @@ coinCount = 4;
 	ds_map_add(weapons[19],"startup",0);
 	ds_map_add(weapons[19],"length",10);
 	ds_map_add(weapons[19],"cooldown",20);
-	ds_map_add(weapons[19],"bulletspeed",23);
+	ds_map_add(weapons[19],"bulletspeed",6);
 	ds_map_add(weapons[19],"automatic",false);
 	ds_map_add(weapons[19],"headshots",0);
 	

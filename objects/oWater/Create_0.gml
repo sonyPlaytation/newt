@@ -2,7 +2,7 @@
 
 image_alpha = 0.5;
 transBuffHeight = 32; //Transparency buffer height
-springCount = ceil(sprite_width/12)
+springCount = ceil(sprite_width/(TILE_SIZE/3))
 springs[springCount] = 0;
 springsVel[springCount] = 0;
 springDeltaL[springCount] = 0;

@@ -31,8 +31,8 @@ font = fTextBox;
 fontString = font_get_fontname(font);
 fontBaked = string_concat(fontString,"Baked");
 
-scribble_font_bake_shadow("fIgnoreStd",fontBaked,2,2,c_black,1,0,false);
-scribble_font_scale(fontBaked,3);
+scribble_font_bake_shadow("fTextBox",fontBaked,2,2,c_black,1,0,false);
+scribble_font_scale(fontBaked,2);
 
 typMain = scribble_typist();
 

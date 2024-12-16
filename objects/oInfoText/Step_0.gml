@@ -12,7 +12,7 @@ if instance_exists(owner)
 	}
 	
 	//Name
-	var _name = "[c_yellow][fKaren]"+name;
+	var _name = "[c_white][fIgnoreStd]"+name;
 	
 	//Line One
 	if bulletnumber > 1 {var _bulletnumber = "x"+string(bulletnumber)}else var _bulletnumber = "";

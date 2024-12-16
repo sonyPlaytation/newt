@@ -2,12 +2,25 @@
 
 //screen pause
 if screenPause() {exit;};
+homingShot();
+if bounce != 0
+{
+	if place_meeting(x,y,oCollide) 
+	{
+		var _wall = instance_place(x,y,oCollide);
+		
+		dir += sin(degtorad(180-dir));
+		
+		bounce--;
+		image_angle = dir;
+	}
+}else bounceTime--;
 
-xspd = lengthdir_x(spd, dir);
-yspd = lengthdir_y(spd, dir);
+	xspd = lengthdir_x(spd, dir);
+	yspd = lengthdir_y(spd, dir);
 
-x += xspd;
-y += yspd;
+	x += xspd;
+	y += yspd;
 
 if crit {draw_set_color(c_red)};
 
@@ -61,14 +74,8 @@ if (place_meeting(x,y,pEntity))
 }
 
 
-if bounce != 0 and (collision_circle(x,y,spd,oCollide,1,0)) 
-{
-	if abs(yspd) > abs(xspd) {dir = -dir}else dir = 180-dir;
-	
-	bounce--;
-	image_angle = dir;
-}
-else if (place_meeting(x,y,oCollide)) && (image_index != 0) 
+
+if bounceTime <= 0 and (place_meeting(x,y,oCollide)) && (image_index != 0) 
 {
 	global.hasCrit = false;
 	instance_destroy();

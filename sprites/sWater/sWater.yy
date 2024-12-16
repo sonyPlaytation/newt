@@ -19,6 +19,7 @@
   "height":24,
   "HTile":false,
   "layers":[
+    {"$GMImageLayer":"","%Name":"d442f176-bccf-432d-9b65-02754c0a3d3f","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"d442f176-bccf-432d-9b65-02754c0a3d3f","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"59fcd691-8d6b-460d-a358-ea39a4ae6d2c","blendMode":0,"displayName":"default","isLocked":false,"name":"59fcd691-8d6b-460d-a358-ea39a4ae6d2c","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"sWater",

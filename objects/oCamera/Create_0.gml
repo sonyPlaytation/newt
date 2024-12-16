@@ -15,7 +15,15 @@ yTo = ystart;
 shake_length = 0;
 shake_mag = 0;
 shake_remain = 0;
+
 buff[0] = 11;
 buff[1] = 1;
 curBuff = buff[0];
+
+zoom[0] = 2
+zoom[1] = 3;
+currZoom = zoom[0];
+zoomLerp = 0.5;
+
+
 

@@ -29,8 +29,3 @@ if global.critTimer != 0
 }
 
 
-if input_check_pressed("pause")
-{
-	global.pauseInput = -global.pauseInput;
-}
-

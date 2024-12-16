@@ -7,7 +7,7 @@ if room == rTest1
 or room == rSoda2
 {
 	var shopTheme = (mAddiction)
-	set_song_ingame(shopTheme,15,,"Noiseless - Addiction",60);
+	set_song_ingame(shopTheme,15,,"Noiseless - Addiction",1);
 }
 
 if room == rTest3

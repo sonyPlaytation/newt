@@ -2,6 +2,6 @@
 //screen pause
 if screenPause() {exit;};
 
-if (hp<=0) instance_destroy();
+if !invincible and (hp<=0) instance_destroy();
 
 

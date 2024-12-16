@@ -66,7 +66,7 @@ if (menu_x < -200) && (menu_committed != -1)
 			global.kills = file_text_read_real(file);
 			oGame.combomax = file_text_read_real(file);
 			file_text_close(file);
-			slideTransition(TRANS_MODE.GOTO,target);
+			slideTransition(TRANS_MODE.INIT,target);
 		}
 		break;
 		

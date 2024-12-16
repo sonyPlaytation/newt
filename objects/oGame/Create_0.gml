@@ -18,8 +18,8 @@ else
 display_set_gui_size(RESOLUTION_W,RESOLUTION_H);
 
 global.gameState = 0;
-global.pauseInput = false;
 global.debug = false;
+global.pauseSong = noone;
 
 global.kills = 0;
 global.killsthisroom = 0;

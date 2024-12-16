@@ -48,11 +48,13 @@ if (menu_committed != -1) and menu_x < -200
 {
 	switch (menu_committed)
 	{
-		case 3: unpauseGame() break;
-
-		case 2: systemMsg("there are no options",,true); break; //NEW GAME
+		case 4: unpauseGame() if instance_exists(oNewt){oNewt.propBuffer = 10}; break;
 		
-		case 1: game_restart() break;	//CONTINUE
+		case 3: systemMsg("still working on it",,true); break;
+
+		case 2: systemMsg("there are no options",,true); break; //OPTIONS
+		
+		case 1: unpauseGame() slideTransition(TRANS_MODE.RESTART); break;	//MAIN MENU
 		
 		case 0: game_end(); break;		 //QUIT
 	}

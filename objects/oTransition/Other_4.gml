@@ -4,7 +4,7 @@
 if !layer_exists("Shots"){layer_create(-999,"Shots")}
 
 var fBgTint = fx_create("_filter_tintfilter");
-fx_set_parameter(fBgTint,"g_TintCol",0.549,0.541,0.639,0.45);
+fx_set_parameter(fBgTint,"g_TintCol",[0.549,0.541,0.639,0.45]);
 layer_set_fx(layer_get_id("Background"),fBgTint);
 
 

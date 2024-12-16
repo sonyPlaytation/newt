@@ -9,7 +9,7 @@
   "bitRate":128,
   "compression":0,
   "conversionMode":0,
-  "duration":69.3976,
+  "duration":46.265057,
   "name":"mPauseMenu",
   "parent":{
     "name":"Music",
@@ -20,6 +20,6 @@
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"mPauseMenu.wav",
-  "type":1,
-  "volume":0.37,
+  "type":0,
+  "volume":0.23,
 }

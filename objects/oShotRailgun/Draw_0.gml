@@ -24,6 +24,7 @@ if instance_exists(oNewt)
 					dist = point_distance(xstart,ystart,target.x,target.y);
 					with (target.owner)
 					{
+						diedFrom = "overkill";
 						//damage calculation
 						if (other.crit or oWeapon.headshots) {finalDMG = other.baseDMG * 3}
 						else finalDMG = sniperFalloff(other.dist,other.baseDMG);

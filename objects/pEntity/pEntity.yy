@@ -45,6 +45,7 @@
     {"$GMObjectProperty":"v1","%Name":"inactive","filters":[],"listItems":[],"multiselect":false,"name":"inactive","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"false","varType":0,},
     {"$GMObjectProperty":"v1","%Name":"armor","filters":[],"listItems":[],"multiselect":false,"name":"armor","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":0,},
     {"$GMObjectProperty":"v1","%Name":"dropRate","filters":[],"listItems":[],"multiselect":false,"name":"dropRate","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":0,},
+    {"$GMObjectProperty":"v1","%Name":"invincible","filters":[],"listItems":[],"multiselect":false,"name":"invincible","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"False","varType":3,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

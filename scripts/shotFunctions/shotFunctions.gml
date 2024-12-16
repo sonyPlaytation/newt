@@ -109,14 +109,21 @@ function drawHitscan(){
 function homingShot(){
 	
 	var homingtarget = instance_nearest(mouse_x,mouse_y,pEnemy);
-	if global.soda[1] and instance_exists(pEnemy)
+	if global.soda[1]
 	{
-		if !collision_line(x,y,homingtarget.x,homingtarget.y,oCollide,0,0)
+		color = c_fuchsia;
+		if instance_exists(pEnemy)
 		{
-			var targetdir = point_direction(x,y,homingtarget.x,homingtarget.y-homingtarget.sprite_height/2)
-			dir += sin(degtorad(targetdir-dir))*8;
+			if !collision_line(x,y,homingtarget.x,homingtarget.y,oCollide,0,0)
+			{
+				var targetdir = point_direction(x,y,homingtarget.x,homingtarget.y-homingtarget.sprite_height/2)
+				dir += sin(degtorad(targetdir-dir))*8;
+			}
 		}
+	}
 		
+		draw_set_color(color);
+
 		image_angle = dir
 		xspd = lengthdir_x(spd, dir);
 		yspd = lengthdir_y(spd, dir);
@@ -124,17 +131,6 @@ function homingShot(){
 		x += xspd;
 		y += yspd;
 	
-		color = c_fuchsia;
-		draw_set_color(color);
-	}
-	else
-	{
-		xspd = lengthdir_x(spd, dir);
-		yspd = lengthdir_y(spd, dir);
-
-		x += xspd;
-		y += yspd;
-	}	
 }
 
 function guidedShot(){
@@ -192,6 +188,8 @@ function explosion(_dmg = 100, _rad = 100, _x = x, _y = y, _crit = false, _frien
 	}
 	
 	screenShake(20 * (_rad/100),12 * (_rad/100));
+	//if (_rad >= 75) or (_dmg > 100) {camPunch(-1,0.25)};
+	
 	with instance_create_layer(_x,_y,"Shots",oPartExplosion)
 	{
 		sprite_index = _spr;

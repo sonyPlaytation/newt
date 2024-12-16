@@ -8,9 +8,7 @@
   ],
   "managed":true,
   "name":"oSoda",
-  "overriddenProperties":[
-    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"pEntity","path":"objects/pEntity/pEntity.yy",},"propertyId":{"name":"hp","path":"objects/pEntity/pEntity.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"999999",},
-  ],
+  "overriddenProperties":[],
   "parent":{
     "name":"LevelUp",
     "path":"folders/Objects/System Mechanics/LevelUp.yy",

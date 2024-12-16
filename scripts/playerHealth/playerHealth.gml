@@ -40,18 +40,19 @@ if (oInv.hpMax < 12)
 
 ///@args damage
 ///@args ally
-function playerHit(argument0){
+function playerHit(dmg = 1, targ = oNewt){
 
-if argument1 == undefined{argument1 = oNewt};
 
-with (argument1)
+with (targ)
 	if (iFrames <= 0) and instance_exists(oNewt)
 	{
-		flash = 3;
-		if (argument0 == undefined) {argument0 = 1};
-		
-		if argument1.id == oNewt.id
+		flash = 6;	
+		if targ.id == oNewt.id
 		{
+			camPunch();
+			oSFX.hit = true;
+			hitStop(3);
+			
 			oInv.hp = oInv.hp - argument0;
 			repeat(5*argument0)
 			{
@@ -69,7 +70,7 @@ with (argument1)
 		}
 		else
 		{
-			hp = hp - argument0;
+			hp = hp - dmg;
 			iFrames = iFramesReset;
 			blinkExt(image_alpha, "image_alpha", 1, iFrames);
 		}

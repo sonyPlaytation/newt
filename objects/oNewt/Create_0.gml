@@ -1347,11 +1347,8 @@ stateSwim = function()
 		state = stateFree;
 		
 	};
-	
-	
 	 
-	swimSPD = approach(swimSPD,1,0.15)
-	
+	swimSPD = approach(swimSPD,1,0.5)
 	
 	//vertical inputs
 	var vdir = input_check("down") - input_check("up");
@@ -1377,8 +1374,7 @@ stateSwim = function()
 	
 	//Horizontal inputs
 	var hdir = input_check("right") - input_check("left");
-	
-	if place_meeting(x,y+1,oCollide) {hsp += hdir * 0.1} else {hsp += hdir * accSwim * swimSPD;};
+	hsp += hdir * accSwim * swimSPD;
 	
 	if (hdir == 0)
 	{
@@ -1444,21 +1440,12 @@ stateSwim = function()
 		}
 		else
 		{
-			//ceiling slopes
-			if !place_meeting(x + hsp, y + abs(hsp)+1, oCollide) 
-			{
-				while place_meeting(x+hsp, y, oCollide) {y+= subpixel};
-			}
-			//normal x collide
-			else
-			{
-				var pixelcheck = subpixel*sign(hsp);
-				while (!place_meeting(x+pixelcheck,y,oCollide)) x += pixelcheck;
+			var pixelcheck = subpixel*sign(hsp);
+			while (!place_meeting(x+pixelcheck,y,oCollide)) x += pixelcheck;
 		
-				hsp = 0;
-				hspFrac = 0;	
-			}	
-		}
+			hsp = 0;
+			hspFrac = 0;	
+		}	
 	}
 	x += hsp;
 	
@@ -1469,10 +1456,7 @@ stateSwim = function()
 		var pixelcheck = subpixel*sign(vsp);
 	
 		while (!place_meeting(x,y+pixelcheck,oCollide)) y += pixelcheck;
-	
-		//bonk code
-		if (vsp < 0){jumpHoldTimer = 0; oSFX.mariobump = true};
-	
+		
 		vsp = 0;
 		vspFrac = 0;
 	}

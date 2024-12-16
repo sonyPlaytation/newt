@@ -81,6 +81,17 @@ if dashTrail > 0
 
 if (hasControl) 
 {
+	
+	if input_check_pressed("interact") and ((input_check("up") or input_check("down"))) 
+	and collision_circle(x,y,48,pPhysProp,0,0) and (prop == noone) and (propBuffer <= 0)
+	{
+		prop = instance_nearest(x,y,pPhysProp);	
+		if !object_is_ancestor(prop.object_index, pFrag)
+		{
+			with prop {captured = true; depth = oNewt.depth-25};
+		} else prop = noone;
+	}
+	
 	state();
 	if propBuffer > 0 {propBuffer--};
 } 

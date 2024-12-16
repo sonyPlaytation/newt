@@ -22,11 +22,7 @@ if input_check("shoot"){oSFX.flamethrowerloop = true} else oSFX.flamethrowerloop
 image_xscale *= 1.10;
 image_yscale = image_xscale;
 
-xspd = lengthdir_x(spd, dir);
-yspd = lengthdir_y(spd, dir);
-
-x += xspd;
-y += yspd;
+homingShot();
 
 if crit {draw_set_color(c_red)};
 

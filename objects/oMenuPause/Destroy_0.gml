@@ -2,4 +2,3 @@
 
 
 
-audio_stop_sound(menuBGM);

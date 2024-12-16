@@ -19,6 +19,7 @@ active = false;
 
 textsound[1] = t1;
 
+
 typist = scribble_typist()
 	//typist.sound_per_char(textsound,0.01,1.2,0.6);
 	typist.in(0.8,1)
