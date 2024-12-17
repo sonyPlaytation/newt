@@ -10,8 +10,8 @@
   "name":"oSlime",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Particle Systems/Objects.yy",
+    "name":"Splatters",
+    "path":"folders/Particle Systems/Objects/Splatters.yy",
   },
   "parentObjectId":{
     "name":"pSplatter",

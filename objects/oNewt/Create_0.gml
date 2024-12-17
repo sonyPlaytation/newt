@@ -251,6 +251,7 @@ gArr[3] = oExpBar;
 gArr[4] = oWeapon;
 gArr[5] = oExclam;
 gArr[6] = oShotSniperLaser;
+
 //gArr[7] = oMusicManager;
 
 //player States

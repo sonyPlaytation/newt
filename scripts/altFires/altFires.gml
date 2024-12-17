@@ -99,6 +99,7 @@ if  oNewt.hasControl and altfire != -1 and input_check_pressed("altfire") and (d
 				var gren = (instance_create_layer(x,y,"Player",oGrenade))
 				with gren
 				{
+					depth = oNewt.depth - 20
 					captured = true;
 					phy_active = false;
 					audio_play_sound(snHL1Pickup,999,false);

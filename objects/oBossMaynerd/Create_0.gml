@@ -27,8 +27,6 @@ horseUsed = false;
 stt = "";
 sprite = sMaynerd;
 
-
-
 global.getSizeKilled = 1;
 if instance_exists(oRoomDetect)
 {

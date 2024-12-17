@@ -51,7 +51,7 @@ coinCount = 4;
 	ds_map_add(weapons[1],"shootsfx",snShotHLPist);
 	ds_map_add(weapons[1],"pickupsound",snHL1Pickup);
 	ds_map_add(weapons[1],"ammotype",4);
-	ds_map_add(weapons[1],"ammouse",1);
+	ds_map_add(weapons[1],"ammouse",0);
 	ds_map_add(weapons[1],"altfire",-1);
 	ds_map_add(weapons[1],"recoil",4);
 	ds_map_add(weapons[1],"accuracy",0);
@@ -869,64 +869,97 @@ coinCount = 4;
 	ds_map_add(weapons[27],"hitSound",snBatHit);
 	ds_map_add(weapons[27],"meleeState",1);
 	
-	// 1 - starter
+	// 28 - Red9
 	weapons[28] = ds_map_create();
 	ds_map_add(weapons[28],"type",0);
-	ds_map_add(weapons[28],"name", "TEST BALL GUN");
-	ds_map_add(weapons[28],"sprite",sWand);
+	ds_map_add(weapons[28],"name", "Red9");
+	ds_map_add(weapons[28],"sprite",sRed9);
 	ds_map_add(weapons[28],"shootsfx",snShotHLPist);
 	ds_map_add(weapons[28],"pickupsound",snHL1Pickup);
 	ds_map_add(weapons[28],"ammotype",0);
-	ds_map_add(weapons[28],"ammouse",0);
-	ds_map_add(weapons[28],"altfire",-1);
-	ds_map_add(weapons[28],"recoil",0);
-	ds_map_add(weapons[28],"accuracy",0);
-	ds_map_add(weapons[28],"recoilpush",0);
+	ds_map_add(weapons[28],"ammouse",1);
+	ds_map_add(weapons[28],"altfire","handgrenade");
+	ds_map_add(weapons[28],"recoil",12);
+	ds_map_add(weapons[28],"accuracy",2);
+	ds_map_add(weapons[28],"recoilpush",1);
 	ds_map_add(weapons[28],"shakeamnt",0);
 	ds_map_add(weapons[28],"shaketime",0);
-	ds_map_add(weapons[28],"damage",0)
-	ds_map_add(weapons[28],"cancrit",false);
+	ds_map_add(weapons[28],"damage",24)
+	ds_map_add(weapons[28],"cancrit",true);
 	ds_map_add(weapons[28],"flash",-1);
-	ds_map_add(weapons[28],"projectile",oPhysBaseball);
+	ds_map_add(weapons[28],"projectile",oShotHitscan);
 	ds_map_add(weapons[28],"bulletnumber",1);
 	ds_map_add(weapons[28],"spread",-1);
 	ds_map_add(weapons[28],"casing",-1);
 	ds_map_add(weapons[28],"startup",0);
-	ds_map_add(weapons[28],"length",35);
-	ds_map_add(weapons[28],"cooldown",3);
-	ds_map_add(weapons[28],"bulletspeed",100);
+	ds_map_add(weapons[28],"length",45);
+	ds_map_add(weapons[28],"cooldown",5);
+	ds_map_add(weapons[28],"bulletspeed",0);
 	ds_map_add(weapons[28],"automatic",false);
-	ds_map_add(weapons[28],"headshots",0);
+	ds_map_add(weapons[28],"headshots",1);
 	ds_map_add(weapons[28],"hitSprite",sHitLine);
 	
-	// 1 - starter
+	// 29 - Paintball Gun
 	weapons[29] = ds_map_create();
-	ds_map_add(weapons[29],"type",0);
-	ds_map_add(weapons[29],"name", "Trailblazer");
-	ds_map_add(weapons[29],"sprite",sWand);
-	ds_map_add(weapons[29],"shootsfx",snTrail2);
+	ds_map_add(weapons[29],"type",1);
+	ds_map_add(weapons[29],"name", "Paintballer");
+	ds_map_add(weapons[29],"sprite",sPaintGun);
+	ds_map_add(weapons[29],"shootsfx",snPaintShot);
 	ds_map_add(weapons[29],"pickupsound",snHL1Pickup);
 	ds_map_add(weapons[29],"ammotype",4);
-	ds_map_add(weapons[29],"ammouse",5);
+	ds_map_add(weapons[29],"ammouse",1);
 	ds_map_add(weapons[29],"altfire",-1);
-	ds_map_add(weapons[29],"recoil",50);
-	ds_map_add(weapons[29],"accuracy",0);
-	ds_map_add(weapons[29],"recoilpush",50);
-	ds_map_add(weapons[29],"shakeamnt",30);
-	ds_map_add(weapons[29],"shaketime",3);
-	ds_map_add(weapons[29],"damage",65)
+	ds_map_add(weapons[29],"recoil",5);
+	ds_map_add(weapons[29],"accuracy",5);
+	ds_map_add(weapons[29],"recoilpush",1);
+	ds_map_add(weapons[29],"shakeamnt",1);
+	ds_map_add(weapons[29],"shaketime",1);
+	ds_map_add(weapons[29],"damage",24)
 	ds_map_add(weapons[29],"cancrit",false);
 	ds_map_add(weapons[29],"flash",-1);
-	ds_map_add(weapons[29],"projectile",oShotTrailblazer);
+	ds_map_add(weapons[29],"projectile",oShotPaintball);
 	ds_map_add(weapons[29],"bulletnumber",1);
 	ds_map_add(weapons[29],"spread",-1);
 	ds_map_add(weapons[29],"casing",-1);
 	ds_map_add(weapons[29],"startup",0);
-	ds_map_add(weapons[29],"length",35);
-	ds_map_add(weapons[29],"cooldown",60);
-	ds_map_add(weapons[29],"bulletspeed",10);
-	ds_map_add(weapons[29],"automatic",false);
+	ds_map_add(weapons[29],"length",0);
+	ds_map_add(weapons[29],"cooldown",4);
+	ds_map_add(weapons[29],"bulletspeed",20);
+	ds_map_add(weapons[29],"automatic",true);
 	ds_map_add(weapons[29],"headshots",0);
+	
+	// 30 - Dragonslayer
+	weapons[30] = ds_map_create();
+	ds_map_add(weapons[30],"type",2);
+	ds_map_add(weapons[30],"name", "Dragon\nSlayer");
+	ds_map_add(weapons[30],"sprite",sGutsIdle);
+	ds_map_add(weapons[30],"shootsfx",snGutsSwing);
+	ds_map_add(weapons[30],"pickupsound",snHL1Pickup);
+	ds_map_add(weapons[30],"ammotype",3);
+	ds_map_add(weapons[30],"ammouse",1);
+	ds_map_add(weapons[30],"altfire",-1);
+	ds_map_add(weapons[30],"recoil",0);
+	ds_map_add(weapons[30],"accuracy",0);
+	ds_map_add(weapons[30],"recoilpush",-25);
+	ds_map_add(weapons[30],"shakeamnt",1);
+	ds_map_add(weapons[30],"shaketime",1);
+	ds_map_add(weapons[30],"damage",150)
+	ds_map_add(weapons[30],"cancrit",false);
+	ds_map_add(weapons[30],"flash",-1);
+	ds_map_add(weapons[30],"projectile",oShotMelee);
+	ds_map_add(weapons[30],"bulletnumber",1);
+	ds_map_add(weapons[30],"spread",-1);
+	ds_map_add(weapons[30],"casing",-1);
+	ds_map_add(weapons[30],"startup",30);
+	ds_map_add(weapons[30],"length",75);
+	ds_map_add(weapons[30],"cooldown",45);
+	ds_map_add(weapons[30],"bulletspeed",0);
+	ds_map_add(weapons[30],"automatic",false);
+	ds_map_add(weapons[30],"headshots",0);
+	ds_map_add(weapons[30],"animM1",sGutsSwing);
+	ds_map_add(weapons[30],"animM2",sGutsIdle);
+	ds_map_add(weapons[30],"hitSound",snGutsHit);
+	ds_map_add(weapons[30],"meleeState",MELEE.SLICE);
 	
 	#endregion
 
@@ -1054,7 +1087,7 @@ fireWeapon = function()
 					spd = other.bulletspeed;
 					image_angle = dir;
 								
-					if other.projectile == oPhysBaseball
+					if object_get_physics(other.projectile.object_index)
 					{
 						var _physX = lengthdir_x(other.bulletspeed, other.image_angle) * 10000
 						var _physY = lengthdir_y(other.bulletspeed, other.image_angle) * 10000
@@ -1148,9 +1181,9 @@ swingMelee = function()
 						global.hasCrit = false;
 									
 						click = 0;
-						image_xscale = other.length+point_distance(x,y,oNewt.x,global.newtCenter);
+						image_xscale = (other.length*2)+point_distance(x,y,oNewt.x,global.newtCenter);
 						direction = other.image_angle- _spread/2 + _spreadDiv * j + random_range(-other.accuracy,other.accuracy);
-						speed = other.bulletspeed;
+						
 						image_angle = direction;
 					}
 

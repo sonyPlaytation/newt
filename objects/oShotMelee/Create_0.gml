@@ -1,6 +1,17 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+enum MELEE
+{
+	SWAT	= 0,
+	PARRY	= 1,
+	SLICE	= 2,
+	DESTROY = 3,
+	WRENCH	= 4,
+	WEAK	= 5
+}
+
+
 #region functions
 hitTarget = function()
 {
@@ -8,7 +19,7 @@ hitTarget = function()
 	if (place_meeting(x,y,pEntity))
 	{
 		var hitTargs = ds_list_create();
-		var targNum = collision_ellipse_list(x-100,y-100,x+100,y+100,pEntity,0,0,hitTargs,1);
+		var targNum = instance_place_list(x,y,pEntity,hitTargs,1);
 					
 		if (place_meeting(x,y,pEntity)) and targNum > 0
 		{
@@ -36,7 +47,7 @@ parry = function()
 	if (place_meeting(x,y,pEntity))
 	{
 		var hitTargs = ds_list_create();
-		var targNum = collision_ellipse_list(x-100,y-100,x+100,y+100,pEntity,0,0,hitTargs,1);
+		var targNum = instance_place_list(x,y,pEntity,hitTargs,1);
 					
 		if (place_meeting(x,y,pEntity)) and targNum > 0
 		{
@@ -100,14 +111,13 @@ swatTrail = function()
 }
 #endregion
 
-alarm[0] = 10;
+//alarm[0] = 10;
 
 hit = false;
 
 sprW = 0;
 sprH = 60;
 
-image_xscale = sprW/2;
 image_yscale = sprH/2;
 
 _hs = max (0, oWeapon.cooldown/4)
@@ -299,6 +309,8 @@ stateWeak = function()
 {
 	hitTarget();
 }
+
+
 
 stt[0] = stateSwat;
 stt[1] = stateParry;

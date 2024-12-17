@@ -4,17 +4,15 @@
 if instance_exists(oNewt)
 {
 
-hit = false;
+	hit = false;
 
-x = oNewt.x;
-y = global.newtCenter;
+	x = oNewt.x;
+	y = global.newtCenter;
 
-//screen pause
-if screenPause() {exit;};
+	//screen pause
+	if screenPause() {exit;};
 
-
-
-state();
+	state();
 
 };
 

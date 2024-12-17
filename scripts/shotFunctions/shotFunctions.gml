@@ -1,10 +1,9 @@
 ///@args damage
 ///@args [headshot]
-function enemyHit(finalDMG,headshot){
+function enemyHit(finalDMG,headshot = false){
 
 	if (!object_is_ancestor(self.object_index,pPhysProp))
 	{
-		if headshot == undefined{headshot = false};
 
 		finalDMG = max(0, floor(finalDMG - (finalDMG * (armor/100))));
 

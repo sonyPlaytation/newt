@@ -7,7 +7,7 @@ vsp = vsp + grv;
 x += hsp
 y += vsp;
 
-if (place_meeting(x,y,oCollide))
+if collision_point(x,y,oCollide,false,false)
 {
 	if surface_exists(global.splatLayer) and (!lengthMatters or length > 0)
 	{
@@ -15,9 +15,8 @@ if (place_meeting(x,y,oCollide))
 			
 		if length < lengthMax 
 		{
-			draw_self();
-			draw_set_color(color);
-			draw_line_width(x,y,XPrev,YPrev,3*size)
+			draw_sprite_ext(sprite_index,1,x,y,size,size,0,color,1);	
+			draw_line_width_color(x,y,XPrev,YPrev,(sprite_width/2)*size,color,color)
 		};
 			
 		surface_reset_target();
@@ -26,9 +25,6 @@ if (place_meeting(x,y,oCollide))
 	}
 	else if length <= 0 {instance_destroy()};
 }
-
-image_xscale = size;
-image_yscale = size;
 
 XPrev = x;
 YPrev = y;

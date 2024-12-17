@@ -1,6 +1,10 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+if place_meeting(x,y,pEnemy)
+{
+	hit = true;	
+}
 
 if hit == true and click = 0
 {

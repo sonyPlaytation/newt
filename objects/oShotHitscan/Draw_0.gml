@@ -27,7 +27,7 @@ if instance_exists(oNewt)
 						if (other.crit or other.headshot) {finalDMG = other.baseDMG * 3}
 						else finalDMG = standardFalloff(other.dist,other.baseDMG);
 			
-						enemyHit(finalDMG);				
+						enemyHit(finalDMG,true);				
 					}
 				}
 				can_damage = false;

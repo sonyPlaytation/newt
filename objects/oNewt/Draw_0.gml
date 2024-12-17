@@ -1,8 +1,8 @@
 
 
 
-if (state != stateSwim) {rot = 0};
-//(state != stateFree) and 
+if (state != stateFree) and (state != stateSwim) {rot = 0};
+// 
 
 if prop != noone {image_speed = sprSPD * clamp(oInv.spdNorm-prop.phy_mass/1000,0.65,1.00);} else image_speed = sprSPD;
 

@@ -49,17 +49,19 @@ if (instance_exists(oNewt))
 		roomCleared = true;
 		roomActive = false;
 	}
+	
+	if bossRoom
+	{
+		if (song != -1)
+		{
+			if  (!roomCleared) and !pEnemy.inactive
+			{
+				with (oMusicManager) {set_song_ingame(other.song)};
+			}
+			else if roomCleared {with (oMusicManager) {set_song_ingame(mAddiction)}};
+		}	
+	}
 }
 
-if bossRoom
-{
-	if (song != -1)
-	{
-		if  (!roomCleared) and !pEnemy.inactive
-		{
-			with (oMusicManager) {set_song_ingame(other.song)};
-		}
-		else if roomCleared {with (oMusicManager) {set_song_ingame(mAddiction)}};
-	}	
-}
+
 

@@ -46,7 +46,7 @@ if instance_exists(oNewt) and oNewt.onGround
 	image_speed = spd*5;
 
 }
-else if !oNewt.onGround
+else if instance_exists(oNewt) and !oNewt.onGround
 {
 	audio_pause_sound(horseSound);
 }

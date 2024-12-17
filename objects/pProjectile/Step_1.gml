@@ -4,6 +4,7 @@
 if screenPause() {exit;};
 
 homingShot();
+
 if crit {color = c_red; draw_set_color(color);};
 
 if instance_exists(oNewt)
