@@ -635,10 +635,9 @@ stateFree = function()
 			if (onWall == 1) side = bbox_right;
 			slime += 2;
 		
-			if ((slime > 2) && (vsp > 0)) with (instance_create_layer(side,bbox_top, "Player",oSlimeSlide))
+			if ((slime > 2) && (vsp != 0)) with (instance_create_layer(side,bbox_top, "Player",oSlimeSlide))
 			{
 				other.slime = 0;
-				hspeed = random_range(-other.onWall*0.7,-other.onWall*0.1);
 			}
 		}
 		else
@@ -792,11 +791,13 @@ stateCrouch = function()
 		if !grind
 		{
 			oSFX.wallslidesound = true;
-			repeat(3)
+			repeat(clamp(abs(hsp)/2,choose(0,0,1),15))
 			{
-				with (instance_create_layer(x + hsp*2.5,bbox_bottom, "Player",oSlime))
+				with instance_create_layer(x + hsp*2.5,bbox_bottom, "Player",oSlime)
 				{
-					hsp = random_range(-other.onWall*0.7,-other.onWall*0.1);
+					size = 2;
+					vsp = choose(1,1,1,2,2,3);
+					hsp = -other.hsp*2;
 				}
 			}
 		}

@@ -12,7 +12,10 @@
     "name":"Objects",
     "path":"folders/Particle Systems/Objects.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"pSplatter",
+    "path":"objects/pSplatter/pSplatter.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

@@ -1,20 +1,9 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-	
-	
-	vsp = vsp + grv;
-	
-	instance_create_depth(x,y,depth,oBloodSmall)
-	
-	image_angle +=30;
+event_inherited();
 
-	//horizontal collision
-	if (place_meeting(x+hsp,y,oCollide)){instance_destroy();}else {x += hsp;}
-
-	//vertical collision
-	if (place_meeting(x,y+vsp,oCollide)){instance_destroy();}else {y += vsp;}
-
+instance_create_depth(x,y,depth,oBloodSmall);
 
 if place_meeting(x,y,oNewt)
 {
