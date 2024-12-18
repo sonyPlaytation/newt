@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"meleeCombos",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"meleeCombos",
+  "parent":{
+    "name":"Shots",
+    "path":"folders/Objects/Combat/Shots.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

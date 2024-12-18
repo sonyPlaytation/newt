@@ -230,3 +230,36 @@ function trailBlazer(_dmg, _rad, _x, _y, _crit, _friendly, _spr, _sfx)
 	
 	oSFX.explode = _sfx;
 }
+
+function swingMelee(_sprite)
+{
+	var mouseLeft;			
+	if (automatic) {mouseLeft = input_check("shoot")} 
+	else			mouseLeft = input_check_pressed("shoot");
+	
+	if sprite_index != sprite and image_index > image_number  {oWeapon.combo = -1}
+	
+	if (mouseLeft) and oNewt.propBuffer <= 0 
+	{
+		meleeCombos(_sprite,mouseLeft);
+	}
+	
+	fireWeapon();
+}
+
+function forceMelee(){
+	screenShake(shakeamnt,shaketime);
+	with (instance_create_layer(x,y,"Shots",projectile))
+	{
+		if (other.cancrit == 1) and global.hasCrit or global.critTimer > 0
+		{
+			oSFX.critshot = true;
+			crit = global.hasCrit;
+		}else crit = false;
+		global.hasCrit = false;
+									
+		click = 0;
+		image_xscale = (other.length*2)+point_distance(x,y,oNewt.x,global.newtCenter);
+		image_angle = other.image_angle;
+	}	
+}

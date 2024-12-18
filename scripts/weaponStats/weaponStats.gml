@@ -34,6 +34,7 @@ function weaponStats(weapon){
 		meleeState	= wp_map[? "meleeState"];
 		headshots	= wp_map[? "headshots"];
 		hitSprite	= wp_map[? "hitSprite"];
+		combos		= wp_map[? "combos"];
 
 		global.heldweapon = weapon;
 	}

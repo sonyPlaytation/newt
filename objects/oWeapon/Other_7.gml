@@ -2,4 +2,5 @@
 // You can write your code in this editor
 
 
-	sprite_index = sprite;
+sprite_index = sprite;
+combo = 0;
