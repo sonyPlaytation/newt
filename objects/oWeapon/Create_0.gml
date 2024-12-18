@@ -914,7 +914,7 @@ coinCount = 4;
 	ds_map_add(weapons[29],"recoilpush",1);
 	ds_map_add(weapons[29],"shakeamnt",1);
 	ds_map_add(weapons[29],"shaketime",1);
-	ds_map_add(weapons[29],"damage",24)
+	ds_map_add(weapons[29],"damage",10)
 	ds_map_add(weapons[29],"cancrit",false);
 	ds_map_add(weapons[29],"flash",-1);
 	ds_map_add(weapons[29],"projectile",oShotPaintball);
@@ -941,15 +941,15 @@ coinCount = 4;
 	ds_map_add(weapons[30],"recoil",0);
 	ds_map_add(weapons[30],"accuracy",0);
 	ds_map_add(weapons[30],"recoilpush",-25);
-	ds_map_add(weapons[30],"shakeamnt",10);
-	ds_map_add(weapons[30],"shaketime",5);
+	ds_map_add(weapons[30],"shakeamnt",20);
+	ds_map_add(weapons[30],"shaketime",10);
 	ds_map_add(weapons[30],"damage",150)
 	ds_map_add(weapons[30],"cancrit",false);
 	ds_map_add(weapons[30],"projectile",oShotMelee);
 	ds_map_add(weapons[30],"bulletnumber",1);
 	ds_map_add(weapons[30],"spread",-1);
 	ds_map_add(weapons[30],"casing",-1);
-	ds_map_add(weapons[30],"startup",30);
+	ds_map_add(weapons[30],"startup",22);
 	ds_map_add(weapons[30],"length",75);
 	ds_map_add(weapons[30],"cooldown",45);
 	ds_map_add(weapons[30],"bulletspeed",0);
@@ -964,7 +964,7 @@ coinCount = 4;
 	weapons[31] = ds_map_create();
 	ds_map_add(weapons[31],"type",2);
 	ds_map_add(weapons[31],"name", "Buster\nSword");
-	ds_map_add(weapons[31],"sprite",sGutsIdle);
+	ds_map_add(weapons[31],"sprite",sBusterIdle);
 	ds_map_add(weapons[31],"shootsfx",snWoosh1);
 	ds_map_add(weapons[31],"pickupsound",snCockUltrakill);
 	ds_map_add(weapons[31],"ammotype",4);
@@ -982,9 +982,9 @@ coinCount = 4;
 	ds_map_add(weapons[31],"bulletnumber",1);
 	ds_map_add(weapons[31],"spread",-1);
 	ds_map_add(weapons[31],"casing",-1);
-	ds_map_add(weapons[31],"startup",24);
+	ds_map_add(weapons[31],"startup",18);
 	ds_map_add(weapons[31],"length",75);
-	ds_map_add(weapons[31],"cooldown",45);
+	ds_map_add(weapons[31],"cooldown",25);
 	ds_map_add(weapons[31],"bulletspeed",0);
 	ds_map_add(weapons[31],"automatic",false);
 	ds_map_add(weapons[31],"headshots",0);
@@ -1082,8 +1082,6 @@ fireWeapon = function()
 			current_cd = cooldown;
 			current_delay = startup;	
 			image_index = 0;
-			sprite_index = animM1
-			image_speed = 1
 		}
 		image_speed = 1;
 	}

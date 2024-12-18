@@ -1,11 +1,17 @@
 ///@args damage
 ///@args [headshot]
-function enemyHit(finalDMG,headshot = false){
+function enemyHit(finalDMG, headshot = false, _pierce = false){
 
 	if (!object_is_ancestor(self.object_index,pPhysProp))
 	{
+		
+		
+		if !_pierce 
+		{
+			var _funcArmor = armor;
+			finalDMG = max(0, floor(finalDMG - (finalDMG * (_funcArmor/100))))
+		}else var _funcArmor = 0;
 
-		finalDMG = max(0, floor(finalDMG - (finalDMG * (armor/100))));
 
 		//subtract health
 		hp -= finalDMG;
@@ -30,7 +36,7 @@ function enemyHit(finalDMG,headshot = false){
 			}
 		} else {global.critTotalDMG += finalDMG}
 
-		oSFX.hit = armor;
+		oSFX.hit = _funcArmor;
 
 		if armor > 1 {flash = 4}else flash = 3;
 		
@@ -231,22 +237,6 @@ function trailBlazer(_dmg, _rad, _x, _y, _crit, _friendly, _spr, _sfx)
 	oSFX.explode = _sfx;
 }
 
-function swingMelee(_sprite)
-{
-	var mouseLeft;			
-	if (automatic) {mouseLeft = input_check("shoot")} 
-	else			mouseLeft = input_check_pressed("shoot");
-	
-	if sprite_index != sprite and image_index > image_number  {oWeapon.combo = -1}
-	
-	if (mouseLeft) and oNewt.propBuffer <= 0 
-	{
-		
-		meleeCombos(sprite_index,mouseLeft);
-	}
-	
-	fireWeapon();
-}
 
 function forceMelee(){
 	screenShake(shakeamnt,shaketime);

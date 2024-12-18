@@ -13,7 +13,7 @@ enum MELEE
 
 
 #region functions
-hitTarget = function()
+hitTarget = function(_pierce = false)
 {
 	//hitting an enemy
 	if (place_meeting(x,y,pEntity))
@@ -32,7 +32,7 @@ hitTarget = function()
 					with target
 					{
 						diedFrom = "standard";
-						enemyHit(oWeapon.damage);
+						enemyHit(oWeapon.damage,,_pierce);
 					}
 				}
 			}
@@ -233,7 +233,7 @@ stateSlice = function()
 	var _ammo = irandom(5);
 	ammoBack(_ammo,5);
 	
-	hitTarget();
+	hitTarget(true);
 }
 
 stateDestroy = function()

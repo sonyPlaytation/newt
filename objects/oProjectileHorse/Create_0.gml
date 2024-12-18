@@ -13,6 +13,6 @@ radius = 25;
 
 horseSound = audio_play_sound(snHorses,900,false);
 
-//musReset = global.musicVolume;
+musReset = global.musicVolume;
 
-//global.musicVolume = 0.5;
+global.musicVolume = 0.5;
