@@ -22,6 +22,7 @@ if (hp <= 0)
 {
 	global.getSizeKilled = size;
 	global.corpseSprite = cSprite;
+	global.hitfrom = hitfrom;
 	
 	switch(diedFrom)
 	{

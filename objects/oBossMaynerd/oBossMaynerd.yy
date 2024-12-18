@@ -22,8 +22,8 @@
     "path":"folders/Objects/Entities/Bosses.yy",
   },
   "parentObjectId":{
-    "name":"pEnemy",
-    "path":"objects/pEnemy/pEnemy.yy",
+    "name":"pBoss",
+    "path":"objects/pBoss/pBoss.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

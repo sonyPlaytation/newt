@@ -158,16 +158,11 @@ if  oNewt.hasControl and altfire != -1 and input_check_pressed("altfire") and (d
 				audio_play_sound(snCockTF2SG,800,false);
 				with (instance_create_layer(x,y,"Shots",oShotMelee))
 				{
+					forceState = MELEE.PARRY;
 					crit = false;
 					image_xscale = 30;
 					direction = other.image_angle
 					image_angle = direction;
-				}
-				
-				with (oNewt)
-				{
-					onGround = false
-					vsp = lengthdir_y(100,90);
 				}
 			}
 		break;
@@ -187,12 +182,8 @@ if  oNewt.hasControl and altfire != -1 and input_check_pressed("altfire") and (d
 				delayRight = 45;
 				sprite_index = animM2;
 				image_index = 0
-				forceMelee(MELEE.SLICE);
-				
-				with(oNewt)
-				{
-					vsp -= lengthdir_y(other.recoilpush*0.65,90);
-				}
+				forceMelee(MELEE.SLICE,1);
+
 				
 				if (combo and image_index > 25) and input_check_pressed("shoot")
 				{

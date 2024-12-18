@@ -23,12 +23,10 @@ decX = 0;
 decY = 0;
 decay = 1 + decX + decY;
 
-if instance_exists(oNewt) {hitfrom = point_direction(x,y,oNewt.x,oNewt.y)}else hitfrom = 0;;
-
 inactive = false;
 flash = 3;
-hsp = lengthdir_x(5,hitfrom);
-vsp = lengthdir_y(5,hitfrom)-5;
+hsp = lengthdir_x(5,global.hitfrom);
+vsp = lengthdir_y(5,global.hitfrom)-5;
 grv = 0.3;
 dropRate = 10;
 effect = "";

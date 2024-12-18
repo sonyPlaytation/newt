@@ -15,8 +15,8 @@ if corpsePicked != true
 			vsp = -5;
 			grv = 0.3;
 		
-			hsp = lengthdir_x(3,direction);
-			vsp = lengthdir_y(3,direction)-4;
+			hsp = lengthdir_x(3,global.hitfrom);
+			vsp = lengthdir_y(3,global.hitfrom)-4;
 			if (sign(hsp) != 0) image_xscale = sign(hsp) * other.size;
 			image_yscale = other.size;
 			corpsePicked = true;
@@ -32,8 +32,8 @@ if corpsePicked != true
 			vsp = -5;
 			grv = 0.3;
 		
-			hsp = lengthdir_x(3,direction);
-			vsp = lengthdir_y(3,direction)-4;
+			hsp = lengthdir_x(3,global.hitfrom);
+			vsp = lengthdir_y(3,global.hitfrom)-4;
 			if (sign(hsp) != 0) image_xscale = sign(hsp) * other.size;
 			image_yscale = other.size;
 			corpsePicked = true;
@@ -56,8 +56,8 @@ if corpsePicked != true
 			
 			with instance_create_depth(x+(10*image_yscale),y-12,depth-15,oGolemLimbs){image_index = 1;image_yscale = other.image_yscale};
 			
-			hsp = lengthdir_x(3,direction);
-			vsp = lengthdir_y(3,direction)-4;
+			hsp = lengthdir_x(3,global.hitfrom);
+			vsp = lengthdir_y(3,global.hitfrom)-4;
 			if (sign(hsp) != 0) image_xscale = sign(hsp) * other.size;
 			image_yscale = other.size;
 			corpsePicked = true;

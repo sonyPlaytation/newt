@@ -352,6 +352,7 @@
     {"id":{"name":"oWipeWhite","path":"objects/oWipeWhite/oWipeWhite.yy",},},
     {"id":{"name":"oWIPguns","path":"objects/oWIPguns/oWIPguns.yy",},},
     {"id":{"name":"pAlly","path":"objects/pAlly/pAlly.yy",},},
+    {"id":{"name":"pBoss","path":"objects/pBoss/pBoss.yy",},},
     {"id":{"name":"pEnemy","path":"objects/pEnemy/pEnemy.yy",},},
     {"id":{"name":"pEnemyShot","path":"objects/pEnemyShot/pEnemyShot.yy",},},
     {"id":{"name":"pEntity","path":"objects/pEntity/pEntity.yy",},},

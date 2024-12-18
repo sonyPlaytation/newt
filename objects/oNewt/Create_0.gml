@@ -33,7 +33,7 @@ function checkCollSemi(_x, _y)
 		for (var i = 0; i < _listSize; i++)
 		{
 			var _listInst = _list[| i];
-			if floor(bbox_bottom) <= ceil(_listInst.bbox_top - _listInst.yspd)
+			if floor(bbox_bottom) <= ceil(_listInst.bbox_top - _listInst.vsp)
 			{
 				//return id of a semisolid platform
 				_rtrn = _listInst;
@@ -495,7 +495,7 @@ stateFree = function()
 	var _ycheck = y+1 + _clampYspd;
 	if instance_exists(myPlat)
 	{
-		_ycheck += max(0, myPlat.yspd);
+		_ycheck += max(0, myPlat.vsp);
 		if myPlat = prop {propHandle(0,1);}
 	};
 	var _semiSolid = checkCollSemi(x, _ycheck);
@@ -507,18 +507,18 @@ stateFree = function()
 		var _listInst = _list[| i ];
 		
 		//avoid magnetism
-		if  (_listInst.yspd <= vsp or instance_exists(myPlat))
-		and (_listInst.yspd > 0 or place_meeting(x,y+1+_clampYspd,_listInst))
+		if  (_listInst.vsp <= vsp or instance_exists(myPlat))
+		and (_listInst.vsp > 0 or place_meeting(x,y+1+_clampYspd,_listInst))
 		{
 			//return a solid wall or any semisolid walls that are below the player
 			if _listInst.object_index == oCollide
 			or object_is_ancestor( _listInst.object_index, oCollide )
-			or floor(bbox_bottom) <= ceil(_listInst.bbox_top - _listInst.yspd)
+			or floor(bbox_bottom) <= ceil(_listInst.bbox_top - _listInst.vsp)
 			{
 				//return "highest" wall object
 				if !instance_exists(myPlat)
-				or _listInst.bbox_top + _listInst.yspd <= myPlat.bbox_top + myPlat.yspd
-				or _listInst.bbox_top + _listInst.yspd <= bbox_bottom
+				or _listInst.bbox_top + _listInst.vsp <= myPlat.bbox_top + myPlat.vsp
+				or _listInst.bbox_top + _listInst.vsp <= bbox_bottom
 				{
 					myPlat = _listInst;
 				}
@@ -563,7 +563,7 @@ stateFree = function()
 	//X - moveplatXspd
 	//get moveplatXspd
 	movePlatXspd = 0;
-	if instance_exists(myPlat) {movePlatXspd = myPlat.xspd;};
+	if instance_exists(myPlat) {movePlatXspd = myPlat.hsp;};
 
 	if (place_meeting(x+movePlatXspd,y,oCollide))
 	{
@@ -578,7 +578,7 @@ stateFree = function()
 	x += movePlatXspd;
 
 	//Y - snapping	
-	if instance_exists(myPlat) and myPlat.yspd != 0
+	if instance_exists(myPlat) and myPlat.vsp != 0
 	{
 		//snap to top of floor (onfloor the y)
 		if !place_meeting(x,myPlat.bbox_top, oCollide)
@@ -588,14 +588,14 @@ stateFree = function()
 		}
 		
 		//going up into a solid wall while on a semisolid platform
-		if myPlat.yspd < 0 and place_meeting(x,y+myPlat.yspd,oCollide)
+		if myPlat.vsp < 0 and place_meeting(x,y+myPlat.vsp,oCollide)
 		{
 				//get pushed down
 			if myPlat.object_index == oCollSemi or object_is_ancestor(myPlat.object_index, oCollSemi)
 			{
 				//get puished down
 				var _subpixel = 0.25;
-				while place_meeting(x,y+myPlat.yspd, oCollide){y+=_subpixel};
+				while place_meeting(x,y+myPlat.vsp, oCollide){y+=_subpixel};
 				
 				//if we got pushed into a solid wall while going down, push back out
 				while place_meeting(x,y,oCollide){y-=_subPixel};
@@ -993,7 +993,7 @@ stateCrouch = function()
 	if instance_exists(myPlat)
 	and (myPlat.object_index == oCollSemi or object_is_ancestor(myPlat.object_index, oCollSemi))
 	{
-		var _yCheck = max(1, myPlat.yspd+1);
+		var _yCheck = max(1, myPlat.vsp+1);
 		if !place_meeting(x, y+_yCheck, oCollide)
 		{
 			//move below platform
@@ -1213,7 +1213,7 @@ stateDash = function()
 	var _listSize = instance_place_list(x, y +1 +_clampYspd +vspMax, _array, _list, false);
 	
 	var _ycheck = y+1 + _clampYspd;
-	if instance_exists(myPlat){_ycheck += max(0, myPlat.yspd)};
+	if instance_exists(myPlat){_ycheck += max(0, myPlat.vsp)};
 	var _semiSolid = checkCollSemi(x, _ycheck);
 	
 	//loop through instances, only return one applicable to player
@@ -1223,18 +1223,18 @@ stateDash = function()
 		var _listInst = _list[| i ];
 		
 		//avoid magnetism
-		if  (_listInst.yspd <= vsp or instance_exists(myPlat))
-		and (_listInst.yspd > 0 or place_meeting(x,y+1+_clampYspd,_listInst))
+		if  (_listInst.vsp <= vsp or instance_exists(myPlat))
+		and (_listInst.vsp > 0 or place_meeting(x,y+1+_clampYspd,_listInst))
 		{
 			//return a solid wall or any semisolid walls that are below the player
 			if _listInst.object_index == oCollide
 			or object_is_ancestor( _listInst.object_index, oCollide )
-			or floor(bbox_bottom) <= ceil(_listInst.bbox_top - _listInst.yspd)
+			or floor(bbox_bottom) <= ceil(_listInst.bbox_top - _listInst.vsp)
 			{
 				//return "highest" wall object
 				if !instance_exists(myPlat)
-				or _listInst.bbox_top + _listInst.yspd <= myPlat.bbox_top + myPlat.yspd
-				or _listInst.bbox_top + _listInst.yspd <= bbox_bottom
+				or _listInst.bbox_top + _listInst.vsp <= myPlat.bbox_top + myPlat.vsp
+				or _listInst.bbox_top + _listInst.vsp <= bbox_bottom
 				{
 					myPlat = _listInst;
 				}
@@ -1279,7 +1279,7 @@ stateDash = function()
 	//X - moveplatXspd
 	//get moveplatXspd
 	movePlatXspd = 0;
-	if instance_exists(myPlat) {movePlatXspd = myPlat.xspd;};
+	if instance_exists(myPlat) {movePlatXspd = myPlat.hsp;};
 
 	if (place_meeting(x+movePlatXspd,y,oCollide))
 	{
@@ -1294,7 +1294,7 @@ stateDash = function()
 	x += movePlatXspd;
 
 	//Y - snapping	
-	if instance_exists(myPlat) and myPlat.yspd != 0
+	if instance_exists(myPlat) and myPlat.vsp != 0
 	{
 		//snap to top of floor (onfloor the y)
 		if !place_meeting(x,myPlat.bbox_top, oCollide)
@@ -1304,14 +1304,14 @@ stateDash = function()
 		}
 		
 		//going up into a solid wall while on a semisolid platform
-		if myPlat.yspd < 0 and place_meeting(x,y+myPlat.yspd,oCollide)
+		if myPlat.vsp < 0 and place_meeting(x,y+myPlat.vsp,oCollide)
 		{
 				//get pushed down
 			if myPlat.object_index == oCollSemi or object_is_ancestor(myPlat.object_index, oCollSemi)
 			{
 				//get puished down
 				var _subpixel = 0.25;
-				while place_meeting(x,y+myPlat.yspd, oCollide){y+=_subpixel};
+				while place_meeting(x,y+myPlat.vsp, oCollide){y+=_subpixel};
 				
 				//if we got pushed into a solid wall while going down, push back out
 				while place_meeting(x,y,oCollide){y-=_subPixel};

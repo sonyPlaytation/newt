@@ -23,18 +23,15 @@ hitTarget = function(_pierce = false)
 		var hitTargs = ds_list_create();
 		var targNum = instance_place_list(x,y,pEntity,hitTargs,1);
 					
-		if (place_meeting(x,y,pEntity)) and targNum > 0
+		if targNum > 0
 		{
 			for (var i=0; i < targNum; i++;)
 			{
 				var target = ds_list_find_value(hitTargs,i);
-			
 				if !target.inactive
 				{
 					with target
 					{
-						if other.state == other.stateAnime {vsp -= lengthdir_y(-25,90)}
-						
 						diedFrom = "standard";
 						enemyHit(oWeapon.damage,,_pierce);
 					}
@@ -42,6 +39,7 @@ hitTarget = function(_pierce = false)
 			}
 		} 
 		ds_list_destroy(hitTargs);
+		hitStop(1);
 	}
 	instance_destroy();
 }
@@ -53,7 +51,7 @@ parry = function()
 		var hitTargs = ds_list_create();
 		var targNum = instance_place_list(x,y,pEntity,hitTargs,1);
 					
-		if (place_meeting(x,y,pEntity)) and targNum > 0
+		if targNum > 0
 		{
 			for (var i=0; i < targNum; i++;)
 			{
@@ -243,14 +241,23 @@ stateSlice = function()
 stateAnime = function()
 {
 	var _ammo = irandom(5);
-	ammoBack(_ammo,5);
+
+	if click == 1
+	{
+		ammoBack(_ammo,5);
+		parry();
+		if hit{ with(oNewt){y -= 3; vsp -= lengthdir_y(-20,90)} }
+	}
+	else
+	{
+		//destroy bullet
+		if place_meeting(x,y,pEnemyShot)
+		{
+			with(instance_place(x,y,pEnemyShot)){instance_destroy()};
+		};	
+	}
 	
 	hitTarget(true);
-	
-	if hit with(oNewt)
-	{
-		vsp -= lengthdir_y(other.recoilpush*0.35,90);
-	}	
 }
 
 stateDestroy = function()

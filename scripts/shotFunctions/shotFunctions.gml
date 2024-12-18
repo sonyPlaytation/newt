@@ -4,6 +4,14 @@ function enemyHit(finalDMG, headshot = false, _pierce = false){
 
 	if (!object_is_ancestor(self.object_index,pPhysProp))
 	{
+		if other.object_index == oShotMelee and (!object_is_ancestor(self.object_index,pBoss))
+		{
+			if (other.state == other.stateAnime) and other.click == 1
+			{vsp -= lengthdir_y(-10,90)}
+			else if (other.state == other.stateAnime) and other.click == 0 and !place_meeting(x,y+1,oCollide)
+			{vsp = 0}
+		}
+		
 		if !_pierce 
 		{
 			var _funcArmor = armor;
@@ -42,22 +50,30 @@ function enemyHit(finalDMG, headshot = false, _pierce = false){
 
 		if armor > 1 {flash = 4}else flash = 3;
 		
-		hitfrom = other.direction;
+		hitfrom = other.image_angle;
 		coinHit = true;
 	}
 	else
 	{
 		idleTimer = 0;
 		phy_active = true;
-		var physX = lengthdir_x(2,other.image_angle)*(1000-(phy_mass));
-		var physY = lengthdir_y(2,other.image_angle)*(1000-(phy_mass));
-				
-		physics_apply_impulse(x,y,physX,physY);
-				
+		
+		if other.object_index == oShotMelee and (!object_is_ancestor(self.object_index,pBoss)) 
+		and (other.state == other.stateAnime) and other.click == 1
+		{
+			finalDMG = 5;
+			var physY = lengthdir_y(-10,90)*(1000-(phy_mass));
+			physics_apply_impulse(x,y,x,physY);
+		}
+		else
+		{
+			var physX = lengthdir_x(2,other.image_angle)*(1000-(phy_mass));
+			var physY = lengthdir_y(2,other.image_angle)*(1000-(phy_mass));
+			physics_apply_impulse(x,y,physX,physY);
+		}
+
 		diedFrom = "standard";
-			
 		hp -= finalDMG;
-			
 		global.critTotalDMG += finalDMG;
 			
 		flash = 3;			
@@ -240,7 +256,7 @@ function trailBlazer(_dmg, _rad, _x, _y, _crit, _friendly, _spr, _sfx)
 }
 
 
-function forceMelee(_state = oWeapon.meleeState){
+function forceMelee(_state = oWeapon.meleeState, _click = 0){
 	screenShake(shakeamnt,shaketime);
 	with (instance_create_layer(x,y,"Shots",projectile))
 	{
@@ -252,7 +268,7 @@ function forceMelee(_state = oWeapon.meleeState){
 		forceState = _state;
 		global.hasCrit = false;
 									
-		click = 0;
+		click = _click;
 		image_xscale = (other.length*2)+point_distance(x,y,oNewt.x,global.newtCenter);
 		image_angle = other.image_angle;
 	}	

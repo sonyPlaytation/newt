@@ -605,14 +605,14 @@ coinCount = 4;
 	ds_map_add(weapons[19],"damage",25);
 	ds_map_add(weapons[19],"cancrit", true);
 	ds_map_add(weapons[19],"flash",-1);
-	ds_map_add(weapons[19],"projectile",oShotVolley);
+	ds_map_add(weapons[19],"projectile",oShotStarter);
 	ds_map_add(weapons[19],"bulletnumber",4);
 	ds_map_add(weapons[19],"spread",20);
 	ds_map_add(weapons[19],"casing",CASE.SHOTGUN);
 	ds_map_add(weapons[19],"startup",0);
-	ds_map_add(weapons[19],"length",10);
+	ds_map_add(weapons[19],"length",45);
 	ds_map_add(weapons[19],"cooldown",20);
-	ds_map_add(weapons[19],"bulletspeed",6);
+	ds_map_add(weapons[19],"bulletspeed",15);
 	ds_map_add(weapons[19],"automatic",false);
 	ds_map_add(weapons[19],"headshots",0);
 	

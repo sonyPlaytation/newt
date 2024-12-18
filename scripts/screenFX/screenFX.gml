@@ -40,10 +40,10 @@ function screenShake(_magnitude,_frames)
 }
 
 ///@args frames
-function hitStop(argument0)
+function hitStop(_frames = 2)
 {
-	if argument0 == undefined{argument0 = 3;}
-	global.hitFrames = argument0;
+	if _frames == undefined{_frames = 3;}
+	global.hitFrames = _frames;
 	with instance_create_depth(0,0,0,oHstop)
 	{
 		if global.hitStopOn{

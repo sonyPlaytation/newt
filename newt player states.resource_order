@@ -293,6 +293,7 @@
     {"name":"oWipeWhite","order":26,"path":"objects/oWipeWhite/oWipeWhite.yy",},
     {"name":"oWIPguns","order":13,"path":"objects/oWIPguns/oWIPguns.yy",},
     {"name":"pAlly","order":9,"path":"objects/pAlly/pAlly.yy",},
+    {"name":"pBoss","order":3,"path":"objects/pBoss/pBoss.yy",},
     {"name":"pEnemy","order":10,"path":"objects/pEnemy/pEnemy.yy",},
     {"name":"pEnemyShot","order":3,"path":"objects/pEnemyShot/pEnemyShot.yy",},
     {"name":"pEntity","order":11,"path":"objects/pEntity/pEntity.yy",},
