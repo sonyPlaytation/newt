@@ -934,18 +934,17 @@ coinCount = 4;
 	ds_map_add(weapons[30],"name", "Dragon\nSlayer");
 	ds_map_add(weapons[30],"sprite",sGutsIdle);
 	ds_map_add(weapons[30],"shootsfx",snGutsSwing);
-	ds_map_add(weapons[30],"pickupsound",snHL1Pickup);
+	ds_map_add(weapons[30],"pickupsound",snCockUltrakill);
 	ds_map_add(weapons[30],"ammotype",3);
 	ds_map_add(weapons[30],"ammouse",1);
 	ds_map_add(weapons[30],"altfire",-1);
 	ds_map_add(weapons[30],"recoil",0);
 	ds_map_add(weapons[30],"accuracy",0);
 	ds_map_add(weapons[30],"recoilpush",-25);
-	ds_map_add(weapons[30],"shakeamnt",1);
-	ds_map_add(weapons[30],"shaketime",1);
+	ds_map_add(weapons[30],"shakeamnt",10);
+	ds_map_add(weapons[30],"shaketime",5);
 	ds_map_add(weapons[30],"damage",150)
 	ds_map_add(weapons[30],"cancrit",false);
-	ds_map_add(weapons[30],"flash",-1);
 	ds_map_add(weapons[30],"projectile",oShotMelee);
 	ds_map_add(weapons[30],"bulletnumber",1);
 	ds_map_add(weapons[30],"spread",-1);
@@ -960,6 +959,40 @@ coinCount = 4;
 	ds_map_add(weapons[30],"animM2",sGutsIdle);
 	ds_map_add(weapons[30],"hitSound",snGutsHit);
 	ds_map_add(weapons[30],"meleeState",MELEE.SLICE);
+	
+	// 30 - Dragonslayer
+	weapons[31] = ds_map_create();
+	ds_map_add(weapons[31],"type",2);
+	ds_map_add(weapons[31],"name", "Buster\nSword");
+	ds_map_add(weapons[31],"sprite",sGutsIdle);
+	ds_map_add(weapons[31],"shootsfx",snWoosh1);
+	ds_map_add(weapons[31],"pickupsound",snCockUltrakill);
+	ds_map_add(weapons[31],"ammotype",4);
+	ds_map_add(weapons[31],"ammouse",0);
+	ds_map_add(weapons[31],"altfire","fireball");
+	ds_map_add(weapons[31],"recoil",0);
+	ds_map_add(weapons[31],"accuracy",0);
+	ds_map_add(weapons[31],"recoilpush",-10);
+	ds_map_add(weapons[31],"shakeamnt",1);
+	ds_map_add(weapons[31],"shaketime",1);
+	ds_map_add(weapons[31],"damage",85)
+	ds_map_add(weapons[31],"cancrit",false);
+	ds_map_add(weapons[31],"flash",-1);
+	ds_map_add(weapons[31],"projectile",oShotMelee);
+	ds_map_add(weapons[31],"bulletnumber",1);
+	ds_map_add(weapons[31],"spread",-1);
+	ds_map_add(weapons[31],"casing",-1);
+	ds_map_add(weapons[31],"startup",24);
+	ds_map_add(weapons[31],"length",75);
+	ds_map_add(weapons[31],"cooldown",45);
+	ds_map_add(weapons[31],"bulletspeed",0);
+	ds_map_add(weapons[31],"automatic",false);
+	ds_map_add(weapons[31],"headshots",0);
+	ds_map_add(weapons[31],"animM1",sBusterSwing);
+	ds_map_add(weapons[31],"animM2",sBusterIdle);
+	ds_map_add(weapons[31],"hitSound",snGutsHit);
+	ds_map_add(weapons[31],"meleeState",MELEE.DESTROY);
+	ds_map_add(weapons[31],"combos",2);
 	
 	#endregion
 
@@ -1051,6 +1084,7 @@ fireWeapon = function()
 			current_delay = startup;	
 			image_index = 0;
 			sprite_index = animM1
+			image_speed = 1
 		}
 		image_speed = 1;
 	}

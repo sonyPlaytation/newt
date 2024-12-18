@@ -208,11 +208,7 @@ if instance_exists(oNewt)
 		{
 			if type == 2 
 			{
-				if combos != undefined
-				{
-					swingMelee(sprite);	
-				}
-				else fireWeapon();
+				swingMelee();	
 			}
 			else fireWeapon();
 		}

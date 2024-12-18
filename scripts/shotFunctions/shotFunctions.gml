@@ -241,7 +241,8 @@ function swingMelee(_sprite)
 	
 	if (mouseLeft) and oNewt.propBuffer <= 0 
 	{
-		meleeCombos(_sprite,mouseLeft);
+		
+		meleeCombos(sprite_index,mouseLeft);
 	}
 	
 	fireWeapon();

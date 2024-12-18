@@ -79,9 +79,9 @@ function comboReset(_sprite)
 {
 	if sprite_index != _sprite
 	{
-		sprite_index = _sprite;
-		image_index = 0;
 		
+		image_index = 0;
+		sprite_index = _sprite;
 		image_speed = 1;
 		//if combo == 0
 		//{
@@ -93,40 +93,40 @@ function comboReset(_sprite)
 
 function meleeCombos(_sprite, _click, _frame = 20)
 {
-	//gutsCombos(_sprite, _click, _frame = 20);
-}
-
-function gutsCombos(_sprite, _click, _frame = 20)
-{
 	var _startup = oWeapon.startup
-	switch sprite_index
+	switch _sprite
 	{
-		case sGutsIdle:
-			comboReset(sGutsSwing);
+		case sBusterIdle:
+			comboReset(sBusterSwing);
 		break;
 		
-		//case sGutsSwing:
-		//	if combo != 0 and image_index > _frame
-		//	{
-		//		oWeapon.startup = 15;
-		//		comboReset(sGutsCombo);
-		//		fireWeapon();
-		//		combo = 0;
-		//		oNewt.propBuffer = 50;
-		//	}
-		//break;
+		case sBusterSwing:
+			if combo != 0 
+			{
+				oWeapon.startup = 15;
+				comboReset(sBusterCombo);
+				fireWeapon();
+				combo = 0;
+				oNewt.propBuffer = 50;
+			}
+		break;
 		
-		//case sGutsCombo:
-		//	if combo != 0 and image_index > _frame
-		//	{
-		//		oWeapon.startup = 20;
-		//		comboReset(sGutsSwing);
-		//		fireWeapon();
-		//		combo = 0;
-		//		oNewt.propBuffer = image_number * 1.15;
-		//	}
-		//break;	
+		case sBusterCombo:
+			if combo != 0
+			{
+				oWeapon.startup = 20;
+				comboReset(sBusterSwing);
+				fireWeapon();
+				combo = 0;
+				oNewt.propBuffer = image_number * 1.15;
+			}
+		break;	
 	}
 	oWeapon.startup = _startup;
+}
+
+function busterCombo(_sprite, _click, _frame = 20)
+{
+	
 }
 
