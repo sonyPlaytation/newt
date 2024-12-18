@@ -14,5 +14,5 @@ if instance_exists(oNewt)
 
 	state();
 
-};
+}else instance_destroy();
 

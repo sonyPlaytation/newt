@@ -4,14 +4,16 @@ function enemyHit(finalDMG, headshot = false, _pierce = false){
 
 	if (!object_is_ancestor(self.object_index,pPhysProp))
 	{
-		
-		
 		if !_pierce 
 		{
 			var _funcArmor = armor;
-			finalDMG = max(0, floor(finalDMG - (finalDMG * (_funcArmor/100))))
-		}else var _funcArmor = 0;
-
+			finalDMG = max(0, floor(finalDMG*oInv.dmgMod - (finalDMG * (_funcArmor/100))))
+		}
+		else
+		{
+			finalDMG = finalDMG *oInv.dmgMod
+			var _funcArmor = 0;
+		}
 
 		//subtract health
 		hp -= finalDMG;
@@ -238,7 +240,7 @@ function trailBlazer(_dmg, _rad, _x, _y, _crit, _friendly, _spr, _sfx)
 }
 
 
-function forceMelee(){
+function forceMelee(_state = oWeapon.meleeState){
 	screenShake(shakeamnt,shaketime);
 	with (instance_create_layer(x,y,"Shots",projectile))
 	{
@@ -247,6 +249,7 @@ function forceMelee(){
 			oSFX.critshot = true;
 			crit = global.hasCrit;
 		}else crit = false;
+		forceState = _state;
 		global.hasCrit = false;
 									
 		click = 0;

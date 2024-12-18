@@ -60,4 +60,5 @@ if(keyboard_check_pressed(vk_anykey)) and instance_exists(oNewt) // only do the 
 			sodaGet(i);	
 		}
 	}
+	
 }

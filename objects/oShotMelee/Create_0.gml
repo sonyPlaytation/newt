@@ -8,9 +8,11 @@ enum MELEE
 	SLICE	= 2,
 	DESTROY = 3,
 	WRENCH	= 4,
-	WEAK	= 5
+	WEAK	= 5,
+	ANIME   = 6
 }
 
+forceState = -1;
 
 #region functions
 hitTarget = function(_pierce = false)
@@ -31,6 +33,8 @@ hitTarget = function(_pierce = false)
 				{
 					with target
 					{
+						if other.state == other.stateAnime {vsp -= lengthdir_y(-25,90)}
+						
 						diedFrom = "standard";
 						enemyHit(oWeapon.damage,,_pierce);
 					}
@@ -236,6 +240,19 @@ stateSlice = function()
 	hitTarget(true);
 }
 
+stateAnime = function()
+{
+	var _ammo = irandom(5);
+	ammoBack(_ammo,5);
+	
+	hitTarget(true);
+	
+	if hit with(oNewt)
+	{
+		vsp -= lengthdir_y(other.recoilpush*0.35,90);
+	}	
+}
+
 stateDestroy = function()
 {
 	//destroy bullet
@@ -310,15 +327,15 @@ stateWeak = function()
 	hitTarget();
 }
 
-
-
 stt[0] = stateSwat;
 stt[1] = stateParry;
 stt[2] = stateSlice;
 stt[3] = stateDestroy;
 stt[4] = stateWrench;
 stt[5] = stateWeak;
+stt[6] = stateAnime;
 
-state = stt[oWeapon.meleeState];
+if forceState == -1 {state = stt[oWeapon.meleeState]}
+else state = stt[forceState];
 
 swatTrail();

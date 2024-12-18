@@ -960,7 +960,7 @@ coinCount = 4;
 	ds_map_add(weapons[30],"hitSound",snGutsHit);
 	ds_map_add(weapons[30],"meleeState",MELEE.SLICE);
 	
-	// 30 - Dragonslayer
+	// 31 - Buster Sword
 	weapons[31] = ds_map_create();
 	ds_map_add(weapons[31],"type",2);
 	ds_map_add(weapons[31],"name", "Buster\nSword");
@@ -969,7 +969,7 @@ coinCount = 4;
 	ds_map_add(weapons[31],"pickupsound",snCockUltrakill);
 	ds_map_add(weapons[31],"ammotype",4);
 	ds_map_add(weapons[31],"ammouse",0);
-	ds_map_add(weapons[31],"altfire","fireball");
+	ds_map_add(weapons[31],"altfire","busterCombo");
 	ds_map_add(weapons[31],"recoil",0);
 	ds_map_add(weapons[31],"accuracy",0);
 	ds_map_add(weapons[31],"recoilpush",-10);
@@ -989,9 +989,9 @@ coinCount = 4;
 	ds_map_add(weapons[31],"automatic",false);
 	ds_map_add(weapons[31],"headshots",0);
 	ds_map_add(weapons[31],"animM1",sBusterSwing);
-	ds_map_add(weapons[31],"animM2",sBusterIdle);
+	ds_map_add(weapons[31],"animM2",sBusterCombo);
 	ds_map_add(weapons[31],"hitSound",snGutsHit);
-	ds_map_add(weapons[31],"meleeState",MELEE.DESTROY);
+	ds_map_add(weapons[31],"meleeState",MELEE.ANIME);
 	ds_map_add(weapons[31],"combos",2);
 	
 	#endregion
@@ -1041,6 +1041,8 @@ coinCount = 4;
 	
 	shotNumber = 0;
 	draw_alpha = 0;
+	
+	combo = 0;
 	
 #endregion
 

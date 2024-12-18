@@ -164,12 +164,46 @@ if  oNewt.hasControl and altfire != -1 and input_check_pressed("altfire") and (d
 					image_angle = direction;
 				}
 				
-				with(oNewt)
+				with (oNewt)
 				{
-					hsp -= lengthdir_x(-5,other.image_angle);
-					vsp -= lengthdir_y(-5,other.image_angle);
+					onGround = false
+					vsp = lengthdir_y(100,90);
 				}
 			}
+		break;
+		
+		//buster sword
+		case "busterCombo":	
+		
+			if (combo and image_index > 25) or (current_cd == 0)
+			{
+				with(oNewt)
+				{
+					y -= 3;
+					onGround = false;
+					vsp -= lengthdir_y(-5,90);
+				}
+				audio_play_sound(shootsfx,500,false);
+				delayRight = 45;
+				sprite_index = animM2;
+				image_index = 0
+				forceMelee(MELEE.SLICE);
+				
+				with(oNewt)
+				{
+					vsp -= lengthdir_y(other.recoilpush*0.65,90);
+				}
+				
+				if (combo and image_index > 25) and input_check_pressed("shoot")
+				{
+					sprite_index = animM1;
+					image_index = 0;
+					current_cd = 0; 
+					current_delay = 5;
+				}
+				combo = 0;
+			}		
+			
 		break;
 			
 		//laser sight
