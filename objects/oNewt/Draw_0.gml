@@ -74,7 +74,7 @@ if dashCount < dashMax and !place_meeting(x,y+2,oCollide)
 
 
 
-draw_text(x,y-50,"image speed "+string(oWeapon.image_speed));
+//draw_text(x,y-50,"pauseInput"+string(global.pauseInput));
 //draw_text(x,y-65,"drawY"+string(drawYscale));
 
 if (flash > 0)

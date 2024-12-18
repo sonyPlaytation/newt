@@ -949,7 +949,7 @@ coinCount = 4;
 	ds_map_add(weapons[30],"bulletnumber",1);
 	ds_map_add(weapons[30],"spread",-1);
 	ds_map_add(weapons[30],"casing",-1);
-	ds_map_add(weapons[30],"startup",24);
+	ds_map_add(weapons[30],"startup",30);
 	ds_map_add(weapons[30],"length",75);
 	ds_map_add(weapons[30],"cooldown",45);
 	ds_map_add(weapons[30],"bulletspeed",0);
@@ -1042,8 +1042,6 @@ coinCount = 4;
 	shotNumber = 0;
 	draw_alpha = 0;
 	
-	combo = 0;
-	
 #endregion
 
 weaponStats(0);
@@ -1073,6 +1071,7 @@ soundNicer = function()
 
 fireWeapon = function()
 {
+	shotNumber = 0;
 	var mouseLeft;			
 	if (automatic) mouseLeft = input_check("shoot"); else mouseLeft = input_check_pressed("shoot");
 	
@@ -1102,68 +1101,50 @@ fireWeapon = function()
 			
 			for (var j = 0; j < bulletnumber; j++)
 			{
-				if type = 2
-				{
-					screenShake(shakeamnt,shaketime);
-					with (instance_create_layer(x,y,"Shots",projectile))
-					{
-						if (other.cancrit == 1) and global.hasCrit or global.critTimer > 0
-						{
-							oSFX.critshot = true;
-							crit = global.hasCrit;
-						}else crit = false;
-						global.hasCrit = false;
-									
-						click = 0;
-						image_xscale = (other.length*2)+point_distance(x,y,oNewt.x,global.newtCenter);
-						image_angle = other.image_angle;
-					}
-				}
-				else
-				{
-					screenShake(shakeamnt,shaketime);
-					var _shot = (instance_create_layer(x+lengthdir_x(length,image_angle),(y+lengthdir_y(length,image_angle)),"Shots",projectile))
-					with _shot
-					{
-						if (other.cancrit == 1) and global.hasCrit or global.critTimer > 0
-						{
-							oSFX.critshot = true;
-							crit = global.hasCrit;
-						}else crit = false;
-						global.hasCrit = false;
+				shotNumber++;
+				screenShake(shakeamnt,shaketime);	
 							
-						if other.headshots{headshot = true};
-					
-						shotNumber = other.shotNumber;
-						hitSprite = other.hitSprite;
-						dir = other.image_angle- _spread/2 + _spreadDiv * j + random_range(-other.accuracy,other.accuracy);
-						spd = other.bulletspeed;
-						image_angle = dir;
+				var _shot = (instance_create_layer(x+lengthdir_x(length,image_angle),(y+lengthdir_y(length,image_angle)),"Shots",projectile))
+				with _shot
+				{
+					if (other.cancrit == 1) and global.hasCrit or global.critTimer > 0
+					{
+						oSFX.critshot = true;
+						crit = global.hasCrit;
+					}else crit = false;
+					global.hasCrit = false;
+							
+					if other.headshots{headshot = true};
+							
+					shotNumber = other.shotNumber;
+					hitSprite = other.hitSprite;
+					dir = other.image_angle- _spread/2 + _spreadDiv * j + random_range(-other.accuracy,other.accuracy);
+					spd = other.bulletspeed;
+					image_angle = dir;
 								
-						if object_get_physics(other.projectile.object_index)
-						{
-							var _physX = lengthdir_x(other.bulletspeed, other.image_angle) * 10000
-							var _physY = lengthdir_y(other.bulletspeed, other.image_angle) * 10000
+					if object_get_physics(other.projectile.object_index)
+					{
+						var _physX = lengthdir_x(other.bulletspeed, other.image_angle) * 10000
+						var _physY = lengthdir_y(other.bulletspeed, other.image_angle) * 10000
 									
-							physics_apply_impulse(x,y,_physX,_physY);
-						}
-						else
-						{
-							image_xscale = max(1,spd/sprite_width);
-						}
+						physics_apply_impulse(x,y,_physX,_physY);
 					}
-					global.shotNumber = j;
+					else
+					{
+						image_xscale = max(1,spd/sprite_width);
+					}
 				}
+
+				with(oNewt)
+				{
+					if (state != stateCrouch)
+					{	
+						hsp -= lengthdir_x(other.recoilpush,other.image_angle);
+						vsp -= lengthdir_y(other.recoilpush,other.image_angle);
+					}
+				}	
+				global.shotNumber = j;
 			}
-			
-			with(oNewt)
-			{
-				if (state != stateCrouch)
-				{	
-					hsp -= lengthdir_x(other.recoilpush,other.image_angle);
-					vsp -= lengthdir_y(other.recoilpush,other.image_angle);
-				}
-			}	
 			
 			if casing == oSmoke{instance_create_layer(x,y,"Player",oSmoke)}					
 			else if casing != -1
@@ -1184,8 +1165,93 @@ fireWeapon = function()
 	//right click
 	altFires(altfire);
 		
-	x = x - lengthdir_x(min(current_recoil,4), image_angle);
-	y = y - lengthdir_y(min(current_recoil,4), image_angle);
+	var _dir = image_angle;
+
+	x = x - lengthdir_x(min(current_recoil,4), _dir);
+	y = y - lengthdir_y(min(current_recoil,4), _dir);
 }
 
+swingMelee = function()
+{
+	var mouseLeft;			
+	if (automatic) mouseLeft = input_check("shoot"); else mouseLeft = input_check_pressed("shoot");
+	
+	if (mouseLeft) and oNewt.propBuffer <= 0
+		{
+			if (current_cd == 0)
+			{
+				current_cd = cooldown;
+				current_delay = startup;	
+						
+				image_index = 0;
+				sprite_index = animM1;
+				image_speed = 1;
+			}	
+		}
 
+		var _spread = spread;
+		var _spreadDiv = _spread / max( bulletnumber - 1, 1 );
+
+		if oNewt.hasControl && (current_delay == 0) && (projectile != -1)
+		{	
+			if (ammo[ammotype] >= ammouse) and (bulletnumber != -1)
+			{	
+				if (shootsfx != -1)	
+				{
+					soundNicer();
+				}
+				if ammouse >= 0 {ammo[ammotype] -= ammouse};
+		
+				for (var j = 0; j < bulletnumber; j++)
+				{
+					screenShake(shakeamnt,shaketime);	
+					with (instance_create_layer(x,y,"Shots",projectile))
+					{
+						if (other.cancrit == 1) and global.hasCrit or global.critTimer > 0
+						{
+							oSFX.critshot = true;
+							crit = global.hasCrit;
+							
+						}else crit = false;
+						global.hasCrit = false;
+									
+						click = 0;
+						image_xscale = (other.length*2)+point_distance(x,y,oNewt.x,global.newtCenter);
+						direction = other.image_angle- _spread/2 + _spreadDiv * j + random_range(-other.accuracy,other.accuracy);
+						
+						image_angle = direction;
+					}
+
+					with(oNewt)
+					{
+						hsp -= lengthdir_x(other.recoilpush,other.image_angle);
+						vsp -= lengthdir_y(other.recoilpush,other.image_angle);
+					}
+					global.shotNumber = j;
+				}
+							
+				if casing == oSmoke{instance_create_layer(x,y,"Player",oSmoke)}					
+				else if casing != -1
+				{
+					with (instance_create_layer(x,y,"Player",oCasing))
+					{
+						image_index = other.casing;
+						hsp = lengthdir_x(3, other.image_angle-180 + random_range(-10, 10));
+						vsp =  random_range(-7, -5);
+						if (sign(hsp)!=0) image_xscale = sign(hsp); 	
+					}
+				}
+			}
+			current_recoil = recoil;
+			if (ammo[ammotype] < ammouse) and mouseLeft {audio_play_sound(snNoAmmo,300,false)};
+		}
+
+		//right click
+		altFires(altfire);
+
+		var _dir = image_angle;
+
+		x = x - lengthdir_x(min(current_recoil,4), _dir);
+		y = y - lengthdir_y(min(current_recoil,4), _dir);
+
+}

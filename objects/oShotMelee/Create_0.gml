@@ -1,14 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-hit = false
-sprW = 0;
-sprH = 60;
-image_yscale = sprH/2;
-
-_hs = max (0, oWeapon.cooldown/4)
-click = 0;
-
 enum MELEE
 {
 	SWAT	= 0,
@@ -19,7 +11,81 @@ enum MELEE
 	WEAK	= 5
 }
 
-// hitTarget and parry have been moved to [meleeCombos]
+
+#region functions
+hitTarget = function()
+{
+	//hitting an enemy
+	if (place_meeting(x,y,pEntity))
+	{
+		var hitTargs = ds_list_create();
+		var targNum = instance_place_list(x,y,pEntity,hitTargs,1);
+					
+		if (place_meeting(x,y,pEntity)) and targNum > 0
+		{
+			for (var i=0; i < targNum; i++;)
+			{
+				var target = ds_list_find_value(hitTargs,i);
+			
+				if !target.inactive
+				{
+					with target
+					{
+						diedFrom = "standard";
+						enemyHit(oWeapon.damage);
+					}
+				}
+			}
+		} 
+		ds_list_destroy(hitTargs);
+	}
+	instance_destroy();
+}
+
+parry = function()
+{
+	if (place_meeting(x,y,pEntity))
+	{
+		var hitTargs = ds_list_create();
+		var targNum = instance_place_list(x,y,pEntity,hitTargs,1);
+					
+		if (place_meeting(x,y,pEntity)) and targNum > 0
+		{
+			for (var i=0; i < targNum; i++;)
+			{
+				var target = ds_list_find_value(hitTargs,i);
+			
+				if object_is_ancestor(target.object_index,pPhysProp)
+				{
+					with target
+					{
+						idleTimer = 0;
+						phy_active = true;
+						var physX = lengthdir_x(100,oWeapon.image_angle)*(1000-(self.phy_mass));
+						var physY = lengthdir_y(100,oWeapon.image_angle)*(1000-(self.phy_mass));
+				
+						physics_apply_impulse(x,y,physX,physY);
+				
+						diedFrom = "standard";
+			
+						flash = 3;			
+						hitfrom = other.direction;	
+					}
+				}
+				else
+				{
+					with target
+					{
+						diedFrom = "standard";
+						enemyHit(oWeapon.damage);
+					}
+				}
+			}
+		} 
+		ds_list_destroy(hitTargs);
+	}
+	instance_destroy();
+}
 
 ammoBack = function(type,amount)
 {
@@ -43,8 +109,19 @@ swatTrail = function()
 		owner = other.id;
 	}
 }
+#endregion
 
-#region STATES
+//alarm[0] = 10;
+
+hit = false;
+
+sprW = 0;
+sprH = 60;
+
+image_yscale = sprH/2;
+
+_hs = max (0, oWeapon.cooldown/4)
+click = 0;
 
 stateSwat = function()
 {
@@ -86,7 +163,6 @@ stateSwat = function()
 	}
 	hitTarget();
 }
-
 
 stateParry = function()
 {
@@ -234,9 +310,7 @@ stateWeak = function()
 	hitTarget();
 }
 
-#endregion
 
-swatTrail();
 
 stt[0] = stateSwat;
 stt[1] = stateParry;
@@ -246,3 +320,5 @@ stt[4] = stateWrench;
 stt[5] = stateWeak;
 
 state = stt[oWeapon.meleeState];
+
+swatTrail();

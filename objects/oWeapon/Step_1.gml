@@ -206,11 +206,21 @@ if instance_exists(oNewt)
 
 		if oNewt.prop == noone
 		{
-			if type == 2 
+			switch (type)
 			{
-				swingMelee();	
+	
+				case 0: //primary
+					fireWeapon();
+				break;
+
+				case 1: //secondary
+					fireWeapon();
+				break;
+
+				case 2: //melee
+					swingMelee();
+				break;
 			}
-			else fireWeapon();
 		}
 		else
 		{
@@ -241,5 +251,3 @@ if instance_exists(oNewt)
 		#endregion
 	}
 }
-
-if combo > 0 {current_cd = 0}
