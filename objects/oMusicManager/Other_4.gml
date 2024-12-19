@@ -12,7 +12,7 @@ or room == rSoda2
 
 if room == rTest3
 or room == rTutorialNew1
-or room == rDemo1
+or room == rTestDemo1
 or room == rCombatTest
 or global.lvlFloor = 444
 {

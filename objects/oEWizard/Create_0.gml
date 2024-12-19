@@ -2,11 +2,8 @@
 // Inherit the parent event
 event_inherited();
 
-diedFrom = noone;
 corpse = "wizard";
 cSprite = sEWizardDie;
-big = false;
-
 
 groundTime = 30;
 

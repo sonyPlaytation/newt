@@ -3,16 +3,8 @@
 
 event_inherited();
 
-diedFrom = noone;
-corpse = "generic";
 cSprite = sECrocDie
 big = true;
-
-if instance_exists(oRoomDetect)
-{
-	myRoom = instance_nearest(self.x,self.y,oRoomDetect);
-	
-}else {myRoom = noone;}
 
 patrolReset = 60;
 patrolTime = patrolReset;
@@ -29,27 +21,12 @@ confusion = 40;
 cantShoot = false;
 att = 60;
 markerTime = 30;
-image_xscale = 1;
-hasWeapon = true;
-rot = 0;
 
-diedFrom = "standard";
+rot = 0;
 
 runsprite = sECrocRunA;
 idleSprite = sECroc;
 mouthopen = false;
-
-//if(hasWeapon)
-//{
-//	mygun = instance_create_layer(x,y,"Weapon",oWandCroc);
-//	with (mygun)
-//	{
-//		owner = other.id;
-//		viewRange = owner.viewRange;
-//	}
-//}
-//else 
-mygun = noone;
 
 if (hasHead)
 {

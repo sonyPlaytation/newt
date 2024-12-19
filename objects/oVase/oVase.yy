@@ -14,8 +14,8 @@
     {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"pEntity","path":"objects/pEntity/pEntity.yy",},"propertyId":{"name":"dropRate","path":"objects/pEntity/pEntity.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"75",},
   ],
   "parent":{
-    "name":"Enemies",
-    "path":"folders/Objects/Entities/Enemies.yy",
+    "name":"Props",
+    "path":"folders/Objects/Props.yy",
   },
   "parentObjectId":{
     "name":"pPhysProp",

@@ -1,18 +1,10 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-inactive = false;
-diedFrom = noone;
+event_inherited();
+
 corpse = "bat";
 cSprite = sEShrugBatDie;
-big = false;
-mygun = noone;
-
-if instance_exists(oRoomDetect)
-{
-	myRoom = instance_nearest(self.x,self.y,oRoomDetect);
-	
-}else {myRoom = noone;}
 
 selfCenter = y-10;
 viewRange = 270;
@@ -33,12 +25,9 @@ hasGoon = false;
 
 if (instance_exists(oNewt) and oNewt.x< x) {image_xscale = -1};
 
-if (hasHead)
-{
-	myHead = instance_create_depth(x,bbox_top,depth-10,oHeadHitbox)
-	with myHead {owner = other.id; width = 1.25;height = 0.8;};
-}
-else myHead = noone;
+myHead = instance_create_depth(x,bbox_top,depth-10,oHeadHitbox)
+with myHead {owner = other.id; width = 1.25;height = 0.8;};
+
 
 stateIdle = function()
 {

@@ -1,11 +1,13 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+inactive = false;
 diedFrom = noone;
 corpse = "generic";
 cSprite = sEWalkerDie;
 big = false;
 friendly = -1;
+target = noone;
 
 global.getSizeKilled = 1;
 
@@ -32,3 +34,12 @@ if (hasHead)
 }
 else myHead = noone;
 
+if !noDMG
+{
+	myDamage = instance_create_depth(x,y,depth-10,oDmgNum);
+	with (myDamage)
+	{
+		owner = other.id
+	}
+}
+else myDamage = noone;

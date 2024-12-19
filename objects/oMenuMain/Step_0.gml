@@ -49,7 +49,7 @@ if (menu_x < -200) && (menu_committed != -1)
 	oPause.pause = false;
 	switch (menu_committed)
 	{
-		case 5: slideTransition(TRANS_MODE.INIT, rBossLobbyTest); break; //BOSS FIGHT
+		case 5: slideTransition(TRANS_MODE.INIT, rVoid); break; //BOSS FIGHT
 		case 4: global.lvlFloor = 0;	slideTransition(TRANS_MODE.INIT, rTutorialNew7); break; //WHATS NEW
 		case 3: global.lvlFloor = 444;	slideTransition(TRANS_MODE.INIT, rTutorialNew1); break; //TUTORIAL
 		case 2: slideTransition(TRANS_MODE.INIT, rTest3); break; //NEW GAME

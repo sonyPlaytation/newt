@@ -4,7 +4,7 @@
 if instance_exists(oRoomDetect)
 {
 	myRoom = instance_nearest(x,y,oRoomDetect);
-}
+}else myRoom = noone;
 
 done = false;
 
@@ -15,8 +15,6 @@ doorClosed = false;
 
 myWall = instance_create_layer(x,y,layer,oCollideMiddle);
 myWall.image_alpha = 0;
-
-
 
 with (myWall)
 {

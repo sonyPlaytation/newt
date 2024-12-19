@@ -69,7 +69,7 @@ if corpsePicked != true
 		case "bat":
 			digest*=1.75;
 			vsp = 1;
-			hsp = irandom_range(-0.5,0.5);
+			hsp = lengthdir_x(2,global.hitfrom);
 			spd = 1;
 			flash = 3;
 			grv = 0.2;

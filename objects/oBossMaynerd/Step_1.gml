@@ -5,6 +5,7 @@ if hp <= 0
 	if expCount < 5 {sprite = sMaynerdWhat}
 	else 
 	{
+		instance_create_depth(x,y-(sprite_height/2),depth-100,oSpookyGhost);
 		sprite = sMaynerdDie;
 		x = lerp(x,oRoomMiddle.x,0.025);
 		y = lerp(y,oRoomMiddle.y,0.025);
@@ -15,7 +16,7 @@ if hp <= 0
 	
 	if expCount == 15 and expTimer == 0 //spawn white wipe
 	{
-		instance_create_depth(x,y-(sprite_height/2),-9999,oWipeWhite);
+		instance_create_depth(x,y-(sprite_height/2),-999,oWipeWhite);
 	}
 	
 	if instance_exists(oWipeWhite)

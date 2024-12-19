@@ -23,7 +23,6 @@ if global.gameState = 0
 	
 		if firstCombo {draw_set_colour(c_red)} else {draw_set_colour(c_white)} ;
 		draw_text_transformed(RESOLUTION_W-63, 63,string(combotimer),killtextscale * 3,killtextscale * 3,0);
-	
 	}
 }
 

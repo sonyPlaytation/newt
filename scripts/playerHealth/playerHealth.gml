@@ -49,6 +49,13 @@ with (targ)
 		flash = 6;	
 		if targ.id == oNewt.id
 		{
+			if other.object_index == pEnemyShot
+			{
+				global.hitfrom = other.image_angle;
+			}
+			else
+			global.hitfrom = point_direction(other.x,other.y,x,y);
+			
 			camPunch();
 			oSFX.hit = true;
 			hitStop(3);

@@ -214,6 +214,7 @@ rot = 0;
 exclam = false; //should interest marker show up
 hasControl = true; //can you move
 inspect = false;
+hitFrom = 0;
 
 facingRight = 1;
 
@@ -251,6 +252,11 @@ gArr[3] = oExpBar;
 gArr[4] = oWeapon;
 gArr[5] = oExclam;
 gArr[6] = oShotSniperLaser;
+
+for (var i = 0; i < array_length(gArr); i++)
+{
+	if !instance_exists(gArr[i]) {instance_create_layer(x,y,"GUI",gArr[i])};
+}
 
 //gArr[7] = oMusicManager;
 

@@ -1,22 +1,14 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+event_inherited();
+
 //corpse
-corpse = "generic"
 cSprite = sEShooterDie;
-big = false;
-diedFrom = "standard";
-friendly = -1;
-target = noone;
 
 carried = false;
 owner = noone;
 
-if instance_exists(oRoomDetect)
-{
-	myRoom = instance_nearest(self.x,self.y,oRoomDetect);
-	
-}else {myRoom = noone;}
 
 patrolReset = 60;
 patrolTime = patrolReset;
@@ -30,27 +22,15 @@ att = 60;
 markerTime = 30;
 image_xscale = 1;
 
-if(hasWeapon)
-{
-	mygun = instance_create_depth(x,y,depth-100,oWandEnemy);
-	with (mygun)
-	{
-		
-		owner = other.id;
-		state = stateBurst;
-		countdownRate = 45;
-		setspeed = 9;
-		viewRange = owner.viewRange;
-	}
-}
-else mygun = noone;
 
-if (hasHead)
+with (mygun)
 {
-	myHead = instance_create_depth(x,bbox_top,depth-10,oHeadHitbox)
-	with myHead {owner = other.id};
+	owner = other.id;
+	state = stateBurst;
+	countdownRate = 45;
+	setspeed = 9;
+	viewRange = owner.viewRange;
 }
-else myHead = noone;
 
 
 statePatrol = function()
